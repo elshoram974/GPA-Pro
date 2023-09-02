@@ -214,6 +214,7 @@ class ArDictionary {
     AppConstLang.noSubjectToSearch: "لا توجد مواد للبحث فيها",
     // upload screen.
     AppConstLang.makeAllSubjectsWithThisDegree: "جعل كل المواد بهذه الدرجة",
+    AppConstLang.sharedSubjects: "مواد مشاركة",
 
     // privacy policy screen.
     AppConstLang.privacyPolicy1: PrivacyPolicyArConstants.privacyPolicy1,

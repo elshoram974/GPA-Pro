@@ -155,9 +155,6 @@ class UploadSavedTxtFileImp extends UploadSavedTxtFile {
       );
       update();
     }
-    // else {
-    //   CustomDialog.warningDialog(AppConstLang..tr);
-    // }
   }
 
   // -------------------- end save --------------------------------------------

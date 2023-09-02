@@ -16,7 +16,6 @@ import 'package:get/get.dart';
 
 class GeneratedRoute {
   static List<GetPage<dynamic>>? getPages = [
-
     GetPage(name: AppRoute.mainScreen, page: () => const MainScreen()),
     GetPage(name: AppRoute.aboutApp, page: () => const AboutAppScreen()),
     GetPage(name: AppRoute.privacyPolicy, page: () => const PrivacyPolicyScreen()),

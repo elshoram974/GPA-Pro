@@ -216,6 +216,7 @@ class EnDictionary {
     // upload screen.
     AppConstLang.makeAllSubjectsWithThisDegree:
         "Make all subjects with this degree",
+    AppConstLang.sharedSubjects: "Shared subjects",
 
     // privacy policy screen.
     AppConstLang.privacyPolicy1: PrivacyPolicyEnConstants.privacyPolicy1,

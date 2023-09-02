@@ -121,7 +121,7 @@ class SubjectModel extends ParentModel {
 
   factory SubjectModel.fromJson(Map<String, dynamic> map) {
     if (!SemesterModel.semesters.contains(map[SubjectTableDB.semester])) {
-      throw "this semester not exist";
+      // throw "this semester not exist"; //-------------------------------------
     } else if (!YearModel.years.contains(map[SubjectTableDB.year])) {
       throw "this year not exist";
     } else if (map[SubjectTableDB.nameAr] == null) {
@@ -130,7 +130,7 @@ class SubjectModel extends ParentModel {
     return SubjectModel(
       id: map[SubjectTableDB.id] ?? 0,
       nameEn: map[SubjectTableDB.nameEn]!,
-      nameAr: map[SubjectTableDB.nameAr]!,
+      nameAr: map[SubjectTableDB.nameAr], //-------------------------------------
       degree: map[SubjectTableDB.degree]!,
       savedGPA: map[SubjectTableDB.gpa],
       maxDegree: map[SubjectTableDB.maxDegree]!,

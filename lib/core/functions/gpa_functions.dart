@@ -45,7 +45,7 @@ class GPAFunctions {
     await SubjectTableDB.removeAll(modelList);
     await SubjectTableDB.insertAll(editSubjects);
     await AppInjections.homeController.getSubjects();
-    // Get.offAllNamed(Pages.homePage);
+    
   }
 
   //cumulative

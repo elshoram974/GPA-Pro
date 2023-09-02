@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:gpa_pro/controller/saved_subjects_controllers/upload_controller.dart';
 import 'package:gpa_pro/core/class/argument_model.dart';
 import 'package:gpa_pro/core/constants/routes.dart';
 import 'package:gpa_pro/core/constants/saved_constants.dart';
@@ -73,7 +72,6 @@ class SaveText {
     newSubjects.addAll(getAll.subjects);
     Get.back();
 
-    Get.lazyPut<UploadSavedTxtFileImp>(() => UploadSavedTxtFileImp());
     Get.toNamed(
       AppRoute.uploadScreen,
       arguments: UploadArguments(

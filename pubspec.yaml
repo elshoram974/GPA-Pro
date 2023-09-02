@@ -88,6 +88,9 @@ dependencies:
   # dartz: ^0.10.1
   http: ^1.1.0
 
+  # for deepLinks
+  uni_links: ^0.5.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

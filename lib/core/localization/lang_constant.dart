@@ -209,6 +209,7 @@ class AppConstLang {
   // upload screen
   static const String makeAllSubjectsWithThisDegree =
       "make_all_subjects_with_this_degree";
+  static const String sharedSubjects = "sharedSubjects";
 
   // privacy policy screen
   static const String privacyPolicy1 = "privacy_policy_en_1";
