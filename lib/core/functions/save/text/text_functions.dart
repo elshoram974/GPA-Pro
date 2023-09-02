@@ -42,7 +42,7 @@ class SaveText {
     Get.back();
 
     AppSnackBar.messageSnack(AppConstLang.savedInDownload.tr);
-    // RateApp.rateApp(Get.context!);
+    RateApp.rateAppDialog();
   }
 
   //--------------------

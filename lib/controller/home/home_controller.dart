@@ -15,7 +15,7 @@ import 'package:gpa_pro/data/model/parent_model.dart';
 import 'package:gpa_pro/data/model/semester_model.dart';
 import 'package:gpa_pro/data/model/subject_model.dart';
 import 'package:gpa_pro/data/model/year_model.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
+// import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -222,7 +222,7 @@ class HomeControllerImp extends HomeController {
     await addYear();
     // searchSubjectByName("");
 
-    FlutterNativeSplash.remove();
+    // FlutterNativeSplash.remove();
     return subjects;
   }
 

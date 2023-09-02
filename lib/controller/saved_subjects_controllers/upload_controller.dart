@@ -142,8 +142,7 @@ class UploadSavedTxtFileImp extends UploadSavedTxtFile {
       AppSnackBar.messageSnack(AppConstLang.done.tr);
 
       Navigator.popUntil(Get.context!, (route) => route.isFirst);
-      // RateApp.rateApp(Get.context!);
-      print("object");
+      RateApp.rateAppDialog();
     }
   }
 

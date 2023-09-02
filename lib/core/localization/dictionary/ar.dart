@@ -253,7 +253,7 @@ class ArDictionary {
     // rate dialog
     AppConstLang.rateThisApp: "قيم هذا التطبيق",
     AppConstLang.rateMessage:
-        "إذا أعجبك هذا التطبيق ، فالرجاء تخصيص القليل من وقتك لمراجعته! \n فهذا يساعدنا حقًا ولن يستغرق الأمر أكثر من دقيقة واحدة.",
+        "إذا أعجبك هذا التطبيق ، فالرجاء تخصيص القليل من وقتك لمراجعته! فهذا يساعدنا حقًا ولن يستغرق الأمر أكثر من دقيقة واحدة.",
     AppConstLang.rate: "تقييم",
     AppConstLang.noThanks: "ًلا شكرا",
     AppConstLang.maybeLater: "ربما في وقت لاحق",

@@ -255,7 +255,7 @@ class EnDictionary {
     // rate dialog
     AppConstLang.rateThisApp: "Rate this app",
     AppConstLang.rateMessage:
-        "If you like this app, please take a little bit of your time to review it !\nIt really helps us and it shouldn't take you more than one minute.",
+        "If you like this app, please take a little bit of your time to review it !it really helps us and it shouldn't take you more than one minute.",
     AppConstLang.rate: "RATE",
     AppConstLang.noThanks: "NO THANKS",
     AppConstLang.maybeLater: "MAYBE LATER",

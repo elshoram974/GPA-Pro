@@ -1,6 +1,8 @@
 import 'package:gpa_pro/core/constants/assets.dart';
 
 abstract class AppInfo {
+  static const int rateLater = 10;
+
   static const String appName = "GPA Pro";
   static const String appId = "com.mrecode.gpapro";
   static const String appVersion = "1.0.0";

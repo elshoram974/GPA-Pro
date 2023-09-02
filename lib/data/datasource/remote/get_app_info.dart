@@ -1,10 +1,12 @@
 import 'dart:developer';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter/material.dart';
 import 'package:gpa_pro/core/class/crud.dart';
 import 'package:gpa_pro/core/class/net_helper.dart';
 import 'package:gpa_pro/core/constants/app_info.dart';
 import 'package:gpa_pro/core/constants/app_links.dart';
+import 'package:gpa_pro/core/constants/colors.dart';
 import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/controller/locale_controller.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
@@ -26,6 +28,8 @@ class AppInfoRemotely {
         LocaleControllerImp _ = Get.find<LocaleControllerImp>();
         if (appData.buildVersion! > AppInfo.appBuildVersion) {
           return await Get.defaultDialog(
+            buttonColor: AppColor.primary,
+            confirmTextColor: Colors.white,
             title: _.retAr(appData.messageTitleAr!, appData.messageTitleEn!),
             middleText: _.retAr(
                 appData.updateDialogMessageAr!, appData.updateDialogMessageEn!),

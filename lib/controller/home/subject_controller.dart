@@ -224,8 +224,7 @@ class SubjectControllerImp extends SubjectController {
     edit();
     await SubjectTableDB.update(editedSubject);
     updateSavedSubjects();
-    // RateApp.rateApp(Get.context!);
-    print("objects");
+    RateApp.rateAppDialog();
   }
 
   _saveAndBack() {

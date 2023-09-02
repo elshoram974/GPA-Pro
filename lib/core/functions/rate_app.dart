@@ -1,80 +1,87 @@
-// import 'package:gpa_pro/core/constants/app_info.dart';
-// import 'package:gpa_pro/core/constants/public_constant.dart';
-// import 'package:gpa_pro/core/localization/lang_constant.dart';
-// import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
-// import 'package:rate_my_app/rate_my_app.dart';
+import 'package:gpa_pro/core/constants/app_info.dart';
+import 'package:gpa_pro/core/constants/colors.dart';
+import 'package:gpa_pro/core/constants/injections.dart';
+import 'package:gpa_pro/core/constants/public_constant.dart';
+import 'package:gpa_pro/core/constants/shared_keys.dart';
+import 'package:gpa_pro/core/functions/snack_bars.dart';
+import 'package:gpa_pro/core/localization/lang_constant.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:in_app_review/in_app_review.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-// class RateApp {
-//   // In this snippet, I'm giving a value to all parameters.
-// // Please note that not all are required (those that are required are marked with the @required annotation).
+class RateApp {
+  static void rateAppDialog() {
+    if (AppConstant.isAndroidOrIOS) {
+      SharedPreferences prefs = AppInjections.myServices.sharedPreferences;
 
-//   static final RateMyApp _rateMyApp = RateMyApp(
-//     preferencesPrefix: 'rateMyApp_',
-//     minDays: 2,
-//     minLaunches: 5,
-//     remindDays: 4,
-//     remindLaunches: 5,
-//     googlePlayIdentifier: AppInfo.appId,
-//     appStoreIdentifier: AppInfo.appleStoreId,
-//   );
+      int? later = prefs.getInt(SharedKeys.rateLater);
+      if (later == -1) return;
 
-//   static void rateApp(BuildContext context) {
-//     // Get.defaultDialog<T>(
-//     //   buttonColor: AppColor.primary,
-//     //   confirmTextColor: Colors.white,
-//     //   title: title,
-//     //   titleStyle: title == '' ? const TextStyle(fontSize: 0) : null,
-//     //   middleText: middleText,
-//     //   textConfirm: textConfirm,
-//     //   textCancel: textCancel,
-//     //   onConfirm: onConfirm == null
-//     //       ? null
-//     //       : () {
-//     //           Get.back();
-//     //           onConfirm();
-//     //         },
-//     //   onCancel: onCancel,
-//     //   titlePadding: title == '' ? EdgeInsets.zero : null,
-//     // );
+      if (later != null) later--;
+      prefs.setInt(SharedKeys.rateLater, later ?? 0);
 
-//     if (AppConstant.isAndroidOrIOS) {
-//       _rateMyApp.init().then(
-//         (_) {
-//           if (_rateMyApp.shouldOpenDialog) {
-//             _rateMyApp.showRateDialog(
-//               context,
-//               title: AppConstLang.rateThisApp.tr, // The dialog title.
-//               message: AppConstLang.rateMessage.tr, // The dialog message.
-//               rateButton:
-//                   AppConstLang.rate.tr, // The dialog "rate" button text.
-//               noButton:
-//                   AppConstLang.noThanks.tr, // The dialog "no" button text.
-//               laterButton:
-//                   AppConstLang.maybeLater.tr, // The dialog "later" button text.
-//               // listener: (button) {
-//               //   // The button click listener (useful if you want to cancel the click event).
-//               //   // switch (button) {
-//               //   //   case RateMyAppDialogButton.rate:
-//               //   //     print('Clicked on "Rate".');
-//               //   //     break;
-//               //   //   case RateMyAppDialogButton.later:
-//               //   //     print('Clicked on "Later".');
-//               //   //     break;
-//               //   //   case RateMyAppDialogButton.no:
-//               //   //     print('Clicked on "No".');
-//               //   //     break;
-//               //   // }
+      if (later == 0 || later == null) {
+        prefs.setInt(SharedKeys.rateLater, AppInfo.rateLater);
 
-//               //   return true; // Return false if you want to cancel the click event.
-//               // },
-//               dialogStyle: const DialogStyle(), // Custom dialog styles.
-//               onDismissed: () =>
-//                   _rateMyApp.callEvent(RateMyAppEventType.laterButtonPressed),
-//             );
-//           }
-//         },
-//       );
-//     }
-//   }
-// }
+        Get.defaultDialog(
+          buttonColor: AppColor.primary,
+          confirmTextColor: Colors.white,
+          title: AppConstLang.rateThisApp.tr,
+          // middleText: ,
+          content: Text(
+            AppConstLang.rateMessage.tr,
+            textAlign: TextAlign.justify,
+          ),
+
+          actions: [
+            TextButton(
+              onPressed: () {
+                prefs.setInt(SharedKeys.rateLater, -1);
+                reviewApp();
+                Get.back();
+              },
+              child: Text(AppConstLang.rate.tr),
+            ),
+            TextButton(
+              onPressed: () {
+                prefs.setInt(SharedKeys.rateLater, -1);
+                Get.back();
+              },
+              child: Text(AppConstLang.noThanks.tr),
+            ),
+            TextButton(
+              onPressed: Get.back,
+              child: Text(AppConstLang.maybeLater.tr),
+            ),
+          ],
+        );
+      }
+    }
+  }
+
+  static void reviewApp() async {
+    try {
+      // final InAppReview inAppReview = InAppReview.instance;
+
+      // if (await inAppReview.isAvailable()) {
+      // await inAppReview.requestReview();
+
+      if (AppConstant.isAndroid) {
+        final InAppReview inAppReview = InAppReview.instance;
+
+        await inAppReview.openStoreListing();
+      } else {
+        AppSnackBar.messageSnack(AppConstLang.notAvailableNow.tr);
+      }
+
+      // inAppReview.openStoreListing(
+      //   appStoreId: AppInfo.appStoreId,
+      //   microsoftStoreId: AppInfo.microsoftStoreId,
+      // );
+      // }
+    } catch (e) {
+      AppSnackBar.messageSnack(AppConstLang.notAvailableNow.tr);
+    }
+  }
+}

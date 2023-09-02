@@ -274,8 +274,7 @@ class AddControllerImp extends AddController {
       semester = null;
       year = null;
       Navigator.popUntil(Get.context!, (route) => route.isFirst);
-      // RateApp.rateApp(Get.context!);
-      print("aasform");
+      RateApp.rateAppDialog();
     }
   }
 

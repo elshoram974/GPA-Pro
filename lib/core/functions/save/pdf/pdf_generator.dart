@@ -70,7 +70,7 @@ class PdfGenerator {
     );
     Get.back();
     AppSnackBar.messageSnack(AppConstLang.savedInDownload.tr);
-    // RateApp.rateApp(Get.context!);
+    RateApp.rateAppDialog();
   }
 
   static Page _myPage({
