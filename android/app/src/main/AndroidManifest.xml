@@ -28,7 +28,7 @@
                 <!-- <data
                 android:scheme="http"
                 android:host="gpapro.mrecode.com" 
-                android:pathPattern="/get_shared.........." /> -->
+                android:pathPattern="/?get_shared=.........." /> -->
                 <data android:scheme="http" android:host="gpapro.mrecode.com" />
                 <data android:scheme="https" />
 

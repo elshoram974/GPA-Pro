@@ -1,4 +1,3 @@
-
 import 'package:gpa_pro/core/ads/class/ads_manger.dart';
 import 'package:get/get.dart';
 import 'package:gpa_pro/core/functions/snack_bars.dart';
@@ -12,6 +11,9 @@ class MyServices extends GetxService {
   late SharedPreferences sharedPreferences;
 
   Future<void> initUniLinks() async {
+    final String? initialLink = await getInitialLink();
+    if (initialLink != null) return await SharedSubjects.getSubjects(initialLink);
+
     linkStream.listen(
       (String? link) async {
         if (link != null) await SharedSubjects.getSubjects(link);
@@ -27,7 +29,6 @@ class MyServices extends GetxService {
   }
 
   Future<MyServices> init() async {
-    await initUniLinks();
     sharedPreferences = await SharedPreferences.getInstance();
     return this;
   }

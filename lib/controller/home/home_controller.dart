@@ -231,7 +231,7 @@ class HomeControllerImp extends HomeController {
     selectAllOrDeselect(false);
 
     Get.lazyPut<AddControllerImp>(() => AddControllerImp());
-    Get.rootDelegate.toNamed(
+    Get.toNamed(
       AppRoute.addScreen,
       arguments: AddArgument(
         title: AppConstLang.addYear.tr,

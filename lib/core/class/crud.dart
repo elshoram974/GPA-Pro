@@ -41,9 +41,12 @@ class Crud {
         }
         return (status: StatusRequest.serverFailure, body: {});
       } else {
+        AppSnackBar.messageSnack(AppConstLang.noInternet.tr);
         return (status: StatusRequest.offlineFailure, body: {});
       }
     } catch (e) {
+      AppSnackBar.messageSnack("e : $e");
+
       return (status: StatusRequest.serverFailure, body: {});
     }
   }

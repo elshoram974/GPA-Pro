@@ -206,6 +206,7 @@ class UploadSavedTxtFileImp extends UploadSavedTxtFile {
 
       return false;
     }
+    Navigator.popUntil(Get.context!, (route) => route.isFirst);
     return super.onWillPop();
   }
 
