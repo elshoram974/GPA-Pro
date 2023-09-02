@@ -9,7 +9,7 @@ import 'app_open_ads.dart';
 
 class AdsManger {
   static const bool _testMode = AppConstant.isTest;
-  static bool get showAds => !AppConstant.isDesktop;
+  static bool get showAds => AppConstant.isAndroidOrIOS;
   // static bool get showAds => false;
 
   // static Future<InitializationStatus> get instance async =>

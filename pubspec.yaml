@@ -99,6 +99,80 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
 
+
+flutter_native_splash:
+  # dart run flutter_native_splash:create
+  # dart run flutter_native_splash:remove
+
+  color: "#3E00FF" #done
+  #background_image: "assets/background.png"
+
+  image: assets/images/splash_icon.png #done
+
+  branding: assets/images/MRE.png #done
+
+  android_12:
+
+    image: assets/images/splash_android12.png #done
+
+    # Splash screen background color.
+    color: "#3E00FF" #done
+    # App icon background color.
+    icon_background_color: "#3E00FF" #done
+
+    # The branding property allows you to specify an image used as branding in the splash screen.
+    #branding: assets/dart.png
+
+    # The image_dark, color_dark, icon_background_color_dark, and branding_dark set values that
+    # apply when the device is in dark mode. If they are not specified, the app will use the
+    # parameters from above.
+    #image_dark: assets/android12splash-invert.png
+    color_dark: "#392c63" #done
+    icon_background_color_dark: "#392c63" #done
+
+
+    branding:  assets/images/MRE.png #done
+
+
+  # The android, ios and web parameters can be used to disable generating a splash screen on a given
+  # platform.
+  android: true
+  ios: true
+  web: true
+
+  # Platform specific images can be specified with the following parameters, which will override
+  # the respective parameter.  You may specify all, selected, or none of these parameters:
+  color_android: "#3E00FF" #done
+  color_dark_android: "#3E00FF" #done
+  color_ios: "#3E00FF" #done
+  color_dark_ios: "#3E00FF" #done
+  color_web: "#3E00FF" #done
+  color_dark_web: "#3E00FF" #done
+
+  image_android: assets/images/splash_icon.png #done
+  # image_dark_android: assets/splash-invert-android.png
+  image_ios: assets/images/splash_icon.png #done
+  # image_dark_ios: assets/splash-invert-ios.png
+  image_web: assets/images/splash_icon.png #done
+  # image_dark_web: assets/splash-invert-web.gif
+
+  # background_image_android: "assets/background-android.png"
+  # # background_image_dark_android: "assets/dark-background-android.png"
+  # background_image_ios: "assets/background-ios.png"
+  # # background_image_dark_ios: "assets/dark-background-ios.png"
+  # background_image_web: "assets/background-web.png"
+  # # background_image_dark_web: "assets/dark-background-web.png"
+
+  branding_android:  assets/images/MRE.png #done
+  # branding_dark_android: assets/dart_dark-android.png
+  branding_ios:  assets/images/MRE.png #done
+  # branding_dark_ios: assets/dart_dark-ios.gif
+
+
+  #android_gravity: center
+  #ios_content_mode: center
+  #web_image_mode: center
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
