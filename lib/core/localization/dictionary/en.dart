@@ -147,6 +147,7 @@ class EnDictionary {
     AppConstLang.saveTXT: "Save as Text",
 
     AppConstLang.openSavedTxt: "Open saved text file",
+    AppConstLang.getSubjectsWithLink: "Get subjects with link",
     AppConstLang.savedSubjects: "Saved subjects",
     // add screen
     AppConstLang.semester: "Semester",
@@ -217,6 +218,10 @@ class EnDictionary {
     AppConstLang.makeAllSubjectsWithThisDegree:
         "Make all subjects with this degree",
     AppConstLang.sharedSubjects: "Shared subjects",
+    AppConstLang.enterLinkAndGo: "Enter the link and go",
+    AppConstLang.go: "Go",
+    AppConstLang.errorInLink: "Error in Link",
+    "no subject found":"No subject found",
 
     // privacy policy screen.
     AppConstLang.privacyPolicy1: PrivacyPolicyEnConstants.privacyPolicy1,

@@ -194,15 +194,17 @@ class UploadSavedTxtFileImp extends UploadSavedTxtFile {
   @override
   Future<bool> onWillPop() async {
     if (subjectsList.isNotEmpty) {
-      bool exit = false;
+      // bool exit = false;
 
       await CustomDialog.cancelChanges(
         isCancel: false,
         onConfirm: _save,
-        onCancel: () => {exit = true},
+        onCancel: () {
+          Navigator.popUntil(Get.context!, (route) => route.isFirst);
+        },
       );
 
-      return exit;
+      return false;
     }
     return super.onWillPop();
   }

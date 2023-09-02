@@ -5,6 +5,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CustomDialog {
+  static Future<T?> loadDialog<T>() {
+    return Get.dialog<T>(
+      const SimpleDialog(
+        children: [
+          SizedBox.square(
+            child: Center(child: CircularProgressIndicator()),
+          )
+        ],
+      ),
+    );
+  }
+
   static Future<T?> _customDialog<T>(
     String title,
     String middleText, {

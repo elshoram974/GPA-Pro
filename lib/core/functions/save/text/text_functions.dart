@@ -1,13 +1,18 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:gpa_pro/core/class/argument_model.dart';
+import 'package:gpa_pro/core/constants/colors.dart';
 import 'package:gpa_pro/core/constants/routes.dart';
 import 'package:gpa_pro/core/constants/saved_constants.dart';
+import 'package:gpa_pro/core/functions/custom_dialogs.dart';
 import 'package:gpa_pro/core/functions/rate_app.dart';
 import 'package:gpa_pro/core/functions/save/save_folder.dart';
 import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
+import 'package:gpa_pro/core/shared/custom_fields/default_field.dart';
+import 'package:gpa_pro/data/datasource/remote/shared/get_shared_subjects.dart';
 import 'package:gpa_pro/data/model/subject_model.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
@@ -97,5 +102,33 @@ class SaveText {
         }
       }
     }
+  }
+
+  static   Future<void> getSubjectsWithLink() async {
+    String link = '';
+    Future<void> thisFunction() async {
+      Get.back();
+      CustomDialog.loadDialog();
+      await SharedSubjects.getSubjects(link);
+    }
+    
+    await Get.defaultDialog(
+      buttonColor: AppColor.primary,
+      confirmTextColor: Colors.white,
+      title: '',
+      titlePadding: EdgeInsets.zero,
+      textConfirm: AppConstLang.go.tr,
+      content: Column(
+        children: [
+          Text(AppConstLang.enterLinkAndGo.tr),
+          MyDefaultField(
+            onFieldSubmitted: (val) async => thisFunction(),
+            onChanged: (val) => link = val.trim(),
+          ),
+        ],
+      ),
+      onConfirm: thisFunction,
+    );
+              
   }
 }

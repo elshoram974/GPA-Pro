@@ -145,6 +145,8 @@ class ArDictionary {
     AppConstLang.saveTXT: "حفظ ك Text",
 
     AppConstLang.openSavedTxt: "فتح ملف Text محفوظ من قبل",
+    AppConstLang.getSubjectsWithLink: "الحصول على المواد من رابط",
+
     AppConstLang.savedSubjects: "المواد المحفوظة",
 
     // add screen
@@ -215,6 +217,11 @@ class ArDictionary {
     // upload screen.
     AppConstLang.makeAllSubjectsWithThisDegree: "جعل كل المواد بهذه الدرجة",
     AppConstLang.sharedSubjects: "مواد مشاركة",
+        AppConstLang.enterLinkAndGo: "ادخل الرابط واضغط موافق",
+    AppConstLang.go: "موافق",
+    AppConstLang.errorInLink: "خطأ في الرابط",
+    "no subject found":"لا يوجد مواد",
+
 
     // privacy policy screen.
     AppConstLang.privacyPolicy1: PrivacyPolicyArConstants.privacyPolicy1,

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:gpa_pro/core/class/crud.dart';
@@ -16,13 +14,10 @@ import 'package:get/get.dart';
 class AppInfoRemotely {
   static Future<void> getInfo() async {
     Crud crud = Crud();
-    ({Map body, StatusRequest status}) getAppInfo =
-        await crud.postData(AppLinks.appInfo, {'appId': AppInfo.appId});
+    ({Map body, StatusRequest status}) getAppInfo = await crud.postData(AppLinks.appInfo, {'appId': AppInfo.appId});
 
     if (getAppInfo.status == StatusRequest.success) {
-      AppInfoModel appInfo =
-          AppInfoModel.fromJson(getAppInfo.body as Map<String, dynamic>);
-      log(appInfo.toString());
+      AppInfoModel appInfo = AppInfoModel.fromJson(getAppInfo.body as Map<String, dynamic>);
       if (appInfo.status == 'success') {
         Data appData = appInfo.data;
         LocaleControllerImp _ = Get.find<LocaleControllerImp>();

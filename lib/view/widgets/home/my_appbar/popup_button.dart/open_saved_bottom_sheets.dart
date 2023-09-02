@@ -17,6 +17,11 @@ class OpenSavedBottomModelSheet extends StatelessWidget {
           trailingIcon: Icons.file_upload_outlined,
           onTap: SaveText.getSavedFileInMemory,
         ),
+        CustomListTile(
+          title: AppConstLang.getSubjectsWithLink.tr,
+          trailingIcon: Icons.link_outlined,
+          onTap: SaveText.getSubjectsWithLink,
+        ),
         // CustomListTile(
         //   title: "open_saved_excel".tr,
         //   trailingIcon: Icons.upload_file,

@@ -140,6 +140,7 @@ class AppConstLang {
   static const String saveTXT = "save_as_text";
 
   static const String openSavedTxt = "open_saved_text";
+  static const String getSubjectsWithLink = "getSubjectsWithLink";
   static const String savedSubjects = "saved_subjects";
 
   // add screen
@@ -210,6 +211,9 @@ class AppConstLang {
   static const String makeAllSubjectsWithThisDegree =
       "make_all_subjects_with_this_degree";
   static const String sharedSubjects = "sharedSubjects";
+  static const String enterLinkAndGo = "enterLinkAndGo";
+  static const String go = "Go";
+  static const String errorInLink = "errorInLink";
 
   // privacy policy screen
   static const String privacyPolicy1 = "privacy_policy_en_1";

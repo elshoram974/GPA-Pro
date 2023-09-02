@@ -3,10 +3,12 @@ import 'package:gpa_pro/core/functions/gpa_functions.dart';
 import 'package:gpa_pro/data/datasource/database/subjects/subject_table_db.dart';
 import 'package:gpa_pro/data/model/parent_model.dart';
 import 'package:gpa_pro/data/model/semester_model.dart';
+import 'package:gpa_pro/data/model/shared/get_shared_subjects_model.dart';
 import 'package:gpa_pro/data/model/year_model.dart';
 import 'package:get/get.dart';
 
 class SubjectModel extends ParentModel {
+  final int? remoteId;
   final String semester;
   final String year;
   final String? nameAr;
@@ -26,6 +28,7 @@ class SubjectModel extends ParentModel {
   final double? savedGPA;
 
   SubjectModel({
+    this.remoteId,
     required this.nameEn,
     this.nameAr,
     this.savedGPA,
@@ -109,6 +112,29 @@ class SubjectModel extends ParentModel {
         address == otherSubject.address;
   }
 
+  factory SubjectModel.fromApi(SharedSubjectElement api) => SubjectModel(
+        nameEn: api.subjectNameEn!,
+        nameAr: api.subjectNameAr!,
+        id: api.subjectId ?? 0,
+        remoteId: api.remoteId,
+        degree: api.subjectDegree!,
+        maxDegree: api.subjectMaxDegree!,
+        hours: api.subjectHours!,
+        semester: api.subjectSemester!,
+        year: api.subjectYear!,
+        isCalculated: api.subjectIsCalculated,
+        maxFinalDegree: api.subjectMaxFinalDegree,
+        maxMidDegree: api.subjectMaxMidDegree,
+        maxPracticalDegree: api.subjectMaxPracticalDegree,
+        maxYearWorkDegree: api.subjectMaxYearWorkDegree,
+        myFinalDegree: api.subjectMyFinalDegree,
+        myMidDegree: api.subjectMyMidDegree,
+        myPracticalDegree: api.subjectMyPracticalDegree,
+        myYearWorkDegree: api.subjectMyYearWorkDegree,
+        note: api.subjectNote,
+        savedGPA: api.subjectGpa,
+      );
+
   factory SubjectModel.getNewEmpty() => SubjectModel(
         id: 0,
         nameEn: "",
@@ -121,7 +147,7 @@ class SubjectModel extends ParentModel {
 
   factory SubjectModel.fromJson(Map<String, dynamic> map) {
     if (!SemesterModel.semesters.contains(map[SubjectTableDB.semester])) {
-      // throw "this semester not exist"; //-------------------------------------
+      throw "this semester not exist";
     } else if (!YearModel.years.contains(map[SubjectTableDB.year])) {
       throw "this year not exist";
     } else if (map[SubjectTableDB.nameAr] == null) {
@@ -129,8 +155,9 @@ class SubjectModel extends ParentModel {
     }
     return SubjectModel(
       id: map[SubjectTableDB.id] ?? 0,
+      remoteId: map[SubjectTableDB.remoteId],
       nameEn: map[SubjectTableDB.nameEn]!,
-      nameAr: map[SubjectTableDB.nameAr], //-------------------------------------
+      nameAr: map[SubjectTableDB.nameAr]!,
       degree: map[SubjectTableDB.degree]!,
       savedGPA: map[SubjectTableDB.gpa],
       maxDegree: map[SubjectTableDB.maxDegree]!,

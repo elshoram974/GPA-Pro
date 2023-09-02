@@ -136,6 +136,7 @@ class SubjectTableDB {
   }
 
   static const String id = "id";
+  static const String remoteId = "remote_id";
   static const String hours = "hours";
   // static const String gpa = "gpa";
   // static const String totalGPA = "totalGPA";
@@ -163,6 +164,7 @@ class SubjectTableDB {
   static Future<void> createSubjectsTable(Database database) async {
     await database.execute("""CREATE TABLE $_subject (
         $id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 
+        $remoteId INTEGER, 
         $nameEn TEXT NOT NULL, 
         $nameAr TEXT,
         $year TEXT NOT NULL, 
