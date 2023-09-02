@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:gpa_pro/core/class/crud.dart';
 import 'package:gpa_pro/core/class/net_helper.dart';
@@ -18,6 +20,7 @@ class AppInfoRemotely {
     if (getAppInfo.status == StatusRequest.success) {
       AppInfoModel appInfo =
           AppInfoModel.fromJson(getAppInfo.body as Map<String, dynamic>);
+      log(appInfo.toString());
       if (appInfo.status == 'success') {
         Data appData = appInfo.data;
         LocaleControllerImp _ = Get.find<LocaleControllerImp>();
@@ -36,11 +39,13 @@ class AppInfoRemotely {
       } else {
         AppSnackBar.messageSnack('${appInfo.data.message}');
       }
-    } else {
+    } else if (getAppInfo.status == StatusRequest.offlineFailure) {
       NetHelper.checkInternetStream((ConnectivityResult result) async {
         if (result != ConnectivityResult.none) await getInfo();
       });
       // print(getAppInfo.status);
+    } else {
+      AppSnackBar.messageSnack('Error : ${getAppInfo.status}');
     }
   }
 }

@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:gpa_pro/core/constants/app_info.dart';
 import 'package:gpa_pro/core/localization/controller/locale_controller.dart';
 import 'package:gpa_pro/core/localization/translation.dart';
@@ -17,7 +20,17 @@ void main() async {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await initialServices();
 
+  if (kDebugMode) HttpOverrides.global = MyHttpOverrides();
   runApp(const GPAProApp());
+}
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
 }
 
 class GPAProApp extends StatelessWidget {

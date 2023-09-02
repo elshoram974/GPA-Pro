@@ -1,6 +1,8 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:gpa_pro/core/ads/constants/injections.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:get/get.dart';
+import 'package:gpa_pro/core/class/net_helper.dart';
 
 import '../class/ads_manger.dart';
 
@@ -53,30 +55,39 @@ class BannerAdsControllerImp extends GetxController {
     // print("---------------------------------fff");
 
     await _getBannerSize();
-    bannerAd = BannerAd(
-      size: size!,
-      adUnitId: AdsManger.bannerAdUnitId,
-      request: const AdRequest(),
-      listener: BannerAdListener(
-        onAdLoaded: (ad) {
-          _isShowingAd = true;
-          isAdAvailable = true;
+    if (await NetHelper.checkInternet()) {
+      bannerAd = BannerAd(
+        size: size!,
+        adUnitId: AdsManger.bannerAdUnitId,
+        request: const AdRequest(),
+        listener: BannerAdListener(
+          onAdLoaded: (ad) {
+            _isShowingAd = true;
+            isAdAvailable = true;
+            update();
+          },
+          onAdFailedToLoad: (ad, error) async {
+            _isShowingAd = false;
+            isAdAvailable = false;
+            ad.dispose();
 
-          update();
-        },
-        onAdFailedToLoad: (ad, error) async {
-          _isShowingAd = false;
-          isAdAvailable = false;
-          ad.dispose();
+            bannerAd = null;
+            _isShowingAd = false;
 
-          bannerAd = null;
-          _isShowingAd = false;
+            update();
 
-          update();
+            // _reloadAd();
+          },
+        ),
+      )..load();
+    } else {
+      _reloadAd();
+    }
+  }
 
-          // await Future.delayed(const Duration(seconds: 5), _loadBannerAd);
-        },
-      ),
-    )..load();
+  void _reloadAd() {
+    NetHelper.checkInternetStream((ConnectivityResult result) async {
+      if (result != ConnectivityResult.none) _loadBannerAd();
+    });
   }
 }

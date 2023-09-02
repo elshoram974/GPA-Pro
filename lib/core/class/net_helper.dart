@@ -14,6 +14,20 @@ enum StatusRequest {
 class NetHelper {
   // static ConnectivityResult checkNet = ConnectivityResult.none;
 
+  // static Future<T?> doWhenInternetIsExist<T>(T Function() function) async {
+  //   if (await _checkInternet()) {
+  //     return function();
+  //   } else {
+  //     AppSnackBar.messageSnack(AppConstLang.noInternet.tr);
+  //     _checkInternetStream(
+  //       (ConnectivityResult result) async {
+  //         if (result != ConnectivityResult.none) await doWhenInternetIsExist<T>(function);
+  //       },
+  //     );
+  //     return null;
+  //   }
+  // }
+
   static Future<bool> checkInternet() async {
     final ConnectivityResult _ = await (Connectivity().checkConnectivity());
 

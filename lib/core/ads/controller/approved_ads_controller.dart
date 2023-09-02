@@ -11,14 +11,14 @@ enum Ads {
 }
 
 class ApprovedAdsController extends GetxController {
-  bool appOpenApproved = kReleaseMode;
-  bool bannerApproved = kReleaseMode;
+  // bool appOpenApproved = kReleaseMode;
+  // bool bannerApproved = kReleaseMode;
   bool interstitialApproved = kReleaseMode;
   bool nativeApproved = kReleaseMode;
   bool rewardedApproved = kReleaseMode;
   bool rewardedInterstitialApproved = kReleaseMode;
-  // bool appOpenApproved = true;
-  // bool bannerApproved = true;
+  bool appOpenApproved = true;
+  bool bannerApproved = true;
   // bool interstitialApproved = true;
   // bool nativeApproved = true;
   // bool rewardedApproved = true;
