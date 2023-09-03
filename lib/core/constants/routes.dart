@@ -10,6 +10,11 @@ abstract class AppRoute {
   static const addScreen = "/add_screen";
   static const uploadScreen = "/upload_screen";
   static const pdf = "/pdf";
-  static const qrCode = "/qrCode";
+  static const authScreen = "/auth_screen";
+  static const loginScreen = "/login_screen";
+  static const signUpScreen = "/signup_screen";
+  static const forgotPassScreen = "/forgot_password_screen";
+  static const checkCodeScreen = "/check_code_screen";
+  // static const qrCode = "/qrCode";
   // static const detailsScreen = "/details_screen";
 }

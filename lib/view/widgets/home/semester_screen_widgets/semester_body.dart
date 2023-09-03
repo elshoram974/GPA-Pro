@@ -25,7 +25,7 @@ class SemesterBody extends StatelessWidget {
                 onLongPress: () => controller.onLongPress(index),
               ),
             ),
-            SizedBox(height: AppConstant.gpaBarHight + 20),
+            const SizedBox(height: AppConstant.gpaBarHight + 20),
           ],
         );
       },

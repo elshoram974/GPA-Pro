@@ -14,7 +14,7 @@ class ByMREWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 4 * AppConstant.kDefaultPadding),
+      padding:const EdgeInsets.only(top: 4 * AppConstant.kDefaultPadding),
       child: Text.rich(
         textAlign: TextAlign.center,
         style: context.textTheme.labelLarge,

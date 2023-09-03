@@ -26,7 +26,7 @@ class HoursOtherDetails extends StatelessWidget {
           "${AppConstLang.noHour.tr}:",
           "${modelFn.noHours()}",
         ),
-        SizedBox(height: AppConstant.kDefaultPadding / 2),
+        const SizedBox(height: AppConstant.kDefaultPadding / 2),
         SizedBox(
           width: double.infinity,
           child: MyTextSpan(

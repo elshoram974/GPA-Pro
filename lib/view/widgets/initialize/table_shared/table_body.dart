@@ -76,7 +76,7 @@ class InfoTableRow extends TableRow {
               ? grades[column].darkColor
               : grades[column].lightColor),
       borderRadius: column == grades.length - 1
-          ? BorderRadius.vertical(
+          ? const BorderRadius.vertical(
               bottom: Radius.circular(AppConstant.kDefaultRadius),
             )
           : null,

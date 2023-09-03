@@ -26,7 +26,7 @@ class SubjectsAddDetails extends StatelessWidget {
           "${AppConstLang.numberOfNotCalcSubject.tr}:",
           "${modelFunctions.notCalculatedLength()}",
         ),
-        SizedBox(height: AppConstant.kDefaultPadding / 2),
+        const SizedBox(height: AppConstant.kDefaultPadding / 2),
         SizedBox(
           width: double.infinity,
           child: MyTextSpan(

@@ -33,7 +33,7 @@ class HoursAddDetails extends StatelessWidget {
           "${AppConstLang.registeredHours.tr}:",
           "${allSavedHours + allSubjects.noHours()}",
         ),
-        SizedBox(height: AppConstant.kDefaultPadding / 2),
+        const SizedBox(height: AppConstant.kDefaultPadding / 2),
         SizedBox(
           width: double.infinity,
           child: MyTextSpan(

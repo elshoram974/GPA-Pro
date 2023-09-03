@@ -32,7 +32,7 @@ class UploadHeaderPart extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 2 * AppConstant.kDefaultPadding),
+        const SizedBox(height: 2 * AppConstant.kDefaultPadding),
         SizedBox(
           width: 300,
           child: MyDefaultField(
@@ -55,9 +55,9 @@ class UploadHeaderPart extends StatelessWidget {
           onPressed: _.changeSubjectsDegree,
           child: Text(AppConstLang.makeAllSubjectsWithThisDegree.tr),
         ),
-        SizedBox(height: AppConstant.kDefaultPadding / 2),
+        const SizedBox(height: AppConstant.kDefaultPadding / 2),
         const Divider(),
-        SizedBox(height: 2 * AppConstant.kDefaultPadding),
+        const SizedBox(height: 2 * AppConstant.kDefaultPadding),
       ],
     );
   }

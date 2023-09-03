@@ -1,0 +1,46 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:gpa_pro/core/constants/public_constant.dart';
+import 'package:gpa_pro/core/functions/auth_screen_paint.dart';
+
+class AuthScreenStructure extends StatelessWidget {
+  const AuthScreenStructure({super.key, required this.body});
+
+  final Widget body;
+
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.sizeOf(context);
+
+    return Scaffold(
+      backgroundColor: Colors.white,
+      extendBody: true,
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        forceMaterialTransparency: true,
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        foregroundColor: Colors.transparent,
+        leading: IconButton(
+          onPressed: Get.back,
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            shadows: [BoxShadow(blurRadius: 1)],
+          ),
+          highlightColor: Colors.transparent,
+          color: Colors.white,
+        ),
+      ),
+      body: CustomPaint(
+        size: size,
+        painter: AuthScreenPaint(),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppConstant.kDefaultPadding,
+          ),
+          child: body,
+        ),
+      ),
+    );
+  }
+}

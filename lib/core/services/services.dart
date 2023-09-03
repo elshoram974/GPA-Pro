@@ -12,7 +12,8 @@ class MyServices extends GetxService {
 
   Future<void> initUniLinks() async {
     final String? initialLink = await getInitialLink();
-    if (initialLink != null) return await SharedSubjects.getSubjects(initialLink);
+    if (initialLink != null)
+      return await SharedSubjects.getSubjects(initialLink);
 
     linkStream.listen(
       (String? link) async {
@@ -25,7 +26,7 @@ class MyServices extends GetxService {
       },
     );
 
-    // NOTE: Don't forget to call _sub.cancel() in dispose()
+    // NOTE: Don't forgot to call _sub.cancel() in dispose()
   }
 
   Future<MyServices> init() async {

@@ -11,7 +11,7 @@ abstract class AppConstant {
   static bool isLinux = Platform.isLinux;
   static bool isMacOS = Platform.isMacOS;
 
-  static bool isWeb = kIsWeb  ;
+  static const bool isWeb = kIsWeb  ;
 
   static bool isAndroid = Platform.isAndroid;
   static bool isIOS = Platform.isIOS;
@@ -19,7 +19,7 @@ abstract class AppConstant {
   static bool get isAndroidOrIOS => isAndroid || isIOS;
   static bool get isDesktop => isWindows || isLinux || isMacOS || isWeb;
 
-  static double get gpaBarHight => 70;
-  static double get kDefaultPadding => 18;
-  static double get kDefaultRadius => 10;
+  static const double  gpaBarHight = 70;
+  static const double  kDefaultPadding = 18;
+  static const double  kDefaultRadius = 10;
 }

@@ -58,6 +58,28 @@ class ArDictionary {
     AppConstLang.systemMode: "وضع النظام",
     AppConstLang.lightMode: "الوضع الفاتح",
     AppConstLang.darkMode: "الوضع الداكن",
+    AppConstLang.thereIsNoUser: "لا يوجد مستخدم",
+    AppConstLang.pressOpenYourAccount: "اضغط لفتح حسابك",
+    //
+    // auth screen
+    AppConstLang.login: "تسجيل الدخول",
+    AppConstLang.signUp: "إنشاء حساب جديد",
+    //
+        // login screen
+    AppConstLang.email: "البريد الإلكتروني",
+    AppConstLang.password: "الرقم السري",
+    //
+        // signUp screen
+    AppConstLang.firstName: "الاسم الأول",
+    AppConstLang.lastName: "الاسم الأخير",
+    AppConstLang.rePassword: "أعد الرقم السري",
+    //
+    // verifyCode screen
+    AppConstLang.verifyCode: "التحقق من الكود",
+    AppConstLang.confirm: "تأكيد",
+    //
+        // forgot password screen
+    AppConstLang.forgotPassword: "نسيت كلمة السر",
     //
     AppConstLang.lang: "اللغة",
     AppConstLang.changeLang: "تغيير اللغة",
@@ -217,11 +239,10 @@ class ArDictionary {
     // upload screen.
     AppConstLang.makeAllSubjectsWithThisDegree: "جعل كل المواد بهذه الدرجة",
     AppConstLang.sharedSubjects: "مواد مشاركة",
-        AppConstLang.enterLinkAndGo: "ادخل الرابط واضغط موافق",
+    AppConstLang.enterLinkAndGo: "ادخل الرابط واضغط موافق",
     AppConstLang.go: "موافق",
     AppConstLang.errorInLink: "خطأ في الرابط",
-    "no subject found":"لا يوجد مواد",
-
+    "no subject found": "لا يوجد مواد",
 
     // privacy policy screen.
     AppConstLang.privacyPolicy1: PrivacyPolicyArConstants.privacyPolicy1,

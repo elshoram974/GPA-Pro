@@ -57,6 +57,29 @@ class EnDictionary {
     AppConstLang.systemMode: "System Mode",
     AppConstLang.lightMode: "Light Mode",
     AppConstLang.darkMode: "Dark Mode",
+    AppConstLang.thereIsNoUser: "There is no user",
+    AppConstLang.pressOpenYourAccount: "Press to open your account",
+    //
+    // auth screen
+    AppConstLang.login: "Login",
+    AppConstLang.signUp: "Sign Up",
+    //
+    // login screen
+    AppConstLang.email: "Email",
+    AppConstLang.password: "Password",
+
+    //
+    // signUp screen
+    AppConstLang.firstName: "First Name",
+    AppConstLang.lastName: "Last Name",
+    AppConstLang.rePassword: "Re-Password",
+    //
+    // verifyCode screen
+    AppConstLang.verifyCode: "Verify code",
+    AppConstLang.confirm: "Confirm",
+    //
+    // forgot password screen
+    AppConstLang.forgotPassword: "forgot password",
     //
     AppConstLang.lang: "language",
     AppConstLang.changeLang: "Change language",
@@ -221,7 +244,7 @@ class EnDictionary {
     AppConstLang.enterLinkAndGo: "Enter the link and go",
     AppConstLang.go: "Go",
     AppConstLang.errorInLink: "Error in Link",
-    "no subject found":"No subject found",
+    "no subject found": "No subject found",
 
     // privacy policy screen.
     AppConstLang.privacyPolicy1: PrivacyPolicyEnConstants.privacyPolicy1,

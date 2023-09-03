@@ -13,6 +13,9 @@ abstract class AppAssets {
 
   static const String mrePDFLogo = "$_imagesRoot/mre_pdf_logo.png";
 
+  // for users
+  static const String noProfilePic = "$_imagesRoot/no_profile_pic.jpg";
+
 
   // fonts
   static const String _fontsRoot = "$_assets/fonts";

@@ -18,7 +18,7 @@ class TableTextCell extends StatelessWidget {
       child: FittedBox(
         fit: BoxFit.scaleDown,
         child: Padding(
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             horizontal: AppConstant.kDefaultPadding / 3,
           ),
           child: Text(

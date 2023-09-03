@@ -32,7 +32,7 @@ class CustomBottomBar extends StatelessWidget {
                 left: AppInjections.locale
                     .retAr<double>(82, AppConstant.kDefaultPadding / 2),
               )
-            : EdgeInsets.all(AppConstant.kDefaultPadding / 2),
+            :const EdgeInsets.all(AppConstant.kDefaultPadding / 2),
         alignment: Alignment.center,
         child: GPABarBody(
           modelFunctions: modelFunctions,

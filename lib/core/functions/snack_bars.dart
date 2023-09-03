@@ -38,7 +38,7 @@ class AppSnackBar {
                 child: Text(AppConstLang.undo.tr),
               ),
         borderRadius: 30,
-        padding: EdgeInsets.symmetric(horizontal: AppConstant.kDefaultPadding),
+        padding: const EdgeInsets.symmetric(horizontal: AppConstant.kDefaultPadding),
         maxWidth: Get.width * 7 / 9,
       ),
     );

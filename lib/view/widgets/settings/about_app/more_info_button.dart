@@ -13,7 +13,7 @@ class MoreInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 2 * AppConstant.kDefaultPadding),
+        const SizedBox(height: 2 * AppConstant.kDefaultPadding),
         const Divider(),
         CustomListTile(
           title: AppConstLang.moreInfo.tr,

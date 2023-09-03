@@ -18,7 +18,7 @@ class AppBottomSheets {
       settings: RouteSettings(arguments: arguments),
       isScrollControlled: true,
       clipBehavior: Clip.antiAliasWithSaveLayer,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(2 * AppConstant.kDefaultRadius),
         ),

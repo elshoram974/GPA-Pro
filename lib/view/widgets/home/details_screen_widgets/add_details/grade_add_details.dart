@@ -28,7 +28,7 @@ class GradeAddDetails extends StatelessWidget {
         MyTextSpan("${AppConstLang.grade.tr}:", modelFunctions.grade()),
         MyTextSpan(
             "${AppConstLang.gradeOfCumulative.tr}:", allSubjects.grade()),
-        SizedBox(height: AppConstant.kDefaultPadding / 2),
+        const SizedBox(height: AppConstant.kDefaultPadding / 2),
         SizedBox(
           width: double.infinity,
           child: MyTextSpan(
@@ -38,7 +38,7 @@ class GradeAddDetails extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
         ),
-        SizedBox(height: AppConstant.kDefaultPadding),
+        const SizedBox(height: AppConstant.kDefaultPadding),
       ],
     );
   }

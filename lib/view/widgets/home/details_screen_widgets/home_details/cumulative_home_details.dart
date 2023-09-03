@@ -16,7 +16,7 @@ class CumulativeHomeDetails extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CustomDivider(data: AppConstLang.theCumulative.tr),
-        SizedBox(height: AppConstant.kDefaultPadding / 2),
+        const SizedBox(height: AppConstant.kDefaultPadding / 2),
         SizedBox(
           width: double.infinity,
           child: MyTextSpan(

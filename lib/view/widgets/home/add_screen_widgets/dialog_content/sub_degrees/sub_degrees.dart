@@ -29,7 +29,7 @@ class SubDegrees extends StatelessWidget {
         SubMaxDegrees(dialogController: dialogController),
         MyLabels(AppConstLang.yourDegrees.tr),
         SubSubjectDegrees(dialogController: dialogController),
-        SizedBox(height: AppConstant.kDefaultPadding),
+        const SizedBox(height: AppConstant.kDefaultPadding),
       ],
     );
   }

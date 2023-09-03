@@ -12,7 +12,7 @@ class CustomBodyListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       physics: const BouncingScrollPhysics(),
-      padding: EdgeInsets.symmetric(horizontal: AppConstant.kDefaultPadding),
+      padding: const EdgeInsets.symmetric(horizontal: AppConstant.kDefaultPadding),
       shrinkWrap: true,
       children: children,
     );

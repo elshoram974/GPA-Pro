@@ -41,7 +41,7 @@ class MyAutoCompleteField<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(AppConstant.kDefaultPadding / 2),
+      padding: const EdgeInsets.all(AppConstant.kDefaultPadding / 2),
       child: TypeAheadFormField<T>(
         hideOnError: true,
         animationDuration: const Duration(milliseconds: 600),
@@ -65,7 +65,7 @@ class MyAutoCompleteField<T> extends StatelessWidget {
               borderRadius: BorderRadius.circular(AppConstant.kDefaultRadius),
             ),
             labelText: labelText,
-            contentPadding: EdgeInsets.symmetric(
+            contentPadding: const EdgeInsets.symmetric(
               horizontal: AppConstant.kDefaultPadding / 2,
             ),
           ),

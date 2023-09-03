@@ -25,8 +25,7 @@ class CustomDropDownButton extends StatelessWidget {
         child: FittedBox(
           fit: BoxFit.scaleDown,
           child: Container(
-            margin:
-                EdgeInsets.symmetric(horizontal: AppConstant.kDefaultPadding),
+            margin:const EdgeInsets.symmetric(horizontal: AppConstant.kDefaultPadding),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
               border: Border.all(color: Colors.black45),

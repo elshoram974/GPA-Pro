@@ -22,7 +22,7 @@ class SubjectTotalGPAPercentage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(width: AppConstant.kDefaultPadding / 2),
+          const SizedBox(width: AppConstant.kDefaultPadding / 2),
           Flexible(
             child: FittedBox(
               child: MyTextSpan(

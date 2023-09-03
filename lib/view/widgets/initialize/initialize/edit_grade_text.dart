@@ -12,7 +12,7 @@ class EditGradeText extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        SizedBox(height: AppConstant.kDefaultPadding / 2),
+        const SizedBox(height: AppConstant.kDefaultPadding / 2),
         MyTextSpan(
           textAlign: TextAlign.center,
           AppConstLang.editGrades.tr,

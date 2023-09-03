@@ -52,6 +52,28 @@ class AppConstLang {
   static const String systemMode = "system_mode";
   static const String lightMode = "light_mode";
   static const String darkMode = "dark_mode";
+  static const String thereIsNoUser = "there_is_no_user";
+  static const String pressOpenYourAccount = "press_to_open_your_account";
+  //
+  // auth screen
+  static const String login = "login";
+  static const String signUp = "signup";
+  //
+  // login screen
+  static const String email = "email";
+  static const String password = "password";
+  //
+  // signUp screen
+  static const String firstName = "first_name";
+  static const String lastName = "last_Name";
+  static const String rePassword = "re_password";
+  //
+  // Verify code screen
+  static const String verifyCode = "verify_code";
+  static const String confirm = "confirm";
+  //
+  // forgot password screen
+  static const String forgotPassword = "forgot_password";
   //
   static const String lang = "lang";
   static const String changeLang = "change_lang";

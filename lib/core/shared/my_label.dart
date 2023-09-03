@@ -9,7 +9,7 @@ class MyLabels extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: AppConstant.kDefaultPadding),
+      padding:const EdgeInsets.only(top: AppConstant.kDefaultPadding),
       width: double.infinity,
       child: Text(label, style: context.textTheme.bodySmall),
     );

@@ -27,7 +27,7 @@ class TableHeader extends TableRow {
   Decoration? get decoration {
     return BoxDecoration(
       border: Border.all(color: AppColor.tableColor(context)),
-      borderRadius: BorderRadius.vertical(
+      borderRadius:const BorderRadius.vertical(
         top: Radius.circular(AppConstant.kDefaultRadius),
       ),
     );

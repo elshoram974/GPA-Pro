@@ -1,5 +1,10 @@
 import 'package:gpa_pro/core/constants/injections.dart';
 import 'package:gpa_pro/core/constants/routes.dart';
+import 'package:gpa_pro/view/screens/auth/auth_screen.dart';
+import 'package:gpa_pro/view/screens/auth/forget_password/check_code_screen.dart';
+import 'package:gpa_pro/view/screens/auth/forget_password/send_code_screen.dart';
+import 'package:gpa_pro/view/screens/auth/login_screen.dart';
+import 'package:gpa_pro/view/screens/auth/signup_screen.dart';
 import 'package:gpa_pro/view/screens/home/add_screen.dart';
 import 'package:gpa_pro/view/screens/saved_subjects_screens/pdf_screen.dart';
 import 'package:gpa_pro/view/screens/settings/privacy_policy_screen.dart';
@@ -18,10 +23,36 @@ class GeneratedRoute {
   static List<GetPage<dynamic>>? getPages = [
     GetPage(name: AppRoute.mainScreen, page: () => const MainScreen()),
     GetPage(name: AppRoute.aboutApp, page: () => const AboutAppScreen()),
-    GetPage(name: AppRoute.privacyPolicy, page: () => const PrivacyPolicyScreen()),
+    GetPage(
+        name: AppRoute.privacyPolicy, page: () => const PrivacyPolicyScreen()),
     GetPage(name: AppRoute.editGrades, page: () => const EditGradesScreen()),
     GetPage(name: AppRoute.addScreen, page: () => const AddScreen()),
     GetPage(name: AppRoute.uploadScreen, page: () => const UploadScreen()),
+    GetPage(
+      name: AppRoute.authScreen,
+      page: () => const AuthScreen(),
+      transition: Transition.leftToRightWithFade,
+    ),
+    GetPage(
+      name: AppRoute.loginScreen,
+      page: () => const LoginScreen(),
+      transition: Transition.leftToRightWithFade,
+    ),
+    GetPage(
+      name: AppRoute.signUpScreen,
+      page: () => const SignUpScreen(),
+      transition: Transition.leftToRightWithFade,
+    ),
+    GetPage(
+      name: AppRoute.forgotPassScreen,
+      page: () => const ForgotPassScreen(),
+      transition: Transition.leftToRightWithFade,
+    ),
+    GetPage(
+      name: AppRoute.checkCodeScreen,
+      page: () => const CheckCodeScreen(),
+      transition: Transition.leftToRightWithFade,
+    ),
   ];
 
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {

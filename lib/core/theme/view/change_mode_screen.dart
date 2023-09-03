@@ -16,7 +16,7 @@ class ChangeModeScreen extends StatelessWidget {
         appBar: AppBar(title: Text("change_mode".tr)),
         body: GetBuilder<ModeController>(
           builder: (controller) => ListView.builder(
-            padding: EdgeInsets.symmetric(
+            padding:const EdgeInsets.symmetric(
               horizontal: AppConstant.kDefaultPadding,
               vertical: 2 * AppConstant.kDefaultPadding,
             ),

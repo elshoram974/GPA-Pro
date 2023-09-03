@@ -20,6 +20,9 @@ class MyDefaultField extends StatelessWidget {
   final double? horizontalPadding;
   final double verticalPadding;
   final bool? alignLabelWithHint;
+  final bool? filled;
+  final Widget? suffix;
+  final Widget? prefix;
   final TextCapitalization textCapitalization;
   final void Function(String)? onFieldSubmitted;
   const MyDefaultField({
@@ -44,20 +47,26 @@ class MyDefaultField extends StatelessWidget {
     this.textCapitalization = TextCapitalization.words,
     this.fieldKey,
     this.onFieldSubmitted,
+    this.filled,
+    this.suffix,
+    this.prefix,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(AppConstant.kDefaultPadding / 2),
+      padding: const EdgeInsets.all(AppConstant.kDefaultPadding / 2),
       child: TextFormField(
         decoration: InputDecoration(
+          filled: filled,
           errorMaxLines: 10,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(AppConstant.kDefaultRadius),
           ),
           alignLabelWithHint: alignLabelWithHint,
           labelText: labelText,
+          suffix: suffix,
+          prefix: prefix,
           contentPadding: EdgeInsets.symmetric(
             horizontal: horizontalPadding ?? AppConstant.kDefaultPadding / 2,
             vertical: verticalPadding,

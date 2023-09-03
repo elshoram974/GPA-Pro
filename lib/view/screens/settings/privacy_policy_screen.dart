@@ -75,7 +75,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 2 * AppConstant.kDefaultPadding),
+          const SizedBox(height: 2 * AppConstant.kDefaultPadding),
         ],
       ),
     );

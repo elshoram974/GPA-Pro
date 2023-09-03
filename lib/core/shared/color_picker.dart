@@ -25,7 +25,7 @@ class MyColorPicker extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              margin: EdgeInsets.only(
+              margin: const EdgeInsets.only(
                 top: AppConstant.kDefaultPadding * 2,
                 right: AppConstant.kDefaultPadding * 2,
                 left: AppConstant.kDefaultPadding * 2,
@@ -42,7 +42,7 @@ class MyColorPicker extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
                 bottom: AppConstant.kDefaultPadding * 1.5,
               ),
               child: Row(

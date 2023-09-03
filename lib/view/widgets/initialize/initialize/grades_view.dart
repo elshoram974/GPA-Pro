@@ -19,7 +19,7 @@ class GradesView extends StatelessWidget {
         CustomDivider(data: AppConstLang.grades.tr),
         const EditGradeText(),
         const InitializeGradeTable(),
-        SizedBox(height: AppConstant.kDefaultPadding),
+        const SizedBox(height: AppConstant.kDefaultPadding),
         const InitializeButton(),
         const SizedBox(height: 40),
       ],

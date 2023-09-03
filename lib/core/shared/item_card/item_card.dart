@@ -22,7 +22,7 @@ class ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.symmetric(vertical: AppConstant.kDefaultPadding / 3),
+      margin: const EdgeInsets.symmetric(vertical: AppConstant.kDefaultPadding / 3),
       elevation: 1,
       clipBehavior: Clip.hardEdge,
       color: GPAFunctionsHelper([model]).color(context),

@@ -66,7 +66,7 @@ TableRow myTable(
             decoration: BoxDecoration(
               color: subjectGPAHelper.pdfColor(),
               borderRadius: name && index == 0
-                  ? BorderRadius.only(
+                  ? const BorderRadius.only(
                       topLeft: Radius.circular(AppConstant.kDefaultRadius),
                     )
                   : null,

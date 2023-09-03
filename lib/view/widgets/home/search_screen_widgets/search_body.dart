@@ -19,7 +19,7 @@ class SearchBody extends StatelessWidget {
         return CustomBodyListView(
           children: [
             SubjectsNumberBar(_),
-            SizedBox(height: AppConstant.kDefaultPadding),
+            const SizedBox(height: AppConstant.kDefaultPadding),
             SearchedSubjects(_),
           ],
         );

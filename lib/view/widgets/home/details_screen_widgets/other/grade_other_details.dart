@@ -22,7 +22,7 @@ class GradeOtherDetails extends StatelessWidget {
       children: [
         CustomDivider(data: AppConstLang.grade.tr),
         MyTextSpan("${AppConstLang.grade.tr}:", modelFn.grade()),
-        SizedBox(height: AppConstant.kDefaultPadding / 2),
+        const SizedBox(height: AppConstant.kDefaultPadding / 2),
         SizedBox(
           width: double.infinity,
           child: MyTextSpan(
@@ -32,7 +32,7 @@ class GradeOtherDetails extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
         ),
-        SizedBox(height: AppConstant.kDefaultPadding),
+        const SizedBox(height: AppConstant.kDefaultPadding),
       ],
     );
   }

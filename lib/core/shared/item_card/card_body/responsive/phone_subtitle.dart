@@ -29,7 +29,7 @@ class SubTitleInPhone extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(width: AppConstant.kDefaultPadding),
+        const SizedBox(width: AppConstant.kDefaultPadding),
         Flexible(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -60,7 +60,7 @@ class SubTitleInPhone extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(width: AppConstant.kDefaultPadding / 2),
+        const SizedBox(width: AppConstant.kDefaultPadding / 2),
       ],
     );
   }

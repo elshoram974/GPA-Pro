@@ -17,7 +17,7 @@ class SubTitleTabletDesktop extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        SizedBox(width: AppConstant.kDefaultPadding / 4),
+        const SizedBox(width: AppConstant.kDefaultPadding / 4),
         Flexible(
           child: SizedBox(
             width: 90,
@@ -30,7 +30,7 @@ class SubTitleTabletDesktop extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(width: AppConstant.kDefaultPadding),
+        const SizedBox(width: AppConstant.kDefaultPadding),
         Flexible(
           child: FittedBox(
             child: MyTextSpan(
@@ -43,7 +43,7 @@ class SubTitleTabletDesktop extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(width: AppConstant.kDefaultPadding),
+        const SizedBox(width: AppConstant.kDefaultPadding),
         Flexible(
           child: FittedBox(
             child: MyTextSpan(
@@ -54,7 +54,7 @@ class SubTitleTabletDesktop extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(width: AppConstant.kDefaultPadding / 2),
+        const SizedBox(width: AppConstant.kDefaultPadding / 2),
       ],
     );
   }

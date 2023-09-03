@@ -25,7 +25,7 @@ class CardBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
-      padding: EdgeInsets.symmetric(
+      padding:const EdgeInsets.symmetric(
         vertical: AppConstant.kDefaultPadding / 1.3,
         horizontal: AppConstant.kDefaultPadding * 1.5,
       ),

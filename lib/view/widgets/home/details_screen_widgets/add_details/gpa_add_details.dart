@@ -30,7 +30,7 @@ class GPAAddDetails extends StatelessWidget {
           "${AppConstLang.theCumulative.tr}:",
           "${allSubjects.gpaCumulative()}",
         ),
-        SizedBox(height: AppConstant.kDefaultPadding / 2),
+        const SizedBox(height: AppConstant.kDefaultPadding / 2),
         SizedBox(
           width: double.infinity,
           child: MyTextSpan(

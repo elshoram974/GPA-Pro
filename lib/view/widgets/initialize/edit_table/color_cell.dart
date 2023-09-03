@@ -30,9 +30,9 @@ class ColorCell extends StatelessWidget {
           ? BorderRadius.only(
               bottomRight: AppInjections.locale.isArabicLang
                   ? Radius.zero
-                  : Radius.circular(AppConstant.kDefaultRadius),
+                  : const Radius.circular(AppConstant.kDefaultRadius),
               bottomLeft: AppInjections.locale.isArabicLang
-                  ? Radius.circular(AppConstant.kDefaultRadius)
+                  ? const Radius.circular(AppConstant.kDefaultRadius)
                   : Radius.zero,
             )
           : BorderRadius.zero,

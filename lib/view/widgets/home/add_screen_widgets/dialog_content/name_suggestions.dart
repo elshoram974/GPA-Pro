@@ -22,7 +22,7 @@ class NameSuggestions extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 0.5),
         child: ListTile(
           contentPadding:
-              EdgeInsets.symmetric(horizontal: AppConstant.kDefaultPadding / 2),
+             const EdgeInsets.symmetric(horizontal: AppConstant.kDefaultPadding / 2),
           tileColor: GPAFunctionsHelper([subject]).color(context),
           title: Text(
             isArabic ? subject.nameAr ?? subject.nameEn : subject.nameEn,

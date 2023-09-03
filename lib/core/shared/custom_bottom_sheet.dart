@@ -13,7 +13,7 @@ class MyBottomModelSheet extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            margin: EdgeInsets.symmetric(
+            margin: const EdgeInsets.symmetric(
               vertical: AppConstant.kDefaultPadding * 0.9,
             ),
             height: 6,
@@ -24,7 +24,7 @@ class MyBottomModelSheet extends StatelessWidget {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(AppConstant.kDefaultPadding),
+            padding:const EdgeInsets.all(AppConstant.kDefaultPadding),
             decoration: BoxDecoration(
               color: Get.theme.dialogBackgroundColor,
               borderRadius:

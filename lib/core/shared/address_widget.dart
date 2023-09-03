@@ -10,10 +10,10 @@ class AddressWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: AppConstant.kDefaultPadding),
+        const SizedBox(height: AppConstant.kDefaultPadding),
         Text(address),
         const Divider(),
-        SizedBox(height: AppConstant.kDefaultPadding),
+        const SizedBox(height: AppConstant.kDefaultPadding),
       ],
     );
   }

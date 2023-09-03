@@ -30,7 +30,7 @@ class SubjectsHomeDetails extends StatelessWidget {
           "${AppConstLang.numberOfNotCalcSubject.tr}:",
           "${allSubjects.notCalculatedLength()}",
         ),
-        SizedBox(height: AppConstant.kDefaultPadding / 2),
+        const SizedBox(height: AppConstant.kDefaultPadding / 2),
         SizedBox(
           width: double.infinity,
           child: MyTextSpan(
