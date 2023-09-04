@@ -9,6 +9,7 @@ class AuthScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const AuthScreenStructure(
+      resizeToAvoidBottomInset: false,
       body: Column(
         children: [
           Spacer(),

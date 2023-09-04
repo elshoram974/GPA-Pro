@@ -23,6 +23,8 @@ class MyDefaultField extends StatelessWidget {
   final bool? filled;
   final Widget? suffix;
   final Widget? prefix;
+  final bool obscureText;
+  final TextInputType? keyboardType;
   final TextCapitalization textCapitalization;
   final void Function(String)? onFieldSubmitted;
   const MyDefaultField({
@@ -49,7 +51,7 @@ class MyDefaultField extends StatelessWidget {
     this.onFieldSubmitted,
     this.filled,
     this.suffix,
-    this.prefix,
+    this.prefix, this.keyboardType, this.obscureText = false,
   });
 
   @override
@@ -57,6 +59,7 @@ class MyDefaultField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(AppConstant.kDefaultPadding / 2),
       child: TextFormField(
+        obscureText:obscureText ,
         decoration: InputDecoration(
           filled: filled,
           errorMaxLines: 10,
@@ -79,7 +82,7 @@ class MyDefaultField extends StatelessWidget {
         initialValue: initialValue,
         controller: controller,
         autovalidateMode: AutovalidateMode.onUserInteraction,
-        keyboardType: isDouble ? TextInputType.number : TextInputType.text,
+        keyboardType: keyboardType ??( isDouble ? TextInputType.number : TextInputType.text),
         key: fieldKey,
         onChanged: onChanged,
         textCapitalization: textCapitalization,

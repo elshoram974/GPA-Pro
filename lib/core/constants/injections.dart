@@ -17,4 +17,6 @@ abstract class AppInjections {
   static MainScreenControllerImp mainScreenImp =
       Get.find<MainScreenControllerImp>();
   static HomeControllerImp homeController = Get.find<HomeControllerImp>();
+  
+  // static SignUpControllerImp signUpController = Get.find<SignUpControllerImp>();
 }

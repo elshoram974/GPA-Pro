@@ -73,10 +73,15 @@ class EnDictionary {
     AppConstLang.firstName: "First Name",
     AppConstLang.lastName: "Last Name",
     AppConstLang.rePassword: "Re-Password",
+    AppConstLang.notSamePass: "Not same password",
+    AppConstLang.emailAlreadyExists: "This email is already exists",
+    AppConstLang.emailIsNotExists: "This email is not exists",
+    AppConstLang.codeUEnteredIncorrect: "The code you entered is incorrect.",
     //
     // verifyCode screen
     AppConstLang.verifyCode: "Verify code",
     AppConstLang.confirm: "Confirm",
+    AppConstLang.sendCodeAgain: "Send code again",
     //
     // forgot password screen
     AppConstLang.forgotPassword: "forgot password",
@@ -120,12 +125,14 @@ class EnDictionary {
     AppConstLang.fillField: "fill this field",
     AppConstLang.enterValidValue: "Enter valid value",
     AppConstLang.enterValidName: "Enter valid name",
+    AppConstLang.enterValidEmail: "Enter valid Email",
     AppConstLang.writeArabicName: "Write Arabic name",
     AppConstLang.writeEnglishName: "Write English name",
     AppConstLang.enterValidGrade: "Enter valid grade",
     AppConstLang.enterValidGPA: "Enter valid gpa",
     AppConstLang.enterValidDegree: "Enter valid degree",
     AppConstLang.enterValidHours: "Enter valid hours",
+    AppConstLang.enterValidInt: "Enter valid integer",
     AppConstLang.cantBeLessThan: "Can't be less than",
     AppConstLang.cantBeMoreThan: "Can't be more than",
     AppConstLang.enterPositiveNum: "enter positive number",

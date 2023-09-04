@@ -67,10 +67,15 @@ class AppConstLang {
   static const String firstName = "first_name";
   static const String lastName = "last_Name";
   static const String rePassword = "re_password";
+  static const String notSamePass = "not_same_pass";
+  static const String emailAlreadyExists = "emailAlreadyExists";
+  static const String emailIsNotExists = "emailIsNotExists";
+  static const String codeUEnteredIncorrect = "codeUEnteredIncorrect.";
   //
   // Verify code screen
   static const String verifyCode = "verify_code";
   static const String confirm = "confirm";
+  static const String sendCodeAgain = "sendCodeAgain";
   //
   // forgot password screen
   static const String forgotPassword = "forgot_password";
@@ -111,12 +116,14 @@ class AppConstLang {
   static const String fillField = "fill_field";
   static const String enterValidValue = "enter_valid_value";
   static const String enterValidName = "enter_valid_name";
+  static const String enterValidEmail = "enter_valid_Email";
   static const String writeArabicName = "write_arabic_name";
   static const String writeEnglishName = "write_english_name";
   static const String enterValidGrade = "enter_valid_grade";
   static const String enterValidGPA = "enter_valid_gpa";
   static const String enterValidDegree = "enter_valid_degree";
   static const String enterValidHours = "enter_valid_hours";
+  static const String enterValidInt = "enterValidInt";
   static const String cantBeLessThan = "cant_be_less_than";
   static const String cantBeMoreThan = "cant_be_more_than";
   static const String enterPositiveNum = "enter_positive_num";

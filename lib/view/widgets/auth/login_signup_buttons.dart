@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:gpa_pro/controller/auth/login_controller.dart';
+import 'package:gpa_pro/controller/auth/signup_controller.dart';
 import 'package:gpa_pro/core/constants/colors.dart';
 import 'package:gpa_pro/core/constants/public_constant.dart';
 import 'package:gpa_pro/core/constants/routes.dart';
@@ -26,7 +28,10 @@ class LoginAndSignUpButtons extends StatelessWidget {
               foregroundColor: Colors.white,
               backgroundColor: AppColor.selectedColor(context),
             ),
-            onPressed: () => Get.toNamed(AppRoute.loginScreen),
+            onPressed: () {
+              Get.put<LoginControllerImp>(LoginControllerImp());
+              Get.toNamed(AppRoute.loginScreen);
+            },
             child: Text(AppConstLang.login.tr),
           ),
           const SizedBox(height: AppConstant.kDefaultPadding),
@@ -34,7 +39,10 @@ class LoginAndSignUpButtons extends StatelessWidget {
             style: OutlinedButton.styleFrom(
               foregroundColor: AppColor.selectedColor(context).withBlue(255),
             ),
-            onPressed: () => Get.toNamed(AppRoute.signUpScreen),
+            onPressed: () {
+              Get.lazyPut<SignUpControllerImp>(() => SignUpControllerImp());
+              Get.toNamed(AppRoute.signUpScreen);
+            },
             child: Text(AppConstLang.signUp.tr),
           ),
         ],

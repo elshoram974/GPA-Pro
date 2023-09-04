@@ -1,8 +1,8 @@
 import 'package:gpa_pro/core/constants/injections.dart';
 import 'package:gpa_pro/core/constants/routes.dart';
 import 'package:gpa_pro/view/screens/auth/auth_screen.dart';
-import 'package:gpa_pro/view/screens/auth/forget_password/check_code_screen.dart';
-import 'package:gpa_pro/view/screens/auth/forget_password/send_code_screen.dart';
+import 'package:gpa_pro/view/screens/auth/check_code_screen.dart';
+import 'package:gpa_pro/view/screens/auth/forgot_pass_screen.dart';
 import 'package:gpa_pro/view/screens/auth/login_screen.dart';
 import 'package:gpa_pro/view/screens/auth/signup_screen.dart';
 import 'package:gpa_pro/view/screens/home/add_screen.dart';

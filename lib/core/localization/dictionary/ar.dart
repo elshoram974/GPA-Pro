@@ -73,10 +73,18 @@ class ArDictionary {
     AppConstLang.firstName: "الاسم الأول",
     AppConstLang.lastName: "الاسم الأخير",
     AppConstLang.rePassword: "أعد الرقم السري",
+    AppConstLang.notSamePass: "ليس نفس الرقم السري",
+    AppConstLang.emailAlreadyExists: "هذا البريد الإلكتروني موجود بالفعل",
+    AppConstLang.emailIsNotExists: "هذا البريد الإلكتروني غير موجود",
+    AppConstLang.codeUEnteredIncorrect: "الرمز الذي أدخلته غير صحيح",
+
+
     //
     // verifyCode screen
-    AppConstLang.verifyCode: "التحقق من الكود",
+    AppConstLang.verifyCode: "التحقق من الرمز",
     AppConstLang.confirm: "تأكيد",
+    AppConstLang.sendCodeAgain: "أعد إرسال الرمز",
+
     //
         // forgot password screen
     AppConstLang.forgotPassword: "نسيت كلمة السر",
@@ -118,12 +126,14 @@ class ArDictionary {
     AppConstLang.fillField: "إملأ هذا الحقل",
     AppConstLang.enterValidValue: "أدخل قيمة صالح",
     AppConstLang.enterValidName: "أدخل إسم صالح",
+    AppConstLang.enterValidEmail: "أدخل عنوان بريد صالح",
     AppConstLang.writeArabicName: "إكتب اسم بالعربية",
     AppConstLang.writeEnglishName: "إكتب اسم بالإنجليزية",
     AppConstLang.enterValidGrade: "أدخل تقدير صالح",
     AppConstLang.enterValidGPA: "أدخل GPA صالح",
     AppConstLang.enterValidDegree: "أدخل درجة صالحة",
     AppConstLang.enterValidHours: "أدخل عدد ساعات صالحة",
+    AppConstLang.enterValidInt: "أدخل رقم صحيح",
     AppConstLang.cantBeLessThan: "لا يمكن أن تكون أقل من",
     AppConstLang.cantBeMoreThan: "لا يمكن أن تكون أكبر من",
     AppConstLang.enterPositiveNum: "أدخل رقم موجب",

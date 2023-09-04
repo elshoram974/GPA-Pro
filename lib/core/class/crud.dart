@@ -10,8 +10,9 @@ import 'package:http/http.dart' as http;
 class Crud {
   Future<({StatusRequest status, Map body})> postData(
     String url,
-    Map body,
-  ) async {
+    Map body, {
+    bool wantBack = false,
+  }) async {
     try {
       if (await NetHelper.checkInternet()) {
         http.Response response = await http.post(Uri.parse(url), body: body);
@@ -21,17 +22,23 @@ class Crud {
         }
         return (status: StatusRequest.serverFailure, body: {});
       } else {
+        if (wantBack) Get.back();
         AppSnackBar.messageSnack(AppConstLang.noInternet.tr);
         return (status: StatusRequest.offlineFailure, body: {});
       }
     } catch (e) {
+      if (wantBack) Get.back();
+
       AppSnackBar.messageSnack("e : $e");
 
       return (status: StatusRequest.serverFailure, body: {});
     }
   }
 
-  Future<({StatusRequest status, Map body})> getData(String url) async {
+  Future<({StatusRequest status, Map body})> getData(
+    String url, {
+    bool wantBack = false,
+  }) async {
     try {
       if (await NetHelper.checkInternet()) {
         http.Response response = await http.get(Uri.parse(url));
@@ -41,10 +48,13 @@ class Crud {
         }
         return (status: StatusRequest.serverFailure, body: {});
       } else {
+        if (wantBack) Get.back();
         AppSnackBar.messageSnack(AppConstLang.noInternet.tr);
         return (status: StatusRequest.offlineFailure, body: {});
       }
     } catch (e) {
+      if (wantBack) Get.back();
+
       AppSnackBar.messageSnack("e : $e");
 
       return (status: StatusRequest.serverFailure, body: {});

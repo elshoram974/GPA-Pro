@@ -5,14 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CustomDialog {
-  static Future<T?> loadDialog<T>() {
-    return Get.dialog<T>(
-      const SimpleDialog(
-        children: [
-          SizedBox.square(
-            child: Center(child: CircularProgressIndicator()),
-          )
-        ],
+  static Future<T?> loadDialog<T>({bool canBack = true}) {
+    return Get.defaultDialog<T>(
+      title: '',
+      titleStyle: const TextStyle(fontSize: 0),
+      onWillPop: () async => canBack,
+      content: const SizedBox.square(
+        child: Center(child: CircularProgressIndicator()),
       ),
     );
   }

@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 
 enum ValidType { grade, gpa, name, degree, hour }
 
+enum AuthValidType { name, email, password ,int }
+
 enum SubDegree {
   myPracticalDegree,
   myYearWorkDegree,
@@ -17,6 +19,38 @@ enum SubDegree {
 }
 
 class AppValidator {
+  static String? validInputAuth(
+    String? value,
+    int min,
+    int max,
+    AuthValidType type,
+  ) {
+    assert(min <= max);
+    if (value == null || value.trim() == "") return AppConstLang.fillField.tr;
+
+    switch (type) {
+      case AuthValidType.name:
+        if (GetUtils.isNum(value)) return AppConstLang.enterValidName.tr;
+        break;
+      case AuthValidType.email:
+        if (!GetUtils.isEmail(value)) return AppConstLang.enterValidEmail.tr;
+      case AuthValidType.int:
+        if (!GetUtils.isNumericOnly(value)) {
+          return AppConstLang.enterValidInt.tr;
+        }
+
+      default:
+    }
+
+    if (value.length < min) {
+      return "${AppConstLang.cantBeLessThan.tr} $min";
+    } else if (value.length > max) {
+      return "${AppConstLang.cantBeMoreThan.tr} $max";
+    }
+
+    return null;
+  }
+
   static String? validInput(
     String? value,
     int min,
@@ -26,7 +60,7 @@ class AppValidator {
     bool whenAdd = false,
     bool? wantItArabic,
   }) {
-    assert(min < max);
+    assert(min <= max);
     if (value == null || value.trim() == "") return AppConstLang.fillField.tr;
 
     switch (type) {
@@ -95,7 +129,7 @@ class AppValidator {
     int max, {
     double? maxVal,
   }) {
-    assert(min < max);
+    assert(min <= max);
     if (value == null) return null;
 
     if (!GetUtils.isNum(value) && value != "") {
