@@ -2,12 +2,12 @@ import 'package:get/get.dart';
 import 'package:gpa_pro/core/class/crud.dart';
 import 'package:gpa_pro/core/class/net_helper.dart';
 import 'package:gpa_pro/core/constants/app_links.dart';
-import 'package:gpa_pro/core/constants/routes.dart';
 import 'package:gpa_pro/core/functions/custom_dialogs.dart';
 import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/data/datasource/remote/auth/verify_code.dart';
 import 'package:gpa_pro/data/model/user.dart';
+import 'package:gpa_pro/view/screens/auth/signup_screen.dart';
 
 abstract class SignUpRemotely {
   static Future<User?> createAccount(UserData newUser) async {
@@ -26,15 +26,7 @@ abstract class SignUpRemotely {
     if (post.status == StatusRequest.success) {
       User user = User.fromJson(post.body as Map<String, dynamic>);
       if (user.status == 'success') {
-        User? temp = await VerifyCode.sendVerifyCode(user.data.email);
-        if (temp != null) {
-          Get.back();
-          Get.offNamed(
-            AppRoute.checkCodeScreen,
-            arguments: {"email": user.data.email},
-          );
-          return user;
-        }
+        return await VerifyCode.sendAndVerify(user.data.email, const SignUpScreen());
       } else {
         Get.back();
 

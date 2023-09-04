@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gpa_pro/controller/auth/signup_controller.dart';
+import 'package:gpa_pro/core/constants/colors.dart';
 import 'package:gpa_pro/core/functions/validator.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/core/shared/custom_fields/default_field.dart';
@@ -15,7 +16,7 @@ class SignUpPasswords extends StatelessWidget {
         return Column(
           children: [
             MyDefaultField(
-              filled: true,
+              borderColor: AppColor.secondary,
               textAlign: TextAlign.start,
               keyboardType: TextInputType.visiblePassword,
               textCapitalization: TextCapitalization.none,
@@ -34,7 +35,7 @@ class SignUpPasswords extends StatelessWidget {
               ),
             ),
             MyDefaultField(
-              filled: true,
+              borderColor: AppColor.secondary,
               textCapitalization: TextCapitalization.none,
               textAlign: TextAlign.start,
               labelText: AppConstLang.rePassword.tr,
@@ -48,6 +49,7 @@ class SignUpPasswords extends StatelessWidget {
                 return null;
               },
               obscureText: controller.showRePass,
+              onFieldSubmitted: (val) => controller.onSignUp(),
               suffix: IconButton(
                 onPressed: () => controller.changeShowPassword(isRePass: true),
                 icon: Icon(

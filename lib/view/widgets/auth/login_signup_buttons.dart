@@ -29,7 +29,7 @@ class LoginAndSignUpButtons extends StatelessWidget {
               backgroundColor: AppColor.selectedColor(context),
             ),
             onPressed: () {
-              Get.put<LoginControllerImp>(LoginControllerImp());
+              Get.lazyPut<LoginControllerImp>(() => LoginControllerImp());
               Get.toNamed(AppRoute.loginScreen);
             },
             child: Text(AppConstLang.login.tr),

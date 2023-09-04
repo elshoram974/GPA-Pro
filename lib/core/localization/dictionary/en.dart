@@ -63,10 +63,15 @@ class EnDictionary {
     // auth screen
     AppConstLang.login: "Login",
     AppConstLang.signUp: "Sign Up",
+    AppConstLang.goBack: "Go back",
     //
     // login screen
     AppConstLang.email: "Email",
     AppConstLang.password: "Password",
+    AppConstLang.wrongPassword: "Wrong password",
+    AppConstLang.yourAccountIsNotVerified: "Your account is not verified",
+    AppConstLang.emailDoesNotExist: "This email doesn't exist",
+    AppConstLang.verifyAccount: "Verify account",
 
     //
     // signUp screen
@@ -81,7 +86,10 @@ class EnDictionary {
     // verifyCode screen
     AppConstLang.verifyCode: "Verify code",
     AppConstLang.confirm: "Confirm",
-    AppConstLang.sendCodeAgain: "Send code again",
+    AppConstLang.sendAnotherCode: "Send another code",
+    AppConstLang.toResendPleaseWait: "To resend please wait",
+    AppConstLang.seconds: "seconds",
+    AppConstLang.stayHere: "Stay here",
     //
     // forgot password screen
     AppConstLang.forgotPassword: "forgot password",

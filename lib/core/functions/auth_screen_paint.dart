@@ -4,7 +4,7 @@ import 'package:gpa_pro/core/constants/colors.dart';
 class AuthScreenPaint extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()..color = AppColor.primary;
+    final paint = Paint()..color = AppColor.primary.withOpacity(0.9);
 
     double h = size.height * 0.45;
 

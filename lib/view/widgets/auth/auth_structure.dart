@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:gpa_pro/core/constants/dimensions.dart';
 import 'package:gpa_pro/core/constants/public_constant.dart';
 import 'package:gpa_pro/core/functions/auth_screen_paint.dart';
 
@@ -56,7 +57,13 @@ class AuthScreenStructure extends StatelessWidget {
             padding: const EdgeInsets.symmetric(
               horizontal: AppConstant.kDefaultPadding,
             ),
-            child: Align(child: body),
+            child: Align(
+              child: ConstrainedBox(
+                constraints:
+                    BoxConstraints(maxWidth: AppDimension.maxPhone.toDouble()),
+                child: body,
+              ),
+            ),
           ),
         ),
       ),

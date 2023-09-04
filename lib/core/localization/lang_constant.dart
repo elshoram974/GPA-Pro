@@ -58,10 +58,16 @@ class AppConstLang {
   // auth screen
   static const String login = "login";
   static const String signUp = "signup";
+  static const String goBack = "goBack";
   //
   // login screen
   static const String email = "email";
   static const String password = "password";
+  static const String wrongPassword = "wrongPassword";
+  static const String yourAccountIsNotVerified = "yourAccountIsNotVerified";
+  static const String emailDoesNotExist = "emailDoesNotExist";
+  static const String verifyAccount = "verifyAccount";
+
   //
   // signUp screen
   static const String firstName = "first_name";
@@ -75,7 +81,10 @@ class AppConstLang {
   // Verify code screen
   static const String verifyCode = "verify_code";
   static const String confirm = "confirm";
-  static const String sendCodeAgain = "sendCodeAgain";
+  static const String sendAnotherCode = "sendAnotherCode";
+  static const String toResendPleaseWait = "toResendPleaseWait";
+  static const String seconds = "seconds";
+  static const String stayHere = "stayHere";
   //
   // forgot password screen
   static const String forgotPassword = "forgot_password";

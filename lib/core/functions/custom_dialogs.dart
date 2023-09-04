@@ -19,6 +19,7 @@ class CustomDialog {
   static Future<T?> _customDialog<T>(
     String title,
     String middleText, {
+    String? textConfirm,
     required void Function()? onConfirm,
     required bool closeBeforeFunction,
   }) async {
@@ -28,7 +29,8 @@ class CustomDialog {
       title: AppConstLang.warning.tr,
       middleText: middleText,
       textCancel: onConfirm != null ? AppConstLang.cancel.tr : null,
-      textConfirm: onConfirm != null ? AppConstLang.sure.tr : null,
+      textConfirm:
+          textConfirm ?? (onConfirm != null ? AppConstLang.sure.tr : null),
       onConfirm: onConfirm != null
           ? () {
               if (closeBeforeFunction) {
@@ -45,12 +47,14 @@ class CustomDialog {
 
   static Future<T?> warningDialog<T>(
     String middleText, {
+    String? textConfirm,
     void Function()? onConfirm,
     bool closeBeforeFunction = false,
   }) async {
     return await _customDialog<T>(
       AppConstLang.warning.tr,
       middleText,
+      textConfirm: textConfirm,
       onConfirm: onConfirm,
       closeBeforeFunction: closeBeforeFunction,
     );
@@ -80,21 +84,40 @@ class CustomDialog {
     );
   }
 
-  static Future<T?> cancelChanges<T>({
-    bool isCancel = true,
-    required void Function() onConfirm,
+  static Future<T?> backDialog<T>({
+    String? middleText,
+    String? textCancel,
+    String? textConfirm,
+    void Function()? onConfirm,
     required void Function() onCancel,
   }) async {
     return await Get.defaultDialog<T>(
       buttonColor: AppColor.primary,
       confirmTextColor: Colors.white,
       title: AppConstLang.warning.tr,
+      middleText: middleText ?? AppConstLang.ifYouReturnChangesNotSaved.tr,
+      textCancel: textCancel ?? AppConstLang.goBack.tr,
+      textConfirm: textConfirm ?? AppConstLang.stayHere.tr,
+      onConfirm: () {
+        Get.back();
+        if (onConfirm != null) onConfirm();
+      },
+      onCancel: onCancel,
+    );
+  }
+
+  static Future<T?> cancelChanges<T>({
+    bool isCancel = true,
+    required void Function() onConfirm,
+    required void Function() onCancel,
+  }) async {
+    return backDialog(
+      textCancel: AppConstLang.dontSave.tr,
+      textConfirm: AppConstLang.saveChanges.tr,
       middleText: isCancel
           ? AppConstLang.ifCancelBackChangesNotSaved.tr
           : AppConstLang.ifYouReturnChangesNotSaved.tr,
-      textCancel: AppConstLang.dontSave.tr,
-      textConfirm: AppConstLang.saveChanges.tr,
-      onConfirm: () => {Get.back(), onConfirm()},
+      onConfirm: onConfirm,
       onCancel: onCancel,
     );
   }

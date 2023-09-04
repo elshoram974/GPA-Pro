@@ -1,6 +1,7 @@
 import 'package:gpa_pro/core/constants/injections.dart';
 import 'package:gpa_pro/core/constants/routes.dart';
 import 'package:gpa_pro/view/screens/auth/auth_screen.dart';
+import 'package:gpa_pro/view/screens/auth/change_password_screen.dart';
 import 'package:gpa_pro/view/screens/auth/check_code_screen.dart';
 import 'package:gpa_pro/view/screens/auth/forgot_pass_screen.dart';
 import 'package:gpa_pro/view/screens/auth/login_screen.dart';
@@ -51,6 +52,11 @@ class GeneratedRoute {
     GetPage(
       name: AppRoute.checkCodeScreen,
       page: () => const CheckCodeScreen(),
+      transition: Transition.leftToRightWithFade,
+    ),
+    GetPage(
+      name: AppRoute.changePasswordScreen,
+      page: () => const ChangePasswordScreen(),
       transition: Transition.leftToRightWithFade,
     ),
   ];

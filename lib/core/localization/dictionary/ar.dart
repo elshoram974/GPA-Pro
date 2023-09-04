@@ -63,13 +63,20 @@ class ArDictionary {
     //
     // auth screen
     AppConstLang.login: "تسجيل الدخول",
-    AppConstLang.signUp: "إنشاء حساب جديد",
+    AppConstLang.signUp: "إنشاء حساب",
+    AppConstLang.goBack: "الرجوع",
+
     //
-        // login screen
+    // login screen
     AppConstLang.email: "البريد الإلكتروني",
     AppConstLang.password: "الرقم السري",
+    AppConstLang.wrongPassword: "خطأ في الرقم السري",
+    AppConstLang.yourAccountIsNotVerified: "لم يتم تفعيل حسابك",
+    AppConstLang.emailDoesNotExist: "هذا البريد الإلكتروني غير موجود",
+    AppConstLang.verifyAccount: "تأكيد الحساب",
+
     //
-        // signUp screen
+    // signUp screen
     AppConstLang.firstName: "الاسم الأول",
     AppConstLang.lastName: "الاسم الأخير",
     AppConstLang.rePassword: "أعد الرقم السري",
@@ -78,15 +85,17 @@ class ArDictionary {
     AppConstLang.emailIsNotExists: "هذا البريد الإلكتروني غير موجود",
     AppConstLang.codeUEnteredIncorrect: "الرمز الذي أدخلته غير صحيح",
 
-
     //
     // verifyCode screen
     AppConstLang.verifyCode: "التحقق من الرمز",
     AppConstLang.confirm: "تأكيد",
-    AppConstLang.sendCodeAgain: "أعد إرسال الرمز",
+    AppConstLang.sendAnotherCode: "إرسال رمز أخر",
+    AppConstLang.toResendPleaseWait: "لإعادة الإرسال من فضلك انتظر",
+    AppConstLang.seconds: "ثوان",
+    AppConstLang.stayHere: "ابق هنا",
 
     //
-        // forgot password screen
+    // forgot password screen
     AppConstLang.forgotPassword: "نسيت كلمة السر",
     //
     AppConstLang.lang: "اللغة",

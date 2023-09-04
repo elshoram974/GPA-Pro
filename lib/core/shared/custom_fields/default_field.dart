@@ -26,6 +26,7 @@ class MyDefaultField extends StatelessWidget {
   final bool obscureText;
   final TextInputType? keyboardType;
   final TextCapitalization textCapitalization;
+  final Color? borderColor;
   final void Function(String)? onFieldSubmitted;
   const MyDefaultField({
     super.key,
@@ -51,21 +52,35 @@ class MyDefaultField extends StatelessWidget {
     this.onFieldSubmitted,
     this.filled,
     this.suffix,
-    this.prefix, this.keyboardType, this.obscureText = false,
+    this.prefix,
+    this.keyboardType,
+    this.obscureText = false,
+    this.borderColor,
   });
 
   @override
   Widget build(BuildContext context) {
+    TextStyle? style = TextStyle(color: borderColor);
     return Padding(
       padding: const EdgeInsets.all(AppConstant.kDefaultPadding / 2),
       child: TextFormField(
-        obscureText:obscureText ,
+        obscureText: obscureText,
+        style: style,
         decoration: InputDecoration(
+          labelStyle: style,
+          hintStyle: style,
           filled: filled,
           errorMaxLines: 10,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(AppConstant.kDefaultRadius),
           ),
+          enabledBorder: borderColor == null
+              ? null
+              : OutlineInputBorder(
+                  borderSide: BorderSide(color: borderColor!),
+                  borderRadius:
+                      BorderRadius.circular(AppConstant.kDefaultRadius),
+                ),
           alignLabelWithHint: alignLabelWithHint,
           labelText: labelText,
           suffix: suffix,
@@ -82,7 +97,8 @@ class MyDefaultField extends StatelessWidget {
         initialValue: initialValue,
         controller: controller,
         autovalidateMode: AutovalidateMode.onUserInteraction,
-        keyboardType: keyboardType ??( isDouble ? TextInputType.number : TextInputType.text),
+        keyboardType: keyboardType ??
+            (isDouble ? TextInputType.number : TextInputType.text),
         key: fieldKey,
         onChanged: onChanged,
         textCapitalization: textCapitalization,
