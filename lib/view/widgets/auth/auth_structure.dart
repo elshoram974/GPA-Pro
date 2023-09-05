@@ -9,11 +9,9 @@ class AuthScreenStructure extends StatelessWidget {
     super.key,
     required this.body,
     this.onWillPop,
-    this.resizeToAvoidBottomInset,
   });
 
   final Widget body;
-  final bool? resizeToAvoidBottomInset;
   final Future<bool> Function()? onWillPop;
 
   @override
@@ -23,7 +21,7 @@ class AuthScreenStructure extends StatelessWidget {
     return WillPopScope(
       onWillPop: onWillPop,
       child: Scaffold(
-        resizeToAvoidBottomInset: resizeToAvoidBottomInset,
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
         extendBody: true,
         extendBodyBehindAppBar: true,
@@ -61,7 +59,13 @@ class AuthScreenStructure extends StatelessWidget {
               child: ConstrainedBox(
                 constraints:
                     BoxConstraints(maxWidth: AppDimension.maxPhone.toDouble()),
-                child: body,
+                child: Column(
+                  children: [
+                    Expanded(child: body),
+                    // SizedBox(height: MediaQuery.of(context).viewInsets.bottom),
+                    SizedBox(height: MediaQuery.viewInsetsOf(context).bottom),
+                  ],
+                ),
               ),
             ),
           ),

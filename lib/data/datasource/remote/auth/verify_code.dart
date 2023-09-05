@@ -12,8 +12,11 @@ import 'package:gpa_pro/data/model/user.dart';
 abstract class VerifyCode {
   static Future<User?> sendVerifyCode(String email, String? title) async {
     Crud crud = Crud();
-    ({Map body, StatusRequest status}) post = await crud
-        .postData(AppLinks.sendVerify, {"email": email, "title": title});
+    ({Map body, StatusRequest status}) post = await crud.postData(
+      AppLinks.sendVerify,
+      {"email": email, "title": title},
+      wantBack: true,
+    );
 
     if (post.status == StatusRequest.success) {
       User user = User.fromJson(post.body as Map<String, dynamic>);

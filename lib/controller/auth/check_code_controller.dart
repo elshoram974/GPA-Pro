@@ -64,8 +64,13 @@ class CheckCodeControllerImp extends CheckCodeController {
 
   @override
   void resendCode() async {
-    User? user = await VerifyCode.sendVerifyCode(email,mailTitle);
-    if (user != null) startTimer();
+    CustomDialog.loadDialog(canBack: false);
+    User? user = await VerifyCode.sendVerifyCode(email, mailTitle);
+    if (user != null) {
+      Get.back(); // when it null it will close the dialog
+
+      startTimer();
+    }
   }
 
   @override

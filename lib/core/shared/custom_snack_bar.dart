@@ -10,6 +10,8 @@ SnackbarController customSnackBar({
   double? horizontalMargin,
   SnackStyle snackStyle = SnackStyle.FLOATING,
 }) {
+  Get.closeAllSnackbars();
+
   return Get.showSnackbar(
     GetSnackBar(
       duration: duration ?? const Duration(seconds: 2),

@@ -29,9 +29,13 @@ class NetHelper {
   // }
 
   static Future<bool> checkInternet() async {
-    final ConnectivityResult _ = await (Connectivity().checkConnectivity());
+    try {
+      final ConnectivityResult _ = await (Connectivity().checkConnectivity());
 
-    return await _check(_);
+      return await _check(_);
+    } catch (e) {
+      return false;
+    }
   }
 
   static Future<bool> _check(ConnectivityResult _) async {
