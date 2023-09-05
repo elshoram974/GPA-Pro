@@ -33,7 +33,7 @@ class AppValidator {
         if (GetUtils.isNum(value)) return AppConstLang.enterValidName.tr;
         break;
       case AuthValidType.email:
-        if (!GetUtils.isEmail(value)) return AppConstLang.enterValidEmail.tr;
+        if (!GetUtils.isEmail(value.trim())) return AppConstLang.enterValidEmail.tr;
       case AuthValidType.int:
         if (!GetUtils.isNumericOnly(value)) {
           return AppConstLang.enterValidInt.tr;

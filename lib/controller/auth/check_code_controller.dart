@@ -25,12 +25,14 @@ class CheckCodeControllerImp extends CheckCodeController {
 
   String? code = '';
   String email = '';
+  String? mailTitle;
   late Widget from;
 
   @override
   void onInit() {
     startTimer();
     email = Get.arguments["email"];
+    mailTitle = Get.arguments["title"];
     from = Get.arguments["from"];
     super.onInit();
   }
@@ -62,7 +64,7 @@ class CheckCodeControllerImp extends CheckCodeController {
 
   @override
   void resendCode() async {
-    User? user = await VerifyCode.sendVerifyCode(email);
+    User? user = await VerifyCode.sendVerifyCode(email,mailTitle);
     if (user != null) startTimer();
   }
 

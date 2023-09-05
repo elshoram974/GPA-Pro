@@ -21,12 +21,17 @@ class ForgotPasswordControllerImp extends ForgotPasswordController {
   void onConfirm() async {
     if (key.currentState!.validate()) {
       CustomDialog.loadDialog(canBack: false);
-      User? temp = await VerifyCode.sendVerifyCode(email.trim());
+      User? temp =
+          await VerifyCode.sendVerifyCode(email.trim(), "Change password");
       if (temp != null) {
         Get.back();
         Get.offNamed(
           AppRoute.checkCodeScreen,
-          arguments: {"email": email.trim(), 'from': const ForgotPassScreen()},
+          arguments: {
+            "email": email.trim(),
+            'from': const ForgotPassScreen(),
+            'title': "Change password",
+          },
         );
       }
     }

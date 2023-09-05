@@ -53,7 +53,7 @@ abstract class LoginRemotely {
             textConfirm: AppConstLang.verifyAccount.tr,
             onConfirm: () async {
               CustomDialog.loadDialog(canBack: false);
-              temp = await VerifyCode.sendAndVerify(email, const LoginScreen());
+              temp = await VerifyCode.sendAndVerify(email,"Verify email" , const LoginScreen());
             },
           );
           return temp;

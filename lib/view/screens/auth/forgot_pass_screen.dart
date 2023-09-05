@@ -41,12 +41,13 @@ class ForgotPasswordField extends GetView<ForgotPasswordControllerImp> {
     return MyDefaultField(
       fieldKey: controller.key,
       borderColor: AppColor.secondary,
-      isDouble: true,
+      keyboardType: TextInputType.emailAddress,
       textAlign: TextAlign.start,
       labelText: AppConstLang.email.tr,
       onChanged: (val) => controller.email = val,
       onFieldSubmitted: (val) => controller.onConfirm(),
-      validator: (val) =>AppValidator.validInputAuth(val, 6, 100, AuthValidType.email),
+      validator: (val) =>
+          AppValidator.validInputAuth(val, 6, 100, AuthValidType.email),
     );
   }
 }

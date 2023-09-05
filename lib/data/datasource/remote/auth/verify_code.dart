@@ -10,10 +10,10 @@ import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/data/model/user.dart';
 
 abstract class VerifyCode {
-  static Future<User?> sendVerifyCode(String email) async {
+  static Future<User?> sendVerifyCode(String email, String? title) async {
     Crud crud = Crud();
-    ({Map body, StatusRequest status}) post =
-        await crud.postData(AppLinks.sendVerify, {"email": email});
+    ({Map body, StatusRequest status}) post = await crud
+        .postData(AppLinks.sendVerify, {"email": email, "title": title});
 
     if (post.status == StatusRequest.success) {
       User user = User.fromJson(post.body as Map<String, dynamic>);
@@ -69,13 +69,17 @@ abstract class VerifyCode {
     return null;
   }
 
-  static Future<User?> sendAndVerify(String email, Widget from) async {
-    User? temp = await VerifyCode.sendVerifyCode(email);
+  static Future<User?> sendAndVerify(
+    String email,
+    String? title,
+    Widget from,
+  ) async {
+    User? temp = await VerifyCode.sendVerifyCode(email, title);
     if (temp != null) {
       Get.back();
       Get.offNamed(
         AppRoute.checkCodeScreen,
-        arguments: {"email": email, 'from': from},
+        arguments: {"email": email, 'from': from, 'title': title},
       );
     }
     return temp;
