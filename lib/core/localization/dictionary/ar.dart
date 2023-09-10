@@ -60,6 +60,7 @@ class ArDictionary {
     AppConstLang.darkMode: "الوضع الداكن",
     AppConstLang.thereIsNoUser: "لا يوجد مستخدم",
     AppConstLang.pressOpenYourAccount: "اضغط لفتح حسابك",
+    AppConstLang.accountSettings: "إعدادات الحساب",
     //
     // auth screen
     AppConstLang.login: "تسجيل الدخول",

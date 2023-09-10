@@ -12,17 +12,20 @@ import 'package:gpa_pro/data/model/app_info_model.dart';
 import 'package:get/get.dart';
 
 class AppInfoRemotely {
-  static Future<void> getInfo() async {
+  static Future<AppInfoData?> getInfo() async {
     Crud crud = Crud();
-    ({Map body, StatusRequest status}) getAppInfo = await crud.postData(AppLinks.appInfo, {'appId': AppInfo.appId});
+    ({Map body, StatusRequest status}) getAppInfo =
+        await crud.postData(AppLinks.appInfo, {'appId': AppInfo.appId},wantBack: true);
+
 
     if (getAppInfo.status == StatusRequest.success) {
-      AppInfoModel appInfo = AppInfoModel.fromJson(getAppInfo.body as Map<String, dynamic>);
+      AppInfoModel appInfo =
+          AppInfoModel.fromJson(getAppInfo.body as Map<String, dynamic>);
       if (appInfo.status == 'success') {
-        Data appData = appInfo.data;
+        AppInfoData appData = appInfo.data;
         LocaleControllerImp _ = Get.find<LocaleControllerImp>();
         if (appData.buildVersion! > AppInfo.appBuildVersion) {
-          return await Get.defaultDialog(
+          Get.defaultDialog(
             buttonColor: AppColor.primary,
             confirmTextColor: Colors.white,
             title: _.retAr(appData.messageTitleAr!, appData.messageTitleEn!),
@@ -34,17 +37,25 @@ class AppInfoRemotely {
                 !appData.shouldUpdateOnly! ? AppConstLang.notNow.tr : null,
             onConfirm: appData.whenPressUpdate,
           );
+          return appData;
         }
       } else {
+      Get.back();
+
         AppSnackBar.messageSnack('${appInfo.data.message}');
       }
     } else if (getAppInfo.status == StatusRequest.offlineFailure) {
+      Get.back();
+
       NetHelper.checkInternetStream((ConnectivityResult result) async {
         if (result != ConnectivityResult.none) await getInfo();
       });
       // print(getAppInfo.status);
     } else {
+      Get.back();
+
       AppSnackBar.messageSnack('Error : ${getAppInfo.status}');
     }
+    return null ;
   }
 }

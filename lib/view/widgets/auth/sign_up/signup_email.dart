@@ -17,8 +17,10 @@ class SignUpEmail extends StatelessWidget {
       labelText: AppConstLang.email.tr,
       textAlign: TextAlign.left,
       keyboardType: TextInputType.emailAddress,
-      onChanged: (val) => Get.find<SignUpControllerImp>().email = val.toLowerCase(),
-      validator: (value) => AppValidator.validInputAuth(value, 0, 100, AuthValidType.email),
+      onChanged: (val) =>
+          Get.find<SignUpControllerImp>().email = val.toLowerCase().trim(),
+      validator: (value) =>
+          AppValidator.validInputAuth(value, 0, 100, AuthValidType.email),
     );
   }
 }

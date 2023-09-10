@@ -25,6 +25,7 @@ class CheckCodeControllerImp extends CheckCodeController {
 
   String? code = '';
   String email = '';
+  String? pass;
   String? mailTitle;
   late Widget from;
 
@@ -32,6 +33,7 @@ class CheckCodeControllerImp extends CheckCodeController {
   void onInit() {
     startTimer();
     email = Get.arguments["email"];
+    pass = Get.arguments["password"];
     mailTitle = Get.arguments["title"];
     from = Get.arguments["from"];
     super.onInit();
@@ -83,7 +85,7 @@ class CheckCodeControllerImp extends CheckCodeController {
         if (from is ForgotPassScreen) {
           Get.offNamed(AppRoute.changePasswordScreen, arguments: {'user': user});
         } else {
-          LoginRemotely.login();
+          LoginRemotely.login(user,pass!);
         }
       }
     }

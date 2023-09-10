@@ -20,6 +20,11 @@ class CheckCodeScreen extends GetView<CheckCodeControllerImp> {
         children: [
           AuthTitle(AppConstLang.verifyCode.tr),
           SizedBox(height: 0.25 * MediaQuery.sizeOf(context).height),
+          Text(
+            controller.email.toLowerCase(),
+            textAlign: TextAlign.center,
+            style: const TextStyle(color: Colors.black),
+          ),
           const VerifyCodeField(),
           const ReSendVerifyCode(),
           const SizedBox(height: 3 * AppConstant.kDefaultPadding),

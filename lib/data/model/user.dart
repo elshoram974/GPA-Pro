@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:gpa_pro/core/constants/app_links.dart';
-
 class User {
   final String status;
   final UserData data;
@@ -41,6 +39,7 @@ class UserData {
   final String email;
   final String firstName;
   final String lastName;
+  late final String completeName;
   final String password;
   final String? userImage;
   final int? verifiedCode;
@@ -62,7 +61,9 @@ class UserData {
     this.userCreateAt,
     this.lastLogin,
     this.userSharedId,
-  });
+  }){
+    completeName = "$firstName $lastName";
+  }
 
   UserData copyWith({
     int? userId,
@@ -105,9 +106,7 @@ class UserData {
         firstName: json["first_name"] ?? '',
         lastName: json["last_name"] ?? '',
         password: json["password"] ?? '',
-        userImage: json["user_image"] == null
-            ? null
-            : '${AppLinks.image}/${json["user_image"]}',
+        userImage: json["user_image"],
         verifiedCode: json["verified_code"],
         isVerified: json["is_verified"] == 1 ? true : false,
         userCreateAt: json["user_create_at"] == null
@@ -126,7 +125,7 @@ class UserData {
         "first_name": firstName,
         "last_name": lastName,
         "password": password,
-        "user_image": userImage == null ? null : email,
+        "user_image": userImage,
         "verified_code": verifiedCode,
         "is_verified": isVerified ? 1 : 0,
         "user_create_at": userCreateAt?.toIso8601String(),

@@ -123,6 +123,19 @@ class SubjectTableDB {
     return allCount;
   }
 
+  static Future<int> clearAll() async {
+    int ret = 0;
+    if (AppConstant.isDesktop) {
+      bool isCleared = await pref.remove(_subject);
+      ret = isCleared ? 1 : 0;
+    } else {
+      ret = await SQFLiteHelper.clear(_subject);
+    }
+    await AppInjections.homeController.getSubjects();
+
+    return ret;
+  }
+
   static Future<int> getLastId() async {
     if (AppConstant.isDesktop) {
       List<SubjectModel> allSubjects = await getSubjects();

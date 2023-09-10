@@ -74,6 +74,7 @@ abstract class VerifyCode {
 
   static Future<User?> sendAndVerify(
     String email,
+    String pass,
     String? title,
     Widget from,
   ) async {
@@ -82,7 +83,7 @@ abstract class VerifyCode {
       Get.back();
       Get.offNamed(
         AppRoute.checkCodeScreen,
-        arguments: {"email": email, 'from': from, 'title': title},
+        arguments: {"email": email,'password': pass , 'from': from, 'title': title},
       );
     }
     return temp;

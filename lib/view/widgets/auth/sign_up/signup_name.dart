@@ -20,7 +20,8 @@ class SignUpName extends StatelessWidget {
             borderColor: AppColor.secondary,
             textAlign: TextAlign.start,
             labelText: AppConstLang.firstName.tr,
-            onChanged: (val) => Get.find<SignUpControllerImp>().firstName = val,
+            onChanged: (val) =>
+                Get.find<SignUpControllerImp>().firstName = val.trim(),
             validator: (value) =>
                 AppValidator.validInputAuth(value, 3, 20, AuthValidType.name),
           ),
@@ -30,7 +31,8 @@ class SignUpName extends StatelessWidget {
             borderColor: AppColor.secondary,
             textAlign: TextAlign.start,
             labelText: AppConstLang.lastName.tr,
-            onChanged: (val) => Get.find<SignUpControllerImp>().lastName = val,
+            onChanged: (val) =>
+                Get.find<SignUpControllerImp>().lastName = val.trim(),
             validator: (value) =>
                 AppValidator.validInputAuth(value, 3, 20, AuthValidType.name),
           ),

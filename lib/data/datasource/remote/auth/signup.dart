@@ -26,7 +26,7 @@ abstract class SignUpRemotely {
     if (post.status == StatusRequest.success) {
       User user = User.fromJson(post.body as Map<String, dynamic>);
       if (user.status == 'success') {
-        return await VerifyCode.sendAndVerify(user.data.email, "Verify email", const SignUpScreen());
+        return await VerifyCode.sendAndVerify(user.data.email,newUser.password, "Verify email", const SignUpScreen());
       } else {
         Get.back();
 

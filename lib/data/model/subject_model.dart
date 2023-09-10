@@ -86,8 +86,9 @@ class SubjectModel extends ParentModel {
 
   bool isEqualByNameAddress(SubjectModel otherSubject) {
     // return id == otherSubject.id;
-    return (nameAr == otherSubject.nameAr || nameEn == otherSubject.nameEn) &&
-        address == otherSubject.address;
+    return ((nameAr == otherSubject.nameAr || nameEn == otherSubject.nameEn) &&
+        (address == otherSubject.address) &&
+        (hours == otherSubject.hours));
   }
 
   bool isAllEqual(SubjectModel otherSubject) {

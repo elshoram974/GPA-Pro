@@ -54,6 +54,7 @@ class AppConstLang {
   static const String darkMode = "dark_mode";
   static const String thereIsNoUser = "there_is_no_user";
   static const String pressOpenYourAccount = "press_to_open_your_account";
+  static const String accountSettings = "accountSettings";
   //
   // auth screen
   static const String login = "login";

@@ -76,7 +76,7 @@ class BannerAdsControllerImp extends GetxController {
 
             update();
 
-            // _reloadAd();
+            if (!(await NetHelper.checkInternet())) _reloadAd();
           },
         ),
       )..load();

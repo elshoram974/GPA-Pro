@@ -6,7 +6,7 @@ import 'package:gpa_pro/core/contact_us/contact_helper.dart';
 
 class AppInfoModel {
   final String status;
-  final Data data;
+  final AppInfoData data;
 
   AppInfoModel({
     required this.status,
@@ -15,7 +15,7 @@ class AppInfoModel {
 
   AppInfoModel copyWith({
     String? status,
-    Data? data,
+    AppInfoData? data,
   }) =>
       AppInfoModel(
         status: status ?? this.status,
@@ -29,7 +29,7 @@ class AppInfoModel {
 
   factory AppInfoModel.fromJson(Map<String, dynamic> json) => AppInfoModel(
         status: json["status"],
-        data: Data.fromJson(json["data"]),
+        data: AppInfoData.fromJson(json["data"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -43,7 +43,7 @@ class AppInfoModel {
   }
 }
 
-class Data {
+class AppInfoData {
   final int? id;
   final String? appId;
   final String? appleStoreId;
@@ -65,7 +65,7 @@ class Data {
   final String? appLegalese;
   final String? message;
 
-  Data({
+  AppInfoData({
     this.id,
     this.appId,
     this.appleStoreId,
@@ -88,7 +88,7 @@ class Data {
     this.message,
   });
 
-  Data copyWith({
+  AppInfoData copyWith({
     int? id,
     String? appId,
     String? appleStoreId,
@@ -110,7 +110,7 @@ class Data {
     String? appLegalese,
     String? message,
   }) =>
-      Data(
+      AppInfoData(
         id: id ?? this.id,
         appId: appId ?? this.appId,
         appleStoreId: appleStoreId ?? this.appleStoreId,
@@ -159,7 +159,7 @@ class Data {
     );
   }
 
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
+  factory AppInfoData.fromJson(Map<String, dynamic> json) => AppInfoData(
         id: json["id"],
         appId: json["appId"],
         appleStoreId: json["appleStoreId"],

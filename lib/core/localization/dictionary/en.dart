@@ -59,6 +59,7 @@ class EnDictionary {
     AppConstLang.darkMode: "Dark Mode",
     AppConstLang.thereIsNoUser: "There is no user",
     AppConstLang.pressOpenYourAccount: "Press to open your account",
+    AppConstLang.accountSettings: "Account Settings",
     //
     // auth screen
     AppConstLang.login: "Login",

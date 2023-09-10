@@ -69,4 +69,16 @@ class SQFLiteHelper {
     }
     return count;
   }
+
+  static Future<int> clear(String table) async {
+    Database db = await _db;
+    int count = 0;
+
+    try {
+      count = await db.rawDelete("DELETE FROM $table");
+    } catch (e) {
+      CustomDialog.errorDialog("$e");
+    }
+    return count;
+  }
 }

@@ -5,9 +5,10 @@ import 'package:gpa_pro/data/datasource/remote/database_helper.dart';
 
 class AfterOpen {
   static void onOpen() async {
-    CheckDataBase.init();
 
     FirstOpen.editGradesDialog();
+    await CheckDataBase.init();
+
     AppInjections.myServices.initUniLinks();
 
     RateApp.rateAppDialog();
