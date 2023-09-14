@@ -191,6 +191,9 @@ class ArDictionary {
 
     AppConstLang.savedSubjects: "المواد المحفوظة",
 
+    AppConstLang.userDoesNotHaveSubjects: "لا يوجد مواد لهذا المستخدم",
+
+
     // add screen
     AppConstLang.semester: "فصل",
     AppConstLang.subject: "مادة",

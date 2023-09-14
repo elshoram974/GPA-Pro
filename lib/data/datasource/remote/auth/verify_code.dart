@@ -24,10 +24,10 @@ abstract class VerifyCode {
         return user;
       } else {
         if (user.data.message == 'email not exist') {
-          Get.back();
+          // Get.back();
           CustomDialog.errorDialog(AppConstLang.emailIsNotExists.tr);
         } else {
-          Get.back();
+          // Get.back();
           AppSnackBar.messageSnack('${user.data.message}');
         }
       }
@@ -55,13 +55,13 @@ abstract class VerifyCode {
         return user;
       } else {
         if (user.data.message == 'email not exist') {
-          Get.back();
+          // Get.back();
           CustomDialog.errorDialog(AppConstLang.emailIsNotExists.tr);
         } else if (user.data.message == 'wrong code') {
-          Get.back();
+          // Get.back();
           CustomDialog.errorDialog(AppConstLang.codeUEnteredIncorrect.tr);
         } else {
-          Get.back();
+          // Get.back();
           AppSnackBar.messageSnack('${user.data.message}');
         }
       }

@@ -14,9 +14,8 @@ import 'package:get/get.dart';
 class AppInfoRemotely {
   static Future<AppInfoData?> getInfo() async {
     Crud crud = Crud();
-    ({Map body, StatusRequest status}) getAppInfo =
-        await crud.postData(AppLinks.appInfo, {'appId': AppInfo.appId},wantBack: true);
-
+    ({Map body, StatusRequest status}) getAppInfo = await crud
+        .postData(AppLinks.appInfo, {'appId': AppInfo.appId}, wantBack: true);
 
     if (getAppInfo.status == StatusRequest.success) {
       AppInfoModel appInfo =
@@ -37,15 +36,15 @@ class AppInfoRemotely {
                 !appData.shouldUpdateOnly! ? AppConstLang.notNow.tr : null,
             onConfirm: appData.whenPressUpdate,
           );
-          return appData;
         }
+        return appData;
       } else {
-      Get.back();
+        // Get.back();
 
         AppSnackBar.messageSnack('${appInfo.data.message}');
       }
     } else if (getAppInfo.status == StatusRequest.offlineFailure) {
-      Get.back();
+      // Get.back();
 
       NetHelper.checkInternetStream((ConnectivityResult result) async {
         if (result != ConnectivityResult.none) await getInfo();
@@ -56,6 +55,6 @@ class AppInfoRemotely {
 
       AppSnackBar.messageSnack('Error : ${getAppInfo.status}');
     }
-    return null ;
+    return null;
   }
 }

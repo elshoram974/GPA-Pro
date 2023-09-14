@@ -18,6 +18,8 @@ class Crud {
         http.Response response = await http.post(Uri.parse(url), body: body);
         if (response.statusCode == 200) {
           Map<String, dynamic> responseBody = json.decode(response.body);
+          if (wantBack) Get.back();
+
           return (status: StatusRequest.success, body: responseBody);
         }
         return (status: StatusRequest.serverFailure, body: {});

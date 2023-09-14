@@ -2,9 +2,7 @@ import 'package:gpa_pro/core/constants/injections.dart';
 import 'package:gpa_pro/core/functions/gpa_functions.dart';
 import 'package:gpa_pro/data/datasource/database/subjects/subject_table_db.dart';
 import 'package:gpa_pro/data/model/parent_model.dart';
-import 'package:gpa_pro/data/model/semester_model.dart';
 import 'package:gpa_pro/data/model/shared/get_shared_subjects_model.dart';
-import 'package:gpa_pro/data/model/year_model.dart';
 import 'package:get/get.dart';
 
 class SubjectModel extends ParentModel {
@@ -86,7 +84,7 @@ class SubjectModel extends ParentModel {
 
   bool isEqualByNameAddress(SubjectModel otherSubject) {
     // return id == otherSubject.id;
-    return ((nameAr == otherSubject.nameAr || nameEn == otherSubject.nameEn) &&
+    return remoteId == otherSubject.remoteId || ((nameAr == otherSubject.nameAr || nameEn == otherSubject.nameEn) &&
         (address == otherSubject.address) &&
         (hours == otherSubject.hours));
   }
@@ -147,11 +145,12 @@ class SubjectModel extends ParentModel {
       );
 
   factory SubjectModel.fromJson(Map<String, dynamic> map) {
-    if (!SemesterModel.semesters.contains(map[SubjectTableDB.semester])) {
-      throw "this semester not exist";
-    } else if (!YearModel.years.contains(map[SubjectTableDB.year])) {
-      throw "this year not exist";
-    } else if (map[SubjectTableDB.nameAr] == null) {
+    // if (!SemesterModel.semesters.contains(map[SubjectTableDB.semester])) {
+    //   throw "this semester not exist";
+    // } else if (!YearModel.years.contains(map[SubjectTableDB.year])) {
+    //   throw "this year not exist";
+    // } else
+    if (map[SubjectTableDB.nameAr] == null) {
       map[SubjectTableDB.nameAr] = map[SubjectTableDB.nameEn]!;
     }
     return SubjectModel(

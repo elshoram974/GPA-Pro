@@ -10,21 +10,24 @@ import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/data/datasource/database/subjects/subject_table_db.dart';
 import 'package:gpa_pro/data/datasource/remote/auth/verify_code.dart';
+import 'package:gpa_pro/data/datasource/remote/subjects/get_subjects.dart';
 import 'package:gpa_pro/data/model/user.dart';
 import 'package:gpa_pro/view/screens/auth/login_screen.dart';
 
 abstract class LoginRemotely {
   // static late  UserData userData;
-  static void login(User user, String pass) {
+  static Future<void> login(User user, String pass) async {
     AppInjections.myServices.sharedPreferences.setString(
       SharedKeys.userData,
       user.data.copyWith(password: pass).toRawJson(),
     );
-    // setUser();
-    // get subjects
+
+    await SubjectTableDB.insertAll(await GetAllSubjects.getOnlineSubjects(user.data.userId!));
+    await AppInjections.homeController.getSubjects();
 
     AppInjections.mainScreenImp.changeBody(1);
     AppSnackBar.messageSnack(AppConstLang.done.tr);
+
     Navigator.popUntil(Get.context!, (route) => route.isFirst);
   }
 
@@ -51,10 +54,10 @@ abstract class LoginRemotely {
     if (post.status == StatusRequest.success) {
       User user = User.fromJson(post.body as Map<String, dynamic>);
       if (user.status == 'success') {
-        login(user, password);
+        await login(user, password);
         return user;
       } else {
-        Get.back();
+        // Get.back();
 
         if (user.data.message == 'email not exist') {
           CustomDialog.errorDialog(AppConstLang.emailDoesNotExist.tr);
@@ -87,8 +90,7 @@ abstract class LoginRemotely {
   }
 
   static UserData? savedLogin() {
-    String? data = AppInjections.myServices.sharedPreferences
-        .getString(SharedKeys.userData);
+    String? data = AppInjections.myServices.sharedPreferences.getString(SharedKeys.userData);
     if (data != null) return UserData.fromRawJson(data);
     return null;
   }

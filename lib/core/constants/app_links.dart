@@ -11,6 +11,7 @@ class AppLinks {
   static const String editSubject     = '$_subject/edit_subject.php';
   static const String deleteSubject   = '$_subject/delete_subject.php';
   static const String viewSubjects    = '$_subject/view_subjects.php';
+  static const String addManySubjects  = '$_subject/add_many_subjects.php';
   static const String deleteSemester  = '$_subject/delete_semester.php';
 
   // shared subjects in subjects  https://mrecode.com/gpapro/api/subject/shared/share_subject.php

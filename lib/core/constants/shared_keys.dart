@@ -3,4 +3,5 @@ abstract class SharedKeys {
   static const String firstOpen = "firstOpen";
   static const String rateLater = "rateLater";
   static const String userData = "userData";
+  static const String isAllSubjectsChanged = "isAllSubjectsChanged";
 }

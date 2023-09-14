@@ -182,6 +182,8 @@ class AppConstLang {
   static const String getSubjectsWithLink = "getSubjectsWithLink";
   static const String savedSubjects = "saved_subjects";
 
+  static const String userDoesNotHaveSubjects = "userDoesNotHaveSubjects";
+
   // add screen
   static const String semester = "semester";
   static const String subject = "subject";

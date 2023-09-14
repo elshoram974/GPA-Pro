@@ -28,7 +28,7 @@ abstract class SignUpRemotely {
       if (user.status == 'success') {
         return await VerifyCode.sendAndVerify(user.data.email,newUser.password, "Verify email", const SignUpScreen());
       } else {
-        Get.back();
+        // Get.back();
 
         if (user.data.message == 'email already exist') {
           CustomDialog.errorDialog(AppConstLang.emailAlreadyExists.tr);

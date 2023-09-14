@@ -188,6 +188,8 @@ class EnDictionary {
     AppConstLang.openSavedTxt: "Open saved text file",
     AppConstLang.getSubjectsWithLink: "Get subjects with link",
     AppConstLang.savedSubjects: "Saved subjects",
+
+    AppConstLang.userDoesNotHaveSubjects: "User does't have subjects",
     // add screen
     AppConstLang.semester: "Semester",
     AppConstLang.subject: "Subject",

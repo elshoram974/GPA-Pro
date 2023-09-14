@@ -80,4 +80,27 @@ class SubjectHelper {
     }
     return false;
   }
+  List<SubjectModel> getSimilarSubjects(SubjectModel query) {
+    final List<SubjectModel> searchedSubjects = [];
+    for (SubjectModel subject in subjectsList) {
+      if (subject.isAllEqual(query)) {
+        searchedSubjects.add(subject);
+      }
+    }
+    return searchedSubjects;
+  }
+
+  List<SubjectModel> otherSubjectsThatNotHere(
+    List<SubjectModel> otherSubjects,
+  ) {
+    List<SubjectModel> differenceSubjects = [];
+
+    for (SubjectModel e in otherSubjects) {
+      List<SubjectModel> temp = [];
+      temp.addAll(getSimilarSubjects(e));
+      if (temp.isEmpty) differenceSubjects.add(e);
+    }
+
+    return differenceSubjects;
+  }
 }

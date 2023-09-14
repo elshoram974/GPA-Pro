@@ -1,6 +1,5 @@
-import 'package:get/get.dart';
-import 'package:gpa_pro/core/constants/injections.dart';
-import 'package:gpa_pro/core/constants/shared_keys.dart';
+import 'dart:developer';
+
 import 'package:gpa_pro/core/functions/custom_dialogs.dart';
 import 'package:gpa_pro/data/datasource/remote/auth/login.dart';
 import 'package:gpa_pro/data/datasource/remote/get_app_info.dart';
@@ -11,14 +10,19 @@ class CheckDataBase {
   static Future<void> init() async {
     CustomDialog.loadDialog(canBack: false);
     AppInfoData? appData = await AppInfoRemotely.getInfo();
+    print("object");
+    log("appData = ${appData?.toJson()} ---------------------------------");
 
     UserData? userData = LoginRemotely.savedLogin();
+    log("userData = ${userData?.toJson()} ---------------------------------");
+
     if (userData != null && appData != null) {
       User? user = await LoginRemotely.loginToAccount(userData.email, userData.password);
+      log("user = ${user?.toJson()} ---------------------------------");
       if (user == null) {
-        AppInjections.myServices.sharedPreferences.remove(SharedKeys.userData);
+        LoginRemotely.logOut();
       }
     }
-    Get.back();
+    // Get.back();
   }
 }
