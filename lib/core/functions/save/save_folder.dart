@@ -47,10 +47,12 @@ class SaveFolder {
 
     await AppPermissions.storage();
     if (AppConstant.isDesktop) {
-      await file.writeAsString(fileContent); // حفظ الملف
+      await file.writeAsString(fileContent,
+          mode: FileMode.writeOnly); // حفظ الملف
       Process.runSync('attrib', ['+R', file.path]);
     } else {
-      await file.writeAsString(fileContent); // حفظ الملف
+      await file.writeAsString(fileContent,
+          mode: FileMode.writeOnly); // حفظ الملف
       Process.runSync('chmod', ['444', filePath]);
     }
 

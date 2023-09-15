@@ -1,8 +1,6 @@
 import 'dart:io';
 
 import 'package:gpa_pro/core/constants/assets.dart';
-import 'package:gpa_pro/core/constants/injections.dart';
-import 'package:gpa_pro/core/constants/routes.dart';
 import 'package:gpa_pro/core/constants/saved_constants.dart';
 import 'package:gpa_pro/core/functions/custom_dialogs.dart';
 import 'package:gpa_pro/core/functions/rate_app.dart';
@@ -14,6 +12,8 @@ import 'package:gpa_pro/view/widgets/saved_subjects_widgets/pdf/pdf_page.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:open_file/open_file.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:path/path.dart' as path;
 import 'package:pdf/pdf.dart';
 
 import 'package:pdf/widgets.dart';
@@ -54,18 +54,17 @@ class PdfGenerator {
     String filePath = await SaveFolder.savePDF(fileName, bytes);
     Get.back();
 
+    Directory cacheDirectory = await getTemporaryDirectory();
+    String cachePath = "${cacheDirectory.path}/${path.basename(filePath)}";
+    File cacheFile = File(cachePath);
+    if (await cacheFile.exists()) await cacheFile.delete();
+    await cacheFile.writeAsBytes(bytes, mode: FileMode.writeOnly);
+
     await CustomDialog.warningDialog(
       AppConstLang.doUWantToOpenFile.tr,
       onConfirm: () async {
         Get.back();
-
-        OpenResult x = await OpenFile.open(filePath);
-        if (x.type != ResultType.done) {
-          AppInjections.mainScreenImp.homeNavigatorKey.currentState!.pushNamed(
-            AppRoute.pdf,
-            arguments: File(filePath),
-          );
-        }
+        await OpenFile.open(cacheFile.path);
       },
     );
     Get.back();

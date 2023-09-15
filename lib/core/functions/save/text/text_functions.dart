@@ -18,22 +18,8 @@ import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
 
 class SaveText {
-  // static HomeControllerImp homeController = AppInjections.homeController;
-  // static List<SubjectModel> subjectToSave = [];
-  // static String jsonSubjects = '';
-
-  // static Future<String> init(List<SubjectModel> subjectToSave) async {
-  //   // List<SubjectModel> allSubjects = [];
-  //   // allSubjects.addAll(subjectToSave);
-  //   // // allSubjects.addAll(await homeController.getSubjects());
-  //   // String jsonSubjects = jsonEncode(allSubjects);
-  //   // return jsonSubjects;
-  //   return jsonEncode(subjectToSave);
-  // }
 
   static Future<void> onTapSave(List<SubjectModel> subjects) async {
-    // subjectToSave.clear();
-    // subjectToSave.addAll(subjects);
 
     String fileName = AppSavedConst.savedTXTName;
 

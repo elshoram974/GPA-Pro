@@ -39,23 +39,6 @@ class SaveBottomModelSheet extends StatelessWidget {
           trailingIcon: Icons.save_outlined,
           onTap: () => SaveText.onTapSave(subjectsToSave),
         ),
-        // CustomListTile(
-        //   title: "QR Code",
-        //   trailingIcon: Icons.qr_code_outlined,
-        //   onTap: () async {
-        //     Get.back();
-        //     AppInjections.mainScreenImp.homeNavigatorKey.currentState!
-        //         .pushNamed(
-        //       AppRoute.qrCode,
-        //       arguments: await SaveText.init(),
-        //     );
-        //   },
-        // ),
-        // CustomListTile(
-        //   title: "save_as_excel".tr,
-        //   trailingIcon: Icons.download_outlined,
-        //   // onTap: excelController.saveExcel,
-        // ),
       ],
     );
   }

@@ -7,7 +7,6 @@ import 'package:gpa_pro/view/screens/auth/forgot_pass_screen.dart';
 import 'package:gpa_pro/view/screens/auth/login_screen.dart';
 import 'package:gpa_pro/view/screens/auth/signup_screen.dart';
 import 'package:gpa_pro/view/screens/home/add_screen.dart';
-import 'package:gpa_pro/view/screens/saved_subjects_screens/pdf_screen.dart';
 import 'package:gpa_pro/view/screens/settings/privacy_policy_screen.dart';
 import 'package:gpa_pro/view/screens/saved_subjects_screens/upload_screen.dart';
 import 'package:gpa_pro/view/screens/home/year_screen.dart';
@@ -63,11 +62,6 @@ class GeneratedRoute {
 
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case AppRoute.pdf:
-        return myPageRouteBuilder(
-          settings: settings,
-          child: const PDFScreen(),
-        );
       case AppRoute.year:
         return myPageRouteBuilder(
           settings: settings,

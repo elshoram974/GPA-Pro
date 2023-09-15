@@ -74,8 +74,8 @@ dependencies:
   # qr_code_scanner: ^1.0.1
   # qr_flutter: ^4.1.0
 
-  # for open pdf
-  syncfusion_flutter_pdfviewer: ^22.1.39
+  # # for open pdf
+  # syncfusion_flutter_pdfviewer: ^22.1.39
 
   # for make request to storage ...etc
   permission_handler: ^10.4.2

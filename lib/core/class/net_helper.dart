@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:gpa_pro/core/constants/public_constant.dart';
 
 enum StatusRequest {
   loading,
@@ -29,6 +30,7 @@ class NetHelper {
   // }
 
   static Future<bool> checkInternet() async {
+    if (AppConstant.isWeb) return true;
     try {
       final ConnectivityResult _ = await (Connectivity().checkConnectivity());
 
