@@ -29,7 +29,7 @@ class SaveFolder {
       directory = directory.replaceAll(r"\", "/");
     }
     String folderName = AppSavedConst.folderName;
-    final folderDirectory = Directory('$directory/$folderName');
+    final Directory folderDirectory = Directory('$directory/$folderName');
 
     if (!(await folderDirectory.exists())) {
       await folderDirectory.create(recursive: true);

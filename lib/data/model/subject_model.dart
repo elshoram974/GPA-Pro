@@ -180,6 +180,7 @@ class SubjectModel extends ParentModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data[SubjectTableDB.id] = id;
+    data[SubjectTableDB.remoteId] = remoteId;
     data[SubjectTableDB.nameEn] = nameEn;
     data[SubjectTableDB.nameAr] = nameAr;
     data[SubjectTableDB.degree] = degree;

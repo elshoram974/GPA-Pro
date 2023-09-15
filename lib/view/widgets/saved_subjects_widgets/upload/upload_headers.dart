@@ -15,23 +15,25 @@ class UploadHeaderPart extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        SizedBox(
-          width: double.infinity,
-          child: SelectableText.rich(
-            TextSpan(
-              text: "${AppConstLang.numberOfSubjects.tr}:- ".tr,
-              style: context.textTheme.bodyLarge,
-              children: [
-                TextSpan(
-                  style: context.textTheme.bodyLarge!.copyWith(
-                    fontWeight: FontWeight.bold,
+        GetBuilder<UploadSavedTxtFileImp>(builder: (controller) {
+          return SizedBox(
+            width: double.infinity,
+            child: SelectableText.rich(
+              TextSpan(
+                text: "${AppConstLang.numberOfSubjects.tr}:- ".tr,
+                style: context.textTheme.bodyLarge,
+                children: [
+                  TextSpan(
+                    style: context.textTheme.bodyLarge!.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                    text: "${controller.subjectsList.length}",
                   ),
-                  text: "${_.subjectsList.length}",
-                )
-              ],
+                ],
+              ),
             ),
-          ),
-        ),
+          );
+        }),
         const SizedBox(height: 2 * AppConstant.kDefaultPadding),
         SizedBox(
           width: 300,

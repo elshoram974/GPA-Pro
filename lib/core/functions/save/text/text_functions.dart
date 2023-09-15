@@ -19,28 +19,27 @@ import 'package:get/get.dart';
 
 class SaveText {
   // static HomeControllerImp homeController = AppInjections.homeController;
-  static List<SubjectModel> subjectToSave = [];
-  static String jsonSubjects = '';
+  // static List<SubjectModel> subjectToSave = [];
+  // static String jsonSubjects = '';
 
-  static Future<String> init() async {
-    List<SubjectModel> allSubjects = [];
-    allSubjects.addAll(subjectToSave);
-    // allSubjects.addAll(await homeController.getSubjects());
-    jsonSubjects = jsonEncode(allSubjects);
-    return jsonSubjects;
-  }
+  // static Future<String> init(List<SubjectModel> subjectToSave) async {
+  //   // List<SubjectModel> allSubjects = [];
+  //   // allSubjects.addAll(subjectToSave);
+  //   // // allSubjects.addAll(await homeController.getSubjects());
+  //   // String jsonSubjects = jsonEncode(allSubjects);
+  //   // return jsonSubjects;
+  //   return jsonEncode(subjectToSave);
+  // }
 
   static Future<void> onTapSave(List<SubjectModel> subjects) async {
-    subjectToSave.clear();
-    subjectToSave.addAll(subjects);
+    // subjectToSave.clear();
+    // subjectToSave.addAll(subjects);
 
     String fileName = AppSavedConst.savedTXTName;
 
     SaveFolder.waitToSaveDialog();
 
-    await init();
-
-    await SaveFolder.saveTxt(fileName, jsonSubjects);
+    await SaveFolder.saveTxt(fileName, jsonEncode(subjects));
 
     Get.back();
     Get.back();
@@ -97,21 +96,24 @@ class SaveText {
 
     if (result != null) {
       for (PlatformFile e in result.files) {
-        if (e.extension == "txt") {
-          await addSavedSubjects(await File(e.path!).readAsString());
+        if (e.extension?.toLowerCase() == "txt") {
+          File file = File(e.path!);
+          
+          await addSavedSubjects(await file.readAsString());
+          if (await file.exists()) await file.delete();
         }
       }
     }
   }
 
-  static   Future<void> getSubjectsWithLink() async {
+  static Future<void> getSubjectsWithLink() async {
     String link = '';
     Future<void> thisFunction() async {
       Get.back();
       CustomDialog.loadDialog();
       await SharedSubjects.getSubjects(link);
     }
-    
+
     await Get.defaultDialog(
       buttonColor: AppColor.primary,
       confirmTextColor: Colors.white,
@@ -129,6 +131,5 @@ class SaveText {
       ),
       onConfirm: thisFunction,
     );
-              
   }
 }

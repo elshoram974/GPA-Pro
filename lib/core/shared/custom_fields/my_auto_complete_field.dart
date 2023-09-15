@@ -53,6 +53,7 @@ class MyAutoCompleteField<T> extends StatelessWidget {
         autovalidateMode: AutovalidateMode.onUserInteraction,
         validator: validator,
         onSaved: onSaved,
+        hideOnEmpty: true,
         suggestionsBoxDecoration: SuggestionsBoxDecoration(
           constraints: const BoxConstraints(maxHeight: 300),
           clipBehavior: Clip.hardEdge,

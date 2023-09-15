@@ -11,21 +11,21 @@ class UploadAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<UploadSavedTxtFileImp>(
-      builder: (controller) {
+      builder: (__) {
         return MyAppBar(
-          title: controller.argument.title,
+          title: __.argument.title,
           pageType: PageType.addScreen,
-          isAllSelected: controller.isAllSelected,
-          isSelected: controller.isSelected,
-          selectAllOrDeselect: controller.selectAllOrDeselect,
-          remove: controller.removeUploadedSubject,
-          selectedLength: controller.selectedLength,
-          changeSelectedCalc: controller.changeSelectedCalc,
+          isAllSelected: __.isAllSelected,
+          isSelected: __.isSelected,
+          selectAllOrDeselect: __.selectAllOrDeselect,
+          remove: __.removeUploadedSubject,
+          selectedLength: __.selectedLength,
+          changeSelectedCalc: __.changeSelectedCalc,
           selectedSubjects: const [],
           moreActions: [
             IconButton(
               tooltip: AppConstLang.save.tr,
-              onPressed: controller.onSave,
+              onPressed: __.subjectsList.isEmpty ? null : __.onSave,
               icon: const Icon(Icons.save_outlined),
             ),
           ],
