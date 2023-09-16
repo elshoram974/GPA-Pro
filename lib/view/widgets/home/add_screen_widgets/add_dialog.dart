@@ -1,4 +1,5 @@
 import 'package:gpa_pro/controller/home/add_controller/add_controller.dart';
+import 'package:gpa_pro/controller/home/add_controller/dialog_controller.dart';
 import 'package:gpa_pro/core/functions/responsive_width.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/view/widgets/home/add_screen_widgets/dialog_buttons.dart';
@@ -12,6 +13,8 @@ class AddedDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AddControllerImp addControl = Get.find<AddControllerImp>();
+    Get.lazyPut<DialogControllerImp>(() => DialogControllerImp());
+
 
     return Dialog(
       backgroundColor: Colors.transparent,

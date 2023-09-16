@@ -27,6 +27,7 @@ class AddManySubjects {
         'subject_user': "$userId",
         'subjects_SQLCode': _getSubjectsSQLCode(),
       },
+      wantBack: true,
     );
 
     if (subjects.status == StatusRequest.success) {
@@ -68,29 +69,32 @@ class AddManySubjects {
   }
 }
 
-class InsertSubjects{
+class InsertSubjects {
+  Future<void> insert(List<SubjectModel> subjectsList) async {
+    Get.back();
+    CustomDialog.loadDialog(canBack: false);
+    CustomDialog.loadDialog(canBack: false);
 
-  Future<void> insert(List<SubjectModel> subjectsList)async {
-          CustomDialog.loadDialog(canBack: false);
+    // for remotely
+    UserData? userData = LoginRemotely.savedLogin();
+    List<SubjectModel> addedTemp = [];
+    List<SubjectModel> temp = [];
+    temp.addAll(subjectsList);
+    addedTemp.addAll(temp);
 
-      // for remotely
-      UserData? userData = LoginRemotely.savedLogin();
-      List<SubjectModel> addedTemp = [];
-      List<SubjectModel> temp = [];
-      temp.addAll(subjectsList);
-
-      if (userData != null) {
-        int userId = userData.userId!;
-        AddManySubjects addRemote = AddManySubjects(userId, temp);
-        try {
-          addedTemp.addAll((await addRemote.addNewSubjects())!);
-        } catch (e) {
-          addedTemp.clear();
-          addedTemp.addAll(temp);
-          AppSnackBar.messageSnack(AppConstLang.savedToDeviceOnly.tr);
-        }
+    if (userData != null) {
+      int userId = userData.userId!;
+      AddManySubjects addRemote = AddManySubjects(userId, temp);
+      try {
+        addedTemp.clear();
+        addedTemp.addAll((await addRemote.addNewSubjects())!);
+      } catch (e) {
+        addedTemp.clear();
+        addedTemp.addAll(temp);
+        AppSnackBar.messageSnack(AppConstLang.savedToDeviceOnly.tr);
       }
+    }
 
-      await SubjectTableDB.insertAll(addedTemp);
+    await SubjectTableDB.insertAll(addedTemp);
   }
 }
