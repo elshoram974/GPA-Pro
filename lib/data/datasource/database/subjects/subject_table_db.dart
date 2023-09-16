@@ -161,6 +161,7 @@ class SubjectTableDB {
   static const String nameEn = "nameEn";
   static const String nameAr = "nameAr";
   static const String isCalculated = "isCalculated";
+  static const String isNeedSync = "isNeedSync";
   static const String semester = "semester";
   static const String year = "year";
   static const String note = "note";
@@ -195,7 +196,8 @@ class SubjectTableDB {
         $degree REAL NOT NULL,
         $gpa REAL,
         $hours INTEGER NOT NULL, 
-        $isCalculated INTEGER NOT NULL
+        $isCalculated INTEGER NOT NULL,
+        $isNeedSync INTEGER NOT NULL
         )
       """);
   }

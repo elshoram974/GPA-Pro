@@ -65,6 +65,7 @@ class DialogControllerImp extends DialogController {
         hours: int.parse(hoursController.text),
         maxDegree: double.parse(maxDegreeController.text),
         isCalculated: isCalculated,
+        isNeedSync: true,
         savedGPA: savedGPA,
         myPracticalDegree: double.tryParse(myPracticalDegreeController.text),
         myYearWorkDegree: double.tryParse(myYearWorkDegreeController.text),
@@ -132,7 +133,10 @@ class DialogControllerImp extends DialogController {
         () async {
           ok = true;
           for (SubjectModel temp in searchedSubjects) {
-            await SubjectTableDB.update(temp..isCalculated = false);
+            await SubjectTableDB.update(temp
+              ..isCalculated = false
+              ..isNeedSync = true);
+            print("can edit this to update on database");
           }
           await AppInjections.homeController.getSubjects();
         },

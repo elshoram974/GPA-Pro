@@ -15,6 +15,7 @@ class SemesterModel extends ParentModel {
     required String name,
     required this.year,
     bool isSelected = false,
+    bool isNeedSync = true,
     bool isCalculated = true,
     bool isCanceled = false,
   }) : super(
@@ -27,6 +28,7 @@ class SemesterModel extends ParentModel {
           address: ".../${year.tr}/${name.tr}",
           isCalculated: isCalculated,
           isSelected: isSelected,
+          isNeedSync: isNeedSync,
         );
 
   bool isEqual(SemesterModel otherSemester) {

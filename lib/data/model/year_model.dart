@@ -12,6 +12,7 @@ class YearModel extends ParentModel {
     required int id,
     required String name,
     bool isSelected = false,
+    bool isNeedSync = true,
     bool isCalculated = true,
     bool isCanceled = false,
   }) : super(
@@ -24,6 +25,7 @@ class YearModel extends ParentModel {
           address: ".../${name.tr}",
           isCalculated: isCalculated,
           isSelected: isSelected,
+          isNeedSync: isNeedSync,
         );
 
   bool isEqual(YearModel otherYear) {

@@ -11,6 +11,7 @@ import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/core/shared/item_card/animated_item_card.dart';
 import 'package:gpa_pro/data/datasource/database/subjects/subject_table_db.dart';
+import 'package:gpa_pro/data/datasource/remote/subjects/upload_many_subjects.dart';
 import 'package:gpa_pro/data/model/parent_model.dart';
 import 'package:gpa_pro/data/model/semester_model.dart';
 import 'package:gpa_pro/data/model/subject_model.dart';
@@ -252,12 +253,7 @@ class AddControllerImp extends AddController {
   // ---------------------- save ------------------------------------------------
   void _save() async {
     if (subjectsList.isNotEmpty) {
-      Get.dialog(
-        const Center(child: CircularProgressIndicator()),
-        barrierDismissible: false,
-      );
-
-      await SubjectTableDB.insertAll(subjectsList);
+      await InsertSubjects().insert(subjectsList);
       if (argument.thisModel == null) {
         await AppInjections.homeController.getSubjects();
       } else if (argument.thisModel is YearModel) {
@@ -266,6 +262,7 @@ class AddControllerImp extends AddController {
         SemesterModel model = argument.thisModel as SemesterModel;
 
         await SubjectTableDB.removeAll(model.subjects);
+        print("we need remove here");
 
         await Get.find<SemesterControllerImp>().updateSubjects();
       }

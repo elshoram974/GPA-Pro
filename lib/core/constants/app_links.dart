@@ -1,4 +1,5 @@
 class AppLinks {
+  static const String appDomain = 'https://gpapro.mrecode.com';
   static const String _domain = 'https://mrecode.com';
   static const String _baseLink = '$_domain/gpapro/api';
 

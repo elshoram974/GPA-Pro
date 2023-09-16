@@ -5,7 +5,7 @@ import 'package:gpa_pro/core/functions/custom_dialogs.dart';
 import 'package:gpa_pro/core/functions/rate_app.dart';
 import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
-import 'package:gpa_pro/data/datasource/database/subjects/subject_table_db.dart';
+import 'package:gpa_pro/data/datasource/remote/subjects/upload_many_subjects.dart';
 import 'package:gpa_pro/data/model/subject_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -130,12 +130,8 @@ class UploadSavedTxtFileImp extends UploadSavedTxtFile {
   // ---------------------- save ------------------------------------------------
   void _save() async {
     if (subjectsList.isNotEmpty) {
-      Get.dialog(
-        const Center(child: CircularProgressIndicator()),
-        barrierDismissible: false,
-      );
 
-      await SubjectTableDB.insertAll(subjectsList);
+      await InsertSubjects().insert(subjectsList);
 
       await AppInjections.homeController.getSubjects();
 

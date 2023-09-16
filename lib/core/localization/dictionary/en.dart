@@ -60,6 +60,8 @@ class EnDictionary {
     AppConstLang.thereIsNoUser: "There is no user",
     AppConstLang.pressOpenYourAccount: "Press to open your account",
     AppConstLang.accountSettings: "Account Settings",
+    AppConstLang.logOut: "Log out",
+    AppConstLang.areYouSureYouWannaLogOut: "log out? \n\nAll subjects will be deleted, but if they are saved in the account, you can return them when you login again.\nOr you can save them as a txt file and reopen it at any time.",
     //
     // auth screen
     AppConstLang.login: "Login",
@@ -236,6 +238,8 @@ class EnDictionary {
         "Make all selected items calculated or not",
     AppConstLang.makeSelectedCalc: "Make all selected calculated",
     AppConstLang.makeThemNotCalc: "Make all selected not calculated",
+    AppConstLang.unknownErrorSubjectsAreNotAdded: "Unknown error, subjects are not added on your account",
+    AppConstLang.savedToDeviceOnly: "Saved to device only",
 
     // details screen
     AppConstLang.cumulativeDetails: "Cumulative details",

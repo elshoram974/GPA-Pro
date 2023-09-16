@@ -47,11 +47,11 @@ class UserTileInfo extends StatelessWidget {
                     child: Text(AppConstLang.accountSettings.tr),
                   ),
                 ),
-                const Flexible(
+                Flexible(
                   flex: 5,
                   child: TextButton(
-                    onPressed: LoginRemotely.logOut,
-                    child: Text("Log out"),
+                    onPressed: LoginRemotely.logOutButton,
+                    child: Text(AppConstLang.logOut.tr),
                   ),
                 ),
               ],

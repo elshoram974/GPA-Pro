@@ -22,7 +22,10 @@ abstract class LoginRemotely {
       user.data.copyWith(password: pass).toRawJson(),
     );
 
-    await SubjectTableDB.insertAll(await GetAllSubjects.getOnlineSubjects(user.data.userId!));
+    CustomDialog.loadDialog(canBack: false);
+    await SubjectTableDB.insertAll(
+      await GetAllSubjects.getOnlineSubjects(user.data.userId!),
+    );
     await AppInjections.homeController.getSubjects();
 
     AppInjections.mainScreenImp.changeBody(1);
@@ -38,6 +41,14 @@ abstract class LoginRemotely {
     AppInjections.mainScreenImp.changeBody(1);
     AppSnackBar.messageSnack(AppConstLang.done.tr);
     Navigator.popUntil(Get.context!, (route) => route.isFirst);
+  }
+
+  static void logOutButton() async {
+    CustomDialog.warningBeforeConfirm(
+      AppConstLang.areYouSureYouWannaLogOut.tr,
+      logOut,
+      style: const TextStyle(fontSize: 15),
+    );
   }
 
   static Future<User?> loginToAccount(String email, String password) async {
@@ -90,7 +101,8 @@ abstract class LoginRemotely {
   }
 
   static UserData? savedLogin() {
-    String? data = AppInjections.myServices.sharedPreferences.getString(SharedKeys.userData);
+    String? data = AppInjections.myServices.sharedPreferences
+        .getString(SharedKeys.userData);
     if (data != null) return UserData.fromRawJson(data);
     return null;
   }

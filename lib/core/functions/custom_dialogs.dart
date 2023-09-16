@@ -1,4 +1,5 @@
 import 'package:gpa_pro/core/constants/colors.dart';
+import 'package:gpa_pro/core/constants/public_constant.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/core/shared/color_picker.dart';
 import 'package:flutter/material.dart';
@@ -22,12 +23,22 @@ class CustomDialog {
     String? textConfirm,
     required void Function()? onConfirm,
     required bool closeBeforeFunction,
+    TextStyle? style,
   }) async {
     return await Get.defaultDialog<T>(
       buttonColor: AppColor.primary,
       confirmTextColor: Colors.white,
       title: AppConstLang.warning.tr,
-      middleText: middleText,
+      middleText: style == null ? middleText : '',
+      content: style == null
+          ? null
+          : Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppConstant.kDefaultPadding,
+                vertical: AppConstant.kDefaultPadding / 2,
+              ),
+              child: Text(middleText, style: style),
+            ),
       textCancel: onConfirm != null ? AppConstLang.cancel.tr : null,
       textConfirm:
           textConfirm ?? (onConfirm != null ? AppConstLang.sure.tr : null),
@@ -50,6 +61,7 @@ class CustomDialog {
     String? textConfirm,
     void Function()? onConfirm,
     bool closeBeforeFunction = false,
+    TextStyle? style,
   }) async {
     return await _customDialog<T>(
       AppConstLang.warning.tr,
@@ -57,6 +69,7 @@ class CustomDialog {
       textConfirm: textConfirm,
       onConfirm: onConfirm,
       closeBeforeFunction: closeBeforeFunction,
+      style: style,
     );
   }
 
@@ -75,12 +88,14 @@ class CustomDialog {
 
   static Future<T?> warningBeforeConfirm<T>(
     String text,
-    void Function()? onConfirm,
-  ) {
+    void Function()? onConfirm, {
+    TextStyle? style,
+  }) {
     return warningDialog<T>(
       "${AppConstLang.areUSureUWanna.tr} $text",
       closeBeforeFunction: true,
       onConfirm: onConfirm,
+      style: style,
     );
   }
 

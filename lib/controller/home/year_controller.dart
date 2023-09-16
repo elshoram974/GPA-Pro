@@ -92,6 +92,7 @@ class YearControllerImp extends YearController {
             name: termsName.toList()[i],
             subjects: subjectsListPerTerm,
             year: thisYear.name,
+            isNeedSync: isNeedSyncList(subjectsListPerTerm),
           ),
         );
       }

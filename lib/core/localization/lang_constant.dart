@@ -55,6 +55,8 @@ class AppConstLang {
   static const String thereIsNoUser = "there_is_no_user";
   static const String pressOpenYourAccount = "press_to_open_your_account";
   static const String accountSettings = "accountSettings";
+  static const String logOut = "logOut";
+  static const String areYouSureYouWannaLogOut = "areYouSureYouWannaLogOut...";
   //
   // auth screen
   static const String login = "login";
@@ -229,6 +231,8 @@ class AppConstLang {
       "make_selected_calculated_or_not";
   static const String makeSelectedCalc = "make_selected_calc";
   static const String makeThemNotCalc = "make_selected_not_calc";
+  static const String unknownErrorSubjectsAreNotAdded = "unknownErrorSubjectsAreNotAdded";
+  static const String savedToDeviceOnly = "savedToDeviceOnly";
 
   // details screen
   static const String cumulativeDetails = "cumulative_details";

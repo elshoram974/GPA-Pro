@@ -46,6 +46,7 @@ class SubjectModel extends ParentModel {
     required this.semester,
     required this.year,
     bool isSelected = false,
+    bool isNeedSync = true,
     bool isCalculated = true,
   }) : super(
           id: id,
@@ -63,6 +64,7 @@ class SubjectModel extends ParentModel {
               ".../${year.tr}/${semester.tr}/${AppInjections.locale.retAr<String>(nameAr ?? nameEn, nameEn)}",
           isCalculated: isCalculated,
           isSelected: isSelected,
+          isNeedSync: isNeedSync,
         );
 
   //       {
@@ -84,9 +86,10 @@ class SubjectModel extends ParentModel {
 
   bool isEqualByNameAddress(SubjectModel otherSubject) {
     // return id == otherSubject.id;
-    return remoteId == otherSubject.remoteId || ((nameAr == otherSubject.nameAr || nameEn == otherSubject.nameEn) &&
-        (address == otherSubject.address) &&
-        (hours == otherSubject.hours));
+    return remoteId == otherSubject.remoteId ||
+        ((nameAr == otherSubject.nameAr || nameEn == otherSubject.nameEn) &&
+            (address == otherSubject.address) &&
+            (hours == otherSubject.hours));
   }
 
   bool isAllEqual(SubjectModel otherSubject) {
@@ -165,6 +168,7 @@ class SubjectModel extends ParentModel {
       semester: map[SubjectTableDB.semester]!,
       year: map[SubjectTableDB.year]!,
       isCalculated: map[SubjectTableDB.isCalculated] == 1,
+      isNeedSync: map[SubjectTableDB.isNeedSync] == 1,
       maxFinalDegree: map[SubjectTableDB.maxFinalDegree],
       maxPracticalDegree: map[SubjectTableDB.maxPracticalDegree],
       maxYearWorkDegree: map[SubjectTableDB.maxYearWorkDegree],
@@ -190,6 +194,7 @@ class SubjectModel extends ParentModel {
     data[SubjectTableDB.semester] = semester;
     data[SubjectTableDB.year] = year;
     data[SubjectTableDB.isCalculated] = isCalculated ? 1 : 0;
+    data[SubjectTableDB.isNeedSync] = isNeedSync ? 1 : 0;
     data[SubjectTableDB.maxFinalDegree] = maxFinalDegree;
     data[SubjectTableDB.maxPracticalDegree] = maxPracticalDegree;
     data[SubjectTableDB.maxYearWorkDegree] = maxYearWorkDegree;
@@ -205,6 +210,7 @@ class SubjectModel extends ParentModel {
 
   Map<String, dynamic> toMapWithoutId() {
     final Map<String, dynamic> data = <String, dynamic>{};
+    data[SubjectTableDB.remoteId] = remoteId;
     data[SubjectTableDB.nameEn] = nameEn;
     data[SubjectTableDB.nameAr] = nameAr;
     data[SubjectTableDB.degree] = degree;
@@ -214,6 +220,7 @@ class SubjectModel extends ParentModel {
     data[SubjectTableDB.semester] = semester;
     data[SubjectTableDB.year] = year;
     data[SubjectTableDB.isCalculated] = isCalculated ? 1 : 0;
+    data[SubjectTableDB.isNeedSync] = isNeedSync ? 1 : 0;
     data[SubjectTableDB.maxFinalDegree] = maxFinalDegree;
     data[SubjectTableDB.maxPracticalDegree] = maxPracticalDegree;
     data[SubjectTableDB.maxYearWorkDegree] = maxYearWorkDegree;

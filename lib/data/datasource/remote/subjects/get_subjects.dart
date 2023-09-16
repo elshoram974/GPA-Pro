@@ -57,16 +57,20 @@ class GetAllSubjects {
     differenceSubjects.addAll(
       helper.otherSubjectsThatNotHere(allSubjects),
     );
-    bool isSubjectsChanged = AppInjections.myServices.sharedPreferences.getBool(SharedKeys.isAllSubjectsChanged) ??false;
+    bool isSubjectsChanged = AppInjections.myServices.sharedPreferences
+            .getBool(SharedKeys.isAllSubjectsChanged) ??
+        false;
     if (isSubjectsChanged) {
       print("isSubjectsChanged : $isSubjectsChanged");
       // async function
       // upload differenceSubjects
       //
-      AppInjections.myServices.sharedPreferences.remove(SharedKeys.isAllSubjectsChanged);
+      AppInjections.myServices.sharedPreferences
+          .remove(SharedKeys.isAllSubjectsChanged);
       return [];
     } else {
-      return differenceSubjects;
+      return SubjectHelper(differenceSubjects)
+          .makeAllSubjectsNeedSyncOrNot(false);
     }
   }
 }

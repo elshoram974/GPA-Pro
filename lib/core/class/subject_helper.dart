@@ -80,6 +80,7 @@ class SubjectHelper {
     }
     return false;
   }
+
   List<SubjectModel> getSimilarSubjects(SubjectModel query) {
     final List<SubjectModel> searchedSubjects = [];
     for (SubjectModel subject in subjectsList) {
@@ -103,4 +104,21 @@ class SubjectHelper {
 
     return differenceSubjects;
   }
+
+  List<SubjectModel> makeAllSubjectsNeedSyncOrNot(bool makeAllNeedSync) {
+    List<SubjectModel> temp = [];
+
+    for (SubjectModel e in subjectsList) {
+      temp.add(e..isNeedSync = makeAllNeedSync);
+    }
+
+    return temp;
+  }
+
+  // bool containAnyTrueSync() {
+  //   for (SubjectModel e in subjectsList) {
+  //     if (e.isItSync) return true;
+  //   }
+  //   return false;
+  // }
 }

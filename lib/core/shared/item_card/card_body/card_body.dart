@@ -1,6 +1,9 @@
 import 'package:gpa_pro/core/constants/colors.dart';
+import 'package:gpa_pro/core/constants/injections.dart';
 import 'package:gpa_pro/core/constants/public_constant.dart';
+import 'package:gpa_pro/core/constants/shared_keys.dart';
 import 'package:gpa_pro/core/shared/item_card/card_body/address_widget.dart';
+import 'package:gpa_pro/core/shared/item_card/card_body/show_async_card.dart';
 import 'package:gpa_pro/core/shared/item_card/card_body/subtitle_list.dart';
 import 'package:gpa_pro/core/shared/item_card/card_body/title.dart';
 import 'package:gpa_pro/core/shared/item_card/card_body/trailing_list_tile.dart';
@@ -25,7 +28,7 @@ class CardBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
-      padding:const EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         vertical: AppConstant.kDefaultPadding / 1.3,
         horizontal: AppConstant.kDefaultPadding * 1.5,
       ),
@@ -54,6 +57,12 @@ class CardBody extends StatelessWidget {
           Visibility(
             visible: showAddress,
             child: ShowAddressCard(model: model),
+          ),
+          Visibility(
+            visible: AppInjections.myServices.sharedPreferences
+                    .containsKey(SharedKeys.userData) &&
+                model.isNeedSync,
+            child: const ShowAsyncInCard(),
           ),
         ],
       ),

@@ -61,6 +61,8 @@ class ArDictionary {
     AppConstLang.thereIsNoUser: "لا يوجد مستخدم",
     AppConstLang.pressOpenYourAccount: "اضغط لفتح حسابك",
     AppConstLang.accountSettings: "إعدادات الحساب",
+    AppConstLang.logOut: "تسجيل الخروج",
+    AppConstLang.areYouSureYouWannaLogOut: "تسجيل الخروج ؟ \n\nسيتم حذف جميع المواد، ولكن إذا كانت محفوظة في الحساب، فيمكنك ارجاعهم عند تسجيل الدخول مرة أخرى.\nأو يمكنك حفظهم كملف txt وإعادة فتحها في اي وقت.",
     //
     // auth screen
     AppConstLang.login: "تسجيل الدخول",
@@ -193,7 +195,6 @@ class ArDictionary {
 
     AppConstLang.userDoesNotHaveSubjects: "لا يوجد مواد لهذا المستخدم",
 
-
     // add screen
     AppConstLang.semester: "فصل",
     AppConstLang.subject: "مادة",
@@ -238,6 +239,9 @@ class ArDictionary {
         "جعل جميع العناصر المحددة محسوبة أو غير محسوبة",
     AppConstLang.makeSelectedCalc: "جعلهم محسوبين",
     AppConstLang.makeThemNotCalc: "جعلهم غير محسوبين",
+    AppConstLang.unknownErrorSubjectsAreNotAdded: "خطأ غير معروف، لم يتم إضافة المواد على الحساب",
+    AppConstLang.savedToDeviceOnly: "تم الحفظ على الجهاز فقط",
+
 
     // details screen
     AppConstLang.cumulativeDetails: "تفاصيل التراكمي",

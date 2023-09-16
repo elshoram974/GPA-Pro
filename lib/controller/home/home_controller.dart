@@ -84,10 +84,12 @@ class HomeControllerImp extends HomeController {
         if (subjectsListPerTerm.isNotEmpty) {
           semesterListPerYear.add(
             SemesterModel(
-                id: semesterListPerYear.length,
-                name: termsName.toList()[i],
-                subjects: subjectsListPerTerm,
-                year: ''),
+              id: semesterListPerYear.length,
+              name: termsName.toList()[i],
+              subjects: subjectsListPerTerm,
+              year: '',
+              isNeedSync: isNeedSyncList(subjectsListPerTerm),
+            ),
           );
         }
       }
@@ -96,6 +98,7 @@ class HomeControllerImp extends HomeController {
           id: yearsList.length,
           name: e,
           semesters: semesterListPerYear,
+          isNeedSync: isNeedSyncList(semesterListPerYear),
         ),
       );
     }

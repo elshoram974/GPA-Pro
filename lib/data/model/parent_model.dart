@@ -12,6 +12,7 @@ class ParentModel {
   final String address;
   bool isCalculated;
   bool isSelected;
+  bool isNeedSync;
 
   ParentModel({
     required this.maxDegree,
@@ -23,6 +24,7 @@ class ParentModel {
     required this.hours,
     this.address = "",
     this.isSelected = false,
+    this.isNeedSync = true,
     this.isCalculated = true,
   }) {
     totalGPA = gpa * hours;
