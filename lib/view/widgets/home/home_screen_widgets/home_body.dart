@@ -13,6 +13,7 @@ class HomeBody extends StatelessWidget {
     return GetBuilder<HomeControllerImp>(
       builder: (controller) {
         return CustomBodyListView(
+          canSync: true,
           children: [
             ...List.generate(
               controller.yearsList.length,

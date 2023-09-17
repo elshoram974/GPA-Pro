@@ -14,6 +14,7 @@ class YearBody extends StatelessWidget {
     return GetBuilder<YearControllerImp>(
       builder: (controller) {
         return CustomBodyListView(
+          canSync: true,
           children: [
             AddressWidget(address: controller.thisYear.address),
             ...List.generate(

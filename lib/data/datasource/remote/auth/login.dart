@@ -10,7 +10,7 @@ import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/data/datasource/database/subjects/subject_table_db.dart';
 import 'package:gpa_pro/data/datasource/remote/auth/verify_code.dart';
-import 'package:gpa_pro/data/datasource/remote/subjects/get_subjects.dart';
+import 'package:gpa_pro/data/datasource/remote/subjects/synchronization.dart';
 import 'package:gpa_pro/data/model/user.dart';
 import 'package:gpa_pro/view/screens/auth/login_screen.dart';
 
@@ -23,10 +23,11 @@ abstract class LoginRemotely {
     );
 
     CustomDialog.loadDialog(canBack: false);
-    await SubjectTableDB.insertAll(
-      await GetAllSubjects.getOnlineSubjects(user.data.userId!),
-    );
-    await AppInjections.homeController.getSubjects();
+    await Synchronization().synchronizationSubjects();
+    // await SubjectTableDB.insertAll(
+    //   await GetAllSubjects.getOnlineSubjects(user.data.userId!),
+    // );
+    // await AppInjections.homeController.getSubjects();
 
     AppInjections.mainScreenImp.changeBody(1);
     AppSnackBar.messageSnack(AppConstLang.done.tr);

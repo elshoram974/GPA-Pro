@@ -182,6 +182,10 @@ class ArDictionary {
     AppConstLang.openSavedFiles: "فتح ملف محفوظ",
     AppConstLang.saveFile: "حفظ كملف",
     AppConstLang.savePDF: "حفظ ك PDF",
+    AppConstLang.sync: "مزامنة",
+    AppConstLang.needToSync: "بحاجة الى المزامنة",
+
+
     AppConstLang.savedInDownload: "تم الحفظ في مجلد التنزيل",
     AppConstLang.inThisYear: "في هذه السنه",
     AppConstLang.inPreviousYears: "في السنين السابقة",

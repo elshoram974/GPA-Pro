@@ -14,6 +14,7 @@ class SemesterBody extends StatelessWidget {
     return GetBuilder<SemesterControllerImp>(
       builder: (controller) {
         return CustomBodyListView(
+          canSync: true,
           children: [
             AddressWidget(address: controller.thisSemester.address),
             ...List.generate(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gpa_pro/core/constants/colors.dart';
+import 'package:gpa_pro/core/localization/lang_constant.dart';
 
 class ShowAsyncInCard extends StatelessWidget {
   const ShowAsyncInCard({super.key});
@@ -13,7 +14,7 @@ class ShowAsyncInCard extends StatelessWidget {
       children: [
         Divider(color: AppColor.tableColor(context).withOpacity(0.3)),
         Text(
-          "need to synchronize ! ...........",
+          AppConstLang.needToSync.tr,
           textAlign: TextAlign.center,
           style: context.textTheme.bodySmall?.copyWith(
             fontSize: 14,

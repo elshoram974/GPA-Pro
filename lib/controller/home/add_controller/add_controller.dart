@@ -240,12 +240,17 @@ class AddControllerImp extends AddController {
   Future<void> addSubject() async {
     if (year == null || semester == null) {
       CustomDialog.errorDialog(
-        "${AppConstLang.error.tr} :- ${AppConstLang.addYear.tr} , ${AppConstLang.semester.tr} )",
+        "${AppConstLang.error.tr} :-  ${AppConstLang.addYear.tr} , ${AppConstLang.semester.tr}",
       );
       return;
     }
-    Get.lazyPut<DialogControllerImp>(() => DialogControllerImp());
-    await Get.dialog(const AddedDialog(), barrierDismissible: false);
+    try {
+      Get.lazyPut<DialogControllerImp>(() => DialogControllerImp());
+      await Get.dialog(const AddedDialog(), barrierDismissible: false);
+    } catch (e) {
+      CustomDialog.errorDialog("${AppConstLang.error.tr} :- ($e)");
+      print("$e");
+    }
   }
 
   // -------------------- end added --------------------------------------------

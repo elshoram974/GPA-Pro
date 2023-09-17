@@ -5,7 +5,6 @@ import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-// import 'package:dartz/dartz.dart';
 
 class Crud {
   Future<({StatusRequest status, Map body})> postData(

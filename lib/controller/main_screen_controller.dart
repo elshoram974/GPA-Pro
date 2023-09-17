@@ -1,11 +1,13 @@
 import 'package:gpa_pro/core/class/argument_model.dart';
 import 'package:gpa_pro/core/class/popup_model.dart';
 import 'package:gpa_pro/core/constants/injections.dart';
+import 'package:gpa_pro/core/constants/shared_keys.dart';
 import 'package:gpa_pro/core/functions/after_open_app.dart';
 import 'package:gpa_pro/core/functions/my_bottom_sheets.dart';
 import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/core/class/body_model.dart';
+import 'package:gpa_pro/data/datasource/remote/subjects/synchronization.dart';
 import 'package:gpa_pro/data/model/subject_model.dart';
 import 'package:gpa_pro/view/screens/initialize/initialize_screen.dart';
 import 'package:gpa_pro/view/screens/settings/settings_screen.dart';
@@ -131,13 +133,16 @@ class MainScreenControllerImp extends MainScreenController {
     void Function()? f,
     List<SubjectModel> subjectsToSave,
     bool showPDF,
-  ) {
+  ) async {
     switch (value) {
       case PopupButton.convertSubjects:
         f!();
         break;
       case PopupButton.openSavedFile:
         AppBottomSheets.customSheet(const OpenSavedBottomModelSheet());
+        break;
+      case PopupButton.sync:
+        await Synchronization().synchronizationSubjects();
         break;
       case PopupButton.saveFile:
         AppBottomSheets.customSheet(
@@ -184,6 +189,16 @@ class MainScreenControllerImp extends MainScreenController {
           enabled: AppInjections.homeController.subjects.isNotEmpty,
           value: PopupButton.saveFile,
           text: AppConstLang.saveFile.tr,
+        ),
+        PopupModel(
+          inPages: [
+            PageType.homeScreen,
+            PageType.yearScreen,
+            PageType.semesterScreen
+          ],
+          enabled: AppInjections.myServices.sharedPreferences.containsKey(SharedKeys.userData),
+          value: PopupButton.sync,
+          text: AppConstLang.sync.tr,
         ),
       ];
 }

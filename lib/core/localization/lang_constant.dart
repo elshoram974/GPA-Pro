@@ -174,6 +174,8 @@ class AppConstLang {
   static const String openSavedFiles = "open_saved_files";
   static const String saveFile = "save_file";
   static const String savePDF = "save_as_pdf";
+  static const String sync = "sync";
+  static const String needToSync = "needToSync";
   static const String savedInDownload = "saved_in_Download";
   static const String inThisYear = "in_this_year";
   static const String inPreviousYears = "in_previous_years";

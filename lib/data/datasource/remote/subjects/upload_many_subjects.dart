@@ -88,6 +88,7 @@ class InsertSubjects {
       try {
         addedTemp.clear();
         addedTemp.addAll((await addRemote.addNewSubjects())!);
+        await SubjectTableDB.clearAll();
       } catch (e) {
         addedTemp.clear();
         addedTemp.addAll(temp);

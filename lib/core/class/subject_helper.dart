@@ -84,9 +84,7 @@ class SubjectHelper {
   List<SubjectModel> getSimilarSubjects(SubjectModel query) {
     final List<SubjectModel> searchedSubjects = [];
     for (SubjectModel subject in subjectsList) {
-      if (subject.isAllEqual(query)) {
-        searchedSubjects.add(subject);
-      }
+      if (subject.isAllEqual(query)) searchedSubjects.add(subject);
     }
     return searchedSubjects;
   }
@@ -110,6 +108,16 @@ class SubjectHelper {
 
     for (SubjectModel e in subjectsList) {
       temp.add(e..isNeedSync = makeAllNeedSync);
+    }
+
+    return temp;
+  }
+
+  List<SubjectModel> getAllSubjectsNeedSync() {
+    List<SubjectModel> temp = [];
+
+    for (SubjectModel e in subjectsList) {
+      if (e.isNeedSync == true) temp.add(e);
     }
 
     return temp;

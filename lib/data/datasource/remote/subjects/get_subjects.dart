@@ -1,10 +1,7 @@
 import 'package:get/get.dart';
 import 'package:gpa_pro/core/class/crud.dart';
 import 'package:gpa_pro/core/class/net_helper.dart';
-import 'package:gpa_pro/core/class/subject_helper.dart';
 import 'package:gpa_pro/core/constants/app_links.dart';
-import 'package:gpa_pro/core/constants/injections.dart';
-import 'package:gpa_pro/core/constants/shared_keys.dart';
 import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/data/model/shared/get_shared_subjects_model.dart';
@@ -35,10 +32,6 @@ class GetAllSubjects {
     } else if (subjects.status == StatusRequest.offlineFailure) {
       Get.back();
 
-      // NetHelper.checkInternetStream((ConnectivityResult result) async {
-      //   if (result != ConnectivityResult.none) await getInfo();
-      // });
-      // print(getAppInfo.status);
     } else {
       Get.back();
 
@@ -47,30 +40,7 @@ class GetAllSubjects {
     return null;
   }
 
-  static Future<List<SubjectModel>> getOnlineSubjects(int userId) async {
-    List<SubjectModel> allSubjects = [];
-    List<SubjectModel> differenceSubjects = [];
-    allSubjects.addAll(await _viewSubjects(userId) ?? []);
-    SubjectHelper helper =
-        SubjectHelper(await AppInjections.homeController.getSubjects());
-
-    differenceSubjects.addAll(
-      helper.otherSubjectsThatNotHere(allSubjects),
-    );
-    bool isSubjectsChanged = AppInjections.myServices.sharedPreferences
-            .getBool(SharedKeys.isAllSubjectsChanged) ??
-        false;
-    if (isSubjectsChanged) {
-      print("isSubjectsChanged : $isSubjectsChanged");
-      // async function
-      // upload differenceSubjects
-      //
-      AppInjections.myServices.sharedPreferences
-          .remove(SharedKeys.isAllSubjectsChanged);
-      return [];
-    } else {
-      return SubjectHelper(differenceSubjects)
-          .makeAllSubjectsNeedSyncOrNot(false);
-    }
+  static Future<List<SubjectModel>> getSubjectsFromDatabase(int userId) async {
+    return await _viewSubjects(userId) ?? [];
   }
 }

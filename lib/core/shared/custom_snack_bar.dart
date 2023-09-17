@@ -10,7 +10,7 @@ SnackbarController customSnackBar({
   double? horizontalMargin,
   SnackStyle snackStyle = SnackStyle.FLOATING,
 }) {
-  Get.closeAllSnackbars();
+  if (Get.isSnackbarOpen) Get.closeAllSnackbars();
 
   return Get.showSnackbar(
     GetSnackBar(

@@ -181,6 +181,9 @@ class EnDictionary {
     AppConstLang.openSavedFiles: "Open saved file",
     AppConstLang.saveFile: "Save as file",
     AppConstLang.savePDF: "Save as PDF",
+    AppConstLang.sync: "Sync",
+    AppConstLang.needToSync: "Need to Sync !...",
+
     AppConstLang.savedInDownload: "Saved in download folder",
     AppConstLang.inThisYear: "In this year",
     AppConstLang.inPreviousYears: "In previous years",
