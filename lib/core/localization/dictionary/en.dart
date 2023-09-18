@@ -195,6 +195,10 @@ class EnDictionary {
     AppConstLang.savedSubjects: "Saved subjects",
 
     AppConstLang.userDoesNotHaveSubjects: "User does't have subjects",
+    
+    AppConstLang.thereIsNoChangeToUpdate: "There is no changes to update",
+    AppConstLang.subjectsNotExistWithUser: "Subjects not exist with this user",
+    AppConstLang.subjectsAreNotDeletedMayDeleted: "Subjects are not deleted, may it is already deleted",
     // add screen
     AppConstLang.semester: "Semester",
     AppConstLang.subject: "Subject",

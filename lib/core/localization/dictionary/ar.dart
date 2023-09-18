@@ -199,6 +199,11 @@ class ArDictionary {
 
     AppConstLang.userDoesNotHaveSubjects: "لا يوجد مواد لهذا المستخدم",
 
+    AppConstLang.thereIsNoChangeToUpdate: "لا يوجد تغييرات لتحديثها",
+    AppConstLang.subjectsNotExistWithUser: "هذه المواد غير موجودة عند هذا المستخدم",
+    AppConstLang.subjectsAreNotDeletedMayDeleted: "لم يتم حذف المواد، ربما كانت محذوفة من قبل",
+
+
     // add screen
     AppConstLang.semester: "فصل",
     AppConstLang.subject: "مادة",

@@ -187,6 +187,11 @@ class AppConstLang {
   static const String savedSubjects = "saved_subjects";
 
   static const String userDoesNotHaveSubjects = "userDoesNotHaveSubjects";
+  
+  static const String thereIsNoChangeToUpdate = "thereIsNoChangeToUpdate";
+  static const String subjectsNotExistWithUser = "subjectsNotExistWithUser";
+  static const String subjectsAreNotDeletedMayDeleted = "subjectsAreNotDeletedMayDeleted";
+
 
   // add screen
   static const String semester = "semester";

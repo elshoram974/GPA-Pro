@@ -16,21 +16,35 @@ class CustomBodyListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Visibility(
-      visible: canSync && AppInjections.myServices.sharedPreferences.containsKey(SharedKeys.userData),
-      replacement: myListView(),
+      visible: canSync &&
+          AppInjections.myServices.sharedPreferences
+              .containsKey(SharedKeys.userData),
+      replacement: myListView(context),
       child: RefreshIndicator(
         onRefresh: Synchronization().synchronizationSubjects,
-        child: myListView(),
+        child: myListView(context),
       ),
     );
   }
 
-  ListView myListView() {
+  ListView myListView(BuildContext context) {
     return ListView(
       physics: const BouncingScrollPhysics(),
-      padding: const EdgeInsets.symmetric(horizontal: AppConstant.kDefaultPadding),
+      padding:
+          const EdgeInsets.symmetric(horizontal: AppConstant.kDefaultPadding),
       shrinkWrap: true,
-      children: children,
+      children: [
+        ConstrainedBox(
+          constraints: BoxConstraints(
+            minHeight: MediaQuery.sizeOf(context).height -
+                AppBar().preferredSize.height -
+                AppConstant.gpaBarHight,
+          ),
+          child: Column(
+            children: children,
+          ),
+        ),
+      ],
     );
   }
 }

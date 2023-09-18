@@ -13,6 +13,7 @@ import 'package:gpa_pro/data/datasource/remote/auth/verify_code.dart';
 import 'package:gpa_pro/data/datasource/remote/subjects/synchronization.dart';
 import 'package:gpa_pro/data/model/user.dart';
 import 'package:gpa_pro/view/screens/auth/login_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class LoginRemotely {
   // static late  UserData userData;
@@ -36,8 +37,13 @@ abstract class LoginRemotely {
   }
 
   static void logOut() async {
-    AppInjections.myServices.sharedPreferences.remove(SharedKeys.userData);
+    final SharedPreferences pref = AppInjections.myServices.sharedPreferences;
+    await pref.remove(SharedKeys.userData);
     await SubjectTableDB.clearAll();
+    await pref.remove(SharedKeys.saveChangesSubjects);
+    await pref.remove(SharedKeys.saveChangesSubjectsId);
+    await pref.remove(SharedKeys.saveDeletedSubjects);
+
 
     AppInjections.mainScreenImp.changeBody(1);
     AppSnackBar.messageSnack(AppConstLang.done.tr);

@@ -1,14 +1,16 @@
 import 'package:get/get.dart';
 import 'package:gpa_pro/controller/home/home_controller.dart';
 import 'package:gpa_pro/core/class/net_helper.dart';
-import 'package:gpa_pro/core/class/subject_helper.dart';
+import 'package:gpa_pro/core/class/subjects/insert_subjects.dart';
+import 'package:gpa_pro/core/class/subjects/remove_many_subjects.dart';
+import 'package:gpa_pro/core/class/subjects/subject_helper.dart';
+import 'package:gpa_pro/core/class/subjects/update_many_subjects.dart';
 import 'package:gpa_pro/core/constants/injections.dart';
 import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/data/datasource/database/subjects/subject_table_db.dart';
 import 'package:gpa_pro/data/datasource/remote/auth/login.dart';
 import 'package:gpa_pro/data/datasource/remote/subjects/get_subjects.dart';
-import 'package:gpa_pro/data/datasource/remote/subjects/upload_many_subjects.dart';
 import 'package:gpa_pro/data/model/subject_model.dart';
 import 'package:gpa_pro/data/model/user.dart';
 
@@ -19,15 +21,19 @@ class Synchronization {
 
   Future<void> synchronizationSubjects() async {
     if (_user == null) return;
+    if (Get.isSnackbarOpen) Get.closeAllSnackbars();
 
     if (await NetHelper.checkInternet()) {
-      await _getSubjectsThatNotInLocal();
       await _uploadSubjectsThatNotInDatabase();
+      await UpdateManySubjects().syncChanges();
+      await RemoveManySubjects().syncDeleted();
+      await _getSubjectsThatNotInLocal();
     } else {
       AppSnackBar.messageSnack(AppConstLang.noInternet.tr);
     }
 
     await _homeController.getSubjects();
+    Get.back();
   }
 
   Future<void> _getSubjectsThatNotInLocal() async {
@@ -40,7 +46,7 @@ class Synchronization {
     SubjectHelper helper = SubjectHelper(await _homeController.getSubjects());
 
     differenceSubjects.addAll(
-      helper.otherSubjectsThatNotHere(databaseSubjects),
+      helper.getSubjectsFromDataBaseThatNotHere(databaseSubjects),
     );
 
     await SubjectTableDB.insertAll(
@@ -58,7 +64,7 @@ class Synchronization {
     if (subjectsNeedsSync.isNotEmpty) {
       SubjectTableDB.removeAll(subjectsNeedsSync);
 
-      await InsertSubjects().insert(subjectsNeedsSync);
+      await InsertSubjectsToDatabase().insert(subjectsNeedsSync);
       Get.back();
       AppInjections.mainScreenImp.changeBody(1);
     }

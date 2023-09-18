@@ -2,6 +2,8 @@ import 'package:gpa_pro/controller/home/add_controller/add_controller.dart';
 import 'package:gpa_pro/controller/home/year_controller.dart';
 import 'package:gpa_pro/controller/select_item.dart/years_items.dart';
 import 'package:gpa_pro/core/class/argument_model.dart';
+import 'package:gpa_pro/core/class/subjects/remove_many_subjects.dart';
+import 'package:gpa_pro/core/class/subjects/update_many_subjects.dart';
 import 'package:gpa_pro/core/constants/injections.dart';
 import 'package:gpa_pro/core/constants/routes.dart';
 import 'package:gpa_pro/core/constants/shared_keys.dart';
@@ -15,7 +17,6 @@ import 'package:gpa_pro/data/model/parent_model.dart';
 import 'package:gpa_pro/data/model/semester_model.dart';
 import 'package:gpa_pro/data/model/subject_model.dart';
 import 'package:gpa_pro/data/model/year_model.dart';
-// import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -126,15 +127,22 @@ class HomeControllerImp extends HomeController {
 
   // ------------------convert calc of selected list --------------------
   void _makeAllCalc(bool makeAllCalc) async {
+    List<SubjectModel> temp = [];
     for (YearModel e in selectedList) {
       for (SemesterModel s in e.semesters) {
         for (SubjectModel subject in s.subjects) {
+          temp.add(subject..isCalculated = makeAllCalc);
           await SubjectTableDB.update(subject..isCalculated = makeAllCalc);
         }
       }
     }
     selectAllOrDeselect(false);
+
+    CustomDialog.loadDialog(canBack: false);
+    await UpdateManySubjects().update(temp, makeAllCalc);
+
     await getSubjects();
+    Get.back();
   }
 
   @override
@@ -167,11 +175,14 @@ class HomeControllerImp extends HomeController {
         selectAllOrDeselect(false);
         await getSubjects();
 
-        AppSnackBar.snackWhenDelete(_deletedSubjects.length, () async {
-          await SubjectTableDB.insertAll(_deletedSubjects);
-          _deletedSubjects.clear();
-          await getSubjects();
-        });
+        // AppSnackBar.snackWhenDelete(_deletedSubjects.length, () async {
+        //   await SubjectTableDB.insertAll(_deletedSubjects);
+        //   _deletedSubjects.clear();
+        //   await getSubjects();
+        // });
+        await RemoveManySubjects().remove(_deletedSubjects);
+
+        AppSnackBar.snackWhenDelete(_deletedSubjects.length, null);
 
         update();
       },

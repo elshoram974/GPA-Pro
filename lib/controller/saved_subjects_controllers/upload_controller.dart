@@ -1,11 +1,11 @@
 import 'package:gpa_pro/controller/select_item.dart/subjects_items.dart';
 import 'package:gpa_pro/core/class/argument_model.dart';
+import 'package:gpa_pro/core/class/subjects/insert_subjects.dart';
 import 'package:gpa_pro/core/constants/injections.dart';
 import 'package:gpa_pro/core/functions/custom_dialogs.dart';
 import 'package:gpa_pro/core/functions/rate_app.dart';
 import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
-import 'package:gpa_pro/data/datasource/remote/subjects/upload_many_subjects.dart';
 import 'package:gpa_pro/data/model/subject_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -65,6 +65,7 @@ class UploadSavedTxtFileImp extends UploadSavedTxtFile {
         temp.add(
           SubjectModel(
             id: e.id,
+            remoteId: null,
             nameEn: e.nameEn,
             nameAr: e.nameAr,
             degree: (double.parse(degreeController.text) * e.maxDegree) / 100,
@@ -130,8 +131,7 @@ class UploadSavedTxtFileImp extends UploadSavedTxtFile {
   // ---------------------- save ------------------------------------------------
   void _save() async {
     if (subjectsList.isNotEmpty) {
-
-      await InsertSubjects().insert(subjectsList);
+      await InsertSubjectsToDatabase().insert(subjectsList);
 
       await AppInjections.homeController.getSubjects();
 

@@ -3,6 +3,8 @@ import 'package:gpa_pro/controller/home/home_controller.dart';
 import 'package:gpa_pro/controller/home/semester_controller.dart';
 import 'package:gpa_pro/controller/select_item.dart/semesters_items.dart';
 import 'package:gpa_pro/core/class/argument_model.dart';
+import 'package:gpa_pro/core/class/subjects/remove_many_subjects.dart';
+import 'package:gpa_pro/core/class/subjects/update_many_subjects.dart';
 import 'package:gpa_pro/core/constants/injections.dart';
 import 'package:gpa_pro/core/constants/routes.dart';
 import 'package:gpa_pro/core/functions/custom_dialogs.dart';
@@ -128,12 +130,20 @@ class YearControllerImp extends YearController {
   //----------------------------------------------------------------------------
   // ------------------convert calc of selected list --------------------
   void _makeAllCalc(bool makeAllCalc) async {
+    List<SubjectModel> temp = [];
+
     for (SemesterModel s in selectedList) {
       for (SubjectModel subject in s.subjects) {
+        temp.add(subject..isCalculated = makeAllCalc);
+
         await SubjectTableDB.update(subject..isCalculated = makeAllCalc);
       }
     }
     selectAllOrDeselect(false);
+
+    CustomDialog.loadDialog(canBack: false);
+    await UpdateManySubjects().update(temp, makeAllCalc);
+
     await updateSemester();
   }
 
@@ -167,12 +177,16 @@ class YearControllerImp extends YearController {
         selectAllOrDeselect(false);
         await updateSemester();
 
-        AppSnackBar.snackWhenDelete(_deletedSubjects.length, () async {
-          await SubjectTableDB.insertAll(_deletedSubjects);
-          _deletedSubjects.clear();
+        // AppSnackBar.snackWhenDelete(_deletedSubjects.length, () async {
+        //   await SubjectTableDB.insertAll(_deletedSubjects);
+        //   _deletedSubjects.clear();
 
-          await updateSemester();
-        });
+        //   await updateSemester();
+        // });
+
+        await RemoveManySubjects().remove(_deletedSubjects);
+
+        AppSnackBar.snackWhenDelete(_deletedSubjects.length, null);
 
         update();
       },

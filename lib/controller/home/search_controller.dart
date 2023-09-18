@@ -1,6 +1,6 @@
 import 'package:gpa_pro/controller/home/subject_controller.dart';
 import 'package:gpa_pro/core/class/argument_model.dart';
-import 'package:gpa_pro/core/class/subject_helper.dart';
+import 'package:gpa_pro/core/class/subjects/subject_helper.dart';
 import 'package:gpa_pro/core/constants/injections.dart';
 import 'package:gpa_pro/core/constants/routes.dart';
 import 'package:gpa_pro/data/model/parent_model.dart';

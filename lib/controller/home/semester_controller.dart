@@ -4,6 +4,8 @@ import 'package:gpa_pro/controller/home/subject_controller.dart';
 import 'package:gpa_pro/controller/home/year_controller.dart';
 import 'package:gpa_pro/controller/select_item.dart/subjects_items.dart';
 import 'package:gpa_pro/core/class/argument_model.dart';
+import 'package:gpa_pro/core/class/subjects/remove_many_subjects.dart';
+import 'package:gpa_pro/core/class/subjects/update_many_subjects.dart';
 import 'package:gpa_pro/core/constants/injections.dart';
 import 'package:gpa_pro/core/constants/routes.dart';
 import 'package:gpa_pro/core/functions/custom_dialogs.dart';
@@ -83,9 +85,15 @@ class SemesterControllerImp extends SemesterController {
 
   // ------------------convert calc of selected list --------------------
   void _makeAllCalc(bool makeAllCalc) async {
+    List<SubjectModel> temp = [];
+
     for (SubjectModel e in selectedList) {
+      temp.add(e..isCalculated = makeAllCalc);
       await SubjectTableDB.update(e..isCalculated = makeAllCalc);
     }
+    CustomDialog.loadDialog(canBack: false);
+    await UpdateManySubjects().update(temp, makeAllCalc);
+    Get.back();
     updateSubjects();
     selectAllOrDeselect(false);
   }
@@ -119,12 +127,15 @@ class SemesterControllerImp extends SemesterController {
         selectAllOrDeselect(false);
         await updateSubjects();
 
-        AppSnackBar.snackWhenDelete(deletedSubjects.length, () async {
-          await SubjectTableDB.insertAll(deletedSubjects);
-          deletedSubjects.clear();
+        // AppSnackBar.snackWhenDelete(deletedSubjects.length, () async {
+        //   await SubjectTableDB.insertAll(deletedSubjects);
+        //   deletedSubjects.clear();
 
-          await updateSubjects();
-        });
+        //   await updateSubjects();
+        // });
+        await RemoveManySubjects().remove(deletedSubjects);
+
+        AppSnackBar.snackWhenDelete(deletedSubjects.length, null);
 
         update();
       },

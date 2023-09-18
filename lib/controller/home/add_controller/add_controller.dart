@@ -3,7 +3,9 @@ import 'package:gpa_pro/controller/home/semester_controller.dart';
 import 'package:gpa_pro/controller/home/year_controller.dart';
 import 'package:gpa_pro/controller/select_item.dart/subjects_items.dart';
 import 'package:gpa_pro/core/class/argument_model.dart';
-import 'package:gpa_pro/core/class/subject_helper.dart';
+import 'package:gpa_pro/core/class/subjects/insert_subjects.dart';
+import 'package:gpa_pro/core/class/subjects/remove_many_subjects.dart';
+import 'package:gpa_pro/core/class/subjects/subject_helper.dart';
 import 'package:gpa_pro/core/constants/injections.dart';
 import 'package:gpa_pro/core/functions/custom_dialogs.dart';
 import 'package:gpa_pro/core/functions/rate_app.dart';
@@ -11,7 +13,6 @@ import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/core/shared/item_card/animated_item_card.dart';
 import 'package:gpa_pro/data/datasource/database/subjects/subject_table_db.dart';
-import 'package:gpa_pro/data/datasource/remote/subjects/upload_many_subjects.dart';
 import 'package:gpa_pro/data/model/parent_model.dart';
 import 'package:gpa_pro/data/model/semester_model.dart';
 import 'package:gpa_pro/data/model/subject_model.dart';
@@ -249,7 +250,7 @@ class AddControllerImp extends AddController {
       await Get.dialog(const AddedDialog(), barrierDismissible: false);
     } catch (e) {
       CustomDialog.errorDialog("${AppConstLang.error.tr} :- ($e)");
-      print("$e");
+      AppSnackBar.messageSnack("error: $e");
     }
   }
 
@@ -258,16 +259,21 @@ class AddControllerImp extends AddController {
   // ---------------------- save ------------------------------------------------
   void _save() async {
     if (subjectsList.isNotEmpty) {
-      await InsertSubjects().insert(subjectsList);
       if (argument.thisModel == null) {
+        await InsertSubjectsToDatabase().insert(subjectsList);
+
         await AppInjections.homeController.getSubjects();
       } else if (argument.thisModel is YearModel) {
+        await InsertSubjectsToDatabase().insert(subjectsList);
+
         await Get.find<YearControllerImp>().updateSemester();
       } else {
         SemesterModel model = argument.thisModel as SemesterModel;
 
+        await RemoveManySubjects().remove(model.subjects);
         await SubjectTableDB.removeAll(model.subjects);
-        print("we need remove here");
+
+        await InsertSubjectsToDatabase().insert(subjectsList);
 
         await Get.find<SemesterControllerImp>().updateSubjects();
       }

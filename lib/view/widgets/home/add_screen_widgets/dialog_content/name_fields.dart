@@ -1,5 +1,5 @@
 import 'package:gpa_pro/controller/home/add_controller/dialog_controller.dart';
-import 'package:gpa_pro/core/class/subject_helper.dart';
+import 'package:gpa_pro/core/class/subjects/subject_helper.dart';
 import 'package:gpa_pro/core/constants/injections.dart';
 import 'package:gpa_pro/core/functions/validator.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';

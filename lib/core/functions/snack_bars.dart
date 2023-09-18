@@ -29,7 +29,7 @@ class AppSnackBar {
         duration: const Duration(seconds: 5),
         margin: const EdgeInsets.symmetric(vertical: 50),
         mainButton: onPressed == null
-            ? null
+            ? const SizedBox(height: 2.5 * AppConstant.kDefaultPadding)
             : TextButton(
                 onPressed: () async {
                   await onPressed();
@@ -38,7 +38,8 @@ class AppSnackBar {
                 child: Text(AppConstLang.undo.tr),
               ),
         borderRadius: 30,
-        padding: const EdgeInsets.symmetric(horizontal: AppConstant.kDefaultPadding),
+        padding:
+            const EdgeInsets.symmetric(horizontal: AppConstant.kDefaultPadding),
         maxWidth: Get.width * 7 / 9,
       ),
     );

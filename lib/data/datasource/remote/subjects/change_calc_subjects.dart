@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:get/get.dart';
 import 'package:gpa_pro/core/class/crud.dart';
 import 'package:gpa_pro/core/class/net_helper.dart';
@@ -10,34 +9,40 @@ import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/data/model/shared/get_shared_subjects_model.dart';
 import 'package:gpa_pro/data/model/subject_model.dart';
 
-class AddManySubjects {
-  const AddManySubjects(this.userId, this.addedSubjects);
+class ChangeCalcSubjects {
+  const ChangeCalcSubjects(
+    this.userId,
+    this.makeCalculated,
+    this.editedSubjects,
+  );
 
   final int userId;
-  final List<SubjectModel> addedSubjects;
-  Future<List<SubjectModel>?> addNewSubjects() async {
+  final bool makeCalculated;
+  final List<SubjectModel> editedSubjects;
+  Future<List<SubjectModel>?> changeCalculated() async {
     Crud crud = Crud();
     ({Map body, StatusRequest status}) subjects = await crud.postData(
-      AppLinks.addManySubjects,
+      AppLinks.changCalcSubjects,
       {
-        'subject_user': "$userId",
-        'subjects_SQLCode': _getSubjectsSQLCode(),
+        'user_id': '$userId',
+        'where_code': _whereCode(),
+        'make_them_calculated': makeCalculated ? '1' : '0',
       },
       wantBack: true,
     );
 
     if (subjects.status == StatusRequest.success) {
-      SharedSubject addedSubjects =
+      SharedSubject allSubjects =
           SharedSubject.fromJson(subjects.body as Map<String, dynamic>);
-      SharedSubjectsData subjectsData = addedSubjects.data;
+      SharedSubjectsData subjectsData = allSubjects.data;
 
-      if (addedSubjects.status == 'success') {
+      if (allSubjects.status == 'success') {
         return SubjectHelper(subjectsData.subjects)
             .makeAllSubjectsNeedSyncOrNot(false);
-      } else if (subjectsData.message ==
-          "unknown error, subjects are not added") {
-        AppSnackBar.messageSnack(
-            AppConstLang.unknownErrorSubjectsAreNotAdded.tr);
+      } else if (subjectsData.message == "subjects not exist with this user") {
+        AppSnackBar.messageSnack(AppConstLang.subjectsNotExistWithUser.tr);
+      } else if (subjectsData.message == "there is no change to update") {
+        AppSnackBar.messageSnack(AppConstLang.thereIsNoChangeToUpdate.tr);
       } else if (subjectsData.message == "email not exist") {
         AppSnackBar.messageSnack(AppConstLang.emailDoesNotExist.tr);
       } else {
@@ -52,15 +57,15 @@ class AddManySubjects {
     return null;
   }
 
-  String _getSubjectsSQLCode() {
+  String _whereCode() {
     String code = '';
-    for (SubjectModel e in addedSubjects) {
-      String subject =
-          "($userId,'${e.nameEn}','${e.nameAr}',${e.myMidDegree},${e.myYearWorkDegree},${e.myPracticalDegree},${e.myFinalDegree},${e.maxMidDegree}, ${e.maxYearWorkDegree},${e.maxPracticalDegree},${e.maxFinalDegree}, ${e.degree},${e.maxDegree},${e.savedGPA},${e.hours},${e.isCalculated},'${e.semester}','${e.year}')";
+    for (SubjectModel e in editedSubjects) {
+      String remoteId = "${e.remoteId ?? ''}";
 
-      code += ", $subject";
+      code += "OR `remote_id`= $remoteId ";
     }
     code = code.substring(2);
+
     return jsonEncode(code);
   }
 }
