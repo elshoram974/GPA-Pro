@@ -7,6 +7,7 @@ class AppConstLang {
   static const String update = "update";
   static const String notNow = "notNow";
   static const String noInternet = "noInternet";
+  static const String openInternetWhenAccountOpenedToAvoidErrorsOnServer = "openInternetWhenAccountOpenedToAvoidErrorsOnServer";
 
   static const String settings = "settings";
   static const String home = "home";
@@ -191,6 +192,8 @@ class AppConstLang {
   static const String thereIsNoChangeToUpdate = "thereIsNoChangeToUpdate";
   static const String subjectsNotExistWithUser = "subjectsNotExistWithUser";
   static const String subjectsAreNotDeletedMayDeleted = "subjectsAreNotDeletedMayDeleted";
+  
+  static const String haveToOpenInternetWhenUpdateSubject = "haveToOpenInternetWhenUpdateSubject....";
 
 
   // add screen

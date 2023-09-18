@@ -12,6 +12,7 @@ class EnDictionary {
     AppConstLang.update: "Update",
     AppConstLang.notNow: "Not now",
     AppConstLang.noInternet: "There is no internet connection",
+    AppConstLang.openInternetWhenAccountOpenedToAvoidErrorsOnServer: "It is preferable to connect to the Internet when the account is opened to avoid storage errors on the server",
     //
     AppConstLang.settings: "Settings",
     AppConstLang.home: "Home",
@@ -199,6 +200,8 @@ class EnDictionary {
     AppConstLang.thereIsNoChangeToUpdate: "There is no changes to update",
     AppConstLang.subjectsNotExistWithUser: "Subjects not exist with this user",
     AppConstLang.subjectsAreNotDeletedMayDeleted: "Subjects are not deleted, may it is already deleted",
+    
+    AppConstLang.haveToOpenInternetWhenUpdateSubject: "You have to turn internet on when update subjects, Or you can update it by using semester screen not here (screen that contain all subjects in this semester)",
     // add screen
     AppConstLang.semester: "Semester",
     AppConstLang.subject: "Subject",

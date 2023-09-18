@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
 import 'package:gpa_pro/core/functions/custom_dialogs.dart';
 import 'package:gpa_pro/core/functions/snack_bars.dart';
@@ -32,6 +34,8 @@ class InsertSubjectsToDatabase {
       } catch (e) {
         addedTemp.clear();
         addedTemp.addAll(temp);
+        print(e);
+        log(e.toString());
         AppSnackBar.messageSnack(AppConstLang.savedToDeviceOnly.tr);
       }
     }

@@ -39,13 +39,13 @@ class SQFLiteHelper {
   }
 
   static Future<int> updateData(
-      int id, String table, Map<String, dynamic> map) async {
+      int id, int? remoteId, String table, Map<String, dynamic> map) async {
     Database db = await _db;
     int count = await db.update(
       table,
       map,
-      where: "id = ?",
-      whereArgs: [id],
+      where: remoteId == null ? "id = ?" : "remote_id = ?",
+      whereArgs: remoteId == null ? [id] : [remoteId],
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
     return count;

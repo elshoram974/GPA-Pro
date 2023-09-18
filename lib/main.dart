@@ -14,9 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main() async {
-  // WidgetsBinding widgetsBinding =
   WidgetsFlutterBinding.ensureInitialized();
-  // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await initialServices();
 
   if (kDebugMode) HttpOverrides.global = MyHttpOverrides();

@@ -20,7 +20,8 @@ class UpdateManySubjects {
     List<SubjectModel> subjectsList,
     bool makeCalc,
   ) async {
-    Get.back();
+    if (subjectsList.isEmpty) return false;
+    if (Get.isSnackbarOpen) Get.closeAllSnackbars();
     CustomDialog.loadDialog(canBack: false);
 
     UserData? userData = LoginRemotely.savedLogin();

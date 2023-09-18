@@ -126,6 +126,16 @@ class SubjectHelper {
     return temp;
   }
 
+  List<SubjectModel> makeSubjectsThatNullRemoteToNeedSync() {
+    List<SubjectModel> temp = [];
+
+    for (SubjectModel e in subjectsList) {
+      if (e.remoteId == null) temp.add(e..isNeedSync = true);
+    }
+
+    return temp;
+  }
+
   // bool containAnyTrueSync() {
   //   for (SubjectModel e in subjectsList) {
   //     if (e.isItSync) return true;

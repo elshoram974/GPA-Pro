@@ -54,7 +54,10 @@ class UploadSavedTxtFileImp extends UploadSavedTxtFile {
   void getArguments(UploadArguments argument) {
     this.argument = argument;
     subjectsList.clear();
-    subjectsList.addAll(argument.newSubjects);
+    for (SubjectModel e in argument.newSubjects) {
+      subjectsList.add(e..isNeedSync = true);
+    }
+    // subjectsList.addAll(argument.newSubjects);
   }
 
   // ------------------change degree for all subjects --------------------

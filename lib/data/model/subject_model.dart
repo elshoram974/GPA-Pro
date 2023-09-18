@@ -6,7 +6,7 @@ import 'package:gpa_pro/data/model/shared/get_shared_subjects_model.dart';
 import 'package:get/get.dart';
 
 class SubjectModel extends ParentModel {
-  final int? remoteId;
+  int? remoteId;
   final String semester;
   final String year;
   final String? nameAr;
@@ -86,32 +86,37 @@ class SubjectModel extends ParentModel {
 
   bool isEqualByNameAddress(SubjectModel otherSubject) {
     // return id == otherSubject.id;
-    return remoteId == otherSubject.remoteId ||
+    return (remoteId != null &&
+            otherSubject.remoteId != null &&
+            remoteId == otherSubject.remoteId) ||
         ((nameAr == otherSubject.nameAr || nameEn == otherSubject.nameEn) &&
             (address == otherSubject.address) &&
             (hours == otherSubject.hours));
   }
 
   bool isAllEqual(SubjectModel otherSubject) {
-    return nameAr == otherSubject.nameAr &&
-        nameEn == otherSubject.nameEn &&
-        semester == otherSubject.semester &&
-        year == otherSubject.year &&
-        degree == otherSubject.degree &&
-        gpa == otherSubject.gpa &&
-        hours == otherSubject.hours &&
-        isCalculated == otherSubject.isCalculated &&
-        maxDegree == otherSubject.maxDegree &&
-        maxFinalDegree == otherSubject.maxFinalDegree &&
-        maxMidDegree == otherSubject.maxMidDegree &&
-        maxPracticalDegree == otherSubject.maxPracticalDegree &&
-        maxYearWorkDegree == otherSubject.maxYearWorkDegree &&
-        myFinalDegree == otherSubject.myFinalDegree &&
-        myMidDegree == otherSubject.myMidDegree &&
-        myPracticalDegree == otherSubject.myPracticalDegree &&
-        myYearWorkDegree == otherSubject.myYearWorkDegree &&
-        note == otherSubject.note &&
-        address == otherSubject.address;
+    return (remoteId != null &&
+            otherSubject.remoteId != null &&
+            remoteId == otherSubject.remoteId) ||
+        (nameAr == otherSubject.nameAr &&
+            nameEn == otherSubject.nameEn &&
+            semester == otherSubject.semester &&
+            year == otherSubject.year &&
+            degree == otherSubject.degree &&
+            gpa == otherSubject.gpa &&
+            hours == otherSubject.hours &&
+            isCalculated == otherSubject.isCalculated &&
+            maxDegree == otherSubject.maxDegree &&
+            maxFinalDegree == otherSubject.maxFinalDegree &&
+            maxMidDegree == otherSubject.maxMidDegree &&
+            maxPracticalDegree == otherSubject.maxPracticalDegree &&
+            maxYearWorkDegree == otherSubject.maxYearWorkDegree &&
+            myFinalDegree == otherSubject.myFinalDegree &&
+            myMidDegree == otherSubject.myMidDegree &&
+            myPracticalDegree == otherSubject.myPracticalDegree &&
+            myYearWorkDegree == otherSubject.myYearWorkDegree &&
+            note == otherSubject.note &&
+            address == otherSubject.address);
   }
 
   factory SubjectModel.fromApi(SharedSubjectElement api) => SubjectModel(

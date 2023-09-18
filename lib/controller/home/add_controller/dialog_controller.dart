@@ -136,7 +136,6 @@ class DialogControllerImp extends DialogController {
             await SubjectTableDB.update(temp
               ..isCalculated = false
               ..isNeedSync = true);
-            print("can edit this to update on database");
           }
           await AppInjections.homeController.getSubjects();
         },

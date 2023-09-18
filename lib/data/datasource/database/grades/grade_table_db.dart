@@ -111,7 +111,8 @@ class GradeTableDB {
       bool isSaved = await pref.setString(_grades, jsonEncode(savedGrades));
       count = isSaved ? 1 : 0;
     } else {
-      count = await SQFLiteHelper.updateData(grade.id, _grades, grade.toJson());
+      count = await SQFLiteHelper.updateData(
+          grade.id, null, _grades, grade.toJson());
     }
 
     return count;

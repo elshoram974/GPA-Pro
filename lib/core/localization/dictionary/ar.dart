@@ -12,6 +12,8 @@ class ArDictionary {
     AppConstLang.update: "تحديث",
     AppConstLang.notNow: "ليس الان",
     AppConstLang.noInternet: "لا يوجد اتصال بالإنترنت",
+    AppConstLang.openInternetWhenAccountOpenedToAvoidErrorsOnServer: "يفضل الإتصال بالانترنت عند فتح الحساب لتجنب حدوث أخطاء في تخزين البيانات على الخادم",
+
 
     //
     AppConstLang.settings: "الإعدادات",
@@ -202,6 +204,8 @@ class ArDictionary {
     AppConstLang.thereIsNoChangeToUpdate: "لا يوجد تغييرات لتحديثها",
     AppConstLang.subjectsNotExistWithUser: "هذه المواد غير موجودة عند هذا المستخدم",
     AppConstLang.subjectsAreNotDeletedMayDeleted: "لم يتم حذف المواد، ربما كانت محذوفة من قبل",
+
+    AppConstLang.haveToOpenInternetWhenUpdateSubject: "يجب عليك تشغيل الانترنت عند تحديث المواد، أو يمكنك تحديثهم في شاشة الفصل الدراسي ليست هنا (الشاشة التي تحتوي على جميع المواد في هذا الفصل الدراسي)",
 
 
     // add screen

@@ -58,6 +58,7 @@ class Synchronization {
     SubjectHelper s = SubjectHelper(await _homeController.getSubjects());
 
     // isNeedSyncList(subjectsListPerTerm);
+    s.makeSubjectsThatNullRemoteToNeedSync();
     List<SubjectModel> subjectsNeedsSync = [];
 
     subjectsNeedsSync.addAll(s.getAllSubjectsNeedSync());

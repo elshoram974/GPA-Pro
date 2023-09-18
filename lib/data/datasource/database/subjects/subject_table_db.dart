@@ -79,7 +79,7 @@ class SubjectTableDB {
       count = isSaved ? 1 : 0;
     } else {
       count = await SQFLiteHelper.updateData(
-          subject.id, _subject, subject.toJson()); //toMapWithoutId
+          subject.id,subject.remoteId , _subject, subject.toJson()); //toMapWithoutId
     }
 
     return count;

@@ -5,6 +5,9 @@ import 'package:gpa_pro/core/class/net_helper.dart';
 import 'package:gpa_pro/core/constants/app_info.dart';
 import 'package:gpa_pro/core/constants/app_links.dart';
 import 'package:gpa_pro/core/constants/colors.dart';
+import 'package:gpa_pro/core/constants/injections.dart';
+import 'package:gpa_pro/core/constants/shared_keys.dart';
+import 'package:gpa_pro/core/functions/custom_dialogs.dart';
 import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/controller/locale_controller.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
@@ -45,6 +48,12 @@ class AppInfoRemotely {
       }
     } else if (getAppInfo.status == StatusRequest.offlineFailure) {
       // Get.back();
+      if (AppInjections.myServices.sharedPreferences
+          .containsKey(SharedKeys.userData)) {
+        CustomDialog.warningDialog(
+          AppConstLang.openInternetWhenAccountOpenedToAvoidErrorsOnServer.tr,
+        );
+      }
 
       NetHelper.checkInternetStream((ConnectivityResult result) async {
         if (result != ConnectivityResult.none) await getInfo();

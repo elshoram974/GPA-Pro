@@ -2,6 +2,7 @@ import 'package:gpa_pro/controller/edit_subject_controller.dart';
 import 'package:gpa_pro/controller/home/semester_controller.dart';
 import 'package:gpa_pro/core/class/argument_model.dart';
 import 'package:gpa_pro/core/class/gpa_functions_model.dart';
+import 'package:gpa_pro/core/class/subjects/update_subject.dart';
 import 'package:gpa_pro/core/constants/injections.dart';
 import 'package:gpa_pro/core/functions/custom_dialogs.dart';
 import 'package:gpa_pro/core/functions/gpa_functions.dart';
@@ -105,7 +106,7 @@ class SubjectControllerImp extends SubjectController {
 
     onChanged(degreeController.text, GradeType.degree);
     gpaController.text = "${thisSubject.gpa}";
-    thisSubject = editedSubject;
+    thisSubject = editedSubject..remoteId = thisSubject.remoteId;
   }
   // end init ------------------------------------------
 
@@ -197,10 +198,10 @@ class SubjectControllerImp extends SubjectController {
         : double.tryParse(myYearWorkDegreeController.text.trim());
     editedSubject = SubjectModel(
       id: thisSubject.id,
+      remoteId: editedSubject.remoteId,
       nameEn: nameEnController.text,
       nameAr: nameArController.text,
-      degree:
-          double.tryParse(degreeController.text.trim()) ?? thisSubject.degree,
+      degree: double.tryParse(degreeController.text.trim()) ?? thisSubject.degree,
       maxDegree: double.tryParse(maxDegreeController.text.trim()) ??
           thisSubject.maxDegree,
       hours: int.tryParse(hoursController.text.trim()) ?? thisSubject.hours,
@@ -222,7 +223,10 @@ class SubjectControllerImp extends SubjectController {
 
   void _save() async {
     edit();
-    await SubjectTableDB.update(editedSubject);
+    final SubjectModel? temp =await UpdateSubjectHelper().update(editedSubject);
+    if (temp == null) return;
+
+    await SubjectTableDB.update(editedSubject..isNeedSync = false);
     updateSavedSubjects();
     RateApp.rateAppDialog();
   }

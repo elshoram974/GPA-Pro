@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:gpa_pro/core/class/net_helper.dart';
 import 'package:gpa_pro/core/functions/snack_bars.dart';
@@ -24,11 +25,16 @@ class Crud {
         return (status: StatusRequest.serverFailure, body: {});
       } else {
         if (wantBack) Get.back();
+        if (Get.isSnackbarOpen) Get.closeAllSnackbars();
         AppSnackBar.messageSnack(AppConstLang.noInternet.tr);
         return (status: StatusRequest.offlineFailure, body: {});
       }
     } catch (e) {
       if (wantBack) Get.back();
+      if (Get.isSnackbarOpen) Get.closeAllSnackbars();
+
+      print("e : $e ------------------------");
+      log("e : $e ------------------------");
 
       AppSnackBar.messageSnack("e : $e");
 
