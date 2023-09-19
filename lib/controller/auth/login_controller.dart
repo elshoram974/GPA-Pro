@@ -28,7 +28,6 @@ class LoginControllerImp extends LoginController {
   @override
   void login() async {
     if (key.currentState!.validate()) {
-      CustomDialog.loadDialog(canBack: false);
       await LoginRemotely.loginToAccount(email.trim(), password);
     }
   }

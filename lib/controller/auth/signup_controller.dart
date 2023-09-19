@@ -36,7 +36,6 @@ class SignUpControllerImp extends SignUpController {
   @override
   void onSignUp() async {
     if (key.currentState!.validate()) {
-      CustomDialog.loadDialog(canBack: false);
       await SignUpRemotely.createAccount(
         UserData(
           email: email.trim(),

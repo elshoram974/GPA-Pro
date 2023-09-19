@@ -18,7 +18,7 @@ class AppInfoRemotely {
   static Future<AppInfoData?> getInfo() async {
     Crud crud = Crud();
     ({Map body, StatusRequest status}) getAppInfo = await crud
-        .postData(AppLinks.appInfo, {'appId': AppInfo.appId}, wantBack: true);
+        .postData(AppLinks.appInfo, {'appId': AppInfo.appId});
 
     if (getAppInfo.status == StatusRequest.success) {
       AppInfoModel appInfo =
@@ -60,7 +60,7 @@ class AppInfoRemotely {
       });
       // print(getAppInfo.status);
     } else {
-      Get.back();
+      // Get.back();
 
       AppSnackBar.messageSnack('Error : ${getAppInfo.status}');
     }

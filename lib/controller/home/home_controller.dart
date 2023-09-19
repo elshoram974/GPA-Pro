@@ -138,11 +138,10 @@ class HomeControllerImp extends HomeController {
     }
     selectAllOrDeselect(false);
 
-    CustomDialog.loadDialog(canBack: false);
     await UpdateManySubjects().update(temp, makeAllCalc);
 
     await getSubjects();
-    Get.back();
+    // Get.back();
   }
 
   @override
@@ -175,14 +174,18 @@ class HomeControllerImp extends HomeController {
         selectAllOrDeselect(false);
         await getSubjects();
 
-        // AppSnackBar.snackWhenDelete(_deletedSubjects.length, () async {
-        //   await SubjectTableDB.insertAll(_deletedSubjects);
-        //   _deletedSubjects.clear();
-        //   await getSubjects();
-        // });
-        await RemoveManySubjects().remove(_deletedSubjects);
-
-        AppSnackBar.snackWhenDelete(_deletedSubjects.length, null);
+        bool canReGet = !AppInjections.myServices.sharedPreferences
+            .containsKey(SharedKeys.userData);
+        if (canReGet) {
+          AppSnackBar.snackWhenDelete(_deletedSubjects.length, () async {
+            await SubjectTableDB.insertAll(_deletedSubjects);
+            _deletedSubjects.clear();
+            await getSubjects();
+          });
+        } else {
+          await RemoveManySubjects().remove(_deletedSubjects);
+          AppSnackBar.snackWhenDelete(_deletedSubjects.length, null);
+        }
 
         update();
       },

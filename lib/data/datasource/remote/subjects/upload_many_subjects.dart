@@ -23,7 +23,6 @@ class AddManySubjects {
         'subject_user': "$userId",
         'subjects_SQLCode': _getSubjectsSQLCode(),
       },
-      wantBack: true,
     );
 
     if (subjects.status == StatusRequest.success) {
@@ -56,11 +55,13 @@ class AddManySubjects {
     String code = '';
     for (SubjectModel e in addedSubjects) {
       String subject =
-          "($userId,'${e.nameEn}','${e.nameAr}',${e.myMidDegree},${e.myYearWorkDegree},${e.myPracticalDegree},${e.myFinalDegree},${e.maxMidDegree}, ${e.maxYearWorkDegree},${e.maxPracticalDegree},${e.maxFinalDegree}, ${e.degree},${e.maxDegree},${e.savedGPA},${e.hours},${e.isCalculated},'${e.semester}','${e.year}')";
+          "($userId,'${_changeWord(e.nameEn)}','${_changeWord(e.nameAr ?? e.nameEn)}',${e.myMidDegree},${e.myYearWorkDegree},${e.myPracticalDegree},${e.myFinalDegree},${e.maxMidDegree}, ${e.maxYearWorkDegree},${e.maxPracticalDegree},${e.maxFinalDegree}, ${e.degree},${e.maxDegree},${e.savedGPA},${e.hours},${e.isCalculated},'${_changeWord(e.semester)}','${_changeWord(e.year)}')";
 
       code += ", $subject";
     }
     code = code.substring(2);
     return jsonEncode(code);
   }
+
+  _changeWord(String word) => word.replaceAll("'", ".").replaceAll('"', '..');
 }

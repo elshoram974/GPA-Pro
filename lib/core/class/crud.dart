@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:gpa_pro/core/class/net_helper.dart';
+import 'package:gpa_pro/core/functions/custom_dialogs.dart';
 import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:get/get.dart';
@@ -10,31 +10,38 @@ import 'package:http/http.dart' as http;
 class Crud {
   Future<({StatusRequest status, Map body})> postData(
     String url,
-    Map body, {
-    bool wantBack = false,
-  }) async {
+    Map body,
+    //  {
+    // bool wantBack = false,
+    // }
+  ) async {
+    while (Get.isSnackbarOpen) {
+      await Get.closeCurrentSnackbar();
+    }
+    CustomDialog.loadDialog(canBack: false);
     try {
       if (await NetHelper.checkInternet()) {
         http.Response response = await http.post(Uri.parse(url), body: body);
         if (response.statusCode == 200) {
           Map<String, dynamic> responseBody = json.decode(response.body);
-          if (wantBack) Get.back();
+          // if (wantBack) Get.back();
+          Get.back();
 
           return (status: StatusRequest.success, body: responseBody);
         }
         return (status: StatusRequest.serverFailure, body: {});
       } else {
-        if (wantBack) Get.back();
+        // if (wantBack) Get.back();
         if (Get.isSnackbarOpen) Get.closeAllSnackbars();
+
+        Get.back();
         AppSnackBar.messageSnack(AppConstLang.noInternet.tr);
         return (status: StatusRequest.offlineFailure, body: {});
       }
     } catch (e) {
-      if (wantBack) Get.back();
+      // if (wantBack) Get.back();
       if (Get.isSnackbarOpen) Get.closeAllSnackbars();
-
-      print("e : $e ------------------------");
-      log("e : $e ------------------------");
+      Get.back();
 
       AppSnackBar.messageSnack("e : $e");
 
@@ -42,10 +49,13 @@ class Crud {
     }
   }
 
-  Future<({StatusRequest status, Map body})> getData(
-    String url, {
-    bool wantBack = false,
-  }) async {
+  Future<({StatusRequest status, Map body})> getData(String url
+      //   , {
+      //   bool wantBack = false,
+      // }
+      ) async {
+    CustomDialog.loadDialog(canBack: false);
+
     try {
       if (await NetHelper.checkInternet()) {
         http.Response response = await http.get(Uri.parse(url));
@@ -55,12 +65,16 @@ class Crud {
         }
         return (status: StatusRequest.serverFailure, body: {});
       } else {
-        if (wantBack) Get.back();
+        // if (wantBack) Get.back();
+        if (Get.isSnackbarOpen) Get.closeAllSnackbars();
+        Get.back();
         AppSnackBar.messageSnack(AppConstLang.noInternet.tr);
         return (status: StatusRequest.offlineFailure, body: {});
       }
     } catch (e) {
-      if (wantBack) Get.back();
+      // if (wantBack) Get.back();
+      if (Get.isSnackbarOpen) Get.closeAllSnackbars();
+      Get.back();
 
       AppSnackBar.messageSnack("e : $e");
 

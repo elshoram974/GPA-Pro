@@ -23,7 +23,6 @@ abstract class LoginRemotely {
       user.data.copyWith(password: pass).toRawJson(),
     );
 
-    CustomDialog.loadDialog(canBack: false);
     await Synchronization().synchronizationSubjects();
     // await SubjectTableDB.insertAll(
     //   await GetAllSubjects.getOnlineSubjects(user.data.userId!),
@@ -66,8 +65,8 @@ abstract class LoginRemotely {
         "email": email,
         "password": password,
       },
-      wantBack: true,
     );
+
 
     if (post.status == StatusRequest.success) {
       User user = User.fromJson(post.body as Map<String, dynamic>);
@@ -88,7 +87,6 @@ abstract class LoginRemotely {
             closeBeforeFunction: true,
             textConfirm: AppConstLang.verifyAccount.tr,
             onConfirm: () async {
-              CustomDialog.loadDialog(canBack: false);
               temp = await VerifyCode.sendAndVerify(
                   email, password, "Verify email", const LoginScreen());
             },

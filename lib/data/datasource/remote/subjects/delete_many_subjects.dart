@@ -25,7 +25,6 @@ class RemoveSubjects {
         'user_id': "$userId",
         'where_code': _whereCode(),
       },
-      wantBack: true,
     );
 
     if (subjects.status == StatusRequest.success) {

@@ -66,10 +66,9 @@ class CheckCodeControllerImp extends CheckCodeController {
 
   @override
   void resendCode() async {
-    CustomDialog.loadDialog(canBack: false);
     User? user = await VerifyCode.sendVerifyCode(email, mailTitle);
     if (user != null) {
-      Get.back(); // when it null it will close the dialog
+      // Get.back(canPop: await onWillPop()); // when it null it will close the dialog
 
       startTimer();
     }
@@ -79,7 +78,6 @@ class CheckCodeControllerImp extends CheckCodeController {
   void onConfirm() async {
     if (key.currentState!.validate()) {
       key.currentState!.save();
-      CustomDialog.loadDialog(canBack: false);
       User? user = await VerifyCode.checkVerify(email, code);
       if (user != null) {
         if (from is ForgotPassScreen) {

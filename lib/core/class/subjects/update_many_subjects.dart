@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:gpa_pro/core/class/net_helper.dart';
 import 'package:gpa_pro/core/constants/injections.dart';
 import 'package:gpa_pro/core/constants/shared_keys.dart';
-import 'package:gpa_pro/core/functions/custom_dialogs.dart';
 import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/data/datasource/remote/auth/login.dart';
@@ -22,7 +21,6 @@ class UpdateManySubjects {
   ) async {
     if (subjectsList.isEmpty) return false;
     if (Get.isSnackbarOpen) Get.closeAllSnackbars();
-    CustomDialog.loadDialog(canBack: false);
 
     UserData? userData = LoginRemotely.savedLogin();
 

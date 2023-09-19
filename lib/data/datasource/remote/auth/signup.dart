@@ -20,7 +20,6 @@ abstract class SignUpRemotely {
         "email": newUser.email,
         "password": newUser.password,
       },
-      wantBack: true,
     );
 
     if (post.status == StatusRequest.success) {

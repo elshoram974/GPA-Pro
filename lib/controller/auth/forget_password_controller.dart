@@ -20,11 +20,10 @@ class ForgotPasswordControllerImp extends ForgotPasswordController {
   @override
   void onConfirm() async {
     if (key.currentState!.validate()) {
-      CustomDialog.loadDialog(canBack: false);
       User? temp =
           await VerifyCode.sendVerifyCode(email.trim(), "Change password");
       if (temp != null) {
-        Get.back();
+        // Get.back();
         Get.offNamed(
           AppRoute.checkCodeScreen,
           arguments: {

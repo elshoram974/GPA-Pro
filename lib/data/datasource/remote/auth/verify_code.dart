@@ -15,7 +15,6 @@ abstract class VerifyCode {
     ({Map body, StatusRequest status}) post = await crud.postData(
       AppLinks.sendVerify,
       {"email": email, "title": title},
-      wantBack: true,
     );
 
     if (post.status == StatusRequest.success) {
@@ -46,7 +45,6 @@ abstract class VerifyCode {
         "email": email,
         "verified_code": verifiedCode,
       },
-      wantBack: true,
     );
 
     if (post.status == StatusRequest.success) {

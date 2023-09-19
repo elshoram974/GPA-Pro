@@ -28,7 +28,6 @@ class ChangeCalcSubjects {
         'where_code': _whereCode(),
         'make_them_calculated': makeCalculated ? '1' : '0',
       },
-      wantBack: true,
     );
 
     if (subjects.status == StatusRequest.success) {

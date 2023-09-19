@@ -8,6 +8,7 @@ import 'package:gpa_pro/core/class/subjects/remove_many_subjects.dart';
 import 'package:gpa_pro/core/class/subjects/update_many_subjects.dart';
 import 'package:gpa_pro/core/constants/injections.dart';
 import 'package:gpa_pro/core/constants/routes.dart';
+import 'package:gpa_pro/core/constants/shared_keys.dart';
 import 'package:gpa_pro/core/functions/custom_dialogs.dart';
 import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
@@ -91,9 +92,8 @@ class SemesterControllerImp extends SemesterController {
       temp.add(e..isCalculated = makeAllCalc);
       await SubjectTableDB.update(e..isCalculated = makeAllCalc);
     }
-    CustomDialog.loadDialog(canBack: false);
     await UpdateManySubjects().update(temp, makeAllCalc);
-    Get.back();
+    // Get.back();
     updateSubjects();
     selectAllOrDeselect(false);
   }
@@ -126,16 +126,19 @@ class SemesterControllerImp extends SemesterController {
 
         selectAllOrDeselect(false);
         await updateSubjects();
+        bool canReGet = !AppInjections.myServices.sharedPreferences
+            .containsKey(SharedKeys.userData);
+        if (canReGet) {
+          AppSnackBar.snackWhenDelete(deletedSubjects.length, () async {
+            await SubjectTableDB.insertAll(deletedSubjects);
+            deletedSubjects.clear();
 
-        // AppSnackBar.snackWhenDelete(deletedSubjects.length, () async {
-        //   await SubjectTableDB.insertAll(deletedSubjects);
-        //   deletedSubjects.clear();
-
-        //   await updateSubjects();
-        // });
-        await RemoveManySubjects().remove(deletedSubjects);
-
-        AppSnackBar.snackWhenDelete(deletedSubjects.length, null);
+            await updateSubjects();
+          });
+        } else {
+          await RemoveManySubjects().remove(deletedSubjects);
+          AppSnackBar.snackWhenDelete(deletedSubjects.length, null);
+        }
 
         update();
       },

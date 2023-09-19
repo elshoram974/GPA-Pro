@@ -14,7 +14,6 @@ class UpdateSubjectHelper {
   final SharedPreferences pref = AppInjections.myServices.sharedPreferences;
   Future<SubjectModel?> update(SubjectModel subject) async {
     if (Get.isSnackbarOpen) Get.closeAllSnackbars();
-    CustomDialog.loadDialog(canBack: false);
 
     UserData? userData = LoginRemotely.savedLogin();
 
@@ -26,22 +25,22 @@ class UpdateSubjectHelper {
           final SubjectModel? temp = await edit.update();
           if (temp != null) return temp;
         } else {
-          Get.back();
-          Get.back();
+          // Get.back();
+          // Get.back();
 
           CustomDialog.errorDialog(AppConstLang.haveToOpenInternetWhenUpdateSubject.tr);
           return null;
         }
-        Get.back();
+        // Get.back();
       } catch (e) {
-        Get.back();
+        // Get.back();
         AppSnackBar.messageSnack(AppConstLang.savedToDeviceOnly.tr);
       }
     } else {
       return SubjectModel.getNewEmpty();
     }
-    Get.back();
-    Get.back();
+    // Get.back();
+    // Get.back();
     return null;
   }
 }

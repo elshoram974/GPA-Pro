@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:gpa_pro/core/class/net_helper.dart';
 import 'package:gpa_pro/core/constants/injections.dart';
 import 'package:gpa_pro/core/constants/shared_keys.dart';
-import 'package:gpa_pro/core/functions/custom_dialogs.dart';
 import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/data/datasource/remote/auth/login.dart';
@@ -18,7 +17,6 @@ class RemoveManySubjects {
   Future<bool> remove(List<SubjectModel> subjectsList) async {
     if (subjectsList.isEmpty) return false;
     if (Get.isSnackbarOpen) Get.closeAllSnackbars();
-    CustomDialog.loadDialog(canBack: true);
 
     UserData? userData = LoginRemotely.savedLogin();
 
@@ -32,18 +30,18 @@ class RemoveManySubjects {
         } else {
           await _saveWhenNoInterNet(subjectsList);
         }
-        Get.back();
+        // Get.back();
       } catch (e) {
-        Get.back();
+        // Get.back();
         AppSnackBar.messageSnack(AppConstLang.savedToDeviceOnly.tr);
         return false;
       }
     } else {
-      Get.back();
+      // Get.back();
       return true;
     }
-    Get.back();
-    Get.back();
+    // Get.back();
+    // Get.back();
     return false;
   }
 
@@ -89,6 +87,8 @@ class RemoveManySubjects {
     allDeletedSubjects.addAll(await getSavedDeleted());
 
     allDeletedSubjects.addAll(deletedSubjects);
+
+    allDeletedSubjects.removeWhere((e) => e.remoteId == null);
 
     await pref.setString(
       SharedKeys.saveDeletedSubjects,
