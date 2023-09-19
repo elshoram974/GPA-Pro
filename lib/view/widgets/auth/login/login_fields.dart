@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gpa_pro/controller/auth/login_controller.dart';
-import 'package:gpa_pro/core/constants/colors.dart';
 import 'package:gpa_pro/core/functions/validator.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/core/shared/custom_fields/default_field.dart';
@@ -18,7 +17,9 @@ class LoginFields extends StatelessWidget {
           child: Column(
             children: [
               MyDefaultField(
-                borderColor: AppColor.secondary,
+                // borderColor: AppColor.secondary,
+                textColor: Colors.black,
+
                 textAlign: TextAlign.start,
                 keyboardType: TextInputType.emailAddress,
                 textCapitalization: TextCapitalization.none,
@@ -32,7 +33,8 @@ class LoginFields extends StatelessWidget {
                 ),
               ),
               MyDefaultField(
-                borderColor: AppColor.secondary,
+                // borderColor: AppColor.secondary,
+                textColor: Colors.black,
                 textCapitalization: TextCapitalization.none,
                 textAlign: TextAlign.start,
                 labelText: AppConstLang.password.tr,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gpa_pro/controller/auth/forget_password_controller.dart';
-import 'package:gpa_pro/core/constants/colors.dart';
 import 'package:gpa_pro/core/constants/public_constant.dart';
 import 'package:gpa_pro/core/functions/validator.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
@@ -40,7 +39,9 @@ class ForgotPasswordField extends GetView<ForgotPasswordControllerImp> {
   Widget build(BuildContext context) {
     return MyDefaultField(
       fieldKey: controller.key,
-      borderColor: AppColor.secondary,
+      // borderColor: AppColor.secondary,
+      textColor: Colors.black,
+
       keyboardType: TextInputType.emailAddress,
       textAlign: TextAlign.start,
       labelText: AppConstLang.email.tr,

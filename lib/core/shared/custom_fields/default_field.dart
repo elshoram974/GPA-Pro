@@ -26,6 +26,7 @@ class MyDefaultField extends StatelessWidget {
   final bool obscureText;
   final TextInputType? keyboardType;
   final TextCapitalization textCapitalization;
+  final Color? textColor;
   final Color? borderColor;
   final void Function(String)? onFieldSubmitted;
   const MyDefaultField({
@@ -55,20 +56,21 @@ class MyDefaultField extends StatelessWidget {
     this.prefix,
     this.keyboardType,
     this.obscureText = false,
+    this.textColor,
     this.borderColor,
   });
 
   @override
   Widget build(BuildContext context) {
-    TextStyle? style = TextStyle(color: borderColor);
+    TextStyle? style = TextStyle(color: textColor);
     return Padding(
       padding: const EdgeInsets.all(AppConstant.kDefaultPadding / 2),
       child: TextFormField(
         obscureText: obscureText,
         style: style,
         decoration: InputDecoration(
-          labelStyle: style,
-          hintStyle: style,
+          // labelStyle: style,
+          // hintStyle: style,
           filled: filled,
           errorMaxLines: 10,
           border: OutlineInputBorder(
@@ -83,8 +85,10 @@ class MyDefaultField extends StatelessWidget {
                 ),
           alignLabelWithHint: alignLabelWithHint,
           labelText: labelText,
-          suffix: suffix,
-          prefix: prefix,
+          // suffix: suffix,
+          // prefix: prefix,
+          suffixIcon: suffix,
+          prefixIcon: prefix,
           contentPadding: EdgeInsets.symmetric(
             horizontal: horizontalPadding ?? AppConstant.kDefaultPadding / 2,
             vertical: verticalPadding,

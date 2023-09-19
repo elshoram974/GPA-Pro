@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gpa_pro/controller/auth/signup_controller.dart';
-import 'package:gpa_pro/core/constants/colors.dart';
 import 'package:gpa_pro/core/functions/validator.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/core/shared/custom_fields/default_field.dart';
@@ -12,7 +11,9 @@ class SignUpEmail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyDefaultField(
-      borderColor: AppColor.secondary,
+      // borderColor: AppColor.secondary,
+      textColor: Colors.black,
+
       textCapitalization: TextCapitalization.none,
       labelText: AppConstLang.email.tr,
       textAlign: TextAlign.left,
