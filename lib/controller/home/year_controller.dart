@@ -136,13 +136,14 @@ class YearControllerImp extends YearController {
     for (SemesterModel s in selectedList) {
       for (SubjectModel subject in s.subjects) {
         temp.add(subject..isCalculated = makeAllCalc);
-
-        await SubjectTableDB.update(subject..isCalculated = makeAllCalc);
       }
     }
     selectAllOrDeselect(false);
 
-    await UpdateManySubjects().update(temp, makeAllCalc);
+    bool isUpdated = await UpdateManySubjects().update(temp, makeAllCalc);
+    for (SubjectModel e in temp) {
+      await SubjectTableDB.update(e..isNeedSync = !isUpdated);
+    }
 
     await updateSemester();
   }

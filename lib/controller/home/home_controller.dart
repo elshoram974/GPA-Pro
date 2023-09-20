@@ -132,13 +132,16 @@ class HomeControllerImp extends HomeController {
       for (SemesterModel s in e.semesters) {
         for (SubjectModel subject in s.subjects) {
           temp.add(subject..isCalculated = makeAllCalc);
-          await SubjectTableDB.update(subject..isCalculated = makeAllCalc);
         }
       }
     }
     selectAllOrDeselect(false);
 
-    await UpdateManySubjects().update(temp, makeAllCalc);
+    bool isUpdated = await UpdateManySubjects().update(temp, makeAllCalc);
+
+    for (SubjectModel e in temp) {
+      await SubjectTableDB.update(e..isNeedSync = !isUpdated);
+    }
 
     await getSubjects();
     // Get.back();

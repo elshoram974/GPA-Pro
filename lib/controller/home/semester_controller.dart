@@ -90,9 +90,11 @@ class SemesterControllerImp extends SemesterController {
 
     for (SubjectModel e in selectedList) {
       temp.add(e..isCalculated = makeAllCalc);
-      await SubjectTableDB.update(e..isCalculated = makeAllCalc);
     }
-    await UpdateManySubjects().update(temp, makeAllCalc);
+    bool isUpdated = await UpdateManySubjects().update(temp, makeAllCalc);
+    for (SubjectModel e in temp) {
+      await SubjectTableDB.update(e..isNeedSync = !isUpdated);
+    }
     // Get.back();
     updateSubjects();
     selectAllOrDeselect(false);

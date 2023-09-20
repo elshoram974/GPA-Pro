@@ -39,8 +39,7 @@ class ChangeCalcSubjects {
       SharedSubjectsData subjectsData = allSubjects.data;
 
       if (allSubjects.status == 'success') {
-        return SubjectHelper(subjectsData.subjects)
-            .makeAllSubjectsNeedSyncOrNot(false);
+        return SubjectHelper(subjectsData.subjects).makeAllSubjectsNeedSyncOrNot(false);
       } else if (subjectsData.message == "subjects not exist with this user") {
         AppSnackBar.messageSnack(AppConstLang.subjectsNotExistWithUser.tr);
       } else if (subjectsData.message == "there is no change to update") {
@@ -67,7 +66,12 @@ class ChangeCalcSubjects {
 
       code += "OR `remote_id`= $remoteId ";
     }
-    code = code.substring(2);
+    try {
+      code = code.substring(2);
+    } catch (e) {
+      code = " 0 ";
+    }
+    if (code.trim().isEmpty) code = " 0 ";
 
     return jsonEncode(code);
   }
