@@ -6,13 +6,23 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CustomDialog {
-  static Future<T?> loadDialog<T>({bool canBack = true}) {
+  static Future<T?> loadDialog<T>({bool canBack = true, String? message}) {
     return Get.defaultDialog<T>(
       title: '',
       titleStyle: const TextStyle(fontSize: 0),
       onWillPop: () async => canBack,
-      content: const SizedBox.square(
-        child: Center(child: CircularProgressIndicator()),
+      content: SizedBox.square(
+        child: message == null
+            ? const Center(child: CircularProgressIndicator())
+            : Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const CircularProgressIndicator(),
+                  const SizedBox(height: AppConstant.kDefaultPadding),
+                  Text(message),
+                ],
+              ),
       ),
     );
   }

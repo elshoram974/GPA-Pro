@@ -15,10 +15,10 @@ class SignUpPasswords extends StatelessWidget {
         return Column(
           children: [
             MyDefaultField(
+              textDirection: TextDirection.ltr,
               // borderColor: AppColor.secondary,
               textColor: Colors.black,
-
-              textAlign: TextAlign.start,
+              textAlign: TextAlign.left,
               keyboardType: TextInputType.visiblePassword,
               textCapitalization: TextCapitalization.none,
               labelText: AppConstLang.password.tr,
@@ -36,10 +36,12 @@ class SignUpPasswords extends StatelessWidget {
               ),
             ),
             MyDefaultField(
+              textDirection: TextDirection.ltr,
+              textInputAction: TextInputAction.done,
               // borderColor: AppColor.secondary,
               textColor: Colors.black,
               textCapitalization: TextCapitalization.none,
-              textAlign: TextAlign.start,
+              textAlign: TextAlign.left,
               labelText: AppConstLang.rePassword.tr,
               keyboardType: TextInputType.visiblePassword,
               validator: (value) {

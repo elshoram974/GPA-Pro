@@ -1,3 +1,4 @@
+import 'package:gpa_pro/core/constants/injections.dart';
 import 'package:gpa_pro/data/model/subject_model.dart';
 
 class SubjectHelper {
@@ -136,10 +137,20 @@ class SubjectHelper {
     return temp;
   }
 
-  // bool containAnyTrueSync() {
-  //   for (SubjectModel e in subjectsList) {
-  //     if (e.isItSync) return true;
-  //   }
-  //   return false;
-  // }
+  bool isSubjectHere(SubjectModel subject) {
+    for (var e in subjectsList) {
+      if (e.isSubjectEqual(subject)) return true;
+    }
+    return false;
+  }
+
+  List<SubjectModel> getThereRemoteId() {
+    List<SubjectModel> temp = [];
+
+    for (SubjectModel e in AppInjections.homeController.subjects) {
+      if (isSubjectHere(e)) temp.add(e);
+    }
+
+    return temp;
+  }
 }

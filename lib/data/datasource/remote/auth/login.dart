@@ -16,18 +16,25 @@ import 'package:gpa_pro/view/screens/auth/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class LoginRemotely {
+  static final SharedPreferences _pref =
+      AppInjections.myServices.sharedPreferences;
+
   // static late  UserData userData;
   static Future<void> login(User user, String pass) async {
-    AppInjections.myServices.sharedPreferences.setString(
-      SharedKeys.userData,
-      user.data.copyWith(password: pass).toRawJson(),
-    );
-
-    await Synchronization().synchronizationSubjects();
     // await SubjectTableDB.insertAll(
     //   await GetAllSubjects.getOnlineSubjects(user.data.userId!),
     // );
     // await AppInjections.homeController.getSubjects();
+    if (!_pref.containsKey(SharedKeys.userData)) {
+      await Synchronization().synchronizationSubjects();
+
+      await _pref.setString(
+        SharedKeys.userData,
+        user.data.copyWith(password: pass).toRawJson(),
+      );
+      await Synchronization().uploadSubjectsThatNotInDatabase();
+    }
+    await Synchronization().synchronizationSubjects();
 
     AppInjections.mainScreenImp.changeBody(1);
     AppSnackBar.messageSnack(AppConstLang.done.tr);
@@ -36,13 +43,9 @@ abstract class LoginRemotely {
   }
 
   static void logOut() async {
-    final SharedPreferences pref = AppInjections.myServices.sharedPreferences;
-    await pref.remove(SharedKeys.userData);
+    await _pref.remove(SharedKeys.userData);
+    await _pref.remove(SharedKeys.saveAllChangesInSubjects);
     await SubjectTableDB.clearAll();
-    await pref.remove(SharedKeys.saveChangesSubjects);
-    await pref.remove(SharedKeys.saveChangesSubjectsId);
-    await pref.remove(SharedKeys.saveDeletedSubjects);
-
 
     AppInjections.mainScreenImp.changeBody(1);
     AppSnackBar.messageSnack(AppConstLang.done.tr);
@@ -66,7 +69,6 @@ abstract class LoginRemotely {
         "password": password,
       },
     );
-
 
     if (post.status == StatusRequest.success) {
       User user = User.fromJson(post.body as Map<String, dynamic>);

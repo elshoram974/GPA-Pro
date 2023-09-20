@@ -11,10 +11,11 @@ import 'package:gpa_pro/data/model/shared/get_shared_subjects_model.dart';
 import 'package:gpa_pro/data/model/subject_model.dart';
 
 class AddManySubjects {
-  const AddManySubjects(this.userId, this.addedSubjects);
+  const AddManySubjects(this.userId, this.addedSubjects, {this.messageInDialog});
 
   final int userId;
   final List<SubjectModel> addedSubjects;
+  final String? messageInDialog;
   Future<List<SubjectModel>?> addNewSubjects() async {
     Crud crud = Crud();
     ({Map body, StatusRequest status}) subjects = await crud.postData(
@@ -23,6 +24,7 @@ class AddManySubjects {
         'subject_user': "$userId",
         'subjects_SQLCode': _getSubjectsSQLCode(),
       },
+      messageInDialog:messageInDialog,
     );
 
     if (subjects.status == StatusRequest.success) {
@@ -63,5 +65,9 @@ class AddManySubjects {
     return jsonEncode(code);
   }
 
-  _changeWord(String word) => word.replaceAll("'", ".").replaceAll('"', '..');
+  _changeWord(String word) => word
+      .replaceAll("'", ".")
+      .replaceAll('"', '..')
+      .replaceAll('"', '..')
+      .replaceAll(r"\", r"\\");
 }

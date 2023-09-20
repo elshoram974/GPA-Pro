@@ -81,7 +81,12 @@ abstract class VerifyCode {
       Get.back();
       Get.offNamed(
         AppRoute.checkCodeScreen,
-        arguments: {"email": email,'password': pass , 'from': from, 'title': title},
+        arguments: {
+          "email": email,
+          'password': pass,
+          'from': from,
+          'title': title
+        },
       );
     }
     return temp;

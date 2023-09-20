@@ -17,10 +17,10 @@ class LoginFields extends StatelessWidget {
           child: Column(
             children: [
               MyDefaultField(
+                textDirection: TextDirection.ltr,
                 // borderColor: AppColor.secondary,
                 textColor: Colors.black,
-
-                textAlign: TextAlign.start,
+                textAlign: TextAlign.left,
                 keyboardType: TextInputType.emailAddress,
                 textCapitalization: TextCapitalization.none,
                 labelText: AppConstLang.email.tr,
@@ -33,16 +33,18 @@ class LoginFields extends StatelessWidget {
                 ),
               ),
               MyDefaultField(
+                textDirection: TextDirection.ltr,
+                textInputAction: TextInputAction.done,
                 // borderColor: AppColor.secondary,
                 textColor: Colors.black,
                 textCapitalization: TextCapitalization.none,
-                textAlign: TextAlign.start,
+                textAlign: TextAlign.left,
                 labelText: AppConstLang.password.tr,
                 keyboardType: TextInputType.visiblePassword,
                 onChanged: (val) => controller.password = val,
                 validator: (value) => AppValidator.validInputAuth(
                   value,
-                  8,
+                  0,
                   100,
                   AuthValidType.password,
                 ),

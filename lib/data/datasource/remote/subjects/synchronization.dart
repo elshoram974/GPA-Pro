@@ -1,10 +1,11 @@
 import 'package:get/get.dart';
 import 'package:gpa_pro/controller/home/home_controller.dart';
+import 'package:gpa_pro/controller/home/semester_controller.dart';
+import 'package:gpa_pro/controller/home/year_controller.dart';
 import 'package:gpa_pro/core/class/net_helper.dart';
 import 'package:gpa_pro/core/class/subjects/insert_subjects.dart';
-import 'package:gpa_pro/core/class/subjects/remove_many_subjects.dart';
+import 'package:gpa_pro/core/class/subjects/saved_changes.dart';
 import 'package:gpa_pro/core/class/subjects/subject_helper.dart';
-import 'package:gpa_pro/core/class/subjects/update_many_subjects.dart';
 import 'package:gpa_pro/core/constants/injections.dart';
 import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
@@ -24,37 +25,52 @@ class Synchronization {
     if (Get.isSnackbarOpen) Get.closeAllSnackbars();
 
     if (await NetHelper.checkInternet()) {
-      await _uploadSubjectsThatNotInDatabase();
-      await UpdateManySubjects().syncChanges();
-      await RemoveManySubjects().syncDeleted();
-      await _getSubjectsThatNotInLocal();
+      await SavedChanges.syncSubjects();
     } else {
       AppSnackBar.messageSnack(AppConstLang.noInternet.tr);
     }
 
-    await _homeController.getSubjects();
+    try {
+      await Get.find<SemesterControllerImp>().updateSubjects();
+    } catch (e) {
+      try {
+        await Get.find<YearControllerImp>().updateSemester();
+      } catch (e) {
+        await _homeController.getSubjects();
+      }
+    }
     Get.back();
   }
 
-  Future<void> _getSubjectsThatNotInLocal() async {
+  // Future<void> getSubjectsThatNotInLocal() async {
+  //   final List<SubjectModel> databaseSubjects = [];
+  //   databaseSubjects.addAll(await GetAllSubjects.getSubjectsFromDatabase(_user!.userId!));
+
+  //   final List<SubjectModel> differenceSubjects = [];
+
+  //   SubjectHelper helper = SubjectHelper(await _homeController.getSubjects());
+
+  //   differenceSubjects.addAll(
+  //     helper.getSubjectsFromDataBaseThatNotHere(databaseSubjects),
+  //   );
+
+  //   await SubjectTableDB.insertAll(
+  //     SubjectHelper(differenceSubjects).makeAllSubjectsNeedSyncOrNot(false),
+  //   );
+  // }
+  Future<void> getAllSubjects() async {
+    await SubjectTableDB.clearAll();
+
     final List<SubjectModel> databaseSubjects = [];
     databaseSubjects
         .addAll(await GetAllSubjects.getSubjectsFromDatabase(_user!.userId!));
+    SubjectHelper helper = SubjectHelper(databaseSubjects);
 
-    final List<SubjectModel> differenceSubjects = [];
-
-    SubjectHelper helper = SubjectHelper(await _homeController.getSubjects());
-
-    differenceSubjects.addAll(
-      helper.getSubjectsFromDataBaseThatNotHere(databaseSubjects),
-    );
-
-    await SubjectTableDB.insertAll(
-      SubjectHelper(differenceSubjects).makeAllSubjectsNeedSyncOrNot(false),
-    );
+    await SubjectTableDB.insertAll(helper.makeAllSubjectsNeedSyncOrNot(false));
+    await AppInjections.homeController.getSubjects();
   }
 
-  Future<void> _uploadSubjectsThatNotInDatabase() async {
+  Future<void> uploadSubjectsThatNotInDatabase() async {
     SubjectHelper s = SubjectHelper(await _homeController.getSubjects());
 
     // isNeedSyncList(subjectsListPerTerm);

@@ -13,11 +13,15 @@ class RemoveSubjects {
   const RemoveSubjects(
     this.userId,
     this.removedSubjects,
+    {
+      this.messageInDialog,
+    }
   );
 
   final int userId;
   final List<SubjectModel> removedSubjects;
-  Future<bool> remove() async {
+  final String? messageInDialog;
+  Future<bool> remove()async {
     Crud crud = Crud();
     ({Map body, StatusRequest status}) subjects = await crud.postData(
       AppLinks.deleteManySubjects,
@@ -25,6 +29,7 @@ class RemoveSubjects {
         'user_id': "$userId",
         'where_code': _whereCode(),
       },
+      messageInDialog: messageInDialog,
     );
 
     if (subjects.status == StatusRequest.success) {
@@ -57,11 +62,17 @@ class RemoveSubjects {
   String _whereCode() {
     String code = '';
     for (SubjectModel e in removedSubjects) {
-      String remoteId = "${e.remoteId ?? ''}";
+      if (e.remoteId == null) continue;
+      String remoteId = "${e.remoteId}";
 
       code += "OR `remote_id`= $remoteId ";
     }
-    code = code.substring(2);
+    try {
+      code = code.substring(2);
+    } catch (e) {
+      code = " 0 ";
+    }
+    if (code.trim().isEmpty) code = " 0 ";
 
     return jsonEncode(code);
   }

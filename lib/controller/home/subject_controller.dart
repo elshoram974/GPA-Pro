@@ -201,7 +201,8 @@ class SubjectControllerImp extends SubjectController {
       remoteId: editedSubject.remoteId,
       nameEn: nameEnController.text,
       nameAr: nameArController.text,
-      degree: double.tryParse(degreeController.text.trim()) ?? thisSubject.degree,
+      degree:
+          double.tryParse(degreeController.text.trim()) ?? thisSubject.degree,
       maxDegree: double.tryParse(maxDegreeController.text.trim()) ??
           thisSubject.maxDegree,
       hours: int.tryParse(hoursController.text.trim()) ?? thisSubject.hours,
@@ -223,10 +224,9 @@ class SubjectControllerImp extends SubjectController {
 
   void _save() async {
     edit();
-    final SubjectModel? temp =await UpdateSubjectHelper().update(editedSubject);
-    if (temp == null) return;
-
-    await SubjectTableDB.update(editedSubject..isNeedSync = false);
+    final ({bool hasError, SubjectModel? subject}) temp = await UpdateSubjectHelper().update(editedSubject);
+    if (temp.hasError) return;
+    await SubjectTableDB.update(editedSubject..isNeedSync = temp.subject == null);
     updateSavedSubjects();
     RateApp.rateAppDialog();
   }

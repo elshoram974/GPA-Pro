@@ -11,16 +11,19 @@ import 'package:gpa_pro/data/model/subject_model.dart';
 class UpdateSubject {
   const UpdateSubject(
     this.userId,
-    this.updatedSubject,
-  );
+    this.updatedSubject, {
+    this.messageInDialog,
+  });
 
   final int userId;
   final SubjectModel updatedSubject;
+  final String? messageInDialog;
   Future<SubjectModel?> update() async {
     Crud crud = Crud();
     ({Map body, StatusRequest status}) subject = await crud.postData(
       AppLinks.editSubject,
       _convertSubjectToJson(),
+      messageInDialog: messageInDialog,
     );
 
     if (subject.status == StatusRequest.success) {
@@ -71,7 +74,8 @@ class UpdateSubject {
     m.addAll(_map('subject_maxDegree', updatedSubject.maxDegree));
     m.addAll(_map('subject_gpa', updatedSubject.savedGPA));
     m.addAll(_map('subject_hours', updatedSubject.hours));
-    m.addAll(_map('subject_isCalculated', updatedSubject.isCalculated ? "1" : "0"));
+    m.addAll(
+        _map('subject_isCalculated', updatedSubject.isCalculated ? "1" : "0"));
     m.addAll(_map('subject_semester', updatedSubject.semester));
     m.addAll(_map('subject_year', updatedSubject.year));
     m.addAll(_map('subject_id', updatedSubject.remoteId!));
@@ -84,5 +88,6 @@ class UpdateSubject {
     return map;
   }
 
-  _changeWord(String word) => word.replaceAll("'", ".").replaceAll('"', '..');
+  _changeWord(String word) =>
+      word.replaceAll("'", ".").replaceAll('"', '..').replaceAll(r"\", r"\\");
 }

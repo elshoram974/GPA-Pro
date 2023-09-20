@@ -15,8 +15,11 @@ class AppSnackBar {
 
   static void snackWhenDelete(int i, Future<void> Function()? onPressed) {
     if (Get.isSnackbarOpen) {
+      Get.back();
       Get.closeAllSnackbars();
     }
+    if (Get.isDialogOpen == true) Get.back();
+
     Get.showSnackbar(
       GetSnackBar(
         boxShadows: const <BoxShadow>[

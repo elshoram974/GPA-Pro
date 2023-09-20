@@ -11,9 +11,9 @@ class SignUpEmail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyDefaultField(
+      textDirection: TextDirection.ltr,
       // borderColor: AppColor.secondary,
       textColor: Colors.black,
-
       textCapitalization: TextCapitalization.none,
       labelText: AppConstLang.email.tr,
       textAlign: TextAlign.left,

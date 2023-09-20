@@ -3,9 +3,12 @@ import 'dart:convert';
 import 'package:gpa_pro/data/model/subject_model.dart';
 
 class ChangeCalc {
-  ChangeCalc(
-      {required this.id, required this.makeCalculated, required this.subjects});
-  final int id;
+  ChangeCalc({
+    this.id,
+    required this.makeCalculated,
+    required this.subjects,
+  });
+  final int? id;
   final bool makeCalculated;
   final List<SubjectModel> subjects;
 

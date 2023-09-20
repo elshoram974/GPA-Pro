@@ -118,6 +118,29 @@ class SubjectModel extends ParentModel {
             note == otherSubject.note &&
             address == otherSubject.address);
   }
+  bool isSubjectEqual(SubjectModel otherSubject) {
+    return (remoteId != null &&
+            otherSubject.remoteId != null &&
+            remoteId == otherSubject.remoteId) ||
+        (nameAr == otherSubject.nameAr &&
+            nameEn == otherSubject.nameEn &&
+            semester == otherSubject.semester &&
+            year == otherSubject.year &&
+            degree == otherSubject.degree &&
+            gpa == otherSubject.gpa &&
+            hours == otherSubject.hours &&
+            maxDegree == otherSubject.maxDegree &&
+            maxFinalDegree == otherSubject.maxFinalDegree &&
+            maxMidDegree == otherSubject.maxMidDegree &&
+            maxPracticalDegree == otherSubject.maxPracticalDegree &&
+            maxYearWorkDegree == otherSubject.maxYearWorkDegree &&
+            myFinalDegree == otherSubject.myFinalDegree &&
+            myMidDegree == otherSubject.myMidDegree &&
+            myPracticalDegree == otherSubject.myPracticalDegree &&
+            myYearWorkDegree == otherSubject.myYearWorkDegree &&
+            note == otherSubject.note &&
+            address == otherSubject.address);
+  }
 
   factory SubjectModel.fromApi(SharedSubjectElement api) => SubjectModel(
         nameEn: api.subjectNameEn!,

@@ -11,6 +11,9 @@ class VerifyCodeField extends GetView<CheckCodeControllerImp> {
   @override
   Widget build(BuildContext context) {
     return MyDefaultField(
+      textAlign: TextAlign.left,
+      textDirection: TextDirection.ltr,
+      textInputAction: TextInputAction.done,
       fieldKey: controller.key,
       // borderColor: AppColor.secondary,
       textColor: Colors.black,

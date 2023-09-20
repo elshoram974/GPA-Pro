@@ -13,12 +13,14 @@ class ChangeCalcSubjects {
   const ChangeCalcSubjects(
     this.userId,
     this.makeCalculated,
-    this.editedSubjects,
-  );
+    this.editedSubjects, {
+    this.messageInDialog,
+  });
 
   final int userId;
   final bool makeCalculated;
   final List<SubjectModel> editedSubjects;
+  final String? messageInDialog;
   Future<List<SubjectModel>?> changeCalculated() async {
     Crud crud = Crud();
     ({Map body, StatusRequest status}) subjects = await crud.postData(
@@ -28,6 +30,7 @@ class ChangeCalcSubjects {
         'where_code': _whereCode(),
         'make_them_calculated': makeCalculated ? '1' : '0',
       },
+      messageInDialog: messageInDialog,
     );
 
     if (subjects.status == StatusRequest.success) {
@@ -59,7 +62,8 @@ class ChangeCalcSubjects {
   String _whereCode() {
     String code = '';
     for (SubjectModel e in editedSubjects) {
-      String remoteId = "${e.remoteId ?? ''}";
+      if (e.remoteId == null) continue;
+      String remoteId = "${e.remoteId}";
 
       code += "OR `remote_id`= $remoteId ";
     }

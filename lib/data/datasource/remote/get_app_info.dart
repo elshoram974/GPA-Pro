@@ -17,8 +17,8 @@ import 'package:get/get.dart';
 class AppInfoRemotely {
   static Future<AppInfoData?> getInfo() async {
     Crud crud = Crud();
-    ({Map body, StatusRequest status}) getAppInfo = await crud
-        .postData(AppLinks.appInfo, {'appId': AppInfo.appId});
+    ({Map body, StatusRequest status}) getAppInfo =
+        await crud.postData(AppLinks.appInfo, {'appId': AppInfo.appId});
 
     if (getAppInfo.status == StatusRequest.success) {
       AppInfoModel appInfo =

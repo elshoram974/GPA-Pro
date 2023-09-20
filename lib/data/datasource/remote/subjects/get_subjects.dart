@@ -31,7 +31,6 @@ class GetAllSubjects {
       }
     } else if (subjects.status == StatusRequest.offlineFailure) {
       Get.back();
-
     } else {
       Get.back();
 

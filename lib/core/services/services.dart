@@ -23,7 +23,7 @@ class MyServices extends GetxService {
           if (link != null) await SharedSubjects.getSubjects(link);
           // Parse the link and warn the user, if it is not correct
         },
-        onError: (err) {
+        onError: (err) async {
           AppSnackBar.messageSnack(err);
           // Handle exception by warning the user their action did not succeed
         },
