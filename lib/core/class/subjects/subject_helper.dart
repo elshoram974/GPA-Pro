@@ -116,6 +116,16 @@ class SubjectHelper {
 
     return temp;
   }
+  
+  List<SubjectModel> makeAllSubjectsWithNullRemoteId() {
+    List<SubjectModel> temp = [];
+
+    for (SubjectModel e in subjectsList) {
+      temp.add(e..remoteId = null);
+    }
+
+    return temp;
+  }
 
   List<SubjectModel> getAllSubjectsNeedSync() {
     List<SubjectModel> temp = [];

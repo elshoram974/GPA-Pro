@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:gpa_pro/core/class/subjects/saved_changes.dart';
+import 'package:gpa_pro/core/class/subjects/subject_helper.dart';
 import 'package:gpa_pro/core/constants/injections.dart';
 import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
@@ -37,7 +38,7 @@ class InsertSubjectsToDatabase {
         isDone = true;
       } catch (e) {
         addedTemp.clear();
-        addedTemp.addAll(temp);
+        addedTemp.addAll(SubjectHelper(temp).makeAllSubjectsWithNullRemoteId());
         if (!fromStored) {
           await SavedChanges.save(
             ChangesInSubjects(
