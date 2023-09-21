@@ -1,11 +1,5 @@
 import 'package:gpa_pro/core/constants/injections.dart';
 import 'package:gpa_pro/core/constants/routes.dart';
-import 'package:gpa_pro/view/screens/auth/auth_screen.dart';
-import 'package:gpa_pro/view/screens/auth/change_password_screen.dart';
-import 'package:gpa_pro/view/screens/auth/check_code_screen.dart';
-import 'package:gpa_pro/view/screens/auth/forgot_pass_screen.dart';
-import 'package:gpa_pro/view/screens/auth/login_screen.dart';
-import 'package:gpa_pro/view/screens/auth/signup_screen.dart';
 import 'package:gpa_pro/view/screens/home/add_screen.dart';
 import 'package:gpa_pro/view/screens/settings/privacy_policy_screen.dart';
 import 'package:gpa_pro/view/screens/saved_subjects_screens/upload_screen.dart';
@@ -18,6 +12,13 @@ import 'package:gpa_pro/view/screens/home/subject_screen.dart';
 import 'package:gpa_pro/view/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:gpa_pro/view/screens/user/auth/auth_screen.dart';
+import 'package:gpa_pro/view/screens/user/auth/change_password_screen.dart';
+import 'package:gpa_pro/view/screens/user/auth/check_code_screen.dart';
+import 'package:gpa_pro/view/screens/user/auth/forgot_pass_screen.dart';
+import 'package:gpa_pro/view/screens/user/auth/login_screen.dart';
+import 'package:gpa_pro/view/screens/user/auth/signup_screen.dart';
+import 'package:gpa_pro/view/screens/user/settings/account_settings.dart';
 
 class GeneratedRoute {
   static List<GetPage<dynamic>>? getPages = [
@@ -28,6 +29,11 @@ class GeneratedRoute {
     GetPage(name: AppRoute.editGrades, page: () => const EditGradesScreen()),
     GetPage(name: AppRoute.addScreen, page: () => const AddScreen()),
     GetPage(name: AppRoute.uploadScreen, page: () => const UploadScreen()),
+    GetPage(
+      name: AppRoute.accountSettings,
+      page: () => const AccountSettings(),
+      transition: Transition.leftToRightWithFade,
+    ),
     GetPage(
       name: AppRoute.authScreen,
       page: () => const AuthScreen(),

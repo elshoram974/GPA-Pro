@@ -1,4 +1,4 @@
-import 'package:gpa_pro/data/datasource/remote/auth/login.dart';
+import 'package:gpa_pro/data/datasource/remote/user/auth/login.dart';
 import 'package:gpa_pro/data/datasource/remote/get_app_info.dart';
 import 'package:gpa_pro/data/model/app_info_model.dart';
 import 'package:gpa_pro/data/model/user.dart';

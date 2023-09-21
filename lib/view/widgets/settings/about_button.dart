@@ -1,3 +1,4 @@
+import 'package:gpa_pro/core/constants/public_constant.dart';
 import 'package:gpa_pro/core/constants/routes.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/core/shared/custom_list_tile.dart';
@@ -12,7 +13,7 @@ class AboutButton extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        const SizedBox(height: 50),
+        const SizedBox(height: AppConstant.kDefaultPadding),
         const Divider(),
         CustomListTile(
           title: AppConstLang.aboutApp.tr,

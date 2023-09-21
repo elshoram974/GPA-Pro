@@ -5,7 +5,7 @@ import 'package:gpa_pro/core/constants/injections.dart';
 import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/data/datasource/database/subjects/subject_table_db.dart';
-import 'package:gpa_pro/data/datasource/remote/auth/login.dart';
+import 'package:gpa_pro/data/datasource/remote/user/auth/login.dart';
 import 'package:gpa_pro/data/datasource/remote/subjects/upload_many_subjects.dart';
 import 'package:gpa_pro/data/model/changes_model.dart';
 import 'package:gpa_pro/data/model/subject_model.dart';

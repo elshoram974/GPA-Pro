@@ -1,18 +1,20 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:full_screen_image/full_screen_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gpa_pro/core/constants/app_links.dart';
-import 'package:gpa_pro/core/constants/assets.dart';
 import 'package:gpa_pro/core/constants/public_constant.dart';
+import 'package:gpa_pro/core/shared/static_image.dart';
 import 'package:gpa_pro/data/model/user.dart';
 
 class PhotoListTile extends StatelessWidget {
-  const PhotoListTile(this.userData, {super.key});
+  const PhotoListTile(this.dimension, this.userData, {super.key});
+  final double? dimension;
   final UserData? userData;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox.square(
-      dimension: 50,
+      dimension: dimension,
       child: ClipRRect(
         clipBehavior: Clip.hardEdge,
         borderRadius: BorderRadius.circular(AppConstant.kDefaultRadius),
@@ -20,13 +22,22 @@ class PhotoListTile extends StatelessWidget {
           visible: userData?.userImage != null,
           replacement: const StaticImage(),
           child: CachedNetworkImage(
-            imageUrl: "${AppLinks.image}/${userData?.userImage}",
+            imageUrl: "${AppLinks.image}/${userData?.userImage}".trim(),
             imageBuilder: (context, imageProvider) {
-              return Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: imageProvider,
-                    fit: BoxFit.cover,
+              return FullScreenWidget(
+                disposeLevel: DisposeLevel.Medium,
+                backgroundIsTransparent: true,
+                child: Center(
+                  child: Hero(
+                    tag: "${AppLinks.image}/${userData?.userImage}".trim(),
+                    child: ClipRRect(
+                      borderRadius:
+                          BorderRadius.circular(AppConstant.kDefaultRadius),
+                      child: Image(
+                        image: imageProvider,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
                 ),
               );
@@ -42,38 +53,5 @@ class PhotoListTile extends StatelessWidget {
         ),
       ),
     );
-    // return Container(
-    //   height: 65,
-    //   width: 65,
-    //   foregroundDecoration: profilePhotoDecoration(
-    //     const NetworkImage(''),
-    //   ),
-    //   decoration: profilePhotoDecoration(
-    //     const AssetImage(AppAssets.noProfilePic),
-    //   ),
-    // );
-  }
-
-  // BoxDecoration profilePhotoDecoration(ImageProvider<Object> image) {
-  //   return BoxDecoration(
-  //     border: Border.all(color: Colors.grey[400]!),
-  //     shape: BoxShape.circle,
-  //     image: DecorationImage(
-  //       image: image,
-  //       onError: (exception, stackTrace) {},
-  //       fit: BoxFit.cover,
-  //     ),
-  //   );
-  // }
-}
-
-class StaticImage extends StatelessWidget {
-  const StaticImage({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Image.asset(AppAssets.noProfilePic, fit: BoxFit.cover);
   }
 }

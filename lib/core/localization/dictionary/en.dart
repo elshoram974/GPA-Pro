@@ -64,6 +64,10 @@ class EnDictionary {
     AppConstLang.logOut: "Log out",
     AppConstLang.areYouSureYouWannaLogOut: "log out? \n\nAll subjects will be deleted, but if they are saved in the account, you can return them when you login again.\nOr you can save them as a txt file and reopen it at any time.",
     //
+    // account settings screen
+    AppConstLang.change: "Change",
+    AppConstLang.noChangeToSave: "There is no change to save",
+    //
     // auth screen
     AppConstLang.login: "Login",
     AppConstLang.signUp: "Sign Up",

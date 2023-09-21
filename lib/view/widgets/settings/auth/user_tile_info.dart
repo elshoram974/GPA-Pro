@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:gpa_pro/core/constants/public_constant.dart';
 import 'package:gpa_pro/core/constants/routes.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
-import 'package:gpa_pro/data/datasource/remote/auth/login.dart';
+import 'package:gpa_pro/data/datasource/remote/user/auth/login.dart';
 import 'package:gpa_pro/data/model/user.dart';
 
 class UserTileInfo extends StatelessWidget {
@@ -43,7 +43,7 @@ class UserTileInfo extends StatelessWidget {
                 Flexible(
                   flex: 6,
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () => Get.toNamed(AppRoute.accountSettings),
                     child: Text(AppConstLang.accountSettings.tr),
                   ),
                 ),

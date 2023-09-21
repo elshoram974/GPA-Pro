@@ -1,6 +1,6 @@
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:get/get.dart';
 
 import '../contact_constants.dart';
@@ -45,12 +45,12 @@ class ContactUsData {
         // ),
         ContactUsModel(
           lunch: Launch.whatsApp,
-          icon: FontAwesome.whatsapp,
+          icon: FontAwesomeIcons.whatsapp,
           name: AppConstLang.whatsapp.tr,
         ),
         ContactUsModel(
           lunch: Launch.phoneCall,
-          icon: FontAwesome.phone,
+          icon: Icons.call_outlined,
           name: AppConstLang.phone.tr,
         ),
         ContactUsModel(

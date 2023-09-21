@@ -29,7 +29,9 @@ class AppLinks {
   static const String _auth = '$_baseLink/auth';
   static const String login = '$_auth/login.php';
   static const String signup = '$_auth/signup.php';
-  static const String editUser = '$_auth/edit.php';
+  static const String editUserName = '$_auth/edit_name.php';
+  static const String changePhoto = '$_auth/change_photo.php';
+  static const String changePassword = '$_auth/change_password.php';
   static const String deleteUser = '$_auth/delete.php';
   static const String image = '$_auth/uploaded_images';
 

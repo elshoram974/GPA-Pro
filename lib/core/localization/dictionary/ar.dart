@@ -12,8 +12,8 @@ class ArDictionary {
     AppConstLang.update: "تحديث",
     AppConstLang.notNow: "ليس الان",
     AppConstLang.noInternet: "لا يوجد اتصال بالإنترنت",
-    AppConstLang.openInternetWhenAccountOpenedToAvoidErrorsOnServer: "يفضل الإتصال بالانترنت عند فتح الحساب لتجنب حدوث أخطاء في تخزين البيانات على الخادم",
-
+    AppConstLang.openInternetWhenAccountOpenedToAvoidErrorsOnServer:
+        "يفضل الإتصال بالانترنت عند فتح الحساب لتجنب حدوث أخطاء في تخزين البيانات على الخادم",
 
     //
     AppConstLang.settings: "الإعدادات",
@@ -64,7 +64,13 @@ class ArDictionary {
     AppConstLang.pressOpenYourAccount: "اضغط لفتح حسابك",
     AppConstLang.accountSettings: "إعدادات الحساب",
     AppConstLang.logOut: "تسجيل الخروج",
-    AppConstLang.areYouSureYouWannaLogOut: "تسجيل الخروج ؟ \n\nسيتم حذف جميع المواد، ولكن إذا كانت محفوظة في الحساب، فيمكنك ارجاعهم عند تسجيل الدخول مرة أخرى.\nأو يمكنك حفظهم كملف txt وإعادة فتحها في اي وقت.",
+    AppConstLang.areYouSureYouWannaLogOut:
+        "تسجيل الخروج ؟ \n\nسيتم حذف جميع المواد، ولكن إذا كانت محفوظة في الحساب، فيمكنك ارجاعهم عند تسجيل الدخول مرة أخرى.\nأو يمكنك حفظهم كملف txt وإعادة فتحها في اي وقت.",
+    //
+    // account settings screen
+    AppConstLang.change: "تغيير",
+    AppConstLang.noChangeToSave: "لا يوجد تغيير لحفظه",
+
     //
     // auth screen
     AppConstLang.login: "تسجيل الدخول",
@@ -187,7 +193,6 @@ class ArDictionary {
     AppConstLang.sync: "مزامنة",
     AppConstLang.needToSync: "بحاجة الى المزامنة",
 
-
     AppConstLang.savedInDownload: "تم الحفظ في مجلد التنزيل",
     AppConstLang.inThisYear: "في هذه السنه",
     AppConstLang.inPreviousYears: "في السنين السابقة",
@@ -202,11 +207,13 @@ class ArDictionary {
     AppConstLang.userDoesNotHaveSubjects: "لا يوجد مواد لهذا المستخدم",
 
     AppConstLang.thereIsNoChangeToUpdate: "لا يوجد تغييرات لتحديثها",
-    AppConstLang.subjectsNotExistWithUser: "هذه المواد غير موجودة عند هذا المستخدم",
-    AppConstLang.subjectsAreNotDeletedMayDeleted: "لم يتم حذف المواد، ربما كانت محذوفة من قبل",
+    AppConstLang.subjectsNotExistWithUser:
+        "هذه المواد غير موجودة عند هذا المستخدم",
+    AppConstLang.subjectsAreNotDeletedMayDeleted:
+        "لم يتم حذف المواد، ربما كانت محذوفة من قبل",
 
-    AppConstLang.haveToOpenInternetWhenUpdateSubject: "يجب عليك تشغيل الانترنت عند تحديث المواد، أو يمكنك تحديثهم في شاشة الفصل الدراسي ليست هنا (الشاشة التي تحتوي على جميع المواد في هذا الفصل الدراسي)",
-
+    AppConstLang.haveToOpenInternetWhenUpdateSubject:
+        "يجب عليك تشغيل الانترنت عند تحديث المواد، أو يمكنك تحديثهم في شاشة الفصل الدراسي ليست هنا (الشاشة التي تحتوي على جميع المواد في هذا الفصل الدراسي)",
 
     // add screen
     AppConstLang.semester: "فصل",
@@ -252,9 +259,9 @@ class ArDictionary {
         "جعل جميع العناصر المحددة محسوبة أو غير محسوبة",
     AppConstLang.makeSelectedCalc: "جعلهم محسوبين",
     AppConstLang.makeThemNotCalc: "جعلهم غير محسوبين",
-    AppConstLang.unknownErrorSubjectsAreNotAdded: "خطأ غير معروف، لم يتم إضافة المواد على الحساب",
+    AppConstLang.unknownErrorSubjectsAreNotAdded:
+        "خطأ غير معروف، لم يتم إضافة المواد على الحساب",
     AppConstLang.savedToDeviceOnly: "تم الحفظ على الجهاز فقط",
-
 
     // details screen
     AppConstLang.cumulativeDetails: "تفاصيل التراكمي",

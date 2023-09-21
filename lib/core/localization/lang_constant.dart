@@ -59,6 +59,11 @@ class AppConstLang {
   static const String logOut = "logOut";
   static const String areYouSureYouWannaLogOut = "areYouSureYouWannaLogOut...";
   //
+  // account settings screen
+  static const String change = "change";
+  static const String noChangeToSave = "noChangeToSave";
+
+  //
   // auth screen
   static const String login = "login";
   static const String signUp = "signup";
