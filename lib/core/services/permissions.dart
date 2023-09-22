@@ -19,7 +19,7 @@ abstract class AppPermissions {
   }
 
   static Future<void> storage() => _general(Permission.storage);
-  static Future<void> camera() => _general(Permission.camera);
+  // static Future<void> camera() => _general(Permission.camera);
 
   static Future<void> all() async {
     // await camera();
