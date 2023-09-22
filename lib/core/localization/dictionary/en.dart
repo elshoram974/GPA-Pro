@@ -12,7 +12,8 @@ class EnDictionary {
     AppConstLang.update: "Update",
     AppConstLang.notNow: "Not now",
     AppConstLang.noInternet: "There is no internet connection",
-    AppConstLang.openInternetWhenAccountOpenedToAvoidErrorsOnServer: "It is preferable to connect to the Internet when the account is opened to avoid storage errors on the server",
+    AppConstLang.openInternetWhenAccountOpenedToAvoidErrorsOnServer:
+        "It is preferable to connect to the Internet when the account is opened to avoid storage errors on the server",
     //
     AppConstLang.settings: "Settings",
     AppConstLang.home: "Home",
@@ -62,11 +63,15 @@ class EnDictionary {
     AppConstLang.pressOpenYourAccount: "Press to open your account",
     AppConstLang.accountSettings: "Account Settings",
     AppConstLang.logOut: "Log out",
-    AppConstLang.areYouSureYouWannaLogOut: "log out? \n\nAll subjects will be deleted, but if they are saved in the account, you can return them when you login again.\nOr you can save them as a txt file and reopen it at any time.",
+    AppConstLang.areYouSureYouWannaLogOut:
+        "log out? \n\nAll subjects will be deleted, but if they are saved in the account, you can return them when you login again.\nOr you can save them as a txt file and reopen it at any time.",
     //
     // account settings screen
     AppConstLang.change: "Change",
     AppConstLang.noChangeToSave: "There is no change to save",
+    AppConstLang.openCamera: "فتح الكاميرا",
+    AppConstLang.openGallery: "فتح المعرض",
+    AppConstLang.openFiles: "فتح الملفات",
     //
     // auth screen
     AppConstLang.login: "Login",
@@ -200,12 +205,14 @@ class EnDictionary {
     AppConstLang.savedSubjects: "Saved subjects",
 
     AppConstLang.userDoesNotHaveSubjects: "User does't have subjects",
-    
+
     AppConstLang.thereIsNoChangeToUpdate: "There is no changes to update",
     AppConstLang.subjectsNotExistWithUser: "Subjects not exist with this user",
-    AppConstLang.subjectsAreNotDeletedMayDeleted: "Subjects are not deleted, may it is already deleted",
-    
-    AppConstLang.haveToOpenInternetWhenUpdateSubject: "You have to turn internet on when update subjects, Or you can update it by using semester screen not here (screen that contain all subjects in this semester)",
+    AppConstLang.subjectsAreNotDeletedMayDeleted:
+        "Subjects are not deleted, may it is already deleted",
+
+    AppConstLang.haveToOpenInternetWhenUpdateSubject:
+        "You have to turn internet on when update subjects, Or you can update it by using semester screen not here (screen that contain all subjects in this semester)",
     // add screen
     AppConstLang.semester: "Semester",
     AppConstLang.subject: "Subject",
@@ -252,7 +259,8 @@ class EnDictionary {
         "Make all selected items calculated or not",
     AppConstLang.makeSelectedCalc: "Make all selected calculated",
     AppConstLang.makeThemNotCalc: "Make all selected not calculated",
-    AppConstLang.unknownErrorSubjectsAreNotAdded: "Unknown error, subjects are not added on your account",
+    AppConstLang.unknownErrorSubjectsAreNotAdded:
+        "Unknown error, subjects are not added on your account",
     AppConstLang.savedToDeviceOnly: "Saved to device only",
 
     // details screen

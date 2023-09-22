@@ -51,9 +51,19 @@ class ChangePhotoHandlerImp extends ChangePhotoHandler {
 
   @override
   Future<bool> changePhoto(File? file) async {
-    UserData? temp = await UpdateUser.changePhoto(user!.email, file);
+    if (Get.isBottomSheetOpen ?? false) Get.back();
 
+    
+
+    String email = user!.email;
+    user = null;
     update();
+
+    UserData? temp = await UpdateUser.changePhoto(email, file);
+
+    user = LoginRemotely.savedLogin();
+    update();
+
     return temp != null;
   }
 
@@ -82,7 +92,13 @@ class ChangePhotoHandlerImp extends ChangePhotoHandler {
     if (AppConstant.isAndroidOrIOS || AppConstant.isWeb) {
       CroppedFile? croppedFile = await ImageCropper().cropImage(
         sourcePath: image.path,
-        aspectRatioPresets: [CropAspectRatioPreset.square],
+        aspectRatioPresets: [
+          CropAspectRatioPreset.square,
+          CropAspectRatioPreset.ratio3x2,
+          CropAspectRatioPreset.original,
+          CropAspectRatioPreset.ratio4x3,
+          CropAspectRatioPreset.ratio16x9,
+        ],
         uiSettings: [
           AndroidUiSettings(
             toolbarTitle: AppConstLang.edit.tr,

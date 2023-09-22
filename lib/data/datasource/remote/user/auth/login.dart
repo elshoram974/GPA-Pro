@@ -31,7 +31,10 @@ abstract class LoginRemotely {
       );
       await Synchronization().uploadSubjectsThatNotInDatabase();
     }
-    await Synchronization().synchronizationSubjects();
+    if (await NetHelper.checkInternet()) {
+      CachedNetworkImage.evictFromCache("${AppLinks.image}/${user.data.userImage}");
+      await Synchronization().synchronizationSubjects();
+    }
 
     AppInjections.mainScreenImp.changeBody(1);
     AppSnackBar.messageSnack(AppConstLang.done.tr);
@@ -40,7 +43,8 @@ abstract class LoginRemotely {
   }
 
   static void logOut() async {
-    await CachedNetworkImage.evictFromCache("${AppLinks.image}/${savedLogin()?.userImage}");
+    await CachedNetworkImage.evictFromCache(
+        "${AppLinks.image}/${savedLogin()?.userImage}");
     await _pref.remove(SharedKeys.userData);
     await _pref.remove(SharedKeys.saveAllChangesInSubjects);
     await SubjectTableDB.clearAll();

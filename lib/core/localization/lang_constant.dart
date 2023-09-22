@@ -62,6 +62,9 @@ class AppConstLang {
   // account settings screen
   static const String change = "change";
   static const String noChangeToSave = "noChangeToSave";
+  static const String openCamera = "openCamera";
+  static const String openGallery= "openGallery";
+  static const String openFiles = "openFiles";
 
   //
   // auth screen

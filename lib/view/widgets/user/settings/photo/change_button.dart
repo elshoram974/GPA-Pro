@@ -5,7 +5,6 @@ import 'package:gpa_pro/controller/user/settings/change_image_controller.dart';
 import 'package:gpa_pro/core/constants/public_constant.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 
-
 class ChangeButton extends GetView<ChangePhotoHandlerImp> {
   const ChangeButton({super.key, required this.hasPhoto});
   final bool hasPhoto;
@@ -13,7 +12,7 @@ class ChangeButton extends GetView<ChangePhotoHandlerImp> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(0.5 * AppConstant.kDefaultPadding),
+      padding: const EdgeInsets.all(0.2 * AppConstant.kDefaultPadding),
       child: PopupMenuButton<EditPhoto>(
         tooltip: AppConstLang.edit.tr,
         shape: RoundedRectangleBorder(
@@ -41,7 +40,17 @@ class ChangeButton extends GetView<ChangePhotoHandlerImp> {
             ],
           ];
         },
-        child: const FaIcon(FontAwesomeIcons.penToSquare),
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(AppConstant.kDefaultRadius),
+            // boxShadow: [BoxShadow(color: Colors.black12)],
+            color: Colors.black12,
+          ),
+          child: const Padding(
+            padding: EdgeInsets.all(5.0),
+            child: FaIcon(FontAwesomeIcons.penToSquare),
+          ),
+        ),
       ),
     );
   }

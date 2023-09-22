@@ -62,9 +62,7 @@ class UpdateUser {
 
         UserData? temp = await change.change();
 
-        // // Not Work in Windows
-        // await DefaultCacheManager().emptyCache();
-        CachedNetworkImage.evictFromCache("${AppLinks.image}/${_.userImage}");
+        await CachedNetworkImage.evictFromCache("${AppLinks.image}/${_.userImage}");
 
         if (temp != null) {
           await AppInjections.myServices.sharedPreferences.setString(
