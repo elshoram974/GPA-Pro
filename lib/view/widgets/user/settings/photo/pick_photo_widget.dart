@@ -18,13 +18,13 @@ class PickPhotoWidget extends GetView<ChangePhotoHandlerImp> {
         if (!isDesktop)
           CustomListTile(
             title: AppConstLang.openCamera.tr,
-            onTap: () async => await controller.pickImage(ImageSource.camera),
+            onTap: ()  => controller.pickImage(ImageSource.camera),
           ),
         CustomListTile(
           title: isDesktop
               ? AppConstLang.openFiles.tr
               : AppConstLang.openGallery.tr,
-          onTap: () async => await controller.pickImage(ImageSource.gallery),
+          onTap: () => controller.pickImage(ImageSource.gallery),
         ),
       ],
     );

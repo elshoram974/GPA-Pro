@@ -70,9 +70,9 @@ class ArDictionary {
     // account settings screen
     AppConstLang.change: "تغيير",
     AppConstLang.noChangeToSave: "لا يوجد تغيير لحفظه",
-    AppConstLang.openCamera: "كاميرا",
-    AppConstLang.openGallery: "Gallery",
-    AppConstLang.openFiles: "Files",
+    AppConstLang.openCamera: "فتح الكاميرا",
+    AppConstLang.openGallery: "فتح المعرض",
+    AppConstLang.openFiles: "فتح الملفات",
 
     //
     // auth screen
