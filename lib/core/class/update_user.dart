@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
@@ -11,6 +12,7 @@ import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/data/datasource/remote/user/auth/login.dart';
 import 'package:gpa_pro/data/datasource/remote/user/settings/change_password.dart';
 import 'package:gpa_pro/data/datasource/remote/user/settings/change_photo.dart';
+import 'package:gpa_pro/data/datasource/remote/user/settings/delete_account.dart';
 import 'package:gpa_pro/data/datasource/remote/user/settings/edit_name.dart';
 import 'package:gpa_pro/data/model/user.dart';
 
@@ -40,6 +42,8 @@ class UpdateUser {
         AppSnackBar.messageSnack(AppConstLang.noInternet.tr);
       }
     } catch (e) {
+      print(e.toString());
+      log(e.toString());
       AppSnackBar.messageSnack(e.toString());
     }
     return null;
@@ -62,7 +66,8 @@ class UpdateUser {
 
         UserData? temp = await change.change();
 
-        await CachedNetworkImage.evictFromCache("${AppLinks.image}/${_.userImage}");
+        await CachedNetworkImage.evictFromCache(
+            "${AppLinks.image}/${_.userImage}");
 
         if (temp != null) {
           await AppInjections.myServices.sharedPreferences.setString(
@@ -112,5 +117,24 @@ class UpdateUser {
       AppSnackBar.messageSnack(e.toString());
     }
     return null;
+  }
+
+  static Future<bool> deleteUser() async {
+    int userId = LoginRemotely.savedLogin()!.userId!;
+    DeleteAccountRemotely delete = DeleteAccountRemotely(userId: userId);
+
+    try {
+      if (await NetHelper.checkInternet()) {
+        bool deleted = await delete.delete();
+        if (deleted) LoginRemotely.logOut();
+
+        return deleted;
+      } else {
+        AppSnackBar.messageSnack(AppConstLang.noInternet.tr);
+      }
+    } catch (e) {
+      AppSnackBar.messageSnack(e.toString());
+    }
+    return false;
   }
 }

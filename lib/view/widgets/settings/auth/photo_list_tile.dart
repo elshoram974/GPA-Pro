@@ -7,7 +7,13 @@ import 'package:gpa_pro/core/shared/static_image.dart';
 import 'package:gpa_pro/data/model/user.dart';
 
 class PhotoListTile extends StatelessWidget {
-  const PhotoListTile(this.dimension, this.userData, {super.key});
+  const PhotoListTile(
+    this.dimension,
+    this.userData, {
+    this.withOutRounded = false,
+    super.key,
+  });
+  final bool withOutRounded;
   final double? dimension;
   final UserData? userData;
 
@@ -31,6 +37,7 @@ class PhotoListTile extends StatelessWidget {
                   child: Hero(
                     tag: "${AppLinks.image}/${userData?.userImage}".trim(),
                     child: ClipRRect(
+                      clipBehavior: withOutRounded ? Clip.none : Clip.hardEdge,
                       borderRadius:
                           BorderRadius.circular(AppConstant.kDefaultRadius),
                       child: Image(

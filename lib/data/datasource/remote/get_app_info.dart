@@ -62,7 +62,7 @@ class AppInfoRemotely {
     } else {
       // Get.back();
 
-      AppSnackBar.messageSnack('Error : ${getAppInfo.status}');
+      AppSnackBar.messageSnack('Error : unknown error');
     }
     return null;
   }

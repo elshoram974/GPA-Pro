@@ -7,7 +7,8 @@ class AppConstLang {
   static const String update = "update";
   static const String notNow = "notNow";
   static const String noInternet = "noInternet";
-  static const String openInternetWhenAccountOpenedToAvoidErrorsOnServer = "openInternetWhenAccountOpenedToAvoidErrorsOnServer";
+  static const String openInternetWhenAccountOpenedToAvoidErrorsOnServer =
+      "openInternetWhenAccountOpenedToAvoidErrorsOnServer";
 
   static const String settings = "settings";
   static const String home = "home";
@@ -63,8 +64,21 @@ class AppConstLang {
   static const String change = "change";
   static const String noChangeToSave = "noChangeToSave";
   static const String openCamera = "openCamera";
-  static const String openGallery= "openGallery";
+  static const String openGallery = "openGallery";
   static const String openFiles = "openFiles";
+  static const String changeName = "changeName";
+  static const String changePass = "changePass";
+  static const String deleteAccount = "deleteAccount";
+  static const String pleaseEnterPass = "pleaseEnterPass";
+  static const String toChangeName = "toChangeName";
+  static const String toChangePass = "toChangePass";
+  static const String toDeleteAccount = "toDeleteAccount";
+  static const String changesNotSaved = "changesNotSaved";
+  static const String canNotSaveSamePassword = "canNotSaveSamePassword";
+  static const String deleteMessage = "deleteMessage";
+  static const String deleteConfirm = "deleteConfirm";
+  static const String wrongCode = "wrongCode";
+  static const String accountSuccessfullyDeleted = "accountSuccessfullyDeleted";
 
   //
   // auth screen
@@ -196,13 +210,14 @@ class AppConstLang {
   static const String savedSubjects = "saved_subjects";
 
   static const String userDoesNotHaveSubjects = "userDoesNotHaveSubjects";
-  
+
   static const String thereIsNoChangeToUpdate = "thereIsNoChangeToUpdate";
   static const String subjectsNotExistWithUser = "subjectsNotExistWithUser";
-  static const String subjectsAreNotDeletedMayDeleted = "subjectsAreNotDeletedMayDeleted";
-  
-  static const String haveToOpenInternetWhenUpdateSubject = "haveToOpenInternetWhenUpdateSubject....";
+  static const String subjectsAreNotDeletedMayDeleted =
+      "subjectsAreNotDeletedMayDeleted";
 
+  static const String haveToOpenInternetWhenUpdateSubject =
+      "haveToOpenInternetWhenUpdateSubject....";
 
   // add screen
   static const String semester = "semester";
@@ -249,7 +264,8 @@ class AppConstLang {
       "make_selected_calculated_or_not";
   static const String makeSelectedCalc = "make_selected_calc";
   static const String makeThemNotCalc = "make_selected_not_calc";
-  static const String unknownErrorSubjectsAreNotAdded = "unknownErrorSubjectsAreNotAdded";
+  static const String unknownErrorSubjectsAreNotAdded =
+      "unknownErrorSubjectsAreNotAdded";
   static const String savedToDeviceOnly = "savedToDeviceOnly";
 
   // details screen

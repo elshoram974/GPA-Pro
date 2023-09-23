@@ -4,6 +4,9 @@ import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/core/shared/color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:gpa_pro/core/shared/custom_fields/pass_field_controller.dart';
+import 'package:gpa_pro/data/datasource/remote/user/auth/login.dart';
+import 'package:gpa_pro/data/model/user.dart';
 
 class CustomDialog {
   static Future<T?> loadDialog<T>({bool canBack = true, String? message}) {
@@ -171,6 +174,53 @@ class CustomDialog {
             },
       onCancel: onCancel,
       titlePadding: title == '' ? EdgeInsets.zero : null,
+    );
+  }
+
+  static Future<T?> checkPassDialog<T>(
+    String message,
+    void Function() confirmFn,
+  ) {
+    GlobalKey<FormFieldState> key = GlobalKey<FormFieldState>();
+    String pass = "";
+
+    void onConfirm() {
+      if (key.currentState!.validate()) {
+        Get.back();
+        UserData? user = LoginRemotely.savedLogin();
+        if (pass == user?.password) {
+          confirmFn();
+        } else {
+          CustomDialog.errorDialog(AppConstLang.wrongPassword.tr);
+        }
+      }
+    }
+
+    return Get.defaultDialog<T>(
+      buttonColor: AppColor.primary,
+      confirmTextColor: Colors.white,
+      title: AppConstLang.warning.tr,
+      content: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppConstant.kDefaultPadding,
+          vertical: AppConstant.kDefaultPadding / 2,
+        ),
+        child: Column(
+          children: [
+            Text("${AppConstLang.pleaseEnterPass.tr} $message"),
+            const SizedBox(height: 2 * AppConstant.kDefaultPadding),
+            DefaultPassWidget(
+              fieldKey: key,
+              changeTextColorToBlack: false,
+              onChanged: (val) => pass = val,
+              onFieldSubmitted: (val) => onConfirm(),
+            ),
+          ],
+        ),
+      ),
+      textCancel: AppConstLang.cancel.tr,
+      textConfirm: AppConstLang.confirm.tr,
+      onConfirm: onConfirm,
     );
   }
 

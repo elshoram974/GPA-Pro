@@ -4,6 +4,7 @@ import 'package:gpa_pro/controller/user/auth/login_controller.dart';
 import 'package:gpa_pro/core/functions/validator.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/core/shared/custom_fields/default_field.dart';
+import 'package:gpa_pro/core/shared/custom_fields/pass_field_controller.dart';
 
 class LoginFields extends StatelessWidget {
   const LoginFields({super.key});
@@ -32,33 +33,37 @@ class LoginFields extends StatelessWidget {
                   AuthValidType.email,
                 ),
               ),
-              MyDefaultField(
-                textDirection: TextDirection.ltr,
-                textInputAction: TextInputAction.done,
-                // borderColor: AppColor.secondary,
-                textColor: Colors.black,
-                textCapitalization: TextCapitalization.none,
-                textAlign: TextAlign.left,
-                labelText: AppConstLang.password.tr,
-                keyboardType: TextInputType.visiblePassword,
+              DefaultPassWidget(
                 onChanged: (val) => controller.password = val,
-                validator: (value) => AppValidator.validInputAuth(
-                  value,
-                  0,
-                  100,
-                  AuthValidType.password,
-                ),
-                obscureText: controller.showPass,
                 onFieldSubmitted: (val) => controller.login(),
-                suffix: IconButton(
-                  onPressed: controller.changeShowPassword,
-                  icon: Icon(
-                    controller.showPass
-                        ? Icons.visibility_off_outlined
-                        : Icons.visibility_outlined,
-                  ),
-                ),
               ),
+              // MyDefaultField(
+              //   textDirection: TextDirection.ltr,
+              //   textInputAction: TextInputAction.done,
+              //   // borderColor: AppColor.secondary,
+              //   textColor: Colors.black,
+              //   textCapitalization: TextCapitalization.none,
+              //   textAlign: TextAlign.left,
+              //   labelText: AppConstLang.password.tr,
+              //   keyboardType: TextInputType.visiblePassword,
+              //   onChanged: (val) => controller.password = val,
+              //   validator: (value) => AppValidator.validInputAuth(
+              //     value,
+              //     0,
+              //     100,
+              //     AuthValidType.password,
+              //   ),
+              //   obscureText: controller.showPass,
+              //   onFieldSubmitted: (val) => controller.login(),
+              //   suffix: IconButton(
+              //     onPressed: controller.changeShowPassword,
+              //     icon: Icon(
+              //       controller.showPass
+              //           ? Icons.visibility_off_outlined
+              //           : Icons.visibility_outlined,
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         );

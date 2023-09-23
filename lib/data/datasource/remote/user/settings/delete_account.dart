@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:get/get.dart';
 import 'package:gpa_pro/core/class/crud.dart';
 import 'package:gpa_pro/core/class/net_helper.dart';
@@ -8,30 +6,19 @@ import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/data/model/user.dart';
 
-class ChangePhotoRemotely {
-  const ChangePhotoRemotely(this.file, this.email, {this.messageInDialog});
+class DeleteAccountRemotely {
+  const DeleteAccountRemotely({required this.userId, this.messageInDialog});
 
-  final File? file;
-  final String email;
+  final int userId;
   final String? messageInDialog;
-  Future<UserData?> change() async {
+  Future<bool> delete() async {
     Crud crud = Crud();
     ({Map body, StatusRequest status}) post;
-    Map<String, dynamic> body = {"email": email.trim()};
-    if (file == null) {
-      post = await crud.postData(
-        AppLinks.changePhoto,
-        body,
-        messageInDialog: messageInDialog,
-      );
-    } else {
-      post = await crud.postDataWithFile(
-        AppLinks.changePhoto,
-        body,
-        file!,
-        messageInDialog: messageInDialog,
-      );
-    }
+    post = await crud.postData(
+      AppLinks.deleteUser,
+      {"user_id": "$userId"},
+      messageInDialog: messageInDialog,
+    );
 
     if (post.status == StatusRequest.success) {
       User user = User.fromJson(post.body as Map<String, dynamic>);
@@ -39,9 +26,7 @@ class ChangePhotoRemotely {
       UserData userData = user.data;
 
       if (user.status == 'success') {
-        return userData;
-      } else if (userData.message == "there is no change to save") {
-        AppSnackBar.messageSnack(AppConstLang.noChangeToSave.tr);
+        return true;
       } else if (user.data.message == 'email not exist') {
         AppSnackBar.messageSnack(AppConstLang.emailDoesNotExist.tr);
       } else {
@@ -55,6 +40,6 @@ class ChangePhotoRemotely {
 
       AppSnackBar.messageSnack('Error : unknown error');
     }
-    return null;
+    return false;
   }
 }

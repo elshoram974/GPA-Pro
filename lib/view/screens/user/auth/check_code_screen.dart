@@ -16,7 +16,7 @@ class CheckCodeScreen extends GetView<CheckCodeControllerImp> {
     return AuthScreenStructure(
       title: AppConstLang.verifyCode.tr,
       onWillPop: controller.onWillPop,
-      body: ListView(
+      body: Column(
         children: [
           SizedBox(height: 0.25 * MediaQuery.sizeOf(context).height),
           Text(

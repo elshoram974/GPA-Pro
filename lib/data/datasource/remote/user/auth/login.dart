@@ -21,18 +21,18 @@ abstract class LoginRemotely {
       AppInjections.myServices.sharedPreferences;
 
   // static late  UserData userData;
-  static Future<void> login(User user, String pass) async {
+  static Future<void> login(UserData user, String pass) async {
     if (!_pref.containsKey(SharedKeys.userData)) {
       await Synchronization().synchronizationSubjects();
 
       await _pref.setString(
         SharedKeys.userData,
-        user.data.copyWith(password: pass).toRawJson(),
+        user.copyWith(password: pass).toRawJson(),
       );
       await Synchronization().uploadSubjectsThatNotInDatabase();
     }
     if (await NetHelper.checkInternet()) {
-      CachedNetworkImage.evictFromCache("${AppLinks.image}/${user.data.userImage}");
+      CachedNetworkImage.evictFromCache("${AppLinks.image}/${user.userImage}");
       await Synchronization().synchronizationSubjects();
     }
 
@@ -75,7 +75,7 @@ abstract class LoginRemotely {
     if (post.status == StatusRequest.success) {
       User user = User.fromJson(post.body as Map<String, dynamic>);
       if (user.status == 'success') {
-        await login(user, password);
+        await login(user.data, password);
         return user;
       } else {
         if (user.data.message == 'email not exist') {
@@ -101,7 +101,7 @@ abstract class LoginRemotely {
     } else if (post.status != StatusRequest.offlineFailure) {
       Get.back();
 
-      AppSnackBar.messageSnack('Error : ${post.status}');
+      AppSnackBar.messageSnack('Error : unknown error');
     }
 
     return null;

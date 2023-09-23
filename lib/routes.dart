@@ -13,7 +13,8 @@ import 'package:gpa_pro/view/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gpa_pro/view/screens/user/auth/auth_screen.dart';
-import 'package:gpa_pro/view/screens/user/auth/change_password_screen.dart';
+import 'package:gpa_pro/view/screens/user/settings/change_name_screen.dart';
+import 'package:gpa_pro/view/screens/user/settings/change_password_screen.dart';
 import 'package:gpa_pro/view/screens/user/auth/check_code_screen.dart';
 import 'package:gpa_pro/view/screens/user/auth/forgot_pass_screen.dart';
 import 'package:gpa_pro/view/screens/user/auth/login_screen.dart';
@@ -62,6 +63,11 @@ class GeneratedRoute {
     GetPage(
       name: AppRoute.changePasswordScreen,
       page: () => const ChangePasswordScreen(),
+      transition: Transition.leftToRightWithFade,
+    ),
+    GetPage(
+      name: AppRoute.changeNameScreen,
+      page: () => const ChangeNameScreen(),
       transition: Transition.leftToRightWithFade,
     ),
   ];

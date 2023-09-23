@@ -67,18 +67,19 @@ class AuthScreenStructure extends StatelessWidget {
             padding: const EdgeInsets.symmetric(
               horizontal: AppConstant.kDefaultPadding,
             ),
-            child: Align(
-              child: ConstrainedBox(
-                constraints:
-                    BoxConstraints(maxWidth: AppDimension.maxPhone.toDouble()),
-                child: Column(
-                  children: [
-                    Expanded(child: body),
-                    // SizedBox(height: MediaQuery.of(context).viewInsets.bottom),
-                    SizedBox(height: MediaQuery.viewInsetsOf(context).bottom),
-                  ],
+            child: ListView(
+              children: [
+                Align(
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxWidth: AppDimension.maxPhone.toDouble(),
+                    ),
+                    child: body,
+                  ),
                 ),
-              ),
+                // SizedBox(height: MediaQuery.of(context).viewInsets.bottom),
+                SizedBox(height: MediaQuery.viewInsetsOf(context).bottom),
+              ],
             ),
           ),
         ),

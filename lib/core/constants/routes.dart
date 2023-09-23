@@ -15,7 +15,8 @@ abstract class AppRoute {
   static const signUpScreen = "/signup_screen";
   static const forgotPassScreen = "/forgot_password_screen";
   static const checkCodeScreen = "/check_code_screen";
-  static const changePasswordScreen = "/change_password";
+  static const changePasswordScreen = "/change_password_screen";
+  static const changeNameScreen = "/change_name_screen";
   // static const qrCode = "/qrCode";
   // static const detailsScreen = "/details_screen";
 }

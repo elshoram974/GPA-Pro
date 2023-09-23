@@ -65,7 +65,7 @@ abstract class VerifyCode {
       }
     } else if (post.status != StatusRequest.offlineFailure) {
       Get.back();
-      AppSnackBar.messageSnack('Error : ${post.status}');
+      AppSnackBar.messageSnack('Error : unknown error');
     }
     return null;
   }

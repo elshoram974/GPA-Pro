@@ -11,7 +11,7 @@ class VerifyCodeField extends GetView<CheckCodeControllerImp> {
   @override
   Widget build(BuildContext context) {
     return MyDefaultField(
-      textAlign: TextAlign.left,
+      textAlign: TextAlign.center,
       textDirection: TextDirection.ltr,
       textInputAction: TextInputAction.done,
       fieldKey: controller.key,

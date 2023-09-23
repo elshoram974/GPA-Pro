@@ -4,6 +4,7 @@ import 'package:gpa_pro/core/class/net_helper.dart';
 import 'package:gpa_pro/core/constants/app_links.dart';
 import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
+import 'package:gpa_pro/data/datasource/remote/subjects/upload_many_subjects.dart';
 import 'package:gpa_pro/data/model/user.dart';
 
 class ChangePasswordRemotely {
@@ -20,7 +21,7 @@ class ChangePasswordRemotely {
     Crud crud = Crud();
     ({Map body, StatusRequest status}) post;
     post = await crud.postData(
-      AppLinks.editUserName,
+      AppLinks.changePassword,
       _convertDataToJson(),
       messageInDialog: messageInDialog,
     );
@@ -33,7 +34,7 @@ class ChangePasswordRemotely {
       if (user.status == 'success') {
         return userData;
       } else if (userData.message == "Entered same password") {
-        AppSnackBar.messageSnack(AppConstLang.noChangeToSave.tr);
+        AppSnackBar.messageSnack(AppConstLang.canNotSaveSamePassword.tr);
       } else if (user.data.message == 'email not exist') {
         AppSnackBar.messageSnack(AppConstLang.emailDoesNotExist.tr);
       } else {
@@ -45,7 +46,7 @@ class ChangePasswordRemotely {
       Get.back();
       if (Get.isSnackbarOpen) Get.closeAllSnackbars();
 
-      AppSnackBar.messageSnack('Error : ${post.status}');
+      AppSnackBar.messageSnack('Error : unknown error');
     }
     return null;
   }
@@ -53,17 +54,16 @@ class ChangePasswordRemotely {
   Map<String, dynamic> _convertDataToJson() {
     final Map<String, dynamic> m = {};
 
-    m.addAll({"newPassword":newPassword});
-    m.addAll(_map('email', email.trim()));
+    m.addAll({"newPassword": newPassword});
+    m.addAll(_map('email', email.toLowerCase().trim()));
 
     return m;
   }
 
   Map<String, String> _map(String key, dynamic value) {
     Map<String, String> map = {};
-    if (value != null) map[key] = _changeWord("$value");
+    if (value != null) map[key] = changeWord("$value");
     return map;
   }
 
-  _changeWord(String word) => word.replaceAll("'", ".").replaceAll('"', '..').replaceAll(r"\", r"\\");
 }

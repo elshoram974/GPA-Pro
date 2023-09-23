@@ -54,7 +54,7 @@ class RemoveSubjects {
       Get.back();
     } else {
       Get.back();
-      AppSnackBar.messageSnack('Error : ${subjects.status}');
+      AppSnackBar.messageSnack('Error : unknown');
     }
     return false;
   }

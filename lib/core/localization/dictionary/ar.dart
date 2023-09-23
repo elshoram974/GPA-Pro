@@ -73,6 +73,19 @@ class ArDictionary {
     AppConstLang.openCamera: "فتح الكاميرا",
     AppConstLang.openGallery: "فتح المعرض",
     AppConstLang.openFiles: "فتح الملفات",
+    AppConstLang.changeName: "تغير الاسم",
+    AppConstLang.changePass: "تغيير الرقم السري",
+    AppConstLang.deleteAccount: "حذف الحساب نهائيا",
+    AppConstLang.pleaseEnterPass: "الرجاء إدخال رقمك السري",
+    AppConstLang.toChangeName: "لتغيير اسمك",
+    AppConstLang.toChangePass: "لتغيير الرقم السري الخاص بك",
+    AppConstLang.toDeleteAccount: "لحذف حسابك",
+    AppConstLang.changesNotSaved: "لم يتم حفظ التغييرات",
+    AppConstLang.canNotSaveSamePassword: "لا يمكن حفظ نفس الرقم السري الموجود",
+    AppConstLang.deleteMessage: "إن قمت بحذف الحساب سيتم حذف جميع المواد وستفقد الحساب نهائيا.\n للتأكيد اكتب الجملة الاتية:-",
+    AppConstLang.deleteConfirm: "حذف الحساب",
+    AppConstLang.wrongCode: "رمز خاطئ",
+    AppConstLang.accountSuccessfullyDeleted: "تم حذف الحساب بنجاح.",
 
     //
     // auth screen

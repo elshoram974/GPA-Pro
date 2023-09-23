@@ -53,10 +53,10 @@ class ContactUsData {
           icon: Icons.call_outlined,
           name: AppConstLang.phone.tr,
         ),
-        ContactUsModel(
+        const ContactUsModel(
           lunch: Launch.sms,
-          icon: Icons.sms_outlined,
-          name: AppConstLang.phone.tr,
+          icon: FontAwesomeIcons.message,
+          name: "SMS",
         ),
       ];
 }

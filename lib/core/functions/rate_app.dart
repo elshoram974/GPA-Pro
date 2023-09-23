@@ -1,3 +1,4 @@
+import 'package:gpa_pro/core/class/net_helper.dart';
 import 'package:gpa_pro/core/constants/app_info.dart';
 import 'package:gpa_pro/core/constants/colors.dart';
 import 'package:gpa_pro/core/constants/injections.dart';
@@ -11,8 +12,8 @@ import 'package:in_app_review/in_app_review.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class RateApp {
-  static void rateAppDialog() {
-    if (AppConstant.isAndroidOrIOS) {
+  static void rateAppDialog() async {
+    if (AppConstant.isAndroidOrIOS && await NetHelper.checkInternet()) {
       SharedPreferences prefs = AppInjections.myServices.sharedPreferences;
 
       int? later = prefs.getInt(SharedKeys.rateLater);

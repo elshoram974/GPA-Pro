@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:gpa_pro/controller/user/settings/account_settings_controller.dart';
 import 'package:gpa_pro/core/constants/public_constant.dart';
 import 'package:gpa_pro/core/constants/routes.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
@@ -37,22 +38,41 @@ class UserTileInfo extends StatelessWidget {
           ),
           Visibility(
             visible: userData == null,
-            replacement: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            replacement: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Flexible(
-                  flex: 6,
-                  child: TextButton(
-                    onPressed: () => Get.toNamed(AppRoute.accountSettings),
-                    child: Text(AppConstLang.accountSettings.tr),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 0.5 * AppConstant.kDefaultPadding,
+                  ),
+                  child: Text(
+                    "${userData?.email.toLowerCase()}",
+                    textAlign: TextAlign.left,
+                    style: const TextStyle(color: Colors.grey),
                   ),
                 ),
-                Flexible(
-                  flex: 5,
-                  child: TextButton(
-                    onPressed: LoginRemotely.logOutButton,
-                    child: Text(AppConstLang.logOut.tr),
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Flexible(
+                      flex: 6,
+                      child: TextButton(
+                        onPressed: () {
+                          Get.lazyPut<AccountSettingControllerImp>(
+                              () => AccountSettingControllerImp());
+                          Get.toNamed(AppRoute.accountSettings);
+                        },
+                        child: Text(AppConstLang.accountSettings.tr),
+                      ),
+                    ),
+                    Flexible(
+                      flex: 5,
+                      child: TextButton(
+                        onPressed: LoginRemotely.logOutButton,
+                        child: Text(AppConstLang.logOut.tr),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

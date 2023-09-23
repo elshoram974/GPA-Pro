@@ -5,6 +5,7 @@ import 'package:gpa_pro/core/class/subjects/subject_helper.dart';
 import 'package:gpa_pro/core/constants/app_links.dart';
 import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
+import 'package:gpa_pro/data/datasource/remote/subjects/upload_many_subjects.dart';
 import 'package:gpa_pro/data/model/shared/get_shared_subjects_model.dart';
 import 'package:gpa_pro/data/model/subject_model.dart';
 
@@ -47,7 +48,7 @@ class UpdateSubject {
       Get.back();
       if (Get.isSnackbarOpen) Get.closeAllSnackbars();
 
-      AppSnackBar.messageSnack('Error : ${subject.status}');
+      AppSnackBar.messageSnack('Error : unknown');
     }
     return null;
   }
@@ -84,10 +85,8 @@ class UpdateSubject {
 
   Map<String, String> _map(String key, dynamic value) {
     Map<String, String> map = {};
-    if (value != null) map[key] = _changeWord("$value");
+    if (value != null) map[key] = changeWord("$value");
     return map;
   }
 
-  _changeWord(String word) =>
-      word.replaceAll("'", ".").replaceAll('"', '..').replaceAll(r"\", r"\\");
 }

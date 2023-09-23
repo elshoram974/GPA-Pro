@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:gpa_pro/core/constants/public_constant.dart';
 import 'package:gpa_pro/core/shared/custom_list_tile.dart';
 
@@ -37,8 +36,8 @@ class UserListTile extends StatelessWidget {
         miniIcon: miniIcon,
         noFunction: noFunction,
         trailingIcon: trailingIcon,
-        tileColor:
-            context.isDarkMode ? Colors.grey.shade700 : Colors.grey.shade200,
+        textColor: Colors.black,
+        tileColor: Colors.grey.shade200,
       ),
     );
   }

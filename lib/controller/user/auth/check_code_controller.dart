@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:gpa_pro/controller/user/settings/change_pass_controller.dart';
 import 'package:gpa_pro/core/constants/routes.dart';
 import 'package:gpa_pro/core/functions/custom_dialogs.dart';
 import 'package:gpa_pro/data/datasource/remote/user/auth/login.dart';
@@ -81,9 +82,10 @@ class CheckCodeControllerImp extends CheckCodeController {
       User? user = await VerifyCode.checkVerify(email, code);
       if (user != null) {
         if (from is ForgotPassScreen) {
-          Get.offNamed(AppRoute.changePasswordScreen, arguments: {'user': user});
+          Get.lazyPut<ChangePassControllerImp>(() => ChangePassControllerImp());
+          Get.offNamed(AppRoute.changePasswordScreen, arguments: {'user': user.data});
         } else {
-          LoginRemotely.login(user,pass!);
+          LoginRemotely.login(user.data,pass!);
         }
       }
     }

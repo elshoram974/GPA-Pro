@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class CustomListTile extends StatelessWidget {
   final Color? tileColor;
+  final Color? textColor;
   final IconData? trailingIcon;
   final IconData? leadingIcon;
   final EdgeInsetsGeometry? contentPadding;
@@ -21,13 +22,16 @@ class CustomListTile extends StatelessWidget {
     this.subtitle,
     this.contentPadding,
     this.noFunction = false,
-    this.miniIcon = false, this.tileColor,
+    this.miniIcon = false,
+    this.tileColor,
+    this.textColor,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       tileColor: tileColor,
+      textColor: textColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppConstant.kDefaultRadius),
       ),

@@ -15,7 +15,7 @@ class ForgotPassScreen extends GetView<ForgotPasswordControllerImp> {
     return AuthScreenStructure(
       title: AppConstLang.forgotPassword.tr,
       onWillPop: controller.onWillPop,
-      body: ListView(
+      body: Column(
         children: [
           SizedBox(height: 0.25 * MediaQuery.sizeOf(context).height),
           const ForgotPasswordField(),

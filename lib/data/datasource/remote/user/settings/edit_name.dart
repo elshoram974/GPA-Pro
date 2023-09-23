@@ -4,6 +4,7 @@ import 'package:gpa_pro/core/class/net_helper.dart';
 import 'package:gpa_pro/core/constants/app_links.dart';
 import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
+import 'package:gpa_pro/data/datasource/remote/subjects/upload_many_subjects.dart';
 import 'package:gpa_pro/data/model/user.dart';
 
 class EditNameRemotely {
@@ -46,7 +47,7 @@ class EditNameRemotely {
       Get.back();
       if (Get.isSnackbarOpen) Get.closeAllSnackbars();
 
-      AppSnackBar.messageSnack('Error : ${post.status}');
+      AppSnackBar.messageSnack('Error : unknown error');
     }
     return null;
   }
@@ -63,10 +64,7 @@ class EditNameRemotely {
 
   Map<String, String> _map(String key, dynamic value) {
     Map<String, String> map = {};
-    if (value != null) map[key] = _changeWord("$value");
+    if (value != null) map[key] = changeWord("$value");
     return map;
   }
-
-  _changeWord(String word) =>
-      word.replaceAll("'", ".").replaceAll('"', '..').replaceAll(r"\", r"\\");
 }

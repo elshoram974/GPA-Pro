@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:gpa_pro/controller/user/settings/change_image_controller.dart';
+import 'package:gpa_pro/controller/user/settings/account_settings_controller.dart';
 import 'package:gpa_pro/core/constants/public_constant.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/core/shared/custom_bottom_sheet.dart';
 import 'package:gpa_pro/core/shared/custom_list_tile.dart';
 import 'package:image_picker/image_picker.dart';
 
-class PickPhotoWidget extends GetView<ChangePhotoHandlerImp> {
+class PickPhotoWidget extends GetView<AccountSettingControllerImp> {
   const PickPhotoWidget({super.key});
 
   @override
@@ -18,7 +18,7 @@ class PickPhotoWidget extends GetView<ChangePhotoHandlerImp> {
         if (!isDesktop)
           CustomListTile(
             title: AppConstLang.openCamera.tr,
-            onTap: ()  => controller.pickImage(ImageSource.camera),
+            onTap: () => controller.pickImage(ImageSource.camera),
           ),
         CustomListTile(
           title: isDesktop

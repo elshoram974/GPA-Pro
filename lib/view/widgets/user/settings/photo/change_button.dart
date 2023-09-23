@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:gpa_pro/controller/user/settings/change_image_controller.dart';
+import 'package:gpa_pro/controller/user/settings/account_settings_controller.dart';
 import 'package:gpa_pro/core/constants/public_constant.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 
-class ChangeButton extends GetView<ChangePhotoHandlerImp> {
+class ChangeButton extends GetView<AccountSettingControllerImp> {
   const ChangeButton({super.key, required this.hasPhoto});
   final bool hasPhoto;
 
@@ -43,12 +43,17 @@ class ChangeButton extends GetView<ChangePhotoHandlerImp> {
         child: DecoratedBox(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppConstant.kDefaultRadius),
-            // boxShadow: [BoxShadow(color: Colors.black12)],
-            color: Colors.black12,
+            boxShadow: const [
+              BoxShadow(color: Colors.black12),
+              BoxShadow(color: Colors.white30),
+            ],
           ),
           child: const Padding(
             padding: EdgeInsets.all(5.0),
-            child: FaIcon(FontAwesomeIcons.penToSquare),
+            child: FaIcon(
+              FontAwesomeIcons.penToSquare,
+              color: Colors.black,
+            ),
           ),
         ),
       ),

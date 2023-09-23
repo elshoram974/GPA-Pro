@@ -17,7 +17,7 @@ class LoginScreen extends GetView<LoginControllerImp> {
     return AuthScreenStructure(
       title: AppConstLang.login.tr,
       onWillPop: controller.onWillPop,
-      body: ListView(
+      body: Column(
         children: [
           const Hero(
             tag: AppAssets.splashIcon,

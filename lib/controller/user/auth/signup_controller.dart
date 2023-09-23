@@ -6,7 +6,6 @@ import 'package:gpa_pro/data/datasource/remote/user/auth/signup.dart';
 import 'package:gpa_pro/data/model/user.dart';
 
 abstract class SignUpController extends GetxController {
-  void changeShowPassword({bool isRePass = false});
   void onSignUp();
 
   Future<bool> onWillPop();
@@ -20,27 +19,14 @@ class SignUpControllerImp extends SignUpController {
   String email = '';
   String password = '';
 
-  bool showPass = true;
-  bool showRePass = true;
-
-  @override
-  void changeShowPassword({bool isRePass = false}) {
-    if (isRePass) {
-      showRePass = !showRePass;
-    } else {
-      showPass = !showPass;
-    }
-    update();
-  }
-
   @override
   void onSignUp() async {
     if (key.currentState!.validate()) {
       await SignUpRemotely.createAccount(
         UserData(
-          email: email.trim(),
-          firstName: firstName.trim(),
-          lastName: lastName.trim(),
+          email: email,
+          firstName: firstName,
+          lastName: lastName,
           password: password,
         ),
       );
@@ -49,10 +35,10 @@ class SignUpControllerImp extends SignUpController {
 
   @override
   Future<bool> onWillPop() async {
-    if (firstName.trim().isNotEmpty ||
-        lastName.trim().isNotEmpty ||
-        email.trim().isNotEmpty ||
-        password.trim().isNotEmpty) {
+    if (firstName.isNotEmpty ||
+        lastName.isNotEmpty ||
+        email.isNotEmpty ||
+        password.isNotEmpty) {
       bool exit = false;
 
       await CustomDialog.backDialog(
