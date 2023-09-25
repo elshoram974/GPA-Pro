@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
@@ -42,8 +41,6 @@ class UpdateUser {
         AppSnackBar.messageSnack(AppConstLang.noInternet.tr);
       }
     } catch (e) {
-      print(e.toString());
-      log(e.toString());
       AppSnackBar.messageSnack(e.toString());
     }
     return null;

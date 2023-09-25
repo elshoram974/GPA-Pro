@@ -11,8 +11,10 @@ class AuthScreenStructure extends StatelessWidget {
     required this.body,
     this.onWillPop,
     this.title,
+    this.wantPadding = true,
   });
 
+  final bool wantPadding;
   final Widget body;
   final String? title;
   final Future<bool> Function()? onWillPop;
@@ -68,6 +70,7 @@ class AuthScreenStructure extends StatelessWidget {
               horizontal: AppConstant.kDefaultPadding,
             ),
             child: ListView(
+              padding: wantPadding ? null : EdgeInsets.zero,
               children: [
                 Align(
                   child: ConstrainedBox(

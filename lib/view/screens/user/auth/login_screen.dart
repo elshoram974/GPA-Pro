@@ -17,11 +17,15 @@ class LoginScreen extends GetView<LoginControllerImp> {
     return AuthScreenStructure(
       title: AppConstLang.login.tr,
       onWillPop: controller.onWillPop,
+      wantPadding: false,
       body: Column(
         children: [
-          const Hero(
+          Hero(
             tag: AppAssets.splashIcon,
-            child: Image(image: AssetImage(AppAssets.splashIcon), height: 250),
+            child: Image(
+              image: const AssetImage(AppAssets.splashIcon),
+              height: 0.5 * screenHeight,
+            ),
           ),
           SizedBox(height: 0.01 * screenHeight),
           const LoginFields(),

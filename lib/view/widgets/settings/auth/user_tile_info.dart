@@ -55,7 +55,7 @@ class UserTileInfo extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Flexible(
-                      flex: 6,
+                      flex: 7,
                       child: TextButton(
                         onPressed: () {
                           Get.lazyPut<AccountSettingControllerImp>(
