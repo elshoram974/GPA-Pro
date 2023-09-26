@@ -1,4 +1,5 @@
 import 'package:gpa_pro/core/constants/privacy_policy/privacy_en.dart';
+import 'package:gpa_pro/core/constants/terms-conditions/terms_en.dart';
 
 import '../lang_constant.dart';
 
@@ -108,6 +109,9 @@ class EnDictionary {
     AppConstLang.emailAlreadyExists: "This email is already exists",
     AppConstLang.emailIsNotExists: "This email is not exists",
     AppConstLang.codeUEnteredIncorrect: "The code you entered is incorrect.",
+    AppConstLang.bySigningUpAgreeToOur: "By signing up you agree to our",
+    AppConstLang.and: "and",
+    AppConstLang.haveToAgreeTermsConditions: "First you have to agree on our terms and conditions.",
     //
     // verifyCode screen
     AppConstLang.verifyCode: "Verify code",
@@ -337,6 +341,18 @@ class EnDictionary {
     AppConstLang.contactUs1: PrivacyPolicyEnConstants.contactUs1,
     AppConstLang.orFrom: "Or from",
     AppConstLang.here: "here",
+
+    // Terms & Conditions
+    AppConstLang.termsConditions : "Terms & Conditions",
+
+    AppConstLang.termsConditions1: TermsEnConstants.termsConditions1,
+    AppConstLang.termsConditions2: TermsEnConstants.termsConditions2,
+
+    AppConstLang.changesToThisTermsConditions: TermsEnConstants.changesToThisTermsConditions,
+    AppConstLang.changesToThisTermsConditions1: TermsEnConstants.changesToThisTermsConditions1,
+
+    AppConstLang.contactUsTerms: TermsEnConstants.contactUs1,
+
 
     // rate dialog
     AppConstLang.rateThisApp: "Rate this app",

@@ -5,6 +5,7 @@ import 'package:gpa_pro/view/widgets/settings/about_app/review_app_button.dart';
 import 'package:gpa_pro/view/widgets/custom_body_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:gpa_pro/view/widgets/settings/about_app/terms_button.dart';
 
 class AboutAppScreen extends StatelessWidget {
   const AboutAppScreen({super.key});
@@ -18,6 +19,7 @@ class AboutAppScreen extends StatelessWidget {
           children: [
             AppVersionWidget(),
             PrivacyPolicy(),
+            TermsConditions(),
             ReviewAppButton(),
             // MoreInfo(),
           ],

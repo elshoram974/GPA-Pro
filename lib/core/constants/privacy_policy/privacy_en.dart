@@ -47,9 +47,8 @@ abstract class PrivacyPolicyEnConstants {
   static const String changesToThisPrivacyPolicy =
       '\n\nChanges to This Privacy Policy';
   static const String changesToThisPrivacyPolicy1 =
-      "I may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new Privacy Policy on this page.\nThis policy is effective as of 2023-07-12";
+      "I may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new Privacy Policy on this page.\nThis policy is effective as of 2023-09-23";
 
   static const String contactUs = '\n\nContact Us';
-  static const String contactUs1 =
-      "If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at mre9743@gmail.com.";
+  static const String contactUs1 ="If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at mre9743@gmail.com.";
 }

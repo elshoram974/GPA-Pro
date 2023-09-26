@@ -5,8 +5,8 @@ abstract class AppInfo {
 
   static const String appName = "GPA PRO";
   static const String appId = "com.mrecode.gpapro";
-  static const String appVersion = "1.0.0";
-  static const int appBuildVersion = 1;
+  static const String appVersion = "1.0.1";
+  static const int appBuildVersion = 2;
 
   static const String appIcon = AppAssets.appIcon;
   static const String splashIcon = AppAssets.splashIcon;

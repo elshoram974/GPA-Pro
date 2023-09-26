@@ -6,6 +6,7 @@ abstract class AppRoute {
   static const subject = "/subject";
   static const aboutApp = "/about_app";
   static const privacyPolicy = "/privacy_policy";
+  static const termsConditions = "/terms_Conditions";
   static const editGrades = "/edit_grades";
   static const addScreen = "/add_screen";
   static const uploadScreen = "/upload_screen";

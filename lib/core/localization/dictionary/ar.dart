@@ -1,4 +1,5 @@
 import 'package:gpa_pro/core/constants/privacy_policy/privacy_ar.dart';
+import 'package:gpa_pro/core/constants/terms-conditions/terms_ar.dart';
 
 import '../lang_constant.dart';
 
@@ -82,7 +83,8 @@ class ArDictionary {
     AppConstLang.toDeleteAccount: "لحذف حسابك",
     AppConstLang.changesNotSaved: "لم يتم حفظ التغييرات",
     AppConstLang.canNotSaveSamePassword: "لا يمكن حفظ نفس الرقم السري الموجود",
-    AppConstLang.deleteMessage: "إن قمت بحذف الحساب سيتم حذف جميع المواد وستفقد الحساب نهائيا.\n للتأكيد اكتب الجملة الاتية:-",
+    AppConstLang.deleteMessage:
+        "إن قمت بحذف الحساب سيتم حذف جميع المواد وستفقد الحساب نهائيا.\n للتأكيد اكتب الجملة الاتية:-",
     AppConstLang.deleteConfirm: "حذف الحساب",
     AppConstLang.wrongCode: "رمز خاطئ",
     AppConstLang.accountSuccessfullyDeleted: "تم حذف الحساب بنجاح.",
@@ -111,6 +113,10 @@ class ArDictionary {
     AppConstLang.emailAlreadyExists: "هذا البريد الإلكتروني موجود بالفعل",
     AppConstLang.emailIsNotExists: "هذا البريد الإلكتروني غير موجود",
     AppConstLang.codeUEnteredIncorrect: "الرمز الذي أدخلته غير صحيح",
+    AppConstLang.bySigningUpAgreeToOur: "بالتسجيل فإنك توافق على",
+    AppConstLang.and: "و",
+    AppConstLang.haveToAgreeTermsConditions:
+        "أولاً يجب عليك الموافقة على الشروط والأحكام الخاصة بنا.",
 
     //
     // verifyCode screen
@@ -341,6 +347,16 @@ class ArDictionary {
     AppConstLang.contactUs1: PrivacyPolicyArConstants.contactUs1,
     AppConstLang.orFrom: "أو من",
     AppConstLang.here: "هنا",
+
+    // Terms & Conditions
+    AppConstLang.termsConditions: "الشروط والأحكام",
+    AppConstLang.termsConditions1: TermsArConstants.termsConditions1,
+    AppConstLang.termsConditions2: TermsArConstants.termsConditions2,
+    
+    AppConstLang.changesToThisTermsConditions: TermsArConstants.changesToThisTermsConditions,
+    AppConstLang.changesToThisTermsConditions1: TermsArConstants.changesToThisTermsConditions1,
+
+    AppConstLang.contactUsTerms: TermsArConstants.contactUs1,
 
     // rate dialog
     AppConstLang.rateThisApp: "قيم هذا التطبيق",

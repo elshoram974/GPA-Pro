@@ -5,6 +5,7 @@ import 'package:gpa_pro/core/shared/custom_list_tile.dart';
 class UserListTile extends StatelessWidget {
   final IconData? trailingIcon;
   final IconData? leadingIcon;
+  final Widget? leadingWidget;
   final EdgeInsetsGeometry? contentPadding;
   final String title;
   final String? subtitle;
@@ -15,6 +16,7 @@ class UserListTile extends StatelessWidget {
   const UserListTile({
     Key? key,
     this.trailingIcon,
+    this.leadingWidget,
     required this.title,
     this.onTap,
     this.leadingIcon,
@@ -31,6 +33,7 @@ class UserListTile extends StatelessWidget {
         title: title,
         subtitle: subtitle,
         leadingIcon: leadingIcon,
+        leadingWidget: leadingWidget,
         onTap: onTap,
         contentPadding: contentPadding,
         miniIcon: miniIcon,

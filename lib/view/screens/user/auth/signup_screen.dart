@@ -4,6 +4,7 @@ import 'package:gpa_pro/controller/user/auth/signup_controller.dart';
 import 'package:gpa_pro/core/constants/public_constant.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/view/widgets/user/auth/auth_structure.dart';
+import 'package:gpa_pro/view/widgets/user/auth/sign_up/agreed_list_tile.dart';
 import 'package:gpa_pro/view/widgets/user/auth/sign_up/signup_email.dart';
 import 'package:gpa_pro/view/widgets/user/auth/sign_up/signup_name.dart';
 import 'package:gpa_pro/view/widgets/user/auth/sign_up/signup_passwords.dart';
@@ -25,6 +26,7 @@ class SignUpScreen extends GetView<SignUpControllerImp> {
             const SignUpName(),
             const SignUpEmail(),
             const SignUpPasswords(),
+            const AgreedListTileWidget(),
             SizedBox(height: 0.1 * screenHeight),
             SizedBox(
               width: double.infinity,

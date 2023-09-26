@@ -12,6 +12,7 @@ import 'package:gpa_pro/view/screens/home/subject_screen.dart';
 import 'package:gpa_pro/view/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:gpa_pro/view/screens/settings/terms_screen.dart';
 import 'package:gpa_pro/view/screens/user/auth/auth_screen.dart';
 import 'package:gpa_pro/view/screens/user/settings/change_name_screen.dart';
 import 'package:gpa_pro/view/screens/user/settings/change_password_screen.dart';
@@ -25,8 +26,8 @@ class GeneratedRoute {
   static List<GetPage<dynamic>>? getPages = [
     GetPage(name: AppRoute.mainScreen, page: () => const MainScreen()),
     GetPage(name: AppRoute.aboutApp, page: () => const AboutAppScreen()),
-    GetPage(
-        name: AppRoute.privacyPolicy, page: () => const PrivacyPolicyScreen()),
+    GetPage(name: AppRoute.privacyPolicy, page: () => const PrivacyPolicyScreen()),
+    GetPage(name: AppRoute.termsConditions, page: () => const TermsScreen()),
     GetPage(name: AppRoute.editGrades, page: () => const EditGradesScreen()),
     GetPage(name: AppRoute.addScreen, page: () => const AddScreen()),
     GetPage(name: AppRoute.uploadScreen, page: () => const UploadScreen()),

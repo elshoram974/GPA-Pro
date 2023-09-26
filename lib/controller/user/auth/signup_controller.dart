@@ -6,6 +6,7 @@ import 'package:gpa_pro/data/datasource/remote/user/auth/signup.dart';
 import 'package:gpa_pro/data/model/user.dart';
 
 abstract class SignUpController extends GetxController {
+  void onAgreedChanged(bool? val);
   void onSignUp();
 
   Future<bool> onWillPop();
@@ -18,9 +19,20 @@ class SignUpControllerImp extends SignUpController {
   String lastName = '';
   String email = '';
   String password = '';
+  bool isAgreed = false;
+
+  @override
+  void onAgreedChanged(bool? val) {
+    isAgreed = val!;
+    update();
+  }
 
   @override
   void onSignUp() async {
+    if (!isAgreed) {
+      CustomDialog.errorDialog(AppConstLang.haveToAgreeTermsConditions.tr);
+      return;
+    }
     if (key.currentState!.validate()) {
       await SignUpRemotely.createAccount(
         UserData(

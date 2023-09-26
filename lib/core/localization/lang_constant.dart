@@ -103,6 +103,9 @@ class AppConstLang {
   static const String emailAlreadyExists = "emailAlreadyExists";
   static const String emailIsNotExists = "emailIsNotExists";
   static const String codeUEnteredIncorrect = "codeUEnteredIncorrect.";
+  static const String bySigningUpAgreeToOur = "bySigningUpAgreeToOur";
+  static const String and = "and";
+  static const String haveToAgreeTermsConditions = "haveToAgreeTermsConditions.";
   //
   // Verify code screen
   static const String verifyCode = "verify_code";
@@ -337,6 +340,17 @@ class AppConstLang {
 
   static const String orFrom = "or_from";
   static const String here = "here";
+
+  // condition screen
+  static const String termsConditions = "Terms & Conditions";
+  static const String termsConditions1 = "termsConditions1";
+  static const String termsConditions2 = "termsConditions2";
+
+  static const String changesToThisTermsConditions = "changesToThisTermsConditions";
+  static const String changesToThisTermsConditions1 = "changesToThisTermsConditions1";
+
+  static const String contactUsTerms = "contact_us_terms";
+
 
   // rate dialog
   static const String rateThisApp = "rate_this_app";

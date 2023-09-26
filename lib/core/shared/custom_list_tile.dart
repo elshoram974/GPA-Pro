@@ -6,6 +6,7 @@ class CustomListTile extends StatelessWidget {
   final Color? textColor;
   final IconData? trailingIcon;
   final IconData? leadingIcon;
+  final Widget? leadingWidget;
   final EdgeInsetsGeometry? contentPadding;
   final String title;
   final String? subtitle;
@@ -16,6 +17,7 @@ class CustomListTile extends StatelessWidget {
   const CustomListTile({
     Key? key,
     this.trailingIcon,
+    this.leadingWidget,
     required this.title,
     this.onTap,
     this.leadingIcon,
@@ -37,9 +39,10 @@ class CustomListTile extends StatelessWidget {
       ),
       contentPadding: contentPadding,
       trailing: trailingIcon == null ? null : Icon(trailingIcon),
-      leading: leadingIcon == null
-          ? null
-          : Icon(leadingIcon, size: miniIcon ? 17 : null),
+      leading: leadingWidget ??
+          (leadingIcon == null
+              ? null
+              : Icon(leadingIcon, size: miniIcon ? 17 : null)),
       title: Text(title, overflow: TextOverflow.ellipsis),
       subtitle: subtitle == null ? null : Text(subtitle!),
       onTap: noFunction
