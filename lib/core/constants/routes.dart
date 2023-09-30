@@ -10,6 +10,7 @@ abstract class AppRoute {
   static const editGrades = "/edit_grades";
   static const addScreen = "/add_screen";
   static const uploadScreen = "/upload_screen";
+  static const shareScreen = "/share_screen";
   static const accountSettings = "/account_settings";
   static const authScreen = "/auth_screen";
   static const loginScreen = "/login_screen";

@@ -1,6 +1,8 @@
 import 'package:gpa_pro/core/class/argument_model.dart';
 import 'package:gpa_pro/core/class/popup_model.dart';
+import 'package:gpa_pro/core/class/subjects/subject_helper.dart';
 import 'package:gpa_pro/core/constants/injections.dart';
+import 'package:gpa_pro/core/constants/routes.dart';
 import 'package:gpa_pro/core/constants/shared_keys.dart';
 import 'package:gpa_pro/core/functions/after_open_app.dart';
 import 'package:gpa_pro/core/functions/my_bottom_sheets.dart';
@@ -141,6 +143,12 @@ class MainScreenControllerImp extends MainScreenController {
       case PopupButton.openSavedFile:
         AppBottomSheets.customSheet(const OpenSavedBottomModelSheet());
         break;
+      case PopupButton.share:
+        AppInjections.mainScreenImp.homeNavigatorKey.currentState?.pushNamed(
+          AppRoute.shareScreen,
+          arguments: SubjectHelper(subjectsToSave).makeAllSubjectsNotSelected(),
+        );
+        break;
       case PopupButton.sync:
         await Synchronization().synchronizationSubjects();
         break;
@@ -156,49 +164,64 @@ class MainScreenControllerImp extends MainScreenController {
     }
   }
 
-  List<PopupModel> get _popupList => [
-        PopupModel(
-          inPages: [
-            PageType.homeScreen,
-            PageType.yearScreen,
-            PageType.semesterScreen,
-            PageType.addScreen,
-          ],
-          showWhenSelected: true,
-          value: PopupButton.convertSubjects,
-          text: AppConstLang.calculatedOrNot.tr,
-        ),
-        PopupModel(
-          inPages: [PageType.homeScreen],
-          value: PopupButton.openSavedFile,
-          text: AppConstLang.openSavedFiles.tr,
-        ),
-        PopupModel(
-          inPages: [PageType.homeScreen],
-          enabled: AppInjections.homeController.subjects.isNotEmpty,
-          value: PopupButton.saveFile,
-          text: AppConstLang.saveFile.tr,
-        ),
-        PopupModel(
-          inPages: [
-            PageType.homeScreen,
-            PageType.yearScreen,
-            PageType.semesterScreen,
-          ],
-          showWhenSelected: true,
-          enabled: AppInjections.homeController.subjects.isNotEmpty,
-          value: PopupButton.saveFile,
-          text: AppConstLang.saveFile.tr,
-        ),
-        PopupModel(
-          inPages: [
-            PageType.homeScreen,
-            PageType.yearScreen,
-            PageType.semesterScreen
-          ],
-          enabled: AppInjections.myServices.sharedPreferences.containsKey(SharedKeys.userData),
-          value: PopupButton.sync,
-          text: AppConstLang.sync.tr,
-        ),
-      ];
+  List<PopupModel> get _popupList {
+    bool isLoggedIn = AppInjections.myServices.sharedPreferences
+        .containsKey(SharedKeys.userData);
+    return [
+      PopupModel(
+        inPages: [
+          PageType.homeScreen,
+          PageType.yearScreen,
+          PageType.semesterScreen,
+          PageType.addScreen,
+        ],
+        showWhenSelected: true,
+        value: PopupButton.convertSubjects,
+        text: AppConstLang.calculatedOrNot.tr,
+      ),
+      PopupModel(
+        inPages: [PageType.homeScreen],
+        value: PopupButton.openSavedFile,
+        text: AppConstLang.openSavedFiles.tr,
+      ),
+      PopupModel(
+        inPages: [PageType.homeScreen],
+        enabled: AppInjections.homeController.subjects.isNotEmpty,
+        value: PopupButton.saveFile,
+        text: AppConstLang.saveFile.tr,
+      ),
+      PopupModel(
+        inPages: [
+          PageType.homeScreen,
+          PageType.yearScreen,
+          PageType.semesterScreen,
+        ],
+        showWhenSelected: true,
+        enabled: AppInjections.homeController.subjects.isNotEmpty,
+        value: PopupButton.saveFile,
+        text: AppConstLang.saveFile.tr,
+      ),
+      PopupModel(
+        inPages: [
+          PageType.homeScreen,
+          PageType.yearScreen,
+          PageType.semesterScreen,
+        ],
+        showWhenSelected: true,
+        enabled: AppInjections.homeController.subjects.isNotEmpty && isLoggedIn,
+        value: PopupButton.share,
+        text: AppConstLang.share.tr,
+      ),
+      PopupModel(
+        inPages: [
+          PageType.homeScreen,
+          PageType.yearScreen,
+          PageType.semesterScreen
+        ],
+        enabled: isLoggedIn,
+        value: PopupButton.sync,
+        text: AppConstLang.sync.tr,
+      ),
+    ];
+  }
 }

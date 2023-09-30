@@ -284,6 +284,7 @@ class ArDictionary {
     AppConstLang.unknownErrorSubjectsAreNotAdded:
         "خطأ غير معروف، لم يتم إضافة المواد على الحساب",
     AppConstLang.savedToDeviceOnly: "تم الحفظ على الجهاز فقط",
+    AppConstLang.share: "مشاركة",
 
     // details screen
     AppConstLang.cumulativeDetails: "تفاصيل التراكمي",

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 enum PageType {
   addScreen,
+  shareScreen,
   searchScreen,
   subjectScreen,
   semesterScreen,

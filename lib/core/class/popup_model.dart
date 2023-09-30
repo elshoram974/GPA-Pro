@@ -5,6 +5,7 @@ enum PopupButton {
   convertSubjects,
   openSavedFile,
   saveFile,
+  share,
   sync,
 }
 

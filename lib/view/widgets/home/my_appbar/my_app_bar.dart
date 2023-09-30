@@ -15,7 +15,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final void Function(bool) selectAllOrDeselect;
   final List<SubjectModel> selectedSubjects;
   final void Function() remove;
-  final void Function() changeSelectedCalc;
+  final void Function()? changeSelectedCalc;
   final List<Widget>? moreActions;
   final PageType pageType;
   const MyAppBar({
@@ -26,7 +26,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.isAllSelected,
     required this.selectAllOrDeselect,
     required this.remove,
-    required this.changeSelectedCalc,
+    this.changeSelectedCalc,
     this.moreActions,
     required this.pageType,
     required this.selectedSubjects,

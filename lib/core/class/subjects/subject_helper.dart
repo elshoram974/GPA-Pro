@@ -107,6 +107,16 @@ class SubjectHelper {
     return differenceSubjects;
   }
 
+  List<SubjectModel> makeAllSubjectsNotSelected() {
+    List<SubjectModel> temp = [];
+
+    for (SubjectModel e in subjectsList) {
+      temp.add(e..isSelected = false);
+    }
+
+    return temp;
+  }
+
   List<SubjectModel> makeAllSubjectsNeedSyncOrNot(bool makeAllNeedSync) {
     List<SubjectModel> temp = [];
 
@@ -116,7 +126,7 @@ class SubjectHelper {
 
     return temp;
   }
-  
+
   List<SubjectModel> makeAllSubjectsWithNullRemoteId() {
     List<SubjectModel> temp = [];
 

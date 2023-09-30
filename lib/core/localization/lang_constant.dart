@@ -270,6 +270,7 @@ class AppConstLang {
   static const String unknownErrorSubjectsAreNotAdded =
       "unknownErrorSubjectsAreNotAdded";
   static const String savedToDeviceOnly = "savedToDeviceOnly";
+  static const String share = "share";
 
   // details screen
   static const String cumulativeDetails = "cumulative_details";

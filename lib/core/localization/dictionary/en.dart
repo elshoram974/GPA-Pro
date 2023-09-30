@@ -279,6 +279,7 @@ class EnDictionary {
     AppConstLang.unknownErrorSubjectsAreNotAdded:
         "Unknown error, subjects are not added on your account",
     AppConstLang.savedToDeviceOnly: "Saved to device only",
+    AppConstLang.share: "Share",
 
     // details screen
     AppConstLang.cumulativeDetails: "Cumulative details",

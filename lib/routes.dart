@@ -1,6 +1,7 @@
 import 'package:gpa_pro/core/constants/injections.dart';
 import 'package:gpa_pro/core/constants/routes.dart';
 import 'package:gpa_pro/view/screens/home/add_screen.dart';
+import 'package:gpa_pro/view/screens/saved_subjects_screens/share_screen.dart';
 import 'package:gpa_pro/view/screens/settings/privacy_policy_screen.dart';
 import 'package:gpa_pro/view/screens/saved_subjects_screens/upload_screen.dart';
 import 'package:gpa_pro/view/screens/home/year_screen.dart';
@@ -26,7 +27,8 @@ class GeneratedRoute {
   static List<GetPage<dynamic>>? getPages = [
     GetPage(name: AppRoute.mainScreen, page: () => const MainScreen()),
     GetPage(name: AppRoute.aboutApp, page: () => const AboutAppScreen()),
-    GetPage(name: AppRoute.privacyPolicy, page: () => const PrivacyPolicyScreen()),
+    GetPage(
+        name: AppRoute.privacyPolicy, page: () => const PrivacyPolicyScreen()),
     GetPage(name: AppRoute.termsConditions, page: () => const TermsScreen()),
     GetPage(name: AppRoute.editGrades, page: () => const EditGradesScreen()),
     GetPage(name: AppRoute.addScreen, page: () => const AddScreen()),
@@ -75,6 +77,11 @@ class GeneratedRoute {
 
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case AppRoute.shareScreen:
+        return myPageRouteBuilder(
+          settings: settings,
+          child: const ShareScreen(),
+        );
       case AppRoute.year:
         return myPageRouteBuilder(
           settings: settings,
