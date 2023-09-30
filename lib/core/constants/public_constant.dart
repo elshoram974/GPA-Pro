@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 
 abstract class AppConstant {
-  static const bool isTest = !kReleaseMode;
+  static const bool isTest = kDebugMode;
   // static const bool isTest = false;
 
   // static bool isWindows = true; //when run on chrome

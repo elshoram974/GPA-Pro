@@ -26,7 +26,7 @@ abstract class HomeController extends SelectedYearController {
   void remove();
   int? get releaseHours;
   String? validHours(String? value);
-  void setRealizedHours(val);
+  void setRealizedHours(String val);
   Future<List<SubjectModel>> getSubjects();
   void onPressedFloatingButton();
 }
@@ -215,6 +215,11 @@ class HomeControllerImp extends HomeController {
 
   @override
   String? validHours(String? value) {
+    if (value == null || value.trim() == "") {
+      setRealizedHours('0');
+      return null;
+    }
+
     String? valid = AppValidator.validInput(value, 0, 3, ValidType.hour);
     return valid != null
         ? "$valid\n${AppConstLang.realizedHours.tr} = $releaseHours"
@@ -222,12 +227,14 @@ class HomeControllerImp extends HomeController {
   }
 
   @override
-  void setRealizedHours(val) {
+  void setRealizedHours(String val) {
     int hours = 0;
-    if (validHours(val) == null) {
-      hours = int.parse(val.trim());
-      SharedPreferences pref = AppInjections.myServices.sharedPreferences;
-      pref.setInt(SharedKeys.realizedHours, hours);
+    if (val.trim() != "") {
+      if (validHours(val) == null) {
+        hours = int.parse(val.trim());
+        SharedPreferences pref = AppInjections.myServices.sharedPreferences;
+        pref.setInt(SharedKeys.realizedHours, hours);
+      }
     }
   }
   // ------------------end release hours -----------------

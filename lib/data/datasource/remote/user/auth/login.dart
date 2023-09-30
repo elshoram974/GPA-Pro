@@ -46,6 +46,7 @@ abstract class LoginRemotely {
     await CachedNetworkImage.evictFromCache(
         "${AppLinks.image}/${savedLogin()?.userImage}");
     await _pref.remove(SharedKeys.userData);
+    await _pref.remove(SharedKeys.realizedHours);
     await _pref.remove(SharedKeys.saveAllChangesInSubjects);
     await SubjectTableDB.clearAll();
 
