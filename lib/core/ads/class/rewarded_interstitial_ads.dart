@@ -2,37 +2,39 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:gpa_pro/core/ads/class/ads_manger.dart';
 import 'package:gpa_pro/core/ads/constants/injections.dart';
 
-abstract class InterstitialAdsHelper {
-  const InterstitialAdsHelper();
+abstract class RewardedInterstitialAdsHelper {
+  const RewardedInterstitialAdsHelper();
 
-  static InterstitialAd? _interstitialAd;
+  static RewardedInterstitialAd? _rewardedInterstitialAd;
 
-  static Future<void> showAd() async {
-    if (!(InjectionAds.approved.interstitialApproved) || !(AdsManger.showAds)) {
+  static Future<void> showAd(
+      [void Function(AdWithoutView, RewardItem)? onUserEarnedReward]) async {
+    if (!(InjectionAds.approved.rewardedInterstitialApproved) ||
+        !(AdsManger.showAds)) {
       return;
     }
 
     await _loadAd();
-    await _interstitialAd?.show();
-    await _interstitialAd?.dispose();
+    await _rewardedInterstitialAd?.show(
+      onUserEarnedReward: onUserEarnedReward ?? (ad, reward) {},
+    );
+    await _rewardedInterstitialAd?.dispose();
   }
 
   /// Loads an interstitial ad.
   static Future<void> _loadAd() {
-    return InterstitialAd.load(
-      adUnitId: AdsManger.interstitialAdUnitId,
+    return RewardedInterstitialAd.load(
+      adUnitId: AdsManger.rewardedInterstitialAdUnitId,
       request: const AdRequest(),
-      adLoadCallback: const InterstitialAdLoadCallback(
+      rewardedInterstitialAdLoadCallback:
+          const RewardedInterstitialAdLoadCallback(
         onAdLoaded: _onAdLoaded,
         onAdFailedToLoad: _onAdFailedToLoad,
       ),
     );
   }
 
-  static void _onAdFailedToLoad(LoadAdError error) {
-  }
-
-  static void _onAdLoaded(InterstitialAd ad) {
+  static void _onAdLoaded(RewardedInterstitialAd ad) {
     ad.fullScreenContentCallback = FullScreenContentCallback(
       // Called when the ad showed the full screen content.
       onAdShowedFullScreenContent: (ad) {},
@@ -48,11 +50,10 @@ abstract class InterstitialAdsHelper {
         // Dispose the ad here to free resources.
         ad.dispose();
       },
-      // Called when a click is recorded for an ad.
-      onAdClicked: (ad) {},
     );
-
     // Keep a reference to the ad so you can show it later.
-    _interstitialAd = ad;
+    _rewardedInterstitialAd = ad;
   }
+
+  static void _onAdFailedToLoad(LoadAdError error) {}
 }

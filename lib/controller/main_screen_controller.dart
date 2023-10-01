@@ -1,3 +1,5 @@
+import 'package:gpa_pro/core/ads/class/interstitial_ads.dart';
+import 'package:gpa_pro/core/ads/class/rewarded_interstitial_ads.dart';
 import 'package:gpa_pro/core/class/argument_model.dart';
 import 'package:gpa_pro/core/class/popup_model.dart';
 import 'package:gpa_pro/core/class/subjects/shared_subjects.dart';
@@ -163,12 +165,14 @@ class MainScreenControllerImp extends MainScreenController {
             arguments: SubjectHelper(sharedSubject)
                 .makeAllSubjectsNeedSyncOrNot(false),
           );
+          InterstitialAdsHelper.showAd();
         }
         break;
       case PopupButton.sync:
         await Synchronization().synchronizationSubjects();
         break;
       case PopupButton.saveFile:
+        await RewardedInterstitialAdsHelper.showAd();
         AppBottomSheets.customSheet(
           SaveBottomModelSheet(
             subjectsToSave: subjectsToSave,

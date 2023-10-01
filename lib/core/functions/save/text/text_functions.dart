@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:gpa_pro/core/ads/class/interstitial_ads.dart';
+import 'package:gpa_pro/core/ads/class/rewarded_interstitial_ads.dart';
 import 'package:gpa_pro/core/class/argument_model.dart';
 import 'package:gpa_pro/core/constants/colors.dart';
 import 'package:gpa_pro/core/constants/routes.dart';
@@ -68,7 +68,7 @@ class SaveText {
         newSubjects: newSubjects,
       ),
     );
-    InterstitialAdsHelper.showAd();
+    RewardedInterstitialAdsHelper.showAd();
     if (getAll.errors != 0) {
       AppSnackBar.messageSnack("${getAll.errors} ${AppConstLang.error.tr}");
     }

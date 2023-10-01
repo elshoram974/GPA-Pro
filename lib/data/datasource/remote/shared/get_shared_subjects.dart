@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:gpa_pro/core/ads/class/interstitial_ads.dart';
+import 'package:gpa_pro/core/ads/class/rewarded_interstitial_ads.dart';
 import 'package:gpa_pro/core/class/argument_model.dart';
 import 'package:gpa_pro/core/class/crud.dart';
 import 'package:gpa_pro/core/class/net_helper.dart';
@@ -56,7 +56,7 @@ class GetSharedSubjects {
               newSubjects: subjectsData.subjects,
             ),
           );
-          InterstitialAdsHelper.showAd();
+          RewardedInterstitialAdsHelper.showAd();
         }
       } else {
         Get.back();

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:gpa_pro/controller/select_item.dart/subjects_items.dart';
+import 'package:gpa_pro/core/ads/class/rewarded_interstitial_ads.dart';
 import 'package:gpa_pro/core/class/subjects/shared_subjects.dart';
 import 'package:gpa_pro/core/constants/app_links.dart';
 import 'package:gpa_pro/core/constants/colors.dart';
@@ -36,7 +37,7 @@ class ShareSubjectsControllerImp extends ShareSubjectsController {
   void linkButton() async {
     if (subjectsList.isNotEmpty) {
       UserData user = LoginRemotely.savedLogin()!;
-
+      await RewardedInterstitialAdsHelper.showAd();
       _linkDialog('${AppLinks.shareLink}${user.userSharedId}');
     }
   }
