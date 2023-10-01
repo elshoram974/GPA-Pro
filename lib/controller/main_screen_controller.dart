@@ -6,7 +6,6 @@ import 'package:gpa_pro/core/constants/injections.dart';
 import 'package:gpa_pro/core/constants/routes.dart';
 import 'package:gpa_pro/core/constants/shared_keys.dart';
 import 'package:gpa_pro/core/functions/after_open_app.dart';
-import 'package:gpa_pro/core/functions/custom_dialogs.dart';
 import 'package:gpa_pro/core/functions/my_bottom_sheets.dart';
 import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
@@ -164,8 +163,6 @@ class MainScreenControllerImp extends MainScreenController {
             arguments: SubjectHelper(sharedSubject)
                 .makeAllSubjectsNeedSyncOrNot(false),
           );
-        } else {
-          CustomDialog.warningDialog(AppConstLang.doNotHaveSharedSubjects.tr);
         }
         break;
       case PopupButton.sync:
