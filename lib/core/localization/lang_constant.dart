@@ -274,6 +274,8 @@ class AppConstLang {
   static const String share = "share";
   static const String openSharedScreen = "openSharedScreen";
   static const String doNotHaveSharedSubjects = "doNotHaveSharedSubjects";
+  static const String copyToClipboard = "copyToClipboard";
+  static const String copied = "copied";
 
   // details screen
   static const String cumulativeDetails = "cumulative_details";

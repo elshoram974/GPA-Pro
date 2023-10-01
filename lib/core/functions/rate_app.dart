@@ -22,7 +22,7 @@ class RateApp {
       if (later != null) later--;
       prefs.setInt(SharedKeys.rateLater, later ?? 0);
 
-      if (later == 0 || later == null) {
+      if (later == 0) {
         prefs.setInt(SharedKeys.rateLater, AppInfo.rateLater);
 
         Get.defaultDialog(
@@ -63,10 +63,6 @@ class RateApp {
 
   static void reviewApp() async {
     try {
-      // final InAppReview inAppReview = InAppReview.instance;
-
-      // if (await inAppReview.isAvailable()) {
-      // await inAppReview.requestReview();
 
       if (AppConstant.isAndroid) {
         final InAppReview inAppReview = InAppReview.instance;
@@ -75,12 +71,6 @@ class RateApp {
       } else {
         AppSnackBar.messageSnack(AppConstLang.notAvailableNow.tr);
       }
-
-      // inAppReview.openStoreListing(
-      //   appStoreId: AppInfo.appStoreId,
-      //   microsoftStoreId: AppInfo.microsoftStoreId,
-      // );
-      // }
     } catch (e) {
       AppSnackBar.messageSnack(AppConstLang.notAvailableNow.tr);
     }

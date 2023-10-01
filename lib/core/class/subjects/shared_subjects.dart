@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:get/get.dart';
 import 'package:gpa_pro/core/class/net_helper.dart';
 import 'package:gpa_pro/core/constants/injections.dart';
@@ -80,8 +78,6 @@ class SharedSubjectsHelper {
           AppSnackBar.messageSnack(AppConstLang.noInternet.tr);
         }
       } catch (e) {
-        print(e.toString());
-        log(e.toString());
         AppSnackBar.messageSnack(e.toString());
       }
     }

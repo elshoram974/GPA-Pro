@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:gpa_pro/core/class/net_helper.dart';
@@ -28,8 +27,6 @@ class Crud {
           Map<String, dynamic> responseBody = json.decode(response.body);
           ret = (status: StatusRequest.success, body: responseBody);
         } else {
-          print("${response.statusCode}");
-          log("${response.statusCode}");
           ret = (status: StatusRequest.serverFailure, body: {});
         }
       } else {
@@ -38,8 +35,6 @@ class Crud {
       }
     } catch (e) {
       if (Get.isSnackbarOpen) Get.closeAllSnackbars();
-      print(e.toString());
-      log(e.toString());
 
       AppSnackBar.messageSnack("e : $e");
 

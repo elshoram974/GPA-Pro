@@ -1,18 +1,24 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:gpa_pro/controller/select_item.dart/subjects_items.dart';
 import 'package:gpa_pro/core/class/subjects/shared_subjects.dart';
+import 'package:gpa_pro/core/constants/app_links.dart';
+import 'package:gpa_pro/core/constants/colors.dart';
+import 'package:gpa_pro/core/constants/public_constant.dart';
 import 'package:gpa_pro/core/functions/custom_dialogs.dart';
+import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
+import 'package:gpa_pro/core/shared/custom_fields/default_field.dart';
+import 'package:gpa_pro/data/datasource/remote/user/auth/login.dart';
 import 'package:gpa_pro/data/model/subject_model.dart';
+import 'package:gpa_pro/data/model/user.dart';
 
 abstract class ShareSubjectsController extends SelectedSubjectController {
   void getArguments(List<SubjectModel> argument);
 
   void linkButton();
   void removeSharedSubject();
-
-  @override
-  Future<bool> onWillPop();
 }
 
 class ShareSubjectsControllerImp extends ShareSubjectsController {
@@ -29,12 +35,34 @@ class ShareSubjectsControllerImp extends ShareSubjectsController {
   @override
   void linkButton() async {
     if (subjectsList.isNotEmpty) {
-      await CustomDialog.warningDialog(AppConstLang.itWillBeSaved.tr);
-      update();
+      UserData user = LoginRemotely.savedLogin()!;
+
+      _linkDialog('${AppLinks.shareLink}${user.userSharedId}');
     }
   }
 
-  // -------------------- end save --------------------------------------------
+  Future<T?> _linkDialog<T>(String message) async {
+    return await Get.defaultDialog<T>(
+      buttonColor: AppColor.primary,
+      confirmTextColor: Colors.white,
+      title: AppConstLang.warning.tr,
+      content: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppConstant.kDefaultPadding,
+          vertical: AppConstant.kDefaultPadding / 2,
+        ),
+        child: MyDefaultField(initialValue: message, readOnly: true),
+      ),
+      textConfirm: AppConstLang.copyToClipboard.tr,
+      onConfirm: () async {
+        await Clipboard.setData(ClipboardData(text: message));
+        Get.back();
+        AppSnackBar.messageSnack(AppConstLang.copied.tr);
+      },
+    );
+  }
+
+  // -------------------- end link --------------------------------------------
 
   // ---------------------- remove added ---------------------------------------
 
@@ -57,27 +85,4 @@ class ShareSubjectsControllerImp extends ShareSubjectsController {
   }
 
   // -------------------- end remove -------------------------------------------
-
-  // -------------------- onWillPop --------------------------------------------
-
-  @override
-  Future<bool> onWillPop() async {
-    // if (subjectsList.isNotEmpty) {
-    //   // bool exit = false;
-
-    //   await CustomDialog.cancelChanges(
-    //     isCancel: false,
-    //     onConfirm: _save,
-    //     onCancel: () {
-    //       Navigator.popUntil(Get.context!, (route) => route.isFirst);
-    //     },
-    //   );
-
-    //   return false;
-    // }
-    // Navigator.popUntil(Get.context!, (route) => route.isFirst);
-    return super.onWillPop();
-  }
-
-  // -------------------- end onWillPop ----------------------------------------
 }

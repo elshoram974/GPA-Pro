@@ -24,6 +24,7 @@ class MyDefaultField extends StatelessWidget {
   final Widget? suffix;
   final Widget? prefix;
   final bool obscureText;
+  final bool readOnly;
   final TextInputType? keyboardType;
   final TextCapitalization textCapitalization;
   final Color? textColor;
@@ -58,6 +59,7 @@ class MyDefaultField extends StatelessWidget {
     this.obscureText = false,
     this.textColor,
     this.borderColor,
+    this.readOnly = false,
   });
 
   @override
@@ -69,8 +71,6 @@ class MyDefaultField extends StatelessWidget {
         obscureText: obscureText,
         style: style,
         decoration: InputDecoration(
-          // labelStyle: style,
-          // hintStyle: style,
           filled: filled,
           errorMaxLines: 10,
           border: OutlineInputBorder(
@@ -85,8 +85,6 @@ class MyDefaultField extends StatelessWidget {
                 ),
           alignLabelWithHint: alignLabelWithHint,
           labelText: labelText,
-          // suffix: suffix,
-          // prefix: prefix,
           suffixIcon: suffix,
           prefixIcon: prefix,
           contentPadding: EdgeInsets.symmetric(
@@ -94,6 +92,7 @@ class MyDefaultField extends StatelessWidget {
             vertical: verticalPadding,
           ),
         ),
+        readOnly: readOnly,
         textDirection: textDirection,
         maxLines: maxLines,
         minLines: minLines,

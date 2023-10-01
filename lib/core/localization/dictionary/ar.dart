@@ -287,7 +287,8 @@ class ArDictionary {
     AppConstLang.share: "مشاركة",
     AppConstLang.openSharedScreen: "فتح صفحة المشاركة",
     AppConstLang.doNotHaveSharedSubjects: "لم تقم بمشاركة المواد",
-
+    AppConstLang.copyToClipboard: "نسخ الى الحافظة",
+    AppConstLang.copied: "تم النسخ",
 
     // details screen
     AppConstLang.cumulativeDetails: "تفاصيل التراكمي",
@@ -356,9 +357,11 @@ class ArDictionary {
     AppConstLang.termsConditions: "الشروط والأحكام",
     AppConstLang.termsConditions1: TermsArConstants.termsConditions1,
     AppConstLang.termsConditions2: TermsArConstants.termsConditions2,
-    
-    AppConstLang.changesToThisTermsConditions: TermsArConstants.changesToThisTermsConditions,
-    AppConstLang.changesToThisTermsConditions1: TermsArConstants.changesToThisTermsConditions1,
+
+    AppConstLang.changesToThisTermsConditions:
+        TermsArConstants.changesToThisTermsConditions,
+    AppConstLang.changesToThisTermsConditions1:
+        TermsArConstants.changesToThisTermsConditions1,
 
     AppConstLang.contactUsTerms: TermsArConstants.contactUs1,
 

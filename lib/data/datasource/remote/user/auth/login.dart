@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -82,8 +80,6 @@ abstract class LoginRemotely {
     if (post.status == StatusRequest.success) {
       User user = User.fromJson(post.body as Map<String, dynamic>);
       if (user.status == 'success') {
-        print(user.toRawJson());
-        log(user.toRawJson());
         await login(user.data, password);
         return user;
       } else {
