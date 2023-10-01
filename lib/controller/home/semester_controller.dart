@@ -3,6 +3,7 @@ import 'package:gpa_pro/controller/home/home_controller.dart';
 import 'package:gpa_pro/controller/home/subject_controller.dart';
 import 'package:gpa_pro/controller/home/year_controller.dart';
 import 'package:gpa_pro/controller/select_item.dart/subjects_items.dart';
+import 'package:gpa_pro/core/ads/class/interstitial_ads.dart';
 import 'package:gpa_pro/core/class/argument_model.dart';
 import 'package:gpa_pro/core/class/subjects/remove_many_subjects.dart';
 import 'package:gpa_pro/core/class/subjects/update_many_subjects.dart';
@@ -160,6 +161,7 @@ class SemesterControllerImp extends SemesterController {
         thisModel: thisSemester,
       ),
     );
+    InterstitialAdsHelper.showAd();
   }
   //----------------------------------------------------------------------------
 }

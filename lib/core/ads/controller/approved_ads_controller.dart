@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
 enum Ads {
@@ -11,18 +10,14 @@ enum Ads {
 }
 
 class ApprovedAdsController extends GetxController {
-  // bool appOpenApproved = kReleaseMode;
-  // bool bannerApproved = kReleaseMode;
-  bool interstitialApproved = kReleaseMode;
-  bool nativeApproved = kReleaseMode;
-  bool rewardedApproved = kReleaseMode;
-  bool rewardedInterstitialApproved = kReleaseMode;
+  // bool interstitialApproved = kReleaseMode;
+  bool interstitialApproved = true;
+  bool nativeApproved = true;
+  bool rewardedApproved = true;
+  bool rewardedInterstitialApproved = true;
   bool appOpenApproved = true;
   bool bannerApproved = true;
-  // bool interstitialApproved = true;
-  // bool nativeApproved = true;
-  // bool rewardedApproved = true;
-  // bool rewardedInterstitialApproved = true;
+
 
   void cancelAds(Ads ads, bool approved, {Function? callback}) {
     switch (ads) {

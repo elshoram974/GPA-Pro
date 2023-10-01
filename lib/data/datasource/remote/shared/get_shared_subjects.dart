@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:gpa_pro/core/ads/class/interstitial_ads.dart';
 import 'package:gpa_pro/core/class/argument_model.dart';
 import 'package:gpa_pro/core/class/crud.dart';
 import 'package:gpa_pro/core/class/net_helper.dart';
@@ -10,14 +11,16 @@ import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/data/model/shared/get_shared_subjects_model.dart';
 
 class GetSharedSubjects {
-  static Future<SharedSubjectsData?> getAllSubjects(String? userSharedId) async {
+  static Future<SharedSubjectsData?> getAllSubjects(
+      String? userSharedId) async {
     if (userSharedId != null) {
       Crud crud = const Crud();
       ({Map body, StatusRequest status}) subjects =
           await crud.getData('${AppLinks.getShared}$userSharedId');
 
       if (subjects.status == StatusRequest.success) {
-        SharedSubject sharedSubject = SharedSubject.fromJson(subjects.body as Map<String, dynamic>);
+        SharedSubject sharedSubject =
+            SharedSubject.fromJson(subjects.body as Map<String, dynamic>);
         SharedSubjectsData subjectsData = sharedSubject.data;
 
         if (sharedSubject.status == 'success') {
@@ -53,6 +56,7 @@ class GetSharedSubjects {
               newSubjects: subjectsData.subjects,
             ),
           );
+          InterstitialAdsHelper.showAd();
         }
       } else {
         Get.back();
