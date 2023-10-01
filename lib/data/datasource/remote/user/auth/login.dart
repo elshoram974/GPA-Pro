@@ -10,6 +10,7 @@ import 'package:gpa_pro/core/functions/custom_dialogs.dart';
 import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/data/datasource/database/subjects/subject_table_db.dart';
+import 'package:gpa_pro/data/datasource/remote/get_app_info.dart';
 import 'package:gpa_pro/data/datasource/remote/user/auth/verify_code.dart';
 import 'package:gpa_pro/data/datasource/remote/subjects/synchronization.dart';
 import 'package:gpa_pro/data/model/user.dart';
@@ -44,6 +45,7 @@ abstract class LoginRemotely {
     AppSnackBar.messageSnack(AppConstLang.done.tr);
 
     Navigator.popUntil(Get.context!, (route) => route.isFirst);
+    await AppInfoRemotely.getInfo();
   }
 
   static void logOut() async {
