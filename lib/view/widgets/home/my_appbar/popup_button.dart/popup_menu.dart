@@ -14,8 +14,10 @@ class MyPopupMenuButton extends StatelessWidget {
     this.f,
     this.showWhenSelected = false,
     required this.subjectsToSave,
+    required this.isSelected,
   });
   final bool showWhenSelected;
+  final bool isSelected;
   final PageType pageType;
   final void Function()? f;
   final List<SubjectModel> subjectsToSave;
@@ -34,6 +36,7 @@ class MyPopupMenuButton extends StatelessWidget {
         f,
         subjectsToSave,
         !showWhenSelected,
+        isSelected,
       ),
       itemBuilder: (context) =>
           AppInjections.mainScreenImp.popupList(pageType, showWhenSelected),

@@ -11,7 +11,7 @@ import 'package:gpa_pro/data/model/user.dart';
 
 abstract class VerifyCode {
   static Future<User?> sendVerifyCode(String email, String? title) async {
-    Crud crud = Crud();
+    Crud crud = const Crud();
     ({Map body, StatusRequest status}) post = await crud.postData(
       AppLinks.sendVerify,
       {"email": email, "title": title},
@@ -38,7 +38,7 @@ abstract class VerifyCode {
   }
 
   static Future<User?> checkVerify(String email, String? verifiedCode) async {
-    Crud crud = Crud();
+    Crud crud = const Crud();
     ({Map body, StatusRequest status}) post = await crud.postData(
       AppLinks.checkVerify,
       {

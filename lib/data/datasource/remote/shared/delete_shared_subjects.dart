@@ -9,25 +9,22 @@ import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/data/model/shared/get_shared_subjects_model.dart';
 import 'package:gpa_pro/data/model/subject_model.dart';
 
-class RemoveSubjects {
-  const RemoveSubjects(
+class DeleteShareSubjectsRemotely extends Crud {
+  const DeleteShareSubjectsRemotely(
     this.userId,
-    this.removedSubjects,
-    {
-      this.messageInDialog,
-    }
-  );
+    this.removedSubjects, {
+    this.messageInDialog,
+  });
 
   final int userId;
   final List<SubjectModel> removedSubjects;
   final String? messageInDialog;
-  Future<bool> remove()async {
-    Crud crud = const Crud();
-    ({Map body, StatusRequest status}) subjects = await crud.postData(
-      AppLinks.deleteManySubjects,
+  Future<SharedSubjectsData?> call() async {
+    ({Map body, StatusRequest status}) subjects = await postData(
+      AppLinks.deleteSharedSubjects,
       {
         'user_id': "$userId",
-        'where_code': _whereCode(),
+        'where': _whereCode(),
       },
       messageInDialog: messageInDialog,
     );
@@ -38,8 +35,8 @@ class RemoveSubjects {
       SharedSubjectsData subjectsData = allSubjects.data;
 
       if (allSubjects.status == 'success') {
-        return true;
-      } else if (subjectsData.message == "subjects not exist with this user") {
+        return subjectsData;
+      } else if (subjectsData.message == "no subject found") {
         AppSnackBar.messageSnack(AppConstLang.subjectsNotExistWithUser.tr);
       } else if (subjectsData.message ==
           "subjects are not deleted, may it is already deleted") {
@@ -56,7 +53,7 @@ class RemoveSubjects {
       Get.back();
       AppSnackBar.messageSnack('Error : unknown');
     }
-    return false;
+    return null;
   }
 
   String _whereCode() {
@@ -64,7 +61,6 @@ class RemoveSubjects {
     for (SubjectModel e in removedSubjects) {
       if (e.remoteId == null) continue;
       String remoteId = "${e.remoteId}";
-
       code += "OR `remote_id`= $remoteId ";
     }
     try {

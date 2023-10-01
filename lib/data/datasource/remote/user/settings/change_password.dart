@@ -18,7 +18,7 @@ class ChangePasswordRemotely {
   final String email;
   final String? messageInDialog;
   Future<UserData?> change() async {
-    Crud crud = Crud();
+    Crud crud = const Crud();
     ({Map body, StatusRequest status}) post;
     post = await crud.postData(
       AppLinks.changePassword,

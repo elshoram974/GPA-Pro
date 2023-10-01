@@ -18,9 +18,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
 
 class SaveText {
-
   static Future<void> onTapSave(List<SubjectModel> subjects) async {
-
     String fileName = AppSavedConst.savedTXTName;
 
     SaveFolder.waitToSaveDialog();
@@ -84,7 +82,7 @@ class SaveText {
       for (PlatformFile e in result.files) {
         if (e.extension?.toLowerCase() == "txt") {
           File file = File(e.path!);
-          
+
           await addSavedSubjects(await file.readAsString());
           if (await file.exists()) await file.delete();
         }
@@ -97,7 +95,7 @@ class SaveText {
     Future<void> thisFunction() async {
       Get.back();
       CustomDialog.loadDialog();
-      await SharedSubjects.getSubjects(link);
+      await GetSharedSubjects.getSubjects(link);
     }
 
     await Get.defaultDialog(

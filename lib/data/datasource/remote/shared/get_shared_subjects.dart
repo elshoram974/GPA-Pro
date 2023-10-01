@@ -9,16 +9,15 @@ import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/data/model/shared/get_shared_subjects_model.dart';
 
-class SharedSubjects {
-  static Future<SharedSubjectsData?> _getSubjects(String? userSharedId) async {
+class GetSharedSubjects {
+  static Future<SharedSubjectsData?> getAllSubjects(String? userSharedId) async {
     if (userSharedId != null) {
-      Crud crud = Crud();
-      ({Map body, StatusRequest status}) subjects = await crud
-          .getData('${AppLinks.getShared}?user_sharedId=$userSharedId');
+      Crud crud = const Crud();
+      ({Map body, StatusRequest status}) subjects =
+          await crud.getData('${AppLinks.getShared}$userSharedId');
 
       if (subjects.status == StatusRequest.success) {
-        SharedSubject sharedSubject =
-            SharedSubject.fromJson(subjects.body as Map<String, dynamic>);
+        SharedSubject sharedSubject = SharedSubject.fromJson(subjects.body as Map<String, dynamic>);
         SharedSubjectsData subjectsData = sharedSubject.data;
 
         if (sharedSubject.status == 'success') {
@@ -44,7 +43,7 @@ class SharedSubjects {
 
       if (sharedId != null) {
         AppSnackBar.messageSnack(sharedId);
-        SharedSubjectsData? subjectsData = await _getSubjects(sharedId);
+        SharedSubjectsData? subjectsData = await getAllSubjects(sharedId);
 
         if (subjectsData != null) {
           Get.toNamed(

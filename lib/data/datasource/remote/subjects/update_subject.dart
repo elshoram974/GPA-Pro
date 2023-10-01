@@ -20,7 +20,7 @@ class UpdateSubject {
   final SubjectModel updatedSubject;
   final String? messageInDialog;
   Future<SubjectModel?> update() async {
-    Crud crud = Crud();
+    Crud crud = const Crud();
     ({Map body, StatusRequest status}) subject = await crud.postData(
       AppLinks.editSubject,
       _convertSubjectToJson(),

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -31,6 +33,10 @@ abstract class LoginRemotely {
       );
       await Synchronization().uploadSubjectsThatNotInDatabase();
     }
+    await _pref.setString(
+      SharedKeys.userData,
+      user.copyWith(password: pass).toRawJson(),
+    );
     if (await NetHelper.checkInternet()) {
       CachedNetworkImage.evictFromCache("${AppLinks.image}/${user.userImage}");
       await Synchronization().synchronizationSubjects();
@@ -64,7 +70,7 @@ abstract class LoginRemotely {
   }
 
   static Future<User?> loginToAccount(String email, String password) async {
-    Crud crud = Crud();
+    Crud crud = const Crud();
     ({Map body, StatusRequest status}) post = await crud.postData(
       AppLinks.login,
       {
@@ -76,6 +82,8 @@ abstract class LoginRemotely {
     if (post.status == StatusRequest.success) {
       User user = User.fromJson(post.body as Map<String, dynamic>);
       if (user.status == 'success') {
+        print(user.toRawJson());
+        log(user.toRawJson());
         await login(user.data, password);
         return user;
       } else {

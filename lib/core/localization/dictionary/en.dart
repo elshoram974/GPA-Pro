@@ -82,10 +82,12 @@ class EnDictionary {
     AppConstLang.toDeleteAccount: "to delete your account",
     AppConstLang.changesNotSaved: "The changes were not saved",
     AppConstLang.canNotSaveSamePassword: "Can't save the same password",
-    AppConstLang.deleteMessage: "If you delete the account, all subjects will be deleted, and the account will be permanently lost.\nTo confirm, write the following sentence:-",
+    AppConstLang.deleteMessage:
+        "If you delete the account, all subjects will be deleted, and the account will be permanently lost.\nTo confirm, write the following sentence:-",
     AppConstLang.deleteConfirm: "Delete the account",
     AppConstLang.wrongCode: "Wrong code",
-    AppConstLang.accountSuccessfullyDeleted: "Account has been successfully deleted.",
+    AppConstLang.accountSuccessfullyDeleted:
+        "Account has been successfully deleted.",
     //
     // auth screen
     AppConstLang.login: "Login",
@@ -111,7 +113,8 @@ class EnDictionary {
     AppConstLang.codeUEnteredIncorrect: "The code you entered is incorrect.",
     AppConstLang.bySigningUpAgreeToOur: "By signing up you agree to our",
     AppConstLang.and: "and",
-    AppConstLang.haveToAgreeTermsConditions: "First you have to agree on our terms and conditions.",
+    AppConstLang.haveToAgreeTermsConditions:
+        "First you have to agree on our terms and conditions.",
     //
     // verifyCode screen
     AppConstLang.verifyCode: "Verify code",
@@ -280,6 +283,8 @@ class EnDictionary {
         "Unknown error, subjects are not added on your account",
     AppConstLang.savedToDeviceOnly: "Saved to device only",
     AppConstLang.share: "Share",
+    AppConstLang.openSharedScreen: "Open shared screen",
+    AppConstLang.doNotHaveSharedSubjects: "You don't have shared subjects",
 
     // details screen
     AppConstLang.cumulativeDetails: "Cumulative details",
@@ -344,16 +349,17 @@ class EnDictionary {
     AppConstLang.here: "here",
 
     // Terms & Conditions
-    AppConstLang.termsConditions : "Terms & Conditions",
+    AppConstLang.termsConditions: "Terms & Conditions",
 
     AppConstLang.termsConditions1: TermsEnConstants.termsConditions1,
     AppConstLang.termsConditions2: TermsEnConstants.termsConditions2,
 
-    AppConstLang.changesToThisTermsConditions: TermsEnConstants.changesToThisTermsConditions,
-    AppConstLang.changesToThisTermsConditions1: TermsEnConstants.changesToThisTermsConditions1,
+    AppConstLang.changesToThisTermsConditions:
+        TermsEnConstants.changesToThisTermsConditions,
+    AppConstLang.changesToThisTermsConditions1:
+        TermsEnConstants.changesToThisTermsConditions1,
 
     AppConstLang.contactUsTerms: TermsEnConstants.contactUs1,
-
 
     // rate dialog
     AppConstLang.rateThisApp: "Rate this app",

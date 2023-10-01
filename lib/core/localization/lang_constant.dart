@@ -105,7 +105,8 @@ class AppConstLang {
   static const String codeUEnteredIncorrect = "codeUEnteredIncorrect.";
   static const String bySigningUpAgreeToOur = "bySigningUpAgreeToOur";
   static const String and = "and";
-  static const String haveToAgreeTermsConditions = "haveToAgreeTermsConditions.";
+  static const String haveToAgreeTermsConditions =
+      "haveToAgreeTermsConditions.";
   //
   // Verify code screen
   static const String verifyCode = "verify_code";
@@ -271,6 +272,8 @@ class AppConstLang {
       "unknownErrorSubjectsAreNotAdded";
   static const String savedToDeviceOnly = "savedToDeviceOnly";
   static const String share = "share";
+  static const String openSharedScreen = "openSharedScreen";
+  static const String doNotHaveSharedSubjects = "doNotHaveSharedSubjects";
 
   // details screen
   static const String cumulativeDetails = "cumulative_details";
@@ -347,11 +350,12 @@ class AppConstLang {
   static const String termsConditions1 = "termsConditions1";
   static const String termsConditions2 = "termsConditions2";
 
-  static const String changesToThisTermsConditions = "changesToThisTermsConditions";
-  static const String changesToThisTermsConditions1 = "changesToThisTermsConditions1";
+  static const String changesToThisTermsConditions =
+      "changesToThisTermsConditions";
+  static const String changesToThisTermsConditions1 =
+      "changesToThisTermsConditions1";
 
   static const String contactUsTerms = "contact_us_terms";
-
 
   // rate dialog
   static const String rateThisApp = "rate_this_app";

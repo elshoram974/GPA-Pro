@@ -274,7 +274,7 @@ class ArDictionary {
     AppConstLang.selectSubjectWillBeNotCalculatedIn:
         "تختار هذه المادة، سيتم الغائها في",
     AppConstLang.addSubjectUHaveToNotCalculatedItIn:
-        "تضيف هذه المادة، سيتوجب عليك الغائها في",
+        "تضيف هذه المادة، سيتوجب عليك الغاءها في",
 
     AppConstLang.calculatedOrNot: "تغيير حسابهم",
     AppConstLang.makeSelectedItemsCalculatedNot:
@@ -285,6 +285,9 @@ class ArDictionary {
         "خطأ غير معروف، لم يتم إضافة المواد على الحساب",
     AppConstLang.savedToDeviceOnly: "تم الحفظ على الجهاز فقط",
     AppConstLang.share: "مشاركة",
+    AppConstLang.openSharedScreen: "فتح صفحة المشاركة",
+    AppConstLang.doNotHaveSharedSubjects: "لم تقم بمشاركة المواد",
+
 
     // details screen
     AppConstLang.cumulativeDetails: "تفاصيل التراكمي",

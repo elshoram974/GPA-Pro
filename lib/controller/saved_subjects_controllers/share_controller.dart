@@ -1,10 +1,11 @@
 import 'package:get/get.dart';
 import 'package:gpa_pro/controller/select_item.dart/subjects_items.dart';
+import 'package:gpa_pro/core/class/subjects/shared_subjects.dart';
 import 'package:gpa_pro/core/functions/custom_dialogs.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/data/model/subject_model.dart';
 
-abstract class ShareSubjects extends SelectedSubjectController {
+abstract class ShareSubjectsController extends SelectedSubjectController {
   void getArguments(List<SubjectModel> argument);
 
   void linkButton();
@@ -14,9 +15,7 @@ abstract class ShareSubjects extends SelectedSubjectController {
   Future<bool> onWillPop();
 }
 
-class ShareSubjectsImp extends ShareSubjects {
-  final List<SubjectModel> _deletedSubjects = [];
-
+class ShareSubjectsControllerImp extends ShareSubjectsController {
   SubjectModel? subjectModel;
   int index = 0;
 
@@ -41,17 +40,18 @@ class ShareSubjectsImp extends ShareSubjects {
 
   @override
   void removeSharedSubject() async {
-    _deletedSubjects.clear();
     await CustomDialog.warningDialog(
       "${AppConstLang.areUSureUWanna.tr} ${AppConstLang.remove.tr} ${AppConstLang.thatSelected.tr}",
       closeBeforeFunction: true,
-      onConfirm: () {
-        for (SubjectModel e in selectedList) {
-          subjectsList.remove(e);
-          e.isSelected = false;
-          _deletedSubjects.add(e);
+      onConfirm: () async {
+        bool deleted = await SharedSubjectsHelper().delete(selectedList);
+        if (deleted) {
+          for (SubjectModel e in selectedList) {
+            subjectsList.remove(e);
+          }
+          selectAllOrDeselect(false);
+          update();
         }
-        selectAllOrDeselect(false);
       },
     );
   }

@@ -15,12 +15,12 @@ class MyServices extends GetxService {
     if (AppConstant.isAndroid || AppConstant.isIOS) {
       final String? initialLink = await getInitialLink();
       if (initialLink != null) {
-        return await SharedSubjects.getSubjects(initialLink);
+        return await GetSharedSubjects.getSubjects(initialLink);
       }
 
       linkStream.listen(
         (String? link) async {
-          if (link != null) await SharedSubjects.getSubjects(link);
+          if (link != null) await GetSharedSubjects.getSubjects(link);
           // Parse the link and warn the user, if it is not correct
         },
         onError: (err) async {

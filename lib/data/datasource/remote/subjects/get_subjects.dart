@@ -9,7 +9,7 @@ import 'package:gpa_pro/data/model/subject_model.dart';
 
 class GetAllSubjects {
   static Future<List<SubjectModel>?> _viewSubjects(int userId) async {
-    Crud crud = Crud();
+    Crud crud = const Crud();
     ({Map body, StatusRequest status}) subjects =
         await crud.postData(AppLinks.viewSubjects, {'user_id': '$userId'});
     if (subjects.status == StatusRequest.success) {

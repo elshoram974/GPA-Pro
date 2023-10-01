@@ -22,7 +22,7 @@ class ChangeCalcSubjects {
   final List<SubjectModel> editedSubjects;
   final String? messageInDialog;
   Future<List<SubjectModel>?> changeCalculated() async {
-    Crud crud = Crud();
+    Crud crud = const Crud();
     ({Map body, StatusRequest status}) subjects = await crud.postData(
       AppLinks.changCalcSubjects,
       {

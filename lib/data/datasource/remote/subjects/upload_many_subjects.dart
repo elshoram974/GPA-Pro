@@ -18,7 +18,7 @@ class AddManySubjects {
   final List<SubjectModel> addedSubjects;
   final String? messageInDialog;
   Future<List<SubjectModel>?> addNewSubjects() async {
-    Crud crud = Crud();
+    Crud crud = const Crud();
     ({Map body, StatusRequest status}) subjects = await crud.postData(
       AppLinks.addManySubjects,
       {

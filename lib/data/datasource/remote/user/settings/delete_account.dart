@@ -12,7 +12,7 @@ class DeleteAccountRemotely {
   final int userId;
   final String? messageInDialog;
   Future<bool> delete() async {
-    Crud crud = Crud();
+    Crud crud = const Crud();
     ({Map body, StatusRequest status}) post;
     post = await crud.postData(
       AppLinks.deleteUser,

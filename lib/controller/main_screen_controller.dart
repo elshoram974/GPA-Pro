@@ -1,10 +1,12 @@
 import 'package:gpa_pro/core/class/argument_model.dart';
 import 'package:gpa_pro/core/class/popup_model.dart';
+import 'package:gpa_pro/core/class/subjects/shared_subjects.dart';
 import 'package:gpa_pro/core/class/subjects/subject_helper.dart';
 import 'package:gpa_pro/core/constants/injections.dart';
 import 'package:gpa_pro/core/constants/routes.dart';
 import 'package:gpa_pro/core/constants/shared_keys.dart';
 import 'package:gpa_pro/core/functions/after_open_app.dart';
+import 'package:gpa_pro/core/functions/custom_dialogs.dart';
 import 'package:gpa_pro/core/functions/my_bottom_sheets.dart';
 import 'package:gpa_pro/core/functions/snack_bars.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
@@ -18,6 +20,8 @@ import 'package:gpa_pro/view/widgets/home/my_appbar/popup_button.dart/save_botto
 import 'package:gpa_pro/view/widgets/nav_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'saved_subjects_controllers/share_controller.dart';
 
 abstract class MainScreenController extends GetxController {
   List<Body> get homePages;
@@ -135,6 +139,7 @@ class MainScreenControllerImp extends MainScreenController {
     void Function()? f,
     List<SubjectModel> subjectsToSave,
     bool showPDF,
+    bool isSelected,
   ) async {
     switch (value) {
       case PopupButton.convertSubjects:
@@ -144,10 +149,24 @@ class MainScreenControllerImp extends MainScreenController {
         AppBottomSheets.customSheet(const OpenSavedBottomModelSheet());
         break;
       case PopupButton.share:
-        AppInjections.mainScreenImp.homeNavigatorKey.currentState?.pushNamed(
-          AppRoute.shareScreen,
-          arguments: SubjectHelper(subjectsToSave).makeAllSubjectsNotSelected(),
-        );
+        SharedSubjectsHelper shared = SharedSubjectsHelper();
+        List<SubjectModel>? sharedSubject;
+        if (isSelected) {
+          sharedSubject = await shared.share(subjectsToSave);
+        } else {
+          sharedSubject = await shared.getMyShared();
+        }
+        if (sharedSubject != null) {
+          Get.lazyPut<ShareSubjectsControllerImp>(
+              () => ShareSubjectsControllerImp());
+          Get.toNamed(
+            AppRoute.shareScreen,
+            arguments: SubjectHelper(sharedSubject)
+                .makeAllSubjectsNeedSyncOrNot(false),
+          );
+        } else {
+          CustomDialog.warningDialog(AppConstLang.doNotHaveSharedSubjects.tr);
+        }
         break;
       case PopupButton.sync:
         await Synchronization().synchronizationSubjects();
@@ -178,6 +197,12 @@ class MainScreenControllerImp extends MainScreenController {
         showWhenSelected: true,
         value: PopupButton.convertSubjects,
         text: AppConstLang.calculatedOrNot.tr,
+      ),
+      PopupModel(
+        inPages: [PageType.homeScreen],
+        enabled: isLoggedIn,
+        value: PopupButton.share,
+        text: AppConstLang.openSharedScreen.tr,
       ),
       PopupModel(
         inPages: [PageType.homeScreen],

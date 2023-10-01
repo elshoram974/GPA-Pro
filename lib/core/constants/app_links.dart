@@ -21,9 +21,12 @@ class AppLinks {
 
   // shared subjects in subjects  https://mrecode.com/gpapro/api/subject/shared/share_subject.php
   static const String _shared = '$_subject/shared';
-  static const String shareSubject = '$_shared/share_subject.php';
-  static const String deleteShared = '$_shared/delete_shared.php';
-  static const String getShared    = '$_shared/get_shared.php'; // ?user_sharedId=8588913772';
+  static const String shareSubjects = '$_shared/share_many_subjects.php';
+  static const String deleteSharedSubjects = '$_shared/delete_many_shared.php';
+  static const String getShared    = '$_shared/get_shared.php?user_sharedId='; // 8588913772';
+
+  // https://gpapro.mrecode.com/?user_sharedId=8588913772
+  static const String shareLink    = '$appDomain/?user_sharedId='; // 8588913772';
 
   // auth https://mrecode.com/gpapro/api/auth/delete.php
   static const String _auth = '$_baseLink/auth';

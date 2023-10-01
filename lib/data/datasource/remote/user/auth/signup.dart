@@ -12,7 +12,7 @@ import 'package:gpa_pro/view/screens/user/auth/signup_screen.dart';
 
 abstract class SignUpRemotely {
   static Future<User?> createAccount(UserData newUser) async {
-    Crud crud = Crud();
+    Crud crud = const Crud();
     ({Map body, StatusRequest status}) post = await crud.postData(
       AppLinks.signup,
       {

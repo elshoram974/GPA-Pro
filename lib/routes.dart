@@ -33,6 +33,7 @@ class GeneratedRoute {
     GetPage(name: AppRoute.editGrades, page: () => const EditGradesScreen()),
     GetPage(name: AppRoute.addScreen, page: () => const AddScreen()),
     GetPage(name: AppRoute.uploadScreen, page: () => const UploadScreen()),
+    GetPage(name: AppRoute.shareScreen, page: () => const ShareScreen()),
     GetPage(
       name: AppRoute.accountSettings,
       page: () => const AccountSettings(),
@@ -77,11 +78,6 @@ class GeneratedRoute {
 
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case AppRoute.shareScreen:
-        return myPageRouteBuilder(
-          settings: settings,
-          child: const ShareScreen(),
-        );
       case AppRoute.year:
         return myPageRouteBuilder(
           settings: settings,

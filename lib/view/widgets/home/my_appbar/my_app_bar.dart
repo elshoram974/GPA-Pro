@@ -71,6 +71,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                     .isNotEmpty,
                 child: MyPopupMenuButton(
                   showWhenSelected: true,
+                  isSelected: isSelected,
                   pageType: pageType,
                   f: changeSelectedCalc,
                   subjectsToSave: selectedSubjects,
@@ -100,6 +101,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                 child: MyPopupMenuButton(
                   pageType: pageType,
                   showWhenSelected: false,
+                  isSelected: isSelected,
                   subjectsToSave: AppInjections.homeController.subjects,
                 ),
               ),

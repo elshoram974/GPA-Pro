@@ -9,25 +9,23 @@ import 'package:gpa_pro/core/localization/lang_constant.dart';
 import 'package:gpa_pro/data/model/shared/get_shared_subjects_model.dart';
 import 'package:gpa_pro/data/model/subject_model.dart';
 
-class RemoveSubjects {
-  const RemoveSubjects(
+class ShareSubjectsRemotely {
+  const ShareSubjectsRemotely(
     this.userId,
-    this.removedSubjects,
-    {
-      this.messageInDialog,
-    }
-  );
+    this.sharedSubjects, {
+    this.messageInDialog,
+  });
 
   final int userId;
-  final List<SubjectModel> removedSubjects;
+  final List<SubjectModel> sharedSubjects;
   final String? messageInDialog;
-  Future<bool> remove()async {
+  Future<SharedSubjectsData?> call() async {
     Crud crud = const Crud();
     ({Map body, StatusRequest status}) subjects = await crud.postData(
-      AppLinks.deleteManySubjects,
+      AppLinks.shareSubjects,
       {
         'user_id': "$userId",
-        'where_code': _whereCode(),
+        'where': _whereCode(),
       },
       messageInDialog: messageInDialog,
     );
@@ -38,13 +36,9 @@ class RemoveSubjects {
       SharedSubjectsData subjectsData = allSubjects.data;
 
       if (allSubjects.status == 'success') {
-        return true;
-      } else if (subjectsData.message == "subjects not exist with this user") {
+        return subjectsData;
+      } else if (subjectsData.message == "this subject not exist") {
         AppSnackBar.messageSnack(AppConstLang.subjectsNotExistWithUser.tr);
-      } else if (subjectsData.message ==
-          "subjects are not deleted, may it is already deleted") {
-        AppSnackBar.messageSnack(
-            AppConstLang.subjectsAreNotDeletedMayDeleted.tr);
       } else if (subjectsData.message == "email not exist") {
         AppSnackBar.messageSnack(AppConstLang.emailDoesNotExist.tr);
       } else {
@@ -56,15 +50,14 @@ class RemoveSubjects {
       Get.back();
       AppSnackBar.messageSnack('Error : unknown');
     }
-    return false;
+    return null;
   }
 
   String _whereCode() {
     String code = '';
-    for (SubjectModel e in removedSubjects) {
+    for (SubjectModel e in sharedSubjects) {
       if (e.remoteId == null) continue;
       String remoteId = "${e.remoteId}";
-
       code += "OR `remote_id`= $remoteId ";
     }
     try {
