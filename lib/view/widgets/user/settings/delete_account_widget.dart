@@ -19,47 +19,50 @@ class DeleteAccountWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(
-        horizontal: AppConstant.kDefaultPadding,
-        vertical: AppConstant.kDefaultPadding / 2,
-      ),
-      child: Column(
-        children: [
-          Text(
-            LoginRemotely.savedLogin()!.email.toLowerCase(),
-            textAlign: TextAlign.center,
-            style: const TextStyle(color: Colors.grey),
-          ),
-          const SizedBox(height: AppConstant.kDefaultPadding),
-          Text.rich(
-            TextSpan(
-              style: Theme.of(context).textTheme.bodySmall,
-              text: "${AppConstLang.deleteMessage.tr}\n\n",
-              children: [
-                TextSpan(
-                  style: const TextStyle(
-                    color: Colors.red,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  text: AppConstLang.deleteConfirm.tr,
-                ),
-              ],
+    double maxHeight = 0.287 * MediaQuery.sizeOf(context).height;
+    return ConstrainedBox(
+      constraints: BoxConstraints(maxHeight: maxHeight),
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppConstant.kDefaultPadding,
+          vertical: AppConstant.kDefaultPadding / 2,
+        ),
+        child: Column(
+          children: [
+            Text(
+              LoginRemotely.savedLogin()!.email.toLowerCase(),
+              textAlign: TextAlign.center,
+              style: const TextStyle(color: Colors.grey),
             ),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 2 * AppConstant.kDefaultPadding),
-          MyDefaultField(
-            fieldKey: fieldKey,
-            textAlign: TextAlign.start,
-            // labelText: AppConstLang.c.tr,
-            onChanged: onChanged,
-            textInputAction: TextInputAction.done,
-            onFieldSubmitted: onFieldSubmitted,
-            validator: (value) =>
-                AppValidator.validInputAuth(value, 0, 25, AuthValidType.name),
-          ),
-        ],
+            const SizedBox(height: AppConstant.kDefaultPadding),
+            Text.rich(
+              TextSpan(
+                style: Theme.of(context).textTheme.bodySmall,
+                text: "${AppConstLang.deleteMessage.tr}\n\n",
+                children: [
+                  TextSpan(
+                    style: const TextStyle(
+                      color: Colors.red,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    text: AppConstLang.deleteConfirm.tr,
+                  ),
+                ],
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 2 * AppConstant.kDefaultPadding),
+            MyDefaultField(
+              fieldKey: fieldKey,
+              textAlign: TextAlign.start,
+              onChanged: onChanged,
+              textInputAction: TextInputAction.done,
+              onFieldSubmitted: onFieldSubmitted,
+              validator: (value) =>
+                  AppValidator.validInputAuth(value, 0, 25, AuthValidType.name),
+            ),
+          ],
+        ),
       ),
     );
   }

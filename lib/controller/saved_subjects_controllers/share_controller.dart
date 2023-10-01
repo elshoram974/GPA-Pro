@@ -37,8 +37,8 @@ class ShareSubjectsControllerImp extends ShareSubjectsController {
   void linkButton() async {
     if (subjectsList.isNotEmpty) {
       UserData user = LoginRemotely.savedLogin()!;
-      await RewardedInterstitialAdsHelper.showAd();
-      _linkDialog('${AppLinks.shareLink}${user.userSharedId}');
+      bool watchAd = await RewardedInterstitialAdsHelper.showAd();
+      if (watchAd) _linkDialog('${AppLinks.shareLink}${user.userSharedId}');
     }
   }
 

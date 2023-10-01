@@ -18,12 +18,14 @@ class PickPhotoWidget extends GetView<AccountSettingControllerImp> {
         if (!isDesktop)
           CustomListTile(
             title: AppConstLang.openCamera.tr,
+            trailingIcon: Icons.camera_alt_outlined,
             onTap: () => controller.pickImage(ImageSource.camera),
           ),
         CustomListTile(
           title: isDesktop
               ? AppConstLang.openFiles.tr
               : AppConstLang.openGallery.tr,
+          trailingIcon: Icons.photo_library_outlined,
           onTap: () => controller.pickImage(ImageSource.gallery),
         ),
       ],

@@ -61,14 +61,16 @@ class SaveText {
     newSubjects.addAll(getAll.subjects);
     Get.back();
 
-    Get.toNamed(
-      AppRoute.uploadScreen,
-      arguments: UploadArguments(
-        title: AppConstLang.savedSubjects.tr,
-        newSubjects: newSubjects,
-      ),
-    );
-    RewardedInterstitialAdsHelper.showAd();
+    bool watchAd = await RewardedInterstitialAdsHelper.showAd();
+    if (watchAd) {
+      Get.toNamed(
+        AppRoute.uploadScreen,
+        arguments: UploadArguments(
+          title: AppConstLang.savedSubjects.tr,
+          newSubjects: newSubjects,
+        ),
+      );
+    }
     if (getAll.errors != 0) {
       AppSnackBar.messageSnack("${getAll.errors} ${AppConstLang.error.tr}");
     }

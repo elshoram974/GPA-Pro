@@ -289,6 +289,7 @@ class ArDictionary {
     AppConstLang.doNotHaveSharedSubjects: "لم تقم بمشاركة المواد",
     AppConstLang.copyToClipboard: "نسخ الى الحافظة",
     AppConstLang.copied: "تم النسخ",
+    AppConstLang.watchTheAdFirst: "شاهد الإعلان أولاً",
 
     // details screen
     AppConstLang.cumulativeDetails: "تفاصيل التراكمي",

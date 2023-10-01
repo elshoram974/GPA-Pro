@@ -49,14 +49,17 @@ class GetSharedSubjects {
         SharedSubjectsData? subjectsData = await getAllSubjects(sharedId);
 
         if (subjectsData != null) {
-          Get.toNamed(
-            AppRoute.uploadScreen,
-            arguments: UploadArguments(
-              title: AppConstLang.sharedSubjects.tr,
-              newSubjects: subjectsData.subjects,
-            ),
-          );
-          RewardedInterstitialAdsHelper.showAd();
+          Get.back();
+          bool watchAd = await RewardedInterstitialAdsHelper.showAd();
+          if (watchAd) {
+            Get.toNamed(
+              AppRoute.uploadScreen,
+              arguments: UploadArguments(
+                title: AppConstLang.sharedSubjects.tr,
+                newSubjects: subjectsData.subjects,
+              ),
+            );
+          }
         }
       } else {
         Get.back();

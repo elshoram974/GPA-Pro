@@ -287,6 +287,7 @@ class EnDictionary {
     AppConstLang.doNotHaveSharedSubjects: "You don't have shared subjects",
     AppConstLang.copyToClipboard: "Copy to clipboard",
     AppConstLang.copied: "Copied",
+    AppConstLang.watchTheAdFirst: "Watch the ad first",
 
     // details screen
     AppConstLang.cumulativeDetails: "Cumulative details",

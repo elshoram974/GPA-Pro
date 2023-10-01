@@ -172,13 +172,15 @@ class MainScreenControllerImp extends MainScreenController {
         await Synchronization().synchronizationSubjects();
         break;
       case PopupButton.saveFile:
-        await RewardedInterstitialAdsHelper.showAd();
-        AppBottomSheets.customSheet(
-          SaveBottomModelSheet(
-            subjectsToSave: subjectsToSave,
-            showPDF: showPDF,
-          ),
-        );
+        bool watchAd = await RewardedInterstitialAdsHelper.showAd();
+        if (watchAd) {
+          AppBottomSheets.customSheet(
+            SaveBottomModelSheet(
+              subjectsToSave: subjectsToSave,
+              showPDF: showPDF,
+            ),
+          );
+        }
         break;
       default:
     }
