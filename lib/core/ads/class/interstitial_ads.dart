@@ -7,8 +7,16 @@ abstract class InterstitialAdsHelper {
 
   static InterstitialAd? _interstitialAd;
 
+  static Future<void> init() async {
+    if (!(AdsManger.showAds)) return;
+    if (!(InjectionAds.approved.interstitialApproved)) return;
+
+    await _loadAd();
+    await _interstitialAd?.dispose();
+  }
+
   static Future<void> showAd() async {
-   if (!(AdsManger.showAds)) return;
+    if (!(AdsManger.showAds)) return;
     if (!(InjectionAds.approved.interstitialApproved)) return;
     await _loadAd();
     await _interstitialAd?.show();

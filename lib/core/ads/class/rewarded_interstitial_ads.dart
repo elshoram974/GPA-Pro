@@ -10,9 +10,17 @@ abstract class RewardedInterstitialAdsHelper {
 
   static RewardedInterstitialAd? _rewardedInterstitialAd;
 
+  static Future<void> init() async {
+    if (!(AdsManger.showAds)) return;
+    if (!(InjectionAds.approved.rewardedInterstitialApproved)) return;
+
+    await _loadAd();
+    await _rewardedInterstitialAd?.dispose();
+  }
+
   static Future<bool> showAd() async {
     if (!(AdsManger.showAds)) return true;
-    if (!(InjectionAds.approved.interstitialApproved)) return true;
+    if (!(InjectionAds.approved.rewardedInterstitialApproved)) return true;
 
     bool watchAd = false;
     await CustomDialog.warningDialog(

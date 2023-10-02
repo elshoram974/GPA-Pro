@@ -1,3 +1,5 @@
+import 'package:gpa_pro/core/ads/class/interstitial_ads.dart';
+import 'package:gpa_pro/core/ads/class/rewarded_interstitial_ads.dart';
 import 'package:gpa_pro/core/constants/public_constant.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -21,6 +23,8 @@ class AdsManger {
       Get.put<ApprovedAdsController>(ApprovedAdsController());
 
       await OpenAppAdsHelper.loadAd();
+      await InterstitialAdsHelper.init();
+      await RewardedInterstitialAdsHelper.init();
       return instance;
     }
     return null;
