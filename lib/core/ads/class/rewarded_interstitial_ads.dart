@@ -11,10 +11,9 @@ abstract class RewardedInterstitialAdsHelper {
   static RewardedInterstitialAd? _rewardedInterstitialAd;
 
   static Future<bool> showAd() async {
-    if (!(InjectionAds.approved.rewardedInterstitialApproved) ||
-        !(AdsManger.showAds)) {
-      return true;
-    }
+    if (!(AdsManger.showAds)) return true;
+    if (!(InjectionAds.approved.interstitialApproved)) return true;
+
     bool watchAd = false;
     await CustomDialog.warningDialog(
       AppConstLang.watchTheAdFirst.tr,

@@ -16,17 +16,20 @@ class AgreedListTileWidget extends StatelessWidget {
       children: [
         GetBuilder<SignUpControllerImp>(
           builder: (controller) {
-            return Checkbox(
-              activeColor: AppColor.primary,
-              checkColor: Colors.white,
-              value: controller.isAgreed,
-              onChanged: controller.onAgreedChanged,
+            return SizedBox.square(
+              dimension: 32.0,
+              child: Checkbox(
+                activeColor: AppColor.primary,
+                checkColor: Colors.white,
+                value: controller.isAgreed,
+                onChanged: controller.onAgreedChanged,
+              ),
             );
           },
         ),
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.only(top: 14),
+            padding: const EdgeInsets.only(top: 5.2),
             child: RichText(
               textAlign: TextAlign.start,
               text: TextSpan(

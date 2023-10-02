@@ -8,10 +8,8 @@ abstract class InterstitialAdsHelper {
   static InterstitialAd? _interstitialAd;
 
   static Future<void> showAd() async {
-    if (!(InjectionAds.approved.interstitialApproved) || !(AdsManger.showAds)) {
-      return;
-    }
-
+   if (!(AdsManger.showAds)) return;
+    if (!(InjectionAds.approved.interstitialApproved)) return;
     await _loadAd();
     await _interstitialAd?.show();
     await _interstitialAd?.dispose();
@@ -29,8 +27,7 @@ abstract class InterstitialAdsHelper {
     );
   }
 
-  static void _onAdFailedToLoad(LoadAdError error) {
-  }
+  static void _onAdFailedToLoad(LoadAdError error) {}
 
   static void _onAdLoaded(InterstitialAd ad) {
     ad.fullScreenContentCallback = FullScreenContentCallback(
