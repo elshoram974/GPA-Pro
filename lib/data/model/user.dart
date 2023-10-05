@@ -44,6 +44,7 @@ class UserData {
   final String? userImage;
   final int? verifiedCode;
   final bool isVerified;
+  final bool approvedAds;
   final DateTime? userCreateAt;
   final DateTime? lastLogin;
   final String? userSharedId;
@@ -58,6 +59,7 @@ class UserData {
     this.userImage,
     this.verifiedCode,
     this.isVerified = false,
+    this.approvedAds = true,
     this.userCreateAt,
     this.lastLogin,
     this.userSharedId,
@@ -75,6 +77,7 @@ class UserData {
     String? userImage,
     int? verifiedCode,
     bool? isVerified,
+    bool? approvedAds,
     DateTime? userCreateAt,
     DateTime? lastLogin,
     String? userSharedId,
@@ -89,6 +92,7 @@ class UserData {
         userImage: userImage ?? this.userImage,
         verifiedCode: verifiedCode ?? this.verifiedCode,
         isVerified: isVerified ?? this.isVerified,
+        approvedAds: approvedAds ?? this.approvedAds,
         userCreateAt: userCreateAt ?? this.userCreateAt,
         lastLogin: lastLogin ?? this.lastLogin,
         userSharedId: userSharedId ?? this.userSharedId,
@@ -109,6 +113,7 @@ class UserData {
         userImage: json["user_image"],
         verifiedCode: json["verified_code"],
         isVerified: json["is_verified"] == 1 ? true : false,
+        approvedAds: json["approved_ads"] == 0 ? false : true,
         userCreateAt: json["user_create_at"] == null
             ? null
             : DateTime.parse(json["user_create_at"]),
@@ -128,6 +133,7 @@ class UserData {
         "user_image": userImage,
         "verified_code": verifiedCode,
         "is_verified": isVerified ? 1 : 0,
+        "approved_ads": approvedAds ? 1 : 0,
         "user_create_at": userCreateAt?.toIso8601String(),
         "last_login": lastLogin?.toIso8601String(),
         "user_sharedId": userSharedId,

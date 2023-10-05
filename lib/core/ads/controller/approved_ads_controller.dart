@@ -1,4 +1,8 @@
 import 'package:get/get.dart';
+import 'package:gpa_pro/data/datasource/remote/user/auth/login.dart';
+import 'package:gpa_pro/data/model/user.dart';
+
+import 'banner_ads_controller.dart';
 
 enum Ads {
   banner,
@@ -17,6 +21,30 @@ class ApprovedAdsController extends GetxController {
   bool rewardedInterstitialApproved = true;
   bool appOpenApproved = true;
   bool bannerApproved = true;
+
+  @override
+  void onInit() {
+    _initApprovedAds();
+    super.onInit();
+  }
+
+  void _initApprovedAds() {
+    UserData? user = LoginRemotely.savedLogin();
+    if (user != null) _change(user.approvedAds);
+  }
+
+  void changeApproved(bool isApproved) {
+    _change(isApproved);
+    Get.find<BannerAdsControllerImp>().refreshAd();
+  }
+
+  void _change(bool isApproved) {
+    bannerApproved = isApproved;
+    appOpenApproved = isApproved;
+    interstitialApproved = isApproved;
+    rewardedInterstitialApproved = isApproved;
+    update();
+  }
 
   // void cancelAds(Ads ads, bool approved, {Function? callback}) {
   //   switch (ads) {

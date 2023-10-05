@@ -21,19 +21,33 @@ class BannerAdsControllerImp extends GetxController {
 
   @override
   void onInit() async {
-    if (bannerAd == null) {
-      _loadBannerAd();
-    }
+    _initAd();
     super.onInit();
   }
 
   @override
   void onClose() {
+    _closeAd();
+    super.onClose();
+  }
+
+  void _initAd() {
+    if (bannerAd == null) {
+      _loadBannerAd();
+    }
+  }
+
+  void _closeAd() {
     bannerAd?.dispose();
     bannerAd = null;
+    isAdAvailable = false;
     _isShowingAd = false;
+  }
 
-    super.onClose();
+  void refreshAd() {
+    _closeAd();
+    _initAd();
+    update();
   }
 
   Future<void> _getBannerSize() async {

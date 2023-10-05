@@ -20,7 +20,6 @@ class MyBannerAd extends StatelessWidget {
           visible: AdsManger.showAds,
           child: GetBuilder<BannerAdsControllerImp>(
             autoRemove: false,
-            init: BannerAdsControllerImp(),
             builder: (controller) {
               return controller.isAdAvailable && AppConstant.isAndroidOrIOS
                   ? SizedBox(

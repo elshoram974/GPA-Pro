@@ -1,5 +1,6 @@
 import 'package:gpa_pro/core/ads/class/interstitial_ads.dart';
 import 'package:gpa_pro/core/ads/class/rewarded_interstitial_ads.dart';
+import 'package:gpa_pro/core/ads/controller/banner_ads_controller.dart';
 import 'package:gpa_pro/core/constants/public_constant.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -20,7 +21,8 @@ class AdsManger {
   static Future<InitializationStatus?> initialAds() async {
     if (showAds) {
       InitializationStatus instance = await MobileAds.instance.initialize();
-      Get.put<ApprovedAdsController>(ApprovedAdsController());
+      Get.lazyPut<BannerAdsControllerImp>(() => BannerAdsControllerImp());
+      Get.lazyPut<ApprovedAdsController>(() => ApprovedAdsController());
 
       await OpenAppAdsHelper.loadAd();
       await InterstitialAdsHelper.init();
