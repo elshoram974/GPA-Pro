@@ -16,57 +16,32 @@ class LoginFields extends StatelessWidget {
       builder: (controller) {
         return Form(
           key: controller.key,
-          child: Column(
-            children: [
-              MyDefaultField(
-                textDirection: TextDirection.ltr,
-                textColor: Colors.black,
-                textAlign: TextAlign.left,
-                autofillHints: const [AutofillHints.email],
-                keyboardType: TextInputType.emailAddress,
-                textCapitalization: TextCapitalization.none,
-                labelText: AppConstLang.email.tr,
-                onChanged: (val) => controller.email = val,
-                validator: (value) => AppValidator.validInputAuth(
-                  value,
-                  8,
-                  100,
-                  AuthValidType.email,
+          child: AutofillGroup(
+            child: Column(
+              children: [
+                MyDefaultField(
+                  textDirection: TextDirection.ltr,
+                  textColor: Colors.black,
+                  textAlign: TextAlign.left,
+                  autofillHints: const [AutofillHints.email,AutofillHints.username],
+                  keyboardType: TextInputType.emailAddress,
+                  textCapitalization: TextCapitalization.none,
+                  labelText: AppConstLang.email.tr,
+                  onChanged: (val) => controller.email = val,
+                  validator: (value) => AppValidator.validInputAuth(
+                    value,
+                    8,
+                    100,
+                    AuthValidType.email,
+                  ),
                 ),
-              ),
-              DefaultPassWidget(
-                onChanged: (val) => controller.password = val,
-                onFieldSubmitted: (val) => controller.login(),
-                onEditingComplete: TextInput.finishAutofillContext,
-              ),
-              // MyDefaultField(
-              //   textDirection: TextDirection.ltr,
-              //   textInputAction: TextInputAction.done,
-              //   // borderColor: AppColor.secondary,
-              //   textColor: Colors.black,
-              //   textCapitalization: TextCapitalization.none,
-              //   textAlign: TextAlign.left,
-              //   labelText: AppConstLang.password.tr,
-              //   keyboardType: TextInputType.visiblePassword,
-              //   onChanged: (val) => controller.password = val,
-              //   validator: (value) => AppValidator.validInputAuth(
-              //     value,
-              //     0,
-              //     100,
-              //     AuthValidType.password,
-              //   ),
-              //   obscureText: controller.showPass,
-              //   onFieldSubmitted: (val) => controller.login(),
-              //   suffix: IconButton(
-              //     onPressed: controller.changeShowPassword,
-              //     icon: Icon(
-              //       controller.showPass
-              //           ? Icons.visibility_off_outlined
-              //           : Icons.visibility_outlined,
-              //     ),
-              //   ),
-              // ),
-            ],
+                DefaultPassWidget(
+                  onChanged: (val) => controller.password = val,
+                  onFieldSubmitted: (val) => controller.login(),
+                  onEditingComplete: TextInput.finishAutofillContext,
+                ),
+              ],
+            ),
           ),
         );
       },

@@ -20,23 +20,25 @@ class SignUpScreen extends GetView<SignUpControllerImp> {
       onWillPop: controller.onWillPop,
       body: Form(
         key: controller.key,
-        child: Column(
-          children: [
-            SizedBox(height: 0.1 * screenHeight),
-            const SignUpName(),
-            const SignUpEmail(),
-            const SignUpPasswords(),
-            const AgreedListTileWidget(),
-            SizedBox(height: 0.1 * screenHeight),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: controller.onSignUp,
-                child: Text(AppConstLang.signUp.tr),
+        child: AutofillGroup(
+          child: Column(
+            children: [
+              SizedBox(height: 0.1 * screenHeight),
+              const SignUpName(),
+              const SignUpEmail(),
+              const SignUpPasswords(),
+              const AgreedListTileWidget(),
+              SizedBox(height: 0.1 * screenHeight),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: controller.onSignUp,
+                  child: Text(AppConstLang.signUp.tr),
+                ),
               ),
-            ),
-            const SizedBox(height: 2 * AppConstant.kDefaultPadding),
-          ],
+              const SizedBox(height: 2 * AppConstant.kDefaultPadding),
+            ],
+          ),
         ),
       ),
     );

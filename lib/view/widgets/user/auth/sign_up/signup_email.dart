@@ -14,7 +14,7 @@ class SignUpEmail extends StatelessWidget {
       textDirection: TextDirection.ltr,
       // borderColor: AppColor.secondary,
       textColor: Colors.black,
-      autofillHints: const [AutofillHints.email],
+      autofillHints: const [AutofillHints.email, AutofillHints.username],
       textCapitalization: TextCapitalization.none,
       labelText: AppConstLang.email.tr,
       textAlign: TextAlign.left,
