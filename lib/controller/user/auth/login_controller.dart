@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:gpa_pro/core/functions/custom_dialogs.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
@@ -27,6 +28,7 @@ class LoginControllerImp extends LoginController {
 
   @override
   void login() async {
+    TextInput.finishAutofillContext();
     if (key.currentState!.validate()) {
       await LoginRemotely.loginToAccount(email.trim(), password);
     }

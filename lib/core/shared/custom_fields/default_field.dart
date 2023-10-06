@@ -29,7 +29,9 @@ class MyDefaultField extends StatelessWidget {
   final TextCapitalization textCapitalization;
   final Color? textColor;
   final Color? borderColor;
+  final Iterable<String>? autofillHints;
   final void Function(String)? onFieldSubmitted;
+  final void Function()? onEditingComplete;
   const MyDefaultField({
     super.key,
     this.labelText,
@@ -60,6 +62,7 @@ class MyDefaultField extends StatelessWidget {
     this.textColor,
     this.borderColor,
     this.readOnly = false,
+    this.autofillHints, this.onEditingComplete,
   });
 
   @override
@@ -94,6 +97,7 @@ class MyDefaultField extends StatelessWidget {
         ),
         readOnly: readOnly,
         textDirection: textDirection,
+        autofillHints: autofillHints,
         maxLines: maxLines,
         minLines: minLines,
         maxLength: maxLength,
@@ -111,6 +115,7 @@ class MyDefaultField extends StatelessWidget {
         textAlign: textAlign,
         textInputAction: textInputAction,
         onFieldSubmitted: onFieldSubmitted,
+        onEditingComplete: onEditingComplete,
       ),
     );
   }

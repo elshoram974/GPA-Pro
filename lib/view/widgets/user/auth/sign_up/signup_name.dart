@@ -17,8 +17,8 @@ class SignUpName extends StatelessWidget {
           child: MyDefaultField(
             // filled: true,
             // borderColor: AppColor.secondary,
-      textColor: Colors.black,
-
+            textColor: Colors.black,
+            autofillHints: const [AutofillHints.givenName],
             textAlign: TextAlign.start,
             labelText: AppConstLang.firstName.tr,
             onChanged: (val) =>
@@ -30,8 +30,8 @@ class SignUpName extends StatelessWidget {
         Expanded(
           child: MyDefaultField(
             // borderColor: AppColor.secondary,
-      textColor: Colors.black,
-
+            textColor: Colors.black,
+            autofillHints: const [AutofillHints.familyName],
             textAlign: TextAlign.start,
             labelText: AppConstLang.lastName.tr,
             onChanged: (val) =>

@@ -25,13 +25,13 @@ class DefaultPassWidget extends StatelessWidget {
     super.key,
     this.newValid = false,
     this.isRePass = false,
-    this.changeTextColorToBlack =true,
+    this.changeTextColorToBlack = true,
     this.minChar,
     this.fieldKey,
     this.onChanged,
     this.onFieldSubmitted,
     this.textInputAction = TextInputAction.done,
-    this.validator,
+    this.validator, this.onEditingComplete,
   });
   final bool newValid;
   final int? minChar;
@@ -41,6 +41,7 @@ class DefaultPassWidget extends StatelessWidget {
   final String? Function(String?)? validator;
   final void Function(String)? onChanged;
   final void Function(String)? onFieldSubmitted;
+  final void Function()? onEditingComplete;
   final TextInputAction? textInputAction;
 
   @override
@@ -50,9 +51,11 @@ class DefaultPassWidget extends StatelessWidget {
       builder: (_) {
         return MyDefaultField(
           fieldKey: fieldKey,
+          onEditingComplete:onEditingComplete,
+          autofillHints: const [AutofillHints.password],
           textDirection: TextDirection.ltr,
           textInputAction: textInputAction,
-          textColor: changeTextColorToBlack? Colors.black :null,
+          textColor: changeTextColorToBlack ? Colors.black : null,
           textCapitalization: TextCapitalization.none,
           textAlign: TextAlign.left,
           labelText:

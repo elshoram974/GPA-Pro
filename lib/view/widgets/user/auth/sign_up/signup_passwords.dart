@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:gpa_pro/controller/user/auth/signup_controller.dart';
 import 'package:gpa_pro/core/localization/lang_constant.dart';
@@ -30,6 +31,7 @@ class SignUpPasswords extends StatelessWidget {
                 }
                 return null;
               },
+              onEditingComplete: TextInput.finishAutofillContext,
             ),
           ],
         );

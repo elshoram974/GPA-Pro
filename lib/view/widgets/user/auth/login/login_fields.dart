@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:gpa_pro/controller/user/auth/login_controller.dart';
 import 'package:gpa_pro/core/functions/validator.dart';
@@ -19,9 +20,9 @@ class LoginFields extends StatelessWidget {
             children: [
               MyDefaultField(
                 textDirection: TextDirection.ltr,
-                // borderColor: AppColor.secondary,
                 textColor: Colors.black,
                 textAlign: TextAlign.left,
+                autofillHints: const [AutofillHints.email],
                 keyboardType: TextInputType.emailAddress,
                 textCapitalization: TextCapitalization.none,
                 labelText: AppConstLang.email.tr,
@@ -36,6 +37,7 @@ class LoginFields extends StatelessWidget {
               DefaultPassWidget(
                 onChanged: (val) => controller.password = val,
                 onFieldSubmitted: (val) => controller.login(),
+                onEditingComplete: TextInput.finishAutofillContext,
               ),
               // MyDefaultField(
               //   textDirection: TextDirection.ltr,
