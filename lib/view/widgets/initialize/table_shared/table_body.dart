@@ -68,7 +68,6 @@ class InfoTableRow extends TableRow {
         bottom: BorderSide(color: AppColor.tableColor(context)),
         left: BorderSide(color: AppColor.tableColor(context)),
         right: BorderSide(color: AppColor.tableColor(context)),
-        top: BorderSide(width: 0, color: AppColor.tableColor(context)),
       ),
       color: isEditPage
           ? null
