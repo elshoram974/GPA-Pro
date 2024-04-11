@@ -1,4 +1,4 @@
-package com.mrecode.gpapro.gpa_pro
+package com.mrecode.mregpa.gpa_pro
 
 import io.flutter.embedding.android.FlutterActivity
 

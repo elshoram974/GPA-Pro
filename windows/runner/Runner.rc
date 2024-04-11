@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.mrecode.gpapro" "\0"
-            VALUE "FileDescription", "GPA PRO" "\0"
+            VALUE "CompanyName", "com.mrecode.mregpa" "\0"
+            VALUE "FileDescription", "MRE GPA" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "GPA PRO" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2023 com.mrecode.gpapro. All rights reserved." "\0"
+            VALUE "InternalName", "MRE GPA" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2023 com.mrecode.mregpa. All rights reserved." "\0"
             VALUE "OriginalFilename", "gpa_pro.exe" "\0"
-            VALUE "ProductName", "GPA PRO" "\0"
+            VALUE "ProductName", "MRE GPA" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

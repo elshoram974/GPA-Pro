@@ -5,10 +5,10 @@
 // 'flutter create' template.
 
 // The application's name. By default this is also the title of the Flutter window.
-PRODUCT_NAME = GPA PRO;
+PRODUCT_NAME = MRE GPA;
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.mrecode.gpapro;
+PRODUCT_BUNDLE_IDENTIFIER = com.mrecode.mregpa;
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2023 com.mrecode.gpapro. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2023 com.mrecode.mregpa. All rights reserved.

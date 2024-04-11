@@ -3,10 +3,10 @@ import 'package:gpa_pro/core/constants/assets.dart';
 abstract class AppInfo {
   static const int rateLater = 10;
 
-  static const String appName = "GPA PRO";
-  static const String appId = "com.mrecode.gpapro";
-  static const String appVersion = "1.0.3";
-  static const int appBuildVersion = 6;
+  static const String appName = "MRE GPA";
+  static const String appId = "com.mrecode.mregpa";
+  static const String appVersion = "1.0.0";
+  static const int appBuildVersion = 1;
 
   static const String appIcon = AppAssets.appIcon;
   static const String splashIcon = AppAssets.splashIcon;
@@ -28,19 +28,19 @@ abstract class AppInfo {
 /**
  * we use rename package 'rename: ^2.1.1'
 
- * Android bundleId changed successfully to : com.mrecode.gpapro
- * Android app name changed successfully to : GPA PRO
+ * Android bundleId changed successfully to : com.mrecode.mregpa
+ * Android app name changed successfully to : MRE GPA
 
- * IOS BundleIdentifier changed successfully to : com.mrecode.gpapro
- * IOS app name changed successfully to : GPA PRO
+ * IOS BundleIdentifier changed successfully to : com.mrecode.mregpa
+ * IOS app name changed successfully to : MRE GPA
 
- * MacOS BundleIdentifier changed successfully to : com.mrecode.gpapro
- * MacOS app name changed successfully to : GPA PRO
+ * MacOS BundleIdentifier changed successfully to : com.mrecode.mregpa
+ * MacOS app name changed successfully to : MRE GPA
 
- * Linux BundleIdentifier changed successfully to : com.mrecode.gpapro
- * Linux appname changed successfully to : GPA PRO
+ * Linux BundleIdentifier changed successfully to : com.mrecode.mregpa
+ * Linux appname changed successfully to : MRE GPA
 
- * Web app name changed successfully to : GPA PRO
- * Windows app name changed successfully to : GPA PRO
+ * Web app name changed successfully to : MRE GPA
+ * Windows app name changed successfully to : MRE GPA
 
  */
