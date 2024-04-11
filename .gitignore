@@ -44,4 +44,3 @@ app.*.map.json
 /android/app/release
 
 # form me
-lib/core/ads/constants/real_id_ads.dart
