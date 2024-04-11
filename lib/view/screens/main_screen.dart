@@ -1,4 +1,4 @@
-import 'package:gpa_pro/core/ads/widgets/banner_ads.dart';
+// import 'package:gpa_pro/core/ads/widgets/banner_ads.dart';
 import 'package:gpa_pro/core/constants/injections.dart';
 import 'package:gpa_pro/view/widgets/main_screen/body.dart';
 import 'package:gpa_pro/view/widgets/main_screen/desktop_view.dart';
@@ -16,7 +16,7 @@ class MainScreen extends StatelessWidget {
       onWillPop: AppInjections.mainScreenImp.onWillPop,
       child: const SelectionArea(
         child: Scaffold(
-          appBar: BannerAdsAppBar(),
+          // appBar: BannerAdsAppBar(),
           body: Responsive(
             phone: MainBody(),
             tablet: TabletHomeView(),

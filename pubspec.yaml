@@ -44,7 +44,7 @@ dependencies:
   # end save --------------------
 
   #add ads
-  google_mobile_ads: ^4.0.0
+  # google_mobile_ads: ^4.0.0
 
   # color picker
   flutter_colorpicker: ^1.0.3

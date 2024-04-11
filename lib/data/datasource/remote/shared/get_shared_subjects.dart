@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:gpa_pro/core/ads/class/rewarded_interstitial_ads.dart';
+// import 'package:gpa_pro/core/ads/class/rewarded_interstitial_ads.dart';
 import 'package:gpa_pro/core/class/argument_model.dart';
 import 'package:gpa_pro/core/class/crud.dart';
 import 'package:gpa_pro/core/class/net_helper.dart';
@@ -50,16 +50,23 @@ class GetSharedSubjects {
 
         if (subjectsData != null) {
           Get.back();
-          bool watchAd = await RewardedInterstitialAdsHelper.showAd();
-          if (watchAd) {
-            Get.toNamed(
-              AppRoute.uploadScreen,
-              arguments: UploadArguments(
-                title: AppConstLang.sharedSubjects.tr,
-                newSubjects: subjectsData.subjects,
-              ),
-            );
-          }
+          // bool watchAd = await RewardedInterstitialAdsHelper.showAd();
+          // if (watchAd) {
+          //   Get.toNamed(
+          //     AppRoute.uploadScreen,
+          //     arguments: UploadArguments(
+          //       title: AppConstLang.sharedSubjects.tr,
+          //       newSubjects: subjectsData.subjects,
+          //     ),
+          //   );
+          // }
+          Get.toNamed(
+            AppRoute.uploadScreen,
+            arguments: UploadArguments(
+              title: AppConstLang.sharedSubjects.tr,
+              newSubjects: subjectsData.subjects,
+            ),
+          );
         }
       } else {
         Get.back();

@@ -1,4 +1,4 @@
-import 'package:gpa_pro/core/ads/class/interstitial_ads.dart';
+// import 'package:gpa_pro/core/ads/class/interstitial_ads.dart';
 import 'package:gpa_pro/core/constants/injections.dart';
 import 'package:gpa_pro/core/functions/custom_dialogs.dart';
 import 'package:gpa_pro/core/functions/snack_bars.dart';
@@ -63,7 +63,7 @@ class EditGradeControllerImp extends EditGradeController {
       Get.back();
       AppSnackBar.messageSnack(AppConstLang.successfullyDone.tr);
 
-      InterstitialAdsHelper.showAd();
+      // InterstitialAdsHelper.showAd();
 
       update();
     }

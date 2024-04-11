@@ -1,4 +1,4 @@
-import 'package:gpa_pro/core/ads/class/ads_manger.dart';
+// import 'package:gpa_pro/core/ads/class/ads_manger.dart';
 import 'package:get/get.dart';
 import 'package:gpa_pro/core/constants/public_constant.dart';
 import 'package:gpa_pro/core/functions/snack_bars.dart';
@@ -41,6 +41,6 @@ Future<void> initialServices() async {
   // await portraitUp();
 
   await Get.putAsync(() => MyServices().init());
-  await AdsManger.initialAds();
+  // await AdsManger.initialAds();
   // await AdsManger.instance;
 }

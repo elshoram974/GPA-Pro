@@ -59,7 +59,7 @@ class UserData {
     this.userImage,
     this.verifiedCode,
     this.isVerified = false,
-    this.approvedAds = true,
+    this.approvedAds = false,
     this.userCreateAt,
     this.lastLogin,
     this.userSharedId,

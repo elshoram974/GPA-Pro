@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:gpa_pro/core/ads/class/rewarded_interstitial_ads.dart';
+// import 'package:gpa_pro/core/ads/class/rewarded_interstitial_ads.dart';
 import 'package:gpa_pro/core/class/argument_model.dart';
 import 'package:gpa_pro/core/constants/colors.dart';
 import 'package:gpa_pro/core/constants/routes.dart';
@@ -61,16 +61,23 @@ class SaveText {
     newSubjects.addAll(getAll.subjects);
     Get.back();
 
-    bool watchAd = await RewardedInterstitialAdsHelper.showAd();
-    if (watchAd) {
-      Get.toNamed(
+    // bool watchAd = await RewardedInterstitialAdsHelper.showAd();
+    // if (watchAd) {
+    //   Get.toNamed(
+    //     AppRoute.uploadScreen,
+    //     arguments: UploadArguments(
+    //       title: AppConstLang.savedSubjects.tr,
+    //       newSubjects: newSubjects,
+    //     ),
+    //   );
+    // }
+    Get.toNamed(
         AppRoute.uploadScreen,
         arguments: UploadArguments(
           title: AppConstLang.savedSubjects.tr,
           newSubjects: newSubjects,
         ),
       );
-    }
     if (getAll.errors != 0) {
       AppSnackBar.messageSnack("${getAll.errors} ${AppConstLang.error.tr}");
     }

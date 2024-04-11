@@ -2,7 +2,7 @@ import 'package:gpa_pro/controller/home/add_controller/dialog_controller.dart';
 import 'package:gpa_pro/controller/home/semester_controller.dart';
 import 'package:gpa_pro/controller/home/year_controller.dart';
 import 'package:gpa_pro/controller/select_item.dart/subjects_items.dart';
-import 'package:gpa_pro/core/ads/class/interstitial_ads.dart';
+// import 'package:gpa_pro/core/ads/class/interstitial_ads.dart';
 import 'package:gpa_pro/core/class/argument_model.dart';
 import 'package:gpa_pro/core/class/subjects/insert_subjects.dart';
 import 'package:gpa_pro/core/class/subjects/remove_many_subjects.dart';
@@ -283,7 +283,7 @@ class AddControllerImp extends AddController {
       semester = null;
       year = null;
       Navigator.popUntil(Get.context!, (route) => route.isFirst);
-      InterstitialAdsHelper.showAd();
+      // InterstitialAdsHelper.showAd();
       RateApp.rateAppDialog();
     }
   }

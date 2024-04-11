@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:gpa_pro/core/ads/class/ads_manger.dart';
-import 'package:gpa_pro/core/ads/controller/approved_ads_controller.dart';
+// import 'package:gpa_pro/core/ads/class/ads_manger.dart';
+// import 'package:gpa_pro/core/ads/controller/approved_ads_controller.dart';
 import 'package:gpa_pro/core/class/crud.dart';
 import 'package:gpa_pro/core/class/net_helper.dart';
 import 'package:gpa_pro/core/constants/app_links.dart';
@@ -21,7 +21,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class LoginRemotely {
   static final SharedPreferences _pref = AppInjections.myServices.sharedPreferences;
-  static  ApprovedAdsController? _ads;
+  // static  ApprovedAdsController? _ads;
 
   // static late  UserData userData;
   static Future<void> login(UserData user, String pass) async {
@@ -34,10 +34,10 @@ abstract class LoginRemotely {
       );
       await Synchronization().uploadSubjectsThatNotInDatabase();
     }
-    if (AdsManger.showAds) {
-      _ads = Get.find<ApprovedAdsController>();
-      _ads!.changeApproved(user.approvedAds);
-    }
+    // if (AdsManger.showAds) {
+    //   _ads = Get.find<ApprovedAdsController>();
+    //   _ads!.changeApproved(user.approvedAds);
+    // }
     await _pref.setString(
       SharedKeys.userData,
       user.copyWith(password: pass).toRawJson(),
@@ -61,7 +61,7 @@ abstract class LoginRemotely {
     await _pref.remove(SharedKeys.realizedHours);
     await _pref.remove(SharedKeys.saveAllChangesInSubjects);
     await SubjectTableDB.clearAll();
-    _ads?.changeApproved(true);
+    // _ads?.changeApproved(true);
 
     AppInjections.mainScreenImp.changeBody(1);
     AppSnackBar.messageSnack(AppConstLang.done.tr);

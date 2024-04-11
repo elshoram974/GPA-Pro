@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gpa_pro/controller/user/settings/change_name_controller.dart';
 import 'package:gpa_pro/controller/user/settings/change_pass_controller.dart';
-import 'package:gpa_pro/core/ads/class/rewarded_interstitial_ads.dart';
+// import 'package:gpa_pro/core/ads/class/rewarded_interstitial_ads.dart';
 import 'package:gpa_pro/core/class/net_helper.dart';
 import 'package:gpa_pro/core/class/update_user.dart';
 import 'package:gpa_pro/core/constants/colors.dart';
@@ -108,16 +108,24 @@ class AccountSettingControllerImp extends AccountSettingController {
   @override
   void onSelectInPopUpButton(EditPhoto item) async {
     if (await NetHelper.checkInternet()) {
-      bool watchAd = await RewardedInterstitialAdsHelper.showAd();
-      if (watchAd) {
-        switch (item) {
-          case EditPhoto.delete:
-            await _changePhoto(null);
+      // bool watchAd = await RewardedInterstitialAdsHelper.showAd();
+      // if (watchAd) {
+      //   switch (item) {
+      //     case EditPhoto.delete:
+      //       await _changePhoto(null);
 
-            break;
-          default:
-            await AppBottomSheets.pickPhoto();
-        }
+      //       break;
+      //     default:
+      //       await AppBottomSheets.pickPhoto();
+      //   }
+      // }
+      switch (item) {
+        case EditPhoto.delete:
+          await _changePhoto(null);
+
+          break;
+        default:
+          await AppBottomSheets.pickPhoto();
       }
     } else {
       CustomDialog.errorDialog(AppConstLang.noInternet.tr);

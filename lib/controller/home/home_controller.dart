@@ -1,7 +1,7 @@
 import 'package:gpa_pro/controller/home/add_controller/add_controller.dart';
 import 'package:gpa_pro/controller/home/year_controller.dart';
 import 'package:gpa_pro/controller/select_item.dart/years_items.dart';
-import 'package:gpa_pro/core/ads/class/interstitial_ads.dart';
+// import 'package:gpa_pro/core/ads/class/interstitial_ads.dart';
 import 'package:gpa_pro/core/class/argument_model.dart';
 import 'package:gpa_pro/core/class/subjects/remove_many_subjects.dart';
 import 'package:gpa_pro/core/class/subjects/update_many_subjects.dart';
@@ -266,6 +266,6 @@ class HomeControllerImp extends HomeController {
         fromPageWithModelType: ModelType.year,
       ),
     );
-    InterstitialAdsHelper.showAd();
+    // InterstitialAdsHelper.showAd();
   }
 }
